@@ -1,4 +1,3 @@
-```html
 <!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
@@ -13,22 +12,12 @@ body{
     margin:0;
     font-family:Tahoma,Arial,sans-serif;
     color:#26352f;
-    background:
-        radial-gradient(circle at 20% 20%,rgba(201,162,39,.10) 0 2px,transparent 3px),
-        radial-gradient(circle at 80% 70%,rgba(201,162,39,.08) 0 2px,transparent 3px),
-        repeating-linear-gradient(
-            45deg,
-            rgba(255,255,255,.025) 0px,
-            rgba(255,255,255,.025) 2px,
-            transparent 2px,
-            transparent 18px
-        ),
-        #063f36;
+    background:#063f36;
     min-height:100vh;
 }
 
 body::before{
-    content:"✦  ❖  ✦  ❖  ✦  ❖  ✦  ❖  ✦  ❖  ✦";
+    content:"✦ ❖ ✦ ❖ ✦ ❖ ✦ ❖ ✦";
     position:fixed;
     top:0;
     left:0;
@@ -39,13 +28,12 @@ body::before{
     letter-spacing:12px;
     padding:8px;
     pointer-events:none;
-    z-index:0;
 }
 
 header{
     position:relative;
     z-index:1;
-    background:linear-gradient(rgba(3,52,44,.90),rgba(7,95,80,.94));
+    background:linear-gradient(rgba(3,52,44,.92),rgba(7,95,80,.96));
     color:white;
     text-align:center;
     padding:38px 20px 30px;
@@ -53,7 +41,7 @@ header{
 }
 
 header::after{
-    content:"☾  ✦  ﷽  ✦  ☽";
+    content:"☾ ✦ ﷽ ✦ ☽";
     display:block;
     color:#e4c85b;
     font-size:23px;
@@ -74,7 +62,6 @@ header h1{
 
 header p{
     margin:12px 0 0;
-    font-size:16px;
 }
 
 nav{
@@ -86,7 +73,6 @@ nav{
     gap:8px;
     background:#04372f;
     padding:12px;
-    border-bottom:1px solid rgba(201,162,39,.5);
 }
 
 nav button{
@@ -117,32 +103,12 @@ nav button:hover{
 }
 
 .card{
-    position:relative;
     background:rgba(255,250,240,.97);
     border:2px solid rgba(201,162,39,.55);
     border-radius:18px;
     padding:22px;
     margin-bottom:20px;
     box-shadow:0 8px 25px rgba(0,0,0,.18);
-    overflow:hidden;
-}
-
-.card::before{
-    content:"✦";
-    position:absolute;
-    top:8px;
-    left:12px;
-    color:#c9a227;
-    font-size:25px;
-}
-
-.card::after{
-    content:"✦";
-    position:absolute;
-    bottom:8px;
-    right:12px;
-    color:#c9a227;
-    font-size:25px;
 }
 
 .card h2{
@@ -165,10 +131,6 @@ nav button:hover{
     font-size:18px;
     font-weight:bold;
     cursor:pointer;
-}
-
-.home-buttons button:hover{
-    background:#f5e8b5;
 }
 
 select,
@@ -213,10 +175,6 @@ textarea{
     font-size:16px;
 }
 
-.gold-button:hover{
-    background:#e0bd45;
-}
-
 .surah-grid{
     display:grid;
     grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
@@ -252,11 +210,6 @@ textarea{
     line-height:2.5;
     font-size:25px;
     font-family:"Amiri","Traditional Arabic",serif;
-    text-align:right;
-}
-
-.ayah{
-    display:inline;
 }
 
 .ayah-number{
@@ -307,9 +260,26 @@ textarea{
     margin-top:10px;
 }
 
+.reciter-search-box{
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+
+.reciter-search-box input{
+    flex:1;
+}
+
+.search-results-count{
+    background:#edf7f2;
+    color:#075e54;
+    padding:10px;
+    border-radius:10px;
+    margin:8px 0;
+    font-weight:bold;
+}
+
 footer{
-    position:relative;
-    z-index:1;
     background:#04372f;
     color:white;
     text-align:center;
@@ -333,9 +303,7 @@ footer{
     align-items:center;
     justify-content:center;
     padding:20px;
-    background:
-        radial-gradient(circle,rgba(201,162,39,.12),transparent 45%),
-        rgba(3,45,38,.97);
+    background:rgba(3,45,38,.97);
 }
 
 .welcome-box{
@@ -345,23 +313,15 @@ footer{
     border-radius:25px;
     padding:30px;
     text-align:center;
-    box-shadow:0 10px 40px rgba(0,0,0,.35);
 }
 
 .welcome-symbol{
     font-size:45px;
     color:#c9a227;
-    margin-bottom:10px;
 }
 
 .welcome-box h2{
     color:#075e54;
-    margin-top:0;
-    font-size:30px;
-}
-
-.welcome-box p{
-    line-height:1.9;
 }
 
 .welcome-box label{
@@ -372,39 +332,60 @@ footer{
     margin-top:12px;
 }
 
-#userName,
-#userAge{
-    background:white;
-}
-
 .saved-user{
     margin-top:15px;
     color:#075e54;
     font-weight:bold;
-    line-height:1.7;
+}
+
+/* شريط الصلاة على النبي */
+#salawatMessage{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:10001;
+    background:#c9a227;
+    color:#26352f;
+    padding:14px 20px;
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    display:none;
+    box-shadow:0 3px 12px rgba(0,0,0,.25);
+}
+
+#salawatMessage:hover{
+    background:#e4c85b;
 }
 
 @media(max-width:600px){
+
     header h1{
         font-size:28px;
     }
 
-    .owner{
-        font-size:17px;
-    }
-
     .quran-text{
         font-size:21px;
-        line-height:2.3;
-        padding:15px;
     }
 
     .tafsir-tools{
         grid-template-columns:1fr;
     }
 
-    .welcome-box{
-        padding:22px;
+    .reciter-search-box{
+        flex-direction:column;
+    }
+
+    .reciter-search-box input,
+    .reciter-search-box button{
+        width:100%;
+    }
+
+    #salawatMessage{
+        font-size:17px;
+        padding:12px;
     }
 }
 </style>
@@ -412,253 +393,142 @@ footer{
 
 <body>
 
-<!-- =========================
-     التسجيل
-========================= -->
-
 <div id="welcomeScreen">
-
     <div class="welcome-box">
-
-        <div class="welcome-symbol">
-            ☾ ✦ ☽
-        </div>
-
-        <h2>
-            مرحبًا بك في منصة نور الهدى
-        </h2>
-
+        <div class="welcome-symbol">☾ ✦ ☽</div>
+        <h2>مرحبًا بك في منصة نور الهدى</h2>
         <p>
             أهلًا بك في منصتنا الإسلامية.
             <br>
             قبل الدخول، نرجو تسجيل بيانات بسيطة.
         </p>
 
-        <label for="userName">
-            الاسم
-        </label>
+        <label for="userName">الاسم</label>
+        <input id="userName" type="text" placeholder="اكتب اسمك">
 
-        <input
-            id="userName"
-            type="text"
-            placeholder="اكتب اسمك"
-        >
+        <label for="userAge">العمر</label>
+        <input id="userAge" type="number" min="1" max="120" placeholder="اكتب عمرك">
 
-        <label for="userAge">
-            العمر
-        </label>
-
-        <input
-            id="userAge"
-            type="number"
-            min="1"
-            max="120"
-            placeholder="اكتب عمرك"
-        >
-
-        <button
-            class="gold-button"
-            onclick="registerUser()"
-        >
+        <button type="button" class="gold-button" onclick="registerUser()">
             📝 التسجيل والمتابعة
         </button>
 
         <div class="saved-user">
-            بعد التسجيل سيتم فتح نموذج Google Forms لإرسال البيانات.
+            بعد التسجيل سيتم فتح نموذج Google Forms.
         </div>
-
     </div>
-
 </div>
 
-
-<!-- =========================
-     الرأس
-========================= -->
+<!-- شريط الصلاة على النبي -->
+<div id="salawatMessage" onclick="playSalawat()">
+    ☾ صلوا على النبي ﷺ ☽
+</div>
 
 <header>
-
-    <h1>
-        منصة نور الهدى
-    </h1>
-
-    <div class="owner">
-        يوسف أحمد شعلان
-    </div>
-
-    <p>
-        القرآن الكريم • التلاوة • التفسير • الأحكام • الأدعية والأذكار
-    </p>
-
+    <h1>منصة نور الهدى</h1>
+    <div class="owner">يوسف أحمد شعلان</div>
+    <p>القرآن الكريم • التلاوة • التفسير • الأحكام • الأدعية والأذكار</p>
 </header>
 
-
-<!-- =========================
-     القائمة
-========================= -->
-
 <nav>
-
-    <button onclick="showPage('home')">
-        🏠 الرئيسية
-    </button>
-
-    <button onclick="showPage('quran')">
-        📖 القرآن الكريم
-    </button>
-
-    <button onclick="showPage('recitation')">
-        🎧 التلاوة
-    </button>
-
-    <button onclick="showPage('tafsir')">
-        📚 التفسير
-    </button>
-
-    <button onclick="showPage('rulings')">
-        ⚖️ الأحكام
-    </button>
-
-    <button onclick="showPage('adhkar')">
-        🤲 الأدعية والأذكار
-    </button>
-
-    <button onclick="showPage('guide')">
-        📘 دليل المنصة
-    </button>
-
+    <button onclick="showPage('home')">🏠 الرئيسية</button>
+    <button onclick="showPage('quran')">📖 القرآن الكريم</button>
+    <button onclick="showPage('recitation')">🎧 التلاوة</button>
+    <button onclick="showPage('tafsir')">📚 التفسير</button>
+    <button onclick="showPage('rulings')">⚖️ الأحكام</button>
+    <button onclick="showPage('adhkar')">🤲 الأدعية والأذكار</button>
+    <button onclick="showPage('guide')">📘 دليل المنصة</button>
 </nav>
 
-
-<!-- =========================
-     الرئيسية
-========================= -->
-
 <section id="home" class="page active">
-
     <div class="card">
-
-        <h2>
-            ☾ مرحبًا بك في منصة نور الهدى
-        </h2>
-
-        <p>
-            منصة إسلامية مبسطة للقرآن الكريم والتلاوة
-            والتفسير والأحكام والأدعية والأذكار.
-        </p>
-
-        <p>
-            إعداد:
-            <b>يوسف أحمد شعلان</b>
-        </p>
-
+        <h2>☾ مرحبًا بك في منصة نور الهدى</h2>
+        <p>منصة إسلامية مبسطة للقرآن الكريم والتلاوة والتفسير والأحكام والأدعية والأذكار.</p>
+        <p>إعداد: <b>يوسف أحمد شعلان</b></p>
     </div>
 
-
     <div class="card">
-
-        <h2>
-            أقسام المنصة
-        </h2>
+        <h2>أقسام المنصة</h2>
 
         <div class="home-buttons">
-
-            <button onclick="showPage('quran')">
-                📖 القرآن الكريم
-            </button>
-
-            <button onclick="showPage('recitation')">
-                🎧 التلاوة
-            </button>
-
-            <button onclick="showPage('tafsir')">
-                📚 تفسير القرآن
-            </button>
-
-            <button onclick="showPage('rulings')">
-                ⚖️ الأحكام الشرعية
-            </button>
-
-            <button onclick="showPage('adhkar')">
-                🤲 الأدعية والأذكار
-            </button>
-
-            <button onclick="showPage('guide')">
-                📘 دليل المنصة
-            </button>
-
+            <button onclick="showPage('quran')">📖 القرآن الكريم</button>
+            <button onclick="showPage('recitation')">🎧 التلاوة</button>
+            <button onclick="showPage('tafsir')">📚 تفسير القرآن</button>
+            <button onclick="showPage('rulings')">⚖️ الأحكام الشرعية</button>
+            <button onclick="showPage('adhkar')">🤲 الأدعية والأذكار</button>
+            <button onclick="showPage('guide')">📘 دليل المنصة</button>
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =========================
-     القرآن
-========================= -->
-
 <section id="quran" class="page">
-
     <div class="card">
-
-        <h2>
-            📖 القرآن الكريم
-        </h2>
-
-        <p>
-            اختر السورة التي تريد قراءتها:
-        </p>
+        <h2>📖 القرآن الكريم</h2>
+        <p>اختر السورة:</p>
 
         <div id="surahGrid" class="surah-grid"></div>
 
-        <h2
-            id="surahTitle"
-            class="surah-title"
-        ></h2>
+        <h2 id="surahTitle" class="surah-title"></h2>
 
-        <div
-            id="quranText"
-            class="quran-text"
-        >
+        <div id="quranText" class="quran-text">
             اختر سورة من القائمة.
         </div>
-
     </div>
-
 </section>
 
-
-<!-- =========================
-     التلاوة
-========================= -->
-
 <section id="recitation" class="page">
-
     <div class="card">
 
-        <h2>
-            🎧 تلاوة القرآن الكريم
-        </h2>
+        <h2>🎧 تلاوة القرآن الكريم</h2>
 
-        <label for="reciterSelect">
-            اختر القارئ:
-        </label>
+        <label for="reciterSearch">🔎 ابحث عن القارئ:</label>
+
+        <div class="reciter-search-box">
+
+            <input
+                id="reciterSearch"
+                type="search"
+                placeholder="اكتب اسم القارئ مثل: العفاسي"
+                autocomplete="off"
+            >
+
+            <button
+                type="button"
+                class="action"
+                onclick="searchReciters()"
+            >
+                🔎 بحث
+            </button>
+
+            <button
+                type="button"
+                class="action"
+                onclick="showAllReciters()"
+            >
+                👥 كل القراء
+            </button>
+
+        </div>
+
+        <div
+            id="searchResultsCount"
+            class="search-results-count"
+            style="display:none"
+        ></div>
+
+        <label for="reciterSelect">اختر القارئ:</label>
 
         <select id="reciterSelect">
-            <option value="">
-                ⏳ جاري تحميل القراء...
-            </option>
+            <option value="">⏳ جاري تحميل القراء...</option>
         </select>
 
-        <label for="recitationSelect">
-            اختر السورة:
-        </label>
+        <label for="recitationSelect">اختر السورة:</label>
 
         <select id="recitationSelect"></select>
 
         <button
             id="loadRecitersButton"
+            type="button"
             class="action"
             onclick="loadReciters(true)"
         >
@@ -667,6 +537,7 @@ footer{
 
         <button
             id="playButton"
+            type="button"
             class="action"
             onclick="playRecitation()"
         >
@@ -680,129 +551,64 @@ footer{
             style="width:100%;margin-top:20px;"
         ></audio>
 
-        <div
-            id="audioStatus"
-            class="result-box"
-        >
+        <div id="audioStatus" class="result-box">
             ⏳ جاري تحميل قائمة القراء...
         </div>
 
-        <div
-            id="reciterInfo"
-            class="reciter-status"
-        >
+        <div id="reciterInfo" class="reciter-status">
             سيتم تحميل القراء من MP3Quran.
         </div>
 
         <div class="small-note">
-            يتم تشغيل التسجيل من خادم التلاوة الخاص بالقارئ.
-            وقائمة السور لكل قراءة تحددها البيانات القادمة من الخدمة.
+            ابحث عن القارئ، اختره، ثم اختر السورة واضغط تشغيل.
         </div>
 
     </div>
-
 </section>
 
-
-<!-- =========================
-     التفسير
-========================= -->
-
 <section id="tafsir" class="page">
-
     <div class="card">
 
-        <h2>
-            📚 تفسير القرآن الكريم
-        </h2>
-
-        <p>
-            اختر السورة ورقم الآية، ثم اضغط على عرض التفسير.
-        </p>
+        <h2>📚 تفسير القرآن الكريم</h2>
 
         <div class="tafsir-tools">
 
             <div>
-
-                <label>
-                    السورة:
-                </label>
-
+                <label>السورة:</label>
                 <select id="tafsirSurah"></select>
-
             </div>
 
             <div>
-
-                <label>
-                    رقم الآية:
-                </label>
-
+                <label>رقم الآية:</label>
                 <input
                     type="number"
                     id="tafsirAyah"
                     min="1"
                     value="1"
                 >
-
             </div>
 
         </div>
 
         <button
+            type="button"
             class="action"
             onclick="openTafsir()"
         >
             📚 عرض التفسير
         </button>
 
-        <div
-            id="tafsirResult"
-            class="result-box"
-        >
+        <div id="tafsirResult" class="result-box">
             اختر السورة ورقم الآية.
         </div>
 
     </div>
-
-
-    <div class="card">
-
-        <h2>
-            📌 مصدر التفسير
-        </h2>
-
-        <p>
-            سيتم فتح تفسير الآية في موقع Quran.com.
-        </p>
-
-        <button
-            class="action"
-            onclick="openTafsirHome()"
-        >
-            🔎 فتح صفحة التفاسير
-        </button>
-
-    </div>
-
 </section>
 
-
-<!-- =========================
-     الأحكام
-========================= -->
-
 <section id="rulings" class="page">
-
     <div class="card">
 
-        <h2>
-            ⚖️ الأحكام والفتاوى
-        </h2>
-
-        <p>
-            اكتب السؤال أو الموضوع الذي تبحث عنه.
-        </p>
+        <h2>⚖️ الأحكام والفتاوى</h2>
 
         <input
             id="rulingQuestion"
@@ -811,92 +617,24 @@ footer{
         >
 
         <button
+            type="button"
             class="action"
             onclick="searchRuling()"
         >
             🔎 البحث عن الحكم
         </button>
 
-        <div
-            id="rulingResult"
-            class="result-box"
-        >
+        <div id="rulingResult" class="result-box">
             اكتب موضوع الحكم ثم اضغط بحث.
         </div>
 
     </div>
-
-
-    <div class="card">
-
-        <h2>
-            📚 تصنيفات الأحكام
-        </h2>
-
-        <div class="home-buttons">
-
-            <button onclick="searchDarAlIfta('الصلاة')">
-                🕌 الصلاة
-            </button>
-
-            <button onclick="searchDarAlIfta('الصوم')">
-                🌙 الصوم
-            </button>
-
-            <button onclick="searchDarAlIfta('الزكاة')">
-                💰 الزكاة
-            </button>
-
-            <button onclick="searchDarAlIfta('الحج')">
-                🕋 الحج
-            </button>
-
-            <button onclick="searchDarAlIfta('الطهارة')">
-                💧 الطهارة
-            </button>
-
-            <button onclick="searchDarAlIfta('العبادات')">
-                📖 العبادات
-            </button>
-
-        </div>
-
-    </div>
-
-
-    <div class="card">
-
-        <h2>
-            🏛️ مصدر الأحكام
-        </h2>
-
-        <p>
-            مصدر الأحكام في هذه المنصة هو موقع دار الإفتاء المصرية.
-        </p>
-
-        <button
-            class="action"
-            onclick="openDarAlIfta()"
-        >
-            🏛️ فتح دار الإفتاء المصرية
-        </button>
-
-    </div>
-
 </section>
 
-
-<!-- =========================
-     الأذكار
-========================= -->
-
 <section id="adhkar" class="page">
-
     <div class="card">
 
-        <h2>
-            🤲 الأدعية والأذكار
-        </h2>
+        <h2>🤲 الأدعية والأذكار</h2>
 
         <input
             id="dhikrSearch"
@@ -908,121 +646,82 @@ footer{
         <div id="dhikrList"></div>
 
     </div>
-
 </section>
-
-
-<!-- =========================
-     الدليل
-========================= -->
 
 <section id="guide" class="page">
-
     <div class="card">
 
-        <h2>
-            📘 دليل منصة نور الهدى
-        </h2>
+        <h2>📘 دليل منصة نور الهدى</h2>
 
-        <h3>
-            📖 القرآن الكريم
-        </h3>
+        <h3>📖 القرآن الكريم</h3>
+        <p>اختر السورة من القائمة وستظهر آياتها.</p>
 
-        <p>
-            اختر السورة من القائمة وستظهر آياتها.
-        </p>
+        <h3>🎧 التلاوة</h3>
+        <p>ابحث عن القارئ، ثم اختر السورة واضغط تشغيل.</p>
 
-        <h3>
-            🎧 التلاوة
-        </h3>
+        <h3>📚 التفسير</h3>
+        <p>اختر السورة ورقم الآية ثم اضغط عرض التفسير.</p>
 
-        <p>
-            اختر القارئ والسورة ثم اضغط تشغيل.
-            قائمة القراء يتم تحميلها تلقائيًا.
-        </p>
+        <h3>⚖️ الأحكام</h3>
+        <p>ابحث عن الحكم الشرعي.</p>
 
-        <h3>
-            📚 التفسير
-        </h3>
-
-        <p>
-            اختر السورة ورقم الآية ثم اضغط عرض التفسير.
-        </p>
-
-        <h3>
-            ⚖️ الأحكام
-        </h3>
-
-        <p>
-            اكتب موضوع الحكم وسيتم فتح البحث في فتاوى دار الإفتاء المصرية.
-        </p>
-
-        <h3>
-            🤲 الأدعية والأذكار
-        </h3>
-
-        <p>
-            يمكنك البحث داخل قائمة الأدعية والأذكار.
-        </p>
+        <h3>🤲 الأدعية والأذكار</h3>
+        <p>يمكنك البحث داخل الأذكار.</p>
 
     </div>
-
 </section>
 
-
-<!-- =========================
-     التذييل
-========================= -->
-
 <footer>
-
-    <div>
-        منصة نور الهدى
-    </div>
-
-    <div class="footer-name">
-        يوسف أحمد شعلان
-    </div>
-
+    <div>منصة نور الهدى</div>
+    <div class="footer-name">يوسف أحمد شعلان</div>
 </footer>
-
 
 <script>
 
-/* =====================================================
-   التسجيل
-===================================================== */
-
 const googleFormURL =
-"https://forms.gle/KYqB1A5vAxmETLy18";
-
+    "https://forms.gle/KYqB1A5vAxmETLy18";
 
 function registerUser(){
 
+    const nameElement =
+        document.getElementById("userName");
+
+    const ageElement =
+        document.getElementById("userAge");
+
+    const welcomeScreen =
+        document.getElementById("welcomeScreen");
+
+    if(!nameElement || !ageElement || !welcomeScreen){
+
+        alert("حدث خطأ في شاشة التسجيل.");
+
+        return;
+    }
+
     const name =
-        document.getElementById("userName").value.trim();
+        nameElement.value.trim();
 
     const age =
-        document.getElementById("userAge").value.trim();
-
+        ageElement.value.trim();
 
     if(!name){
 
         alert("من فضلك اكتب اسمك أولًا.");
 
+        nameElement.focus();
+
         return;
-
     }
-
 
     if(!age){
 
         alert("من فضلك اكتب عمرك أولًا.");
 
+        ageElement.focus();
+
         return;
-
     }
-
 
     localStorage.setItem(
         "noorUserName",
@@ -1034,78 +733,79 @@ function registerUser(){
         age
     );
 
+    welcomeScreen.style.display =
+        "none";
 
-    window.open(
-        googleFormURL,
-        "_blank"
-    );
+    const newWindow =
+        window.open(
+            googleFormURL,
+            "_blank"
+        );
 
+    if(!newWindow){
 
-    document.getElementById(
-        "welcomeScreen"
-    ).style.display = "none";
+        window.location.href =
+            googleFormURL;
+
+    }
 
 }
-
 
 window.addEventListener(
     "load",
     function(){
 
-        const savedName =
+        const name =
             localStorage.getItem(
                 "noorUserName"
             );
 
-        const savedAge =
+        const age =
             localStorage.getItem(
                 "noorUserAge"
             );
 
+        if(name && age){
 
-        if(
-            savedName &&
-            savedAge
-        ){
+            const welcomeScreen =
+                document.getElementById(
+                    "welcomeScreen"
+                );
 
-            document.getElementById(
-                "welcomeScreen"
-            ).style.display = "none";
+            if(welcomeScreen){
+
+                welcomeScreen.style.display =
+                    "none";
+
+            }
 
         }
 
     }
 );
 
-
-/* =====================================================
-   التنقل
-===================================================== */
-
 function showPage(id){
 
     document
         .querySelectorAll(".page")
-        .forEach(
-            page =>
-                page.classList.remove(
-                    "active"
-                )
-        );
+        .forEach(page => {
 
+            page.classList.remove(
+                "active"
+            );
 
-    const target =
+        });
+
+    const page =
         document.getElementById(id);
 
+    if(page){
 
-    if(target){
-
-        target.classList.add(
+        page.classList.add(
             "active"
         );
 
     }
-
 
     window.scrollTo({
         top:0,
@@ -1114,15 +814,9 @@ function showPage(id){
 
 }
 
-
-/* =====================================================
-   الأرقام
-===================================================== */
-
 function toArabicNumber(number){
 
     return String(number)
-
         .replace(/0/g,"٠")
         .replace(/1/g,"١")
         .replace(/2/g,"٢")
@@ -1136,190 +830,64 @@ function toArabicNumber(number){
 
 }
 
-
-/* =====================================================
-   أسماء السور
-===================================================== */
-
 const surahs = [
-"الفاتحة",
-"البقرة",
-"آل عمران",
-"النساء",
-"المائدة",
-"الأنعام",
-"الأعراف",
-"الأنفال",
-"التوبة",
-"يونس",
-"هود",
-"يوسف",
-"الرعد",
-"إبراهيم",
-"الحجر",
-"النحل",
-"الإسراء",
-"الكهف",
-"مريم",
-"طه",
-"الأنبياء",
-"الحج",
-"المؤمنون",
-"النور",
-"الفرقان",
-"الشعراء",
-"النمل",
-"القصص",
-"العنكبوت",
-"الروم",
-"لقمان",
-"السجدة",
-"الأحزاب",
-"سبأ",
-"فاطر",
-"يس",
-"الصافات",
-"ص",
-"الزمر",
-"غافر",
-"فصلت",
-"الشورى",
-"الزخرف",
-"الدخان",
-"الجاثية",
-"الأحقاف",
-"محمد",
-"الفتح",
-"الحجرات",
-"ق",
-"الذاريات",
-"الطور",
-"النجم",
-"القمر",
-"الرحمن",
-"الواقعة",
-"الحديد",
-"المجادلة",
-"الحشر",
-"الممتحنة",
-"الصف",
-"الجمعة",
-"المنافقون",
-"التغابن",
-"الطلاق",
-"التحريم",
-"الملك",
-"القلم",
-"الحاقة",
-"المعارج",
-"نوح",
-"الجن",
-"المزمل",
-"المدثر",
-"القيامة",
-"الإنسان",
-"المرسلات",
-"النبأ",
-"النازعات",
-"عبس",
-"التكوير",
-"الانفطار",
-"المطففين",
-"الانشقاق",
-"البروج",
-"الطارق",
-"الأعلى",
-"الغاشية",
-"الفجر",
-"البلد",
-"الشمس",
-"الليل",
-"الضحى",
-"الشرح",
-"التين",
-"العلق",
-"القدر",
-"البينة",
-"الزلزلة",
-"العاديات",
-"القارعة",
-"التكاثر",
-"العصر",
-"الهمزة",
-"الفيل",
-"قريش",
-"الماعون",
-"الكوثر",
-"الكافرون",
-"النصر",
-"المسد",
-"الإخلاص",
-"الفلق",
-"الناس"
+"الفاتحة","البقرة","آل عمران","النساء","المائدة",
+"الأنعام","الأعراف","الأنفال","التوبة","يونس",
+"هود","يوسف","الرعد","إبراهيم","الحجر",
+"النحل","الإسراء","الكهف","مريم","طه",
+"الأنبياء","الحج","المؤمنون","النور","الفرقان",
+"الشعراء","النمل","القصص","العنكبوت","الروم",
+"لقمان","السجدة","الأحزاب","سبأ","فاطر",
+"يس","الصافات","ص","الزمر","غافر",
+"فصلت","الشورى","الزخرف","الدخان","الجاثية",
+"الأحقاف","محمد","الفتح","الحجرات","ق",
+"الذاريات","الطور","النجم","القمر","الرحمن",
+"الواقعة","الحديد","المجادلة","الحشر","الممتحنة",
+"الصف","الجمعة","المنافقون","التغابن","الطلاق",
+"التحريم","الملك","القلم","الحاقة","المعارج",
+"نوح","الجن","المزمل","المدثر","القيامة",
+"الإنسان","المرسلات","النبأ","النازعات","عبس",
+"التكوير","الانفطار","المطففين","الانشقاق","البروج",
+"الطارق","الأعلى","الغاشية","الفجر","البلد",
+"الشمس","الليل","الضحى","الشرح","التين",
+"العلق","القدر","البينة","الزلزلة","العاديات",
+"القارعة","التكاثر","العصر","الهمزة","الفيل",
+"قريش","الماعون","الكوثر","الكافرون","النصر",
+"المسد","الإخلاص","الفلق","الناس"
 ];
 
-
-/* =====================================================
-   العناصر
-===================================================== */
-
 const surahGrid =
-    document.getElementById(
-        "surahGrid"
-    );
-
+    document.getElementById("surahGrid");
 
 const recitationSelect =
-    document.getElementById(
-        "recitationSelect"
-    );
-
+    document.getElementById("recitationSelect");
 
 const tafsirSurah =
-    document.getElementById(
-        "tafsirSurah"
-    );
-
+    document.getElementById("tafsirSurah");
 
 const reciterSelect =
-    document.getElementById(
-        "reciterSelect"
-    );
-
+    document.getElementById("reciterSelect");
 
 const audioPlayer =
-    document.getElementById(
-        "audioPlayer"
-    );
-
+    document.getElementById("audioPlayer");
 
 const audioStatus =
-    document.getElementById(
-        "audioStatus"
-    );
-
+    document.getElementById("audioStatus");
 
 const reciterInfo =
-    document.getElementById(
-        "reciterInfo"
-    );
-
+    document.getElementById("reciterInfo");
 
 const playButton =
-    document.getElementById(
-        "playButton"
-    );
-
+    document.getElementById("playButton");
 
 const loadRecitersButton =
-    document.getElementById(
-        "loadRecitersButton"
-    );
+    document.getElementById("loadRecitersButton");
 
+const reciterSearch =
+    document.getElementById("reciterSearch");
 
-/* =====================================================
-   إنشاء قوائم السور
-===================================================== */
+const searchResultsCount =
+    document.getElementById("searchResultsCount");
 
 surahs.forEach(
     (name,index)=>{
@@ -1327,22 +895,21 @@ surahs.forEach(
         const number =
             index + 1;
 
-
         const button =
             document.createElement(
                 "button"
             );
 
-
         button.className =
             "surah-btn";
 
+        button.type =
+            "button";
 
         button.textContent =
             toArabicNumber(number) +
             " - " +
             name;
-
 
         button.onclick =
             function(){
@@ -1353,48 +920,39 @@ surahs.forEach(
 
             };
 
-
         surahGrid.appendChild(
             button
         );
-
 
         const option1 =
             document.createElement(
                 "option"
             );
 
-
         option1.value =
             number;
-
 
         option1.textContent =
             toArabicNumber(number) +
             " - " +
             name;
 
-
         recitationSelect.appendChild(
             option1
         );
-
 
         const option2 =
             document.createElement(
                 "option"
             );
 
-
         option2.value =
             number;
-
 
         option2.textContent =
             toArabicNumber(number) +
             " - " +
             name;
-
 
         tafsirSurah.appendChild(
             option2
@@ -1403,33 +961,20 @@ surahs.forEach(
     }
 );
 
-
-/* =====================================================
-   تحميل نص القرآن
-===================================================== */
-
 async function loadSurah(number){
 
     const quranText =
-        document.getElementById(
-            "quranText"
-        );
-
+        document.getElementById("quranText");
 
     const surahTitle =
-        document.getElementById(
-            "surahTitle"
-        );
-
+        document.getElementById("surahTitle");
 
     surahTitle.textContent =
         "سورة " +
         surahs[number - 1];
 
-
     quranText.innerHTML =
         '<div class="loading">⏳ جاري تحميل السورة...</div>';
-
 
     try{
 
@@ -1440,36 +985,19 @@ async function loadSurah(number){
                 "/quran-uthmani-quran-academy"
             );
 
-
         if(!response.ok){
 
             throw new Error(
-                "تعذر تحميل القرآن"
+                "فشل تحميل القرآن"
             );
 
         }
-
 
         const result =
             await response.json();
 
-
-        if(
-            !result.data ||
-            !Array.isArray(
-                result.data.ayahs
-            )
-        ){
-
-            throw new Error(
-                "بيانات القرآن غير متاحة"
-            );
-
-        }
-
-
-        quranText.innerHTML = "";
-
+        quranText.innerHTML =
+            "";
 
         result.data.ayahs.forEach(
             ayah=>{
@@ -1479,25 +1007,16 @@ async function loadSurah(number){
                         "span"
                     );
 
-
-                span.className =
-                    "ayah";
-
-
                 span.textContent =
-                    ayah.text +
-                    " ";
-
+                    ayah.text + " ";
 
                 const numberSpan =
                     document.createElement(
                         "span"
                     );
 
-
                 numberSpan.className =
                     "ayah-number";
-
 
                 numberSpan.textContent =
                     "﴿" +
@@ -1506,11 +1025,9 @@ async function loadSurah(number){
                     ) +
                     "﴾";
 
-
                 span.appendChild(
                     numberSpan
                 );
-
 
                 quranText.appendChild(
                     span
@@ -1519,52 +1036,54 @@ async function loadSurah(number){
             }
         );
 
-
     }catch(error){
 
-        console.error(
-            error
-        );
-
+        console.error(error);
 
         quranText.innerHTML =
-            "حدث خطأ أثناء تحميل السورة. تأكد من اتصال الإنترنت ثم حاول مرة أخرى.";
+            "❌ حدث خطأ أثناء تحميل السورة.";
 
     }
 
 }
 
-
-/* =====================================================
-   MP3Quran
-===================================================== */
-
 const RECITERS_API =
-"https://www.mp3quran.net/api/v3/reciters?language=ar";
-
+    "https://www.mp3quran.net/api/v3/reciters?language=ar";
 
 let availableReciters = [];
 
+function normalizeArabic(text){
 
-/* =====================================================
-   تحميل قائمة القراء من MP3Quran
-===================================================== */
+    return String(text || "")
+        .toLowerCase()
+        .replace(/[أإآ]/g,"ا")
+        .replace(/ى/g,"ي")
+        .replace(/ة/g,"ه")
+        .replace(/ؤ/g,"و")
+        .replace(/ئ/g,"ي")
+        .replace(/ـ/g,"")
+        .replace(/\s+/g," ")
+        .trim();
+
+}
 
 async function loadReciters(
-    showMessage = false
+    showMessage=false
 ){
+
+    if(loadRecitersButton){
+
+        loadRecitersButton.disabled =
+            true;
+
+    }
 
     if(showMessage){
 
         audioStatus.innerHTML =
-            "⏳ جاري تحميل قائمة القراء من MP3Quran...";
+            "⏳ جاري تحميل قائمة القراء...";
 
     }
-
-
-    loadRecitersButton.disabled =
-        true;
-
 
     try{
 
@@ -1572,23 +1091,22 @@ async function loadReciters(
             await fetch(
                 RECITERS_API,
                 {
+                    method:"GET",
                     cache:"no-store"
                 }
             );
 
-
         if(!response.ok){
 
             throw new Error(
-                "تعذر الوصول إلى MP3Quran."
+                "HTTP " +
+                response.status
             );
 
         }
 
-
         const data =
             await response.json();
-
 
         if(
             !data ||
@@ -1598,152 +1116,225 @@ async function loadReciters(
         ){
 
             throw new Error(
-                "بيانات القراء غير صحيحة."
+                "بيانات القراء غير صحيحة"
             );
 
         }
 
+        availableReciters = [];
 
-        /*
-           نحتفظ فقط بالقراء الذين لديهم
-           مصحف صوتي و server و surah_list.
-        */
+        data.reciters.forEach(
+            reciter=>{
 
-        availableReciters =
-            data.reciters
-            .filter(
-                reciter =>
-                    Array.isArray(
+                if(
+                    !reciter ||
+                    !Array.isArray(
                         reciter.moshaf
-                    ) &&
-                    reciter.moshaf.length > 0
-            )
-            .map(
-                reciter => {
+                    )
+                ){
 
-                    const moshaf =
-                        reciter.moshaf
-                        .find(
-                            item =>
-                                item.server &&
-                                item.surah_list
-                        );
-
-
-                    if(!moshaf){
-
-                        return null;
-
-                    }
-
-
-                    return {
-
-                        id:reciter.id,
-
-                        name:reciter.name,
-
-                        moshafId:moshaf.id,
-
-                        moshafName:moshaf.name,
-
-                        server:moshaf.server,
-
-                        surahList:
-                            String(
-                                moshaf.surah_list
-                            )
-                            .split(",")
-                            .map(Number)
-                            .filter(
-                                Number.isInteger
-                            )
-
-                    };
+                    return;
 
                 }
-            )
-            .filter(Boolean);
 
+                reciter.moshaf.forEach(
+                    moshaf=>{
 
-        fillReciterSelect();
+                        if(
+                            !moshaf ||
+                            !moshaf.server
+                        ){
 
+                            return;
+
+                        }
+
+                        let surahList = [];
+
+                        if(
+                            Array.isArray(
+                                moshaf.surah_list
+                            )
+                        ){
+
+                            surahList =
+                                moshaf.surah_list
+                                .map(Number)
+                                .filter(
+                                    n =>
+                                    Number.isInteger(n) &&
+                                    n >= 1 &&
+                                    n <= 114
+                                );
+
+                        }else{
+
+                            surahList =
+                                String(
+                                    moshaf.surah_list ||
+                                    ""
+                                )
+                                .split(",")
+                                .map(Number)
+                                .filter(
+                                    n =>
+                                    Number.isInteger(n) &&
+                                    n >= 1 &&
+                                    n <= 114
+                                );
+
+                        }
+
+                        if(
+                            !surahList.length
+                        ){
+
+                            surahList =
+                                Array.from(
+                                    {
+                                        length:114
+                                    },
+                                    (_,i)=>i+1
+                                );
+
+                        }
+
+                        availableReciters.push({
+
+                            id:
+                                reciter.id,
+
+                            name:
+                                reciter.name ||
+                                "قارئ غير معروف",
+
+                            moshafId:
+                                moshaf.id || "",
+
+                            moshafName:
+                                moshaf.name ||
+                                "رواية",
+
+                            server:
+                                String(
+                                    moshaf.server
+                                ).trim(),
+
+                            surahList:
+                                surahList
+
+                        });
+
+                    }
+                );
+
+            }
+        );
+
+        const unique = [];
+
+        const seen =
+            new Set();
+
+        availableReciters.forEach(
+            reciter=>{
+
+                const key =
+                    String(reciter.id) +
+                    "|" +
+                    String(reciter.moshafId);
+
+                if(!seen.has(key)){
+
+                    seen.add(key);
+
+                    unique.push(
+                        reciter
+                    );
+
+                }
+
+            }
+        );
+
+        availableReciters =
+            unique;
 
         if(
-            availableReciters.length > 0
+            !availableReciters.length
         ){
 
-            audioStatus.innerHTML =
-                "✅ تم تحميل " +
-                toArabicNumber(
-                    availableReciters.length
-                ) +
-                " قارئًا/قراءة من MP3Quran.";
-
-            updateReciterInfo();
-
-        }else{
-
-            audioStatus.innerHTML =
-                "⚠️ لم يتم العثور على قراءات صوتية متاحة.";
+            throw new Error(
+                "لم يتم العثور على أي قارئ"
+            );
 
         }
 
+        showAllReciters();
+
+        audioStatus.innerHTML =
+            "✅ تم تحميل " +
+            toArabicNumber(
+                availableReciters.length
+            ) +
+            " قراءة صوتية.";
+
+        reciterInfo.innerHTML =
+            "👥 تم تحميل القراء بنجاح. يمكنك الآن البحث عن أي قارئ.";
 
     }catch(error){
 
         console.error(
+            "خطأ تحميل القراء:",
             error
         );
 
+        availableReciters = [];
 
         reciterSelect.innerHTML =
             "";
-
 
         const option =
             document.createElement(
                 "option"
             );
 
-
         option.value =
             "";
 
-
         option.textContent =
-            "تعذر تحميل القراء";
-
+            "❌ تعذر تحميل القراء";
 
         reciterSelect.appendChild(
             option
         );
 
-
         audioStatus.innerHTML =
-            "❌ تعذر تحميل قائمة القراء. تأكد من الإنترنت ثم اضغط «تحديث القراء».";
+            "❌ تعذر تحميل قائمة القراء. " +
+            "تأكد من اتصال الإنترنت ثم اضغط تحديث القراء.";
+
+        reciterInfo.innerHTML =
+            "⚠️ لم يتم تحميل قائمة القراء.";
 
     }
 
+    if(loadRecitersButton){
 
-    loadRecitersButton.disabled =
-        false;
+        loadRecitersButton.disabled =
+            false;
+
+    }
 
 }
 
-
-/* =====================================================
-   قائمة القراء
-===================================================== */
-
-function fillReciterSelect(){
+function renderReciters(list){
 
     reciterSelect.innerHTML =
         "";
 
-
     if(
-        availableReciters.length === 0
+        !Array.isArray(list) ||
+        list.length === 0
     ){
 
         const option =
@@ -1751,43 +1342,49 @@ function fillReciterSelect(){
                 "option"
             );
 
-
         option.value =
             "";
 
-
         option.textContent =
-            "لا توجد قراءات متاحة";
-
+            "لا توجد نتائج";
 
         reciterSelect.appendChild(
             option
         );
 
+        reciterInfo.innerHTML =
+            "⚠️ لم يتم العثور على قارئ مطابق.";
 
         return;
 
     }
 
+    list.forEach(
+        reciter=>{
 
-    availableReciters.forEach(
-        (reciter,index)=>{
+            const index =
+                availableReciters.indexOf(
+                    reciter
+                );
+
+            if(index === -1){
+
+                return;
+
+            }
 
             const option =
                 document.createElement(
                     "option"
                 );
 
-
             option.value =
                 String(index);
-
 
             option.textContent =
                 reciter.name +
                 " — " +
                 reciter.moshafName;
-
 
             reciterSelect.appendChild(
                 option
@@ -1796,19 +1393,155 @@ function fillReciterSelect(){
         }
     );
 
+    if(
+        reciterSelect.options.length > 0
+    ){
 
-    reciterSelect.selectedIndex =
-        0;
+        reciterSelect.selectedIndex =
+            0;
 
+        updateReciterInfo();
 
-    updateReciterInfo();
+    }
 
 }
 
+function searchReciters(){
 
-/* =====================================================
-   معلومات القارئ
-===================================================== */
+    if(
+        !availableReciters.length
+    ){
+
+        audioStatus.innerHTML =
+            "⏳ جاري تحميل القراء أولًا...";
+
+        loadReciters(true);
+
+        return;
+
+    }
+
+    const query =
+        normalizeArabic(
+            reciterSearch.value
+        );
+
+    if(!query){
+
+        showAllReciters();
+
+        return;
+
+    }
+
+    const results =
+        availableReciters.filter(
+            reciter=>{
+
+                const name =
+                    normalizeArabic(
+                        reciter.name
+                    );
+
+                const moshaf =
+                    normalizeArabic(
+                        reciter.moshafName
+                    );
+
+                return (
+                    name.includes(query) ||
+                    moshaf.includes(query)
+                );
+
+            }
+        );
+
+    renderReciters(
+        results
+    );
+
+    searchResultsCount.style.display =
+        "block";
+
+    searchResultsCount.innerHTML =
+        "🔎 نتائج البحث: <b>" +
+        toArabicNumber(
+            results.length
+        ) +
+        "</b>";
+
+    if(results.length > 0){
+
+        audioStatus.innerHTML =
+            "✅ تم العثور على " +
+            toArabicNumber(
+                results.length
+            ) +
+            " نتيجة.";
+
+    }else{
+
+        audioStatus.innerHTML =
+            "⚠️ لم يتم العثور على قارئ بهذا الاسم.";
+
+    }
+
+}
+
+function showAllReciters(){
+
+    reciterSearch.value =
+        "";
+
+    searchResultsCount.style.display =
+        "none";
+
+    if(
+        !availableReciters.length
+    ){
+
+        reciterSelect.innerHTML =
+            "";
+
+        const option =
+            document.createElement(
+                "option"
+            );
+
+        option.value =
+            "";
+
+        option.textContent =
+            "⏳ جاري تحميل القراء...";
+
+        reciterSelect.appendChild(
+            option
+        );
+
+        return;
+
+    }
+
+    renderReciters(
+        availableReciters
+    );
+
+}
+
+reciterSearch.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+
+            event.preventDefault();
+
+            searchReciters();
+
+        }
+
+    }
+);
 
 function updateReciterInfo(){
 
@@ -1817,28 +1550,27 @@ function updateReciterInfo(){
             reciterSelect.value
         );
 
-
     const reciter =
         availableReciters[index];
 
-
     if(!reciter){
 
-        reciterInfo.textContent =
+        reciterInfo.innerHTML =
             "اختر قارئًا من القائمة.";
 
         return;
 
     }
 
-
     reciterInfo.innerHTML =
-        "👤 القارئ: " +
+        "👤 القارئ: <b>" +
         reciter.name +
-        "<br>" +
+        "</b><br>" +
+
         "📖 القراءة: " +
         reciter.moshafName +
         "<br>" +
+
         "🎧 السور المتاحة: " +
         toArabicNumber(
             reciter.surahList.length
@@ -1846,31 +1578,34 @@ function updateReciterInfo(){
 
 }
 
-
 reciterSelect.addEventListener(
     "change",
     updateReciterInfo
 );
-
-
-/* =====================================================
-   بناء رابط الصوت
-===================================================== */
 
 function buildMP3QuranUrl(
     server,
     surahNumber
 ){
 
-    /*
-       server يأتي من API مثل:
-       https://server6.mp3quran.net/akdr/
+    let cleanServer =
+        String(
+            server || ""
+        ).trim();
 
-       وملف السورة يكون:
-       001.mp3
-       002.mp3
-       ...
-    */
+    if(!cleanServer){
+
+        return "";
+
+    }
+
+    if(
+        !cleanServer.endsWith("/")
+    ){
+
+        cleanServer += "/";
+
+    }
 
     const fileNumber =
         String(
@@ -1880,68 +1615,46 @@ function buildMP3QuranUrl(
             "0"
         );
 
-
     return (
-        server +
+        cleanServer +
         fileNumber +
         ".mp3"
     );
 
 }
 
-
-/* =====================================================
-   تشغيل التلاوة
-===================================================== */
-
 async function playRecitation(){
+
+    const index =
+        Number(
+            reciterSelect.value
+        );
 
     const surahNumber =
         Number(
             recitationSelect.value
         );
 
-
-    const reciterIndex =
-        Number(
-            reciterSelect.value
-        );
-
-
     const reciter =
-        availableReciters[
-            reciterIndex
-        ];
-
+        availableReciters[index];
 
     if(!reciter){
 
         audioStatus.innerHTML =
-            "⚠️ اختر قارئًا أولًا.";
+            "⚠️ اختر القارئ أولًا.";
 
         return;
 
     }
 
-
-    if(
-        !surahNumber ||
-        surahNumber < 1 ||
-        surahNumber > 114
-    ){
+    if(!surahNumber){
 
         audioStatus.innerHTML =
-            "⚠️ اختر سورة صحيحة.";
+            "⚠️ اختر السورة أولًا.";
 
         return;
 
     }
-
-
-    /*
-       نتحقق أولًا أن السورة موجودة
-       في قائمة السور الخاصة بهذا القارئ.
-    */
 
     if(
         !reciter.surahList.includes(
@@ -1950,12 +1663,11 @@ async function playRecitation(){
     ){
 
         audioStatus.innerHTML =
-            "⚠️ هذا القارئ لا يملك تسجيلًا لهذه السورة حسب قائمة MP3Quran.";
+            "⚠️ هذه السورة غير متاحة لهذا القارئ.";
 
         return;
 
     }
-
 
     const url =
         buildMP3QuranUrl(
@@ -1963,21 +1675,17 @@ async function playRecitation(){
             surahNumber
         );
 
+    if(!url){
 
-    audioPlayer.pause();
+        audioStatus.innerHTML =
+            "❌ رابط الصوت غير متاح.";
 
+        return;
 
-    audioPlayer.removeAttribute(
-        "src"
-    );
-
-
-    audioPlayer.load();
-
+    }
 
     playButton.disabled =
         true;
-
 
     audioStatus.innerHTML =
         "⏳ جاري تحميل تلاوة سورة " +
@@ -1986,6 +1694,13 @@ async function playRecitation(){
         reciter.name +
         "...";
 
+    audioPlayer.pause();
+
+    audioPlayer.removeAttribute(
+        "src"
+    );
+
+    audioPlayer.load();
 
     audioPlayer.onerror =
         function(){
@@ -1993,36 +1708,30 @@ async function playRecitation(){
             playButton.disabled =
                 false;
 
-
             audioStatus.innerHTML =
-                "❌ لم يتم تشغيل ملف الصوت لهذا القارئ. جرّب قارئًا آخر.";
+                "❌ تعذر تشغيل ملف الصوت. جرّب سورة أخرى.";
 
         };
-
 
     audioPlayer.onloadeddata =
         function(){
 
             audioStatus.innerHTML =
-                "✅ تم تحميل التلاوة. يمكنك الضغط على ▶️.";
+                "✅ تم تحميل التلاوة.";
 
         };
-
 
     audioPlayer.src =
         url;
 
-
     audioPlayer.load();
-
 
     try{
 
         await audioPlayer.play();
 
-
         audioStatus.innerHTML =
-            "🎧 الآن تعمل تلاوة سورة " +
+            "🎧 تعمل الآن تلاوة سورة " +
             surahs[surahNumber - 1] +
             " بصوت " +
             reciter.name +
@@ -2030,21 +1739,17 @@ async function playRecitation(){
 
     }catch(error){
 
+        console.log(error);
+
         audioStatus.innerHTML =
-            "✅ ملف الصوت جاهز. اضغط ▶️ في مشغل الصوت.";
+            "✅ التلاوة جاهزة. اضغط زر التشغيل في مشغل الصوت.";
 
     }
-
 
     playButton.disabled =
         false;
 
 }
-
-
-/* =====================================================
-   التفسير
-===================================================== */
 
 function openTafsir(){
 
@@ -2055,7 +1760,6 @@ function openTafsir(){
             ).value
         );
 
-
     const ayah =
         Number(
             document.getElementById(
@@ -2063,25 +1767,34 @@ function openTafsir(){
             ).value
         );
 
+    if(
+        !surah ||
+        surah < 1 ||
+        surah > 114
+    ){
 
-    const result =
         document.getElementById(
             "tafsirResult"
-        );
+        ).innerHTML =
+            "⚠️ اختر السورة أولًا.";
 
+        return;
+
+    }
 
     if(
         !ayah ||
         ayah < 1
     ){
 
-        result.innerHTML =
-            "⚠️ من فضلك اكتب رقم الآية.";
+        document.getElementById(
+            "tafsirResult"
+        ).innerHTML =
+            "⚠️ اكتب رقم الآية.";
 
         return;
 
     }
-
 
     const url =
         "https://quran.com/" +
@@ -2090,157 +1803,140 @@ function openTafsir(){
         ayah +
         "/tafsirs";
 
-
-    result.innerHTML =
+    document.getElementById(
+        "tafsirResult"
+    ).innerHTML =
         "<b>📚 تفسير الآية</b><br><br>" +
         "سورة " +
         surahs[surah - 1] +
         " - الآية " +
         toArabicNumber(ayah) +
         "<br><br>" +
-        "<button class='action' onclick=\"window.open('" +
+
+        "<button " +
+        "type='button' " +
+        "class='action' " +
+        "onclick=\"window.open('" +
         url +
         "','_blank')\">" +
+
         "📖 فتح التفسير" +
+
         "</button>";
 
 }
 
-
-function openTafsirHome(){
-
-    window.open(
-        "https://quran.com/ar/learning-plans/how-to-explore-the-quran/lessons/tafsir-and-lessons",
-        "_blank"
-    );
-
-}
-
-
-/* =====================================================
-   الأحكام
-===================================================== */
-
 function searchRuling(){
 
     const question =
-        document
-        .getElementById(
+        document.getElementById(
             "rulingQuestion"
-        )
-        .value
-        .trim();
-
+        ).value.trim();
 
     if(!question){
 
-        document
-        .getElementById(
+        document.getElementById(
             "rulingResult"
-        )
-        .innerHTML =
+        ).innerHTML =
             "⚠️ اكتب موضوع الحكم أولًا.";
 
         return;
 
     }
 
-
-    searchDarAlIfta(
-        question
-    );
-
-}
-
-
-function searchDarAlIfta(query){
-
-    const result =
-        document.getElementById(
-            "rulingResult"
-        );
-
-
     const url =
         "https://www.dar-alifta.org/ar/FatwaQuery/?q=" +
         encodeURIComponent(
-            query
+            question
         );
 
+    document.getElementById(
+        "rulingResult"
+    ).innerHTML =
 
-    result.innerHTML =
         "<b>⚖️ البحث في فتاوى دار الإفتاء المصرية</b>" +
         "<br><br>" +
-        "موضوع البحث: " +
-        query +
-        "<br><br>" +
-        "<button class='action' onclick=\"window.open('" +
+
+        "<button " +
+        "type='button' " +
+        "class='action' " +
+        "onclick=\"window.open('" +
         url +
         "','_blank')\">" +
+
         "🏛️ فتح نتائج البحث" +
+
         "</button>";
 
 }
 
-
-function openDarAlIfta(){
-
-    window.open(
-        "https://www.dar-alifta.org/ar/FatwaQuery/",
-        "_blank"
-    );
-
-}
-
-
-/* =====================================================
-   الأذكار
-===================================================== */
-
 const adhkar = [
 
     {
-        title:"ذكر الصباح",
-        text:"اللهم بك أصبحنا وبك أمسينا وبك نحيا وبك نموت وإليك النشور."
+        title:
+            "ذكر الصباح",
+
+        text:
+            "اللهم بك أصبحنا وبك أمسينا وبك نحيا وبك نموت وإليك النشور."
     },
 
     {
-        title:"ذكر المساء",
-        text:"اللهم بك أمسينا وبك أصبحنا وبك نحيا وبك نموت وإليك المصير."
+        title:
+            "ذكر المساء",
+
+        text:
+            "اللهم بك أمسينا وبك أصبحنا وبك نحيا وبك نموت وإليك المصير."
     },
 
     {
-        title:"عند دخول المنزل",
-        text:"بسم الله ولجنا، وبسم الله خرجنا، وعلى ربنا توكلنا."
+        title:
+            "عند دخول المنزل",
+
+        text:
+            "بسم الله ولجنا، وبسم الله خرجنا، وعلى ربنا توكلنا."
     },
 
     {
-        title:"عند الخروج من المنزل",
-        text:"بسم الله، توكلت على الله، ولا حول ولا قوة إلا بالله."
+        title:
+            "عند الخروج من المنزل",
+
+        text:
+            "بسم الله، توكلت على الله، ولا حول ولا قوة إلا بالله."
     },
 
     {
-        title:"بعد الوضوء",
-        text:"أشهد أن لا إله إلا الله وحده لا شريك له، وأشهد أن محمدًا عبده ورسوله."
+        title:
+            "بعد الوضوء",
+
+        text:
+            "أشهد أن لا إله إلا الله وحده لا شريك له، وأشهد أن محمدًا عبده ورسوله."
     },
 
     {
-        title:"ذكر عام",
-        text:"سبحان الله والحمد لله والله أكبر."
+        title:
+            "ذكر عام",
+
+        text:
+            "سبحان الله والحمد لله والله أكبر."
     },
 
     {
-        title:"الاستغفار",
-        text:"أستغفر الله وأتوب إليه."
+        title:
+            "الاستغفار",
+
+        text:
+            "أستغفر الله وأتوب إليه."
     },
 
     {
-        title:"الصلاة على النبي ﷺ",
-        text:"اللهم صل وسلم وبارك على نبينا محمد."
+        title:
+            "الصلاة على النبي ﷺ",
+
+        text:
+            "اللهم صل وسلم وبارك على نبينا محمد."
     }
 
 ];
-
 
 function displayDhikr(list){
 
@@ -2249,22 +1945,8 @@ function displayDhikr(list){
             "dhikrList"
         );
 
-
     container.innerHTML =
         "";
-
-
-    if(
-        list.length === 0
-    ){
-
-        container.innerHTML =
-            "<div class='result-box'>لا توجد نتائج.</div>";
-
-        return;
-
-    }
-
 
     list.forEach(
         item=>{
@@ -2274,23 +1956,20 @@ function displayDhikr(list){
                     "div"
                 );
 
-
             box.className =
                 "result-box";
 
-
             box.style.marginBottom =
                 "12px";
-
 
             box.innerHTML =
                 "<h3>" +
                 item.title +
                 "</h3>" +
+
                 "<p>" +
                 item.text +
                 "</p>";
-
 
             container.appendChild(
                 box
@@ -2301,31 +1980,30 @@ function displayDhikr(list){
 
 }
 
-
 function searchDhikr(){
 
     const value =
-        document
-        .getElementById(
+        document.getElementById(
             "dhikrSearch"
-        )
-        .value
+        ).value
         .trim()
         .toLowerCase();
-
 
     const filtered =
         adhkar.filter(
             item =>
+
                 item.title
                     .toLowerCase()
                     .includes(value)
+
                 ||
+
                 item.text
                     .toLowerCase()
                     .includes(value)
-        );
 
+        );
 
     displayDhikr(
         filtered
@@ -2333,15 +2011,104 @@ function searchDhikr(){
 
 }
 
+</script>
+
+<script>
 
 /* =====================================================
-   التشغيل الأول
+   شريط الصلاة على النبي ﷺ
+===================================================== */
+
+function showSalawatMessage(){
+
+    const message =
+        document.getElementById(
+            "salawatMessage"
+        );
+
+    if(message){
+
+        message.style.display =
+            "block";
+
+    }
+
+}
+
+function playSalawat(){
+
+    const message =
+        document.getElementById(
+            "salawatMessage"
+        );
+
+    if(message){
+
+        message.style.display =
+            "none";
+
+    }
+
+    if(
+        !("speechSynthesis" in window) ||
+        !("SpeechSynthesisUtterance" in window)
+    ){
+
+        return;
+
+    }
+
+    window.speechSynthesis.cancel();
+
+    const speech =
+        new SpeechSynthesisUtterance(
+            "صلوا على النبي"
+        );
+
+    speech.lang =
+        "ar-SA";
+
+    speech.rate =
+        0.85;
+
+    speech.pitch =
+        1;
+
+    speech.volume =
+        1;
+
+    const voices =
+        window.speechSynthesis.getVoices();
+
+    const arabicVoice =
+        voices.find(
+            voice =>
+                voice.lang &&
+                voice.lang
+                    .toLowerCase()
+                    .startsWith("ar")
+        );
+
+    if(arabicVoice){
+
+        speech.voice =
+            arabicVoice;
+
+    }
+
+    window.speechSynthesis.speak(
+        speech
+    );
+
+}
+
+/* =====================================================
+   البداية
 ===================================================== */
 
 displayDhikr(
     adhkar
 );
-
 
 window.addEventListener(
     "load",
@@ -2351,6 +2118,8 @@ window.addEventListener(
 
         loadReciters(false);
 
+        showSalawatMessage();
+
     }
 );
 
@@ -2358,12 +2127,3 @@ window.addEventListener(
 
 </body>
 </html>
-```
-
-هذه النسخة لا تحتوي على قسم اختبار داخل `<script>` ولا توجد دالة بعد `</html>`؛ كل شيء داخل ملف HTML واحد سليم.
-
-بعد حفظها ارفع **`index.html` فقط** إلى GitHub مكان القديم. ثم افتح نفس الرابط:
-
-`https://yosefahmd1122-gif.github.io/noor-alhuda/`
-
-واختبر **التلاوة**. قائمة القراء الآن مبنية على بيانات MP3Quran نفسها، و`server` و`surah_list` هما اللذان يحددان رابط التسجيل والسور المتاحة لكل قراءة.
