@@ -6,7 +6,9 @@
 <title>منصة نور الهدى</title>
 
 <style>
-*{box-sizing:border-box}
+*{
+    box-sizing:border-box;
+}
 
 body{
     margin:0;
@@ -243,6 +245,47 @@ textarea{
     gap:10px;
 }
 
+.tafsir-box{
+    margin-top:20px;
+}
+
+.tafsir-ayah-box{
+    background:#fffdf5;
+    border:2px solid #d6bd62;
+    border-radius:15px;
+    padding:22px;
+    line-height:2.4;
+}
+
+.tafsir-ayah-title{
+    color:#075e54;
+    font-weight:bold;
+    margin-bottom:12px;
+    font-size:18px;
+}
+
+.tafsir-ayah-text{
+    font-family:"Amiri","Traditional Arabic",serif;
+    font-size:26px;
+    line-height:2.3;
+}
+
+.tafsir-explanation{
+    margin-top:15px;
+    background:#edf7f2;
+    border-right:5px solid #075e54;
+    border-radius:12px;
+    padding:20px;
+    line-height:2;
+    font-size:18px;
+}
+
+.tafsir-source{
+    margin-top:12px;
+    font-size:14px;
+    color:#53655f;
+}
+
 .reciter-status{
     margin-top:12px;
     padding:12px;
@@ -295,6 +338,17 @@ footer{
     color:#f3df8a;
 }
 
+.footer-contact{
+    margin-top:10px;
+    font-size:16px;
+}
+
+.footer-contact a{
+    color:#f3df8a;
+    text-decoration:none;
+    font-weight:bold;
+}
+
 #welcomeScreen{
     position:fixed;
     inset:0;
@@ -338,7 +392,6 @@ footer{
     font-weight:bold;
 }
 
-/* شريط الصلاة على النبي */
 #salawatMessage{
     position:fixed;
     top:0;
@@ -374,6 +427,10 @@ footer{
         grid-template-columns:1fr;
     }
 
+    .tafsir-ayah-text{
+        font-size:22px;
+    }
+
     .reciter-search-box{
         flex-direction:column;
     }
@@ -395,8 +452,11 @@ footer{
 
 <div id="welcomeScreen">
     <div class="welcome-box">
+
         <div class="welcome-symbol">☾ ✦ ☽</div>
+
         <h2>مرحبًا بك في منصة نور الهدى</h2>
+
         <p>
             أهلًا بك في منصتنا الإسلامية.
             <br>
@@ -404,84 +464,204 @@ footer{
         </p>
 
         <label for="userName">الاسم</label>
-        <input id="userName" type="text" placeholder="اكتب اسمك">
+
+        <input
+            id="userName"
+            type="text"
+            placeholder="اكتب اسمك"
+        >
 
         <label for="userAge">العمر</label>
-        <input id="userAge" type="number" min="1" max="120" placeholder="اكتب عمرك">
 
-        <button type="button" class="gold-button" onclick="registerUser()">
+        <input
+            id="userAge"
+            type="number"
+            min="1"
+            max="120"
+            placeholder="اكتب عمرك"
+        >
+
+        <button
+            type="button"
+            class="gold-button"
+            onclick="registerUser()"
+        >
             📝 التسجيل والمتابعة
         </button>
 
         <div class="saved-user">
             بعد التسجيل سيتم فتح نموذج Google Forms.
         </div>
+
     </div>
 </div>
 
 <!-- شريط الصلاة على النبي -->
-<div id="salawatMessage" onclick="playSalawat()">
+<div
+    id="salawatMessage"
+    onclick="playSalawat()"
+>
     ☾ صلوا على النبي ﷺ ☽
 </div>
 
 <header>
+
     <h1>منصة نور الهدى</h1>
-    <div class="owner">يوسف أحمد شعلان</div>
-    <p>القرآن الكريم • التلاوة • التفسير • الأحكام • الأدعية والأذكار</p>
+
+    <div class="owner">
+        يوسف أحمد شعلان
+    </div>
+
+    <p>
+        القرآن الكريم • التلاوة • التفسير • الأحكام • الأدعية والأذكار
+    </p>
+
 </header>
 
 <nav>
-    <button onclick="showPage('home')">🏠 الرئيسية</button>
-    <button onclick="showPage('quran')">📖 القرآن الكريم</button>
-    <button onclick="showPage('recitation')">🎧 التلاوة</button>
-    <button onclick="showPage('tafsir')">📚 التفسير</button>
-    <button onclick="showPage('rulings')">⚖️ الأحكام</button>
-    <button onclick="showPage('adhkar')">🤲 الأدعية والأذكار</button>
-    <button onclick="showPage('guide')">📘 دليل المنصة</button>
+
+    <button onclick="showPage('home')">
+        🏠 الرئيسية
+    </button>
+
+    <button onclick="showPage('quran')">
+        📖 القرآن الكريم
+    </button>
+
+    <button onclick="showPage('recitation')">
+        🎧 التلاوة
+    </button>
+
+    <button onclick="showPage('tafsir')">
+        📚 التفسير
+    </button>
+
+    <button onclick="showPage('searchAyah')">
+        🔎 البحث
+    </button>
+
+    <button onclick="showPage('rulings')">
+        ⚖️ الأحكام
+    </button>
+
+    <button onclick="showPage('adhkar')">
+        🤲 الأدعية والأذكار
+    </button>
+
+    <button onclick="showPage('guide')">
+        📘 دليل المنصة
+    </button>
+
 </nav>
 
+<!-- الرئيسية -->
+
 <section id="home" class="page active">
+
     <div class="card">
-        <h2>☾ مرحبًا بك في منصة نور الهدى</h2>
-        <p>منصة إسلامية مبسطة للقرآن الكريم والتلاوة والتفسير والأحكام والأدعية والأذكار.</p>
-        <p>إعداد: <b>يوسف أحمد شعلان</b></p>
+
+        <h2>
+            ☾ مرحبًا بك في منصة نور الهدى
+        </h2>
+
+        <p>
+            منصة إسلامية مبسطة للقرآن الكريم والتلاوة
+            والتفسير والأحكام والأدعية والأذكار.
+        </p>
+
+        <p>
+            إعداد:
+            <b>يوسف أحمد شعلان</b>
+        </p>
+
     </div>
 
     <div class="card">
+
         <h2>أقسام المنصة</h2>
 
         <div class="home-buttons">
-            <button onclick="showPage('quran')">📖 القرآن الكريم</button>
-            <button onclick="showPage('recitation')">🎧 التلاوة</button>
-            <button onclick="showPage('tafsir')">📚 تفسير القرآن</button>
-            <button onclick="showPage('rulings')">⚖️ الأحكام الشرعية</button>
-            <button onclick="showPage('adhkar')">🤲 الأدعية والأذكار</button>
-            <button onclick="showPage('guide')">📘 دليل المنصة</button>
+
+            <button onclick="showPage('quran')">
+                📖 القرآن الكريم
+            </button>
+
+            <button onclick="showPage('recitation')">
+                🎧 التلاوة
+            </button>
+
+            <button onclick="showPage('tafsir')">
+                📚 تفسير القرآن
+            </button>
+
+            <button onclick="showPage('searchAyah')">
+                🔎 البحث عن آية
+            </button>
+
+            <button onclick="showPage('rulings')">
+                ⚖️ الأحكام الشرعية
+            </button>
+
+            <button onclick="showPage('adhkar')">
+                🤲 الأدعية والأذكار
+            </button>
+
+            <button onclick="showPage('guide')">
+                📘 دليل المنصة
+            </button>
+
         </div>
+
     </div>
+
 </section>
+
+<!-- القرآن -->
 
 <section id="quran" class="page">
+
     <div class="card">
+
         <h2>📖 القرآن الكريم</h2>
-        <p>اختر السورة:</p>
 
-        <div id="surahGrid" class="surah-grid"></div>
+        <p>
+            اختر السورة:
+        </p>
 
-        <h2 id="surahTitle" class="surah-title"></h2>
+        <div
+            id="surahGrid"
+            class="surah-grid"
+        ></div>
 
-        <div id="quranText" class="quran-text">
+        <h2
+            id="surahTitle"
+            class="surah-title"
+        ></h2>
+
+        <div
+            id="quranText"
+            class="quran-text"
+        >
             اختر سورة من القائمة.
         </div>
+
     </div>
+
 </section>
 
+<!-- التلاوة -->
+
 <section id="recitation" class="page">
+
     <div class="card">
 
-        <h2>🎧 تلاوة القرآن الكريم</h2>
+        <h2>
+            🎧 تلاوة القرآن الكريم
+        </h2>
 
-        <label for="reciterSearch">🔎 ابحث عن القارئ:</label>
+        <label for="reciterSearch">
+            🔎 ابحث عن القارئ:
+        </label>
 
         <div class="reciter-search-box">
 
@@ -516,13 +696,21 @@ footer{
             style="display:none"
         ></div>
 
-        <label for="reciterSelect">اختر القارئ:</label>
+        <label for="reciterSelect">
+            اختر القارئ:
+        </label>
 
         <select id="reciterSelect">
-            <option value="">⏳ جاري تحميل القراء...</option>
+
+            <option value="">
+                ⏳ جاري تحميل القراء...
+            </option>
+
         </select>
 
-        <label for="recitationSelect">اختر السورة:</label>
+        <label for="recitationSelect">
+            اختر السورة:
+        </label>
 
         <select id="recitationSelect"></select>
 
@@ -551,11 +739,17 @@ footer{
             style="width:100%;margin-top:20px;"
         ></audio>
 
-        <div id="audioStatus" class="result-box">
+        <div
+            id="audioStatus"
+            class="result-box"
+        >
             ⏳ جاري تحميل قائمة القراء...
         </div>
 
-        <div id="reciterInfo" class="reciter-status">
+        <div
+            id="reciterInfo"
+            class="reciter-status"
+        >
             سيتم تحميل القراء من MP3Quran.
         </div>
 
@@ -564,28 +758,49 @@ footer{
         </div>
 
     </div>
+
 </section>
 
+<!-- التفسير -->
+
 <section id="tafsir" class="page">
+
     <div class="card">
 
-        <h2>📚 تفسير القرآن الكريم</h2>
+        <h2>
+            📚 تفسير القرآن الكريم
+        </h2>
+
+        <p>
+            اختر السورة ورقم الآية لعرض الآية وتفسيرها داخل المنصة.
+        </p>
 
         <div class="tafsir-tools">
 
             <div>
-                <label>السورة:</label>
+
+                <label for="tafsirSurah">
+                    السورة:
+                </label>
+
                 <select id="tafsirSurah"></select>
+
             </div>
 
             <div>
-                <label>رقم الآية:</label>
+
+                <label for="tafsirAyah">
+                    رقم الآية:
+                </label>
+
                 <input
                     type="number"
                     id="tafsirAyah"
                     min="1"
                     value="1"
+                    placeholder="مثال: 5"
                 >
+
             </div>
 
         </div>
@@ -593,22 +808,89 @@ footer{
         <button
             type="button"
             class="action"
+            id="tafsirButton"
             onclick="openTafsir()"
         >
             📚 عرض التفسير
         </button>
 
-        <div id="tafsirResult" class="result-box">
-            اختر السورة ورقم الآية.
+        <button
+            type="button"
+            class="action"
+            onclick="clearTafsir()"
+        >
+            🗑️ مسح
+        </button>
+
+        <div
+            id="tafsirResult"
+            class="result-box"
+        >
+            اختر السورة ورقم الآية ثم اضغط «عرض التفسير».
         </div>
 
     </div>
+
 </section>
 
-<section id="rulings" class="page">
+<!-- البحث عن الآيات -->
+
+<section id="searchAyah" class="page">
+
     <div class="card">
 
-        <h2>⚖️ الأحكام والفتاوى</h2>
+        <h2>
+            🔎 البحث عن آية في القرآن الكريم
+        </h2>
+
+        <p>
+            اكتب كلمة أو جزءًا من الآية، وستظهر لك السورة ورقم الآية ونصها.
+        </p>
+
+        <input
+            id="ayahSearchInput"
+            type="search"
+            placeholder="مثال: الحمد لله رب العالمين"
+            autocomplete="off"
+        >
+
+        <button
+            type="button"
+            class="action"
+            id="ayahSearchButton"
+            onclick="searchAyah()"
+        >
+            🔎 البحث عن الآية
+        </button>
+
+        <button
+            type="button"
+            class="action"
+            onclick="clearAyahSearch()"
+        >
+            🗑️ مسح
+        </button>
+
+        <div
+            id="ayahSearchResult"
+            class="result-box"
+        >
+            اكتب جزءًا من الآية ثم اضغط «البحث عن الآية».
+        </div>
+
+    </div>
+
+</section>
+
+<!-- الأحكام -->
+
+<section id="rulings" class="page">
+
+    <div class="card">
+
+        <h2>
+            ⚖️ الأحكام والفتاوى
+        </h2>
 
         <input
             id="rulingQuestion"
@@ -624,17 +906,26 @@ footer{
             🔎 البحث عن الحكم
         </button>
 
-        <div id="rulingResult" class="result-box">
+        <div
+            id="rulingResult"
+            class="result-box"
+        >
             اكتب موضوع الحكم ثم اضغط بحث.
         </div>
 
     </div>
+
 </section>
 
+<!-- الأذكار -->
+
 <section id="adhkar" class="page">
+
     <div class="card">
 
-        <h2>🤲 الأدعية والأذكار</h2>
+        <h2>
+            🤲 الأدعية والأذكار
+        </h2>
 
         <input
             id="dhikrSearch"
@@ -646,34 +937,90 @@ footer{
         <div id="dhikrList"></div>
 
     </div>
+
 </section>
 
+<!-- دليل المنصة -->
+
 <section id="guide" class="page">
+
     <div class="card">
 
-        <h2>📘 دليل منصة نور الهدى</h2>
+        <h2>
+            📘 دليل منصة نور الهدى
+        </h2>
 
-        <h3>📖 القرآن الكريم</h3>
-        <p>اختر السورة من القائمة وستظهر آياتها.</p>
+        <h3>
+            📖 القرآن الكريم
+        </h3>
 
-        <h3>🎧 التلاوة</h3>
-        <p>ابحث عن القارئ، ثم اختر السورة واضغط تشغيل.</p>
+        <p>
+            اختر السورة من القائمة وستظهر آياتها.
+        </p>
 
-        <h3>📚 التفسير</h3>
-        <p>اختر السورة ورقم الآية ثم اضغط عرض التفسير.</p>
+        <h3>
+            🎧 التلاوة
+        </h3>
 
-        <h3>⚖️ الأحكام</h3>
-        <p>ابحث عن الحكم الشرعي.</p>
+        <p>
+            ابحث عن القارئ، ثم اختر السورة واضغط تشغيل.
+        </p>
 
-        <h3>🤲 الأدعية والأذكار</h3>
-        <p>يمكنك البحث داخل الأذكار.</p>
+        <h3>
+            📚 التفسير
+        </h3>
+
+        <p>
+            اختر السورة ورقم الآية ثم اضغط عرض التفسير.
+            سيظهر نص الآية والتفسير داخل المنصة.
+        </p>
+
+        <h3>
+            🔎 البحث عن الآيات
+        </h3>
+
+        <p>
+            اكتب كلمة أو جزءًا من الآية، وستظهر لك السورة ورقم الآية ونص الآية،
+            ويمكنك بعدها فتح تفسير الآية مباشرة.
+        </p>
+
+        <h3>
+            ⚖️ الأحكام
+        </h3>
+
+        <p>
+            ابحث عن الحكم الشرعي.
+        </p>
+
+        <h3>
+            🤲 الأدعية والأذكار
+        </h3>
+
+        <p>
+            يمكنك البحث داخل الأذكار.
+        </p>
 
     </div>
+
 </section>
 
 <footer>
-    <div>منصة نور الهدى</div>
-    <div class="footer-name">يوسف أحمد شعلان</div>
+
+    <div>
+        منصة نور الهدى
+    </div>
+
+    <div class="footer-name">
+        يوسف أحمد شعلان
+    </div>
+
+    <div class="footer-contact">
+        📞 للتواصل:
+        <a href="tel:01556407344">
+            01556407344
+        </a>
+    </div>
+
 </footer>
 
 <script>
@@ -692,7 +1039,11 @@ function registerUser(){
     const welcomeScreen =
         document.getElementById("welcomeScreen");
 
-    if(!nameElement || !ageElement || !welcomeScreen){
+    if(
+        !nameElement ||
+        !ageElement ||
+        !welcomeScreen
+    ){
 
         alert("حدث خطأ في شاشة التسجيل.");
 
@@ -788,22 +1139,18 @@ function showPage(id){
 
     document
         .querySelectorAll(".page")
-        .forEach(page => {
-
-            page.classList.remove(
-                "active"
-            );
-
-        });
+        .forEach(
+            page=>{
+                page.classList.remove("active");
+            }
+        );
 
     const page =
         document.getElementById(id);
 
     if(page){
 
-        page.classList.add(
-            "active"
-        );
+        page.classList.add("active");
 
     }
 
@@ -896,9 +1243,7 @@ surahs.forEach(
             index + 1;
 
         const button =
-            document.createElement(
-                "button"
-            );
+            document.createElement("button");
 
         button.className =
             "surah-btn";
@@ -912,22 +1257,32 @@ surahs.forEach(
             name;
 
         button.onclick =
-            function(){
-
-                loadSurah(number);
+            async function(){
 
                 showPage("quran");
 
+                await loadSurah(number);
+
+                const quranText =
+                    document.getElementById(
+                        "quranText"
+                    );
+
+                if(quranText){
+
+                    quranText.scrollIntoView({
+                        behavior:"smooth",
+                        block:"start"
+                    });
+
+                }
+
             };
 
-        surahGrid.appendChild(
-            button
-        );
+        surahGrid.appendChild(button);
 
         const option1 =
-            document.createElement(
-                "option"
-            );
+            document.createElement("option");
 
         option1.value =
             number;
@@ -942,9 +1297,7 @@ surahs.forEach(
         );
 
         const option2 =
-            document.createElement(
-                "option"
-            );
+            document.createElement("option");
 
         option2.value =
             number;
@@ -964,10 +1317,14 @@ surahs.forEach(
 async function loadSurah(number){
 
     const quranText =
-        document.getElementById("quranText");
+        document.getElementById(
+            "quranText"
+        );
 
     const surahTitle =
-        document.getElementById("surahTitle");
+        document.getElementById(
+            "surahTitle"
+        );
 
     surahTitle.textContent =
         "سورة " +
@@ -996,8 +1353,23 @@ async function loadSurah(number){
         const result =
             await response.json();
 
+        /* الاستعاذة فقط قبل بداية النص */
         quranText.innerHTML =
-            "";
+            '<div style="text-align:center;color:#075e54;font-weight:bold;font-size:22px;line-height:2.3;margin-bottom:25px;">' +
+
+                '<div style="font-size:24px;margin-bottom:10px;">' +
+                    "سورة " +
+                    surahs[number - 1] +
+                '</div>' +
+
+            (
+                number === 9
+                ? ""
+                :
+                "أعوذ بالله من الشيطان الرجيم"
+            ) +
+
+            '</div>';
 
         result.data.ayahs.forEach(
             ayah=>{
@@ -1046,6 +1418,521 @@ async function loadSurah(number){
     }
 
 }
+
+async function openTafsir(){
+
+    const surah =
+        Number(
+            document.getElementById(
+                "tafsirSurah"
+            ).value
+        );
+
+    const ayah =
+        Number(
+            document.getElementById(
+                "tafsirAyah"
+            ).value
+        );
+
+    const result =
+        document.getElementById(
+            "tafsirResult"
+        );
+
+    const button =
+        document.getElementById(
+            "tafsirButton"
+        );
+
+    if(
+        !surah ||
+        surah < 1 ||
+        surah > 114
+    ){
+
+        result.innerHTML =
+            "⚠️ اختر السورة أولًا.";
+
+        return;
+
+    }
+
+    if(
+        !ayah ||
+        ayah < 1
+    ){
+
+        result.innerHTML =
+            "⚠️ اكتب رقم الآية.";
+
+        return;
+
+    }
+
+    result.innerHTML =
+        '<div class="loading">⏳ جاري تحميل الآية والتفسير...</div>';
+
+    button.disabled =
+        true;
+
+    try{
+
+        const ayahResponse =
+            await fetch(
+                "https://api.alquran.cloud/v1/ayah/" +
+                surah +
+                ":" +
+                ayah +
+                "/quran-uthmani"
+            );
+
+        if(!ayahResponse.ok){
+
+            throw new Error(
+                "تعذر تحميل نص الآية"
+            );
+
+        }
+
+        const ayahData =
+            await ayahResponse.json();
+
+        const tafsirResponse =
+            await fetch(
+                "https://api.alquran.cloud/v1/ayah/" +
+                surah +
+                ":" +
+                ayah +
+                "/ar.muyassar"
+            );
+
+        if(!tafsirResponse.ok){
+
+            throw new Error(
+                "تعذر تحميل التفسير"
+            );
+
+        }
+
+        const tafsirData =
+            await tafsirResponse.json();
+
+        const ayahText =
+            ayahData &&
+            ayahData.data
+            ? ayahData.data.text
+            : "";
+
+        const tafsirText =
+            tafsirData &&
+            tafsirData.data
+            ? tafsirData.data.text
+            : "";
+
+        if(!ayahText){
+
+            throw new Error(
+                "لم يتم العثور على الآية"
+            );
+
+        }
+
+        if(!tafsirText){
+
+            throw new Error(
+                "لم يتم العثور على التفسير"
+            );
+
+        }
+
+        result.innerHTML =
+
+            '<div class="tafsir-box">' +
+
+                '<div class="tafsir-ayah-box">' +
+
+                    '<div class="tafsir-ayah-title">' +
+                        "📖 سورة " +
+                        surahs[surah - 1] +
+                        " — الآية " +
+                        toArabicNumber(ayah) +
+                    '</div>' +
+
+                    '<div class="tafsir-ayah-text">' +
+                        ayahText +
+                    '</div>' +
+
+                '</div>' +
+
+                '<div class="tafsir-explanation">' +
+
+                    '<strong>📚 تفسير الميسر:</strong>' +
+
+                    '<br><br>' +
+
+                    tafsirText +
+
+                '</div>' +
+
+                '<div class="tafsir-source">' +
+                    "المصدر: تفسير الميسر عبر خدمة القرآن الكريم." +
+                '</div>' +
+
+            '</div>';
+
+    }catch(error){
+
+        console.error(
+            "خطأ التفسير:",
+            error
+        );
+
+        result.innerHTML =
+
+            '<div style="color:#8b1e1e;font-weight:bold;">' +
+
+            "❌ تعذر تحميل التفسير حاليًا." +
+
+            '</div>' +
+
+            '<div style="margin-top:10px;">' +
+
+            "تأكد من اتصال الإنترنت ثم حاول مرة أخرى." +
+
+            '</div>';
+
+    }
+
+    button.disabled =
+        false;
+
+}
+
+function clearTafsir(){
+
+    document.getElementById(
+        "tafsirAyah"
+    ).value = 1;
+
+    document.getElementById(
+        "tafsirResult"
+    ).innerHTML =
+        "اختر السورة ورقم الآية ثم اضغط «عرض التفسير».";
+
+}
+
+document.getElementById(
+    "tafsirAyah"
+).addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+
+            event.preventDefault();
+
+            openTafsir();
+
+        }
+
+    }
+);
+
+/* البحث عن الآيات */
+
+async function searchAyah(){
+
+    const input =
+        document.getElementById(
+            "ayahSearchInput"
+        );
+
+    const result =
+        document.getElementById(
+            "ayahSearchResult"
+        );
+
+    const button =
+        document.getElementById(
+            "ayahSearchButton"
+        );
+
+    const searchText =
+        input.value.trim();
+
+    if(!searchText){
+
+        result.innerHTML =
+            "⚠️ اكتب كلمة أو جزءًا من الآية أولًا.";
+
+        input.focus();
+
+        return;
+
+    }
+
+    if(searchText.length < 2){
+
+        result.innerHTML =
+            "⚠️ اكتب حرفين أو أكثر للبحث.";
+
+        input.focus();
+
+        return;
+
+    }
+
+    result.innerHTML =
+        '<div class="loading">⏳ جاري البحث في القرآن الكريم...</div>';
+
+    button.disabled =
+        true;
+
+    try{
+
+        const encodedText =
+            encodeURIComponent(
+                searchText
+            );
+
+        const response =
+            await fetch(
+                "https://api.alquran.cloud/v1/search/" +
+                encodedText +
+                "/all/quran-uthmani"
+            );
+
+        if(!response.ok){
+
+            throw new Error(
+                "فشل البحث"
+            );
+
+        }
+
+        const data =
+            await response.json();
+
+        if(
+            !data ||
+            !data.data ||
+            !Array.isArray(
+                data.data.matches
+            )
+        ){
+
+            throw new Error(
+                "نتائج البحث غير صحيحة"
+            );
+
+        }
+
+        const matches =
+            data.data.matches;
+
+        if(matches.length === 0){
+
+            result.innerHTML =
+                '<div style="font-weight:bold;">' +
+                "❌ لم يتم العثور على آية مطابقة." +
+                "</div>" +
+
+                '<div style="margin-top:10px;">' +
+                "جرّب كتابة كلمة أو جزءًا آخر من الآية." +
+                "</div>";
+
+            return;
+
+        }
+
+        let html =
+
+            '<div style="font-weight:bold;color:#075e54;">' +
+            "🔎 تم العثور على " +
+            toArabicNumber(matches.length) +
+            " نتيجة." +
+            "</div>";
+
+        matches
+            .slice(0,30)
+            .forEach(
+                match=>{
+
+                    const surahNumber =
+                        match.surah &&
+                        match.surah.number
+                        ? match.surah.number
+                        : "";
+
+                    const surahName =
+                        match.surah &&
+                        match.surah.name
+                        ? match.surah.name
+                        : "غير معروف";
+
+                    const ayahNumber =
+                        match.numberInSurah
+                        ? match.numberInSurah
+                        : "";
+
+                    const ayahText =
+                        match.text
+                        ? match.text
+                        : "";
+
+                    html +=
+
+                        '<div class="result-box" style="margin-top:15px;">' +
+
+                            '<div style="color:#075e54;font-weight:bold;font-size:18px;">' +
+
+                                "📖 سورة " +
+                                surahName +
+                                " — الآية " +
+                                toArabicNumber(
+                                    ayahNumber
+                                ) +
+
+                            "</div>" +
+
+                            '<div style="margin-top:12px;font-family:Amiri,\'Traditional Arabic\',serif;font-size:24px;line-height:2.3;background:#fffdf5;border:1px solid #d6bd62;border-radius:12px;padding:15px;">' +
+
+                                ayahText +
+
+                            "</div>" +
+
+                            '<button type="button" class="action" onclick="openTafsirFromSearch(' +
+                                surahNumber +
+                                "," +
+                                ayahNumber +
+                            ')">' +
+
+                                "📚 عرض تفسير الآية" +
+
+                            "</button>" +
+
+                        "</div>";
+
+                }
+            );
+
+        if(matches.length > 30){
+
+            html +=
+
+                '<div class="small-note">' +
+                "تم عرض أول ٣٠ نتيجة فقط. حاول كتابة جزء أكثر تحديدًا من الآية." +
+                "</div>";
+
+        }
+
+        result.innerHTML =
+            html;
+
+    }catch(error){
+
+        console.error(
+            "خطأ البحث عن الآية:",
+            error
+        );
+
+        result.innerHTML =
+
+            '<div style="color:#8b1e1e;font-weight:bold;">' +
+
+            "❌ تعذر البحث عن الآية حاليًا." +
+
+            "</div>" +
+
+            '<div style="margin-top:10px;">' +
+
+            "تأكد من اتصال الإنترنت ثم حاول مرة أخرى." +
+
+            "</div>";
+
+    }finally{
+
+        button.disabled =
+            false;
+
+    }
+
+}
+
+function openTafsirFromSearch(
+    surahNumber,
+    ayahNumber
+){
+
+    const surahSelect =
+        document.getElementById(
+            "tafsirSurah"
+        );
+
+    const ayahInput =
+        document.getElementById(
+            "tafsirAyah"
+        );
+
+    if(!surahSelect || !ayahInput){
+
+        return;
+
+    }
+
+    surahSelect.value =
+        String(surahNumber);
+
+    ayahInput.value =
+        String(ayahNumber);
+
+    showPage("tafsir");
+
+    openTafsir();
+
+}
+
+function clearAyahSearch(){
+
+    const input =
+        document.getElementById(
+            "ayahSearchInput"
+        );
+
+    const result =
+        document.getElementById(
+            "ayahSearchResult"
+        );
+
+    input.value =
+        "";
+
+    result.innerHTML =
+        "اكتب جزءًا من الآية ثم اضغط «البحث عن الآية».";
+
+    input.focus();
+
+}
+
+document.getElementById(
+    "ayahSearchInput"
+).addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+
+            event.preventDefault();
+
+            searchAyah();
+
+        }
+
+    }
+);
+
+/* التلاوة والقراء */
 
 const RECITERS_API =
     "https://www.mp3quran.net/api/v3/reciters?language=ar";
@@ -1751,81 +2638,6 @@ async function playRecitation(){
 
 }
 
-function openTafsir(){
-
-    const surah =
-        Number(
-            document.getElementById(
-                "tafsirSurah"
-            ).value
-        );
-
-    const ayah =
-        Number(
-            document.getElementById(
-                "tafsirAyah"
-            ).value
-        );
-
-    if(
-        !surah ||
-        surah < 1 ||
-        surah > 114
-    ){
-
-        document.getElementById(
-            "tafsirResult"
-        ).innerHTML =
-            "⚠️ اختر السورة أولًا.";
-
-        return;
-
-    }
-
-    if(
-        !ayah ||
-        ayah < 1
-    ){
-
-        document.getElementById(
-            "tafsirResult"
-        ).innerHTML =
-            "⚠️ اكتب رقم الآية.";
-
-        return;
-
-    }
-
-    const url =
-        "https://quran.com/" +
-        surah +
-        ":" +
-        ayah +
-        "/tafsirs";
-
-    document.getElementById(
-        "tafsirResult"
-    ).innerHTML =
-        "<b>📚 تفسير الآية</b><br><br>" +
-        "سورة " +
-        surahs[surah - 1] +
-        " - الآية " +
-        toArabicNumber(ayah) +
-        "<br><br>" +
-
-        "<button " +
-        "type='button' " +
-        "class='action' " +
-        "onclick=\"window.open('" +
-        url +
-        "','_blank')\">" +
-
-        "📖 فتح التفسير" +
-
-        "</button>";
-
-}
-
 function searchRuling(){
 
     const question =
@@ -2011,14 +2823,6 @@ function searchDhikr(){
 
 }
 
-</script>
-
-<script>
-
-/* =====================================================
-   شريط الصلاة على النبي ﷺ
-===================================================== */
-
 function showSalawatMessage(){
 
     const message =
@@ -2101,10 +2905,6 @@ function playSalawat(){
     );
 
 }
-
-/* =====================================================
-   البداية
-===================================================== */
 
 displayDhikr(
     adhkar
