@@ -146,6 +146,14 @@ textarea{
     font-size:16px;
 }
 
+input:focus,
+select:focus,
+textarea:focus{
+    outline:none;
+    border-color:#075e54;
+    box-shadow:0 0 0 3px rgba(7,94,84,.12);
+}
+
 .action{
     background:#075e54;
     color:white;
@@ -441,7 +449,7 @@ textarea{
 }
 
 /* ===============================
-   قسم الامتحانات الدينية الجديد
+   قسم الامتحانات الدينية
 ================================ */
 
 .exam-info{
@@ -506,6 +514,11 @@ textarea{
     background:#f2e4ae;
 }
 
+.exam-option:disabled{
+    opacity:.75;
+    cursor:not-allowed;
+}
+
 .exam-text-answer{
     margin-top:18px;
     position:relative;
@@ -564,6 +577,7 @@ textarea{
     color:#075e54;
     font-size:32px;
     font-weight:bold;
+    margin:10px 0;
 }
 
 .exam-result-box{
@@ -599,34 +613,195 @@ textarea{
 .exam-final-result h3{
     color:#075e54;
     margin-top:0;
-    font-size:25px;
+    font-size:27px;
 }
 
 .exam-final-score{
     color:#075e54;
-    font-size:34px;
+    font-size:38px;
     font-weight:bold;
     margin:12px 0;
 }
 
 .exam-final-percentage{
     color:#c9a227;
-    font-size:52px;
+    font-size:56px;
     font-weight:bold;
     margin:8px 0;
 }
 
 .exam-final-label{
     color:#26352f;
-    font-size:18px;
+    font-size:19px;
     font-weight:bold;
 }
 
 .exam-final-message{
-    margin-top:12px;
+    margin-top:14px;
     color:#075e54;
     font-weight:bold;
+    font-size:19px;
+}
+
+/* ===============================
+   أمان الامتحان
+================================ */
+
+.exam-security-warning{
+    background:#fde4e4;
+    border-right:6px solid #a33a3a;
+    border-left:2px solid #a33a3a;
+    border-top:2px solid #a33a3a;
+    border-bottom:2px solid #a33a3a;
+    color:#8b1e1e;
+    border-radius:15px;
+    padding:20px;
+    margin-bottom:20px;
+    text-align:center;
+    line-height:2;
     font-size:18px;
+    font-weight:bold;
+}
+
+.warning-title{
+    font-size:25px;
+    margin-bottom:10px;
+    color:#8b1e1e;
+}
+
+/* ===============================
+   التسجيل
+================================ */
+
+#welcomeScreen{
+    position:fixed;
+    inset:0;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(0,0,0,.78);
+}
+
+.welcome-box{
+    width:100%;
+    max-width:500px;
+    background:#fffaf0;
+    border:2px solid #c9a227;
+    border-radius:20px;
+    padding:28px;
+    text-align:center;
+    box-shadow:0 10px 35px rgba(0,0,0,.3);
+}
+
+.welcome-symbol{
+    color:#c9a227;
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.welcome-box h2{
+    color:#075e54;
+}
+
+.welcome-box label{
+    display:block;
+    text-align:center;
+    color:#075e54;
+    font-weight:bold;
+    margin-top:8px;
+}
+
+.saved-user{
+    color:#53655f;
+    font-size:14px;
+    margin-top:12px;
+}
+
+/* ===============================
+   شعار صلوا على النبي
+================================ */
+
+#salawatMessage{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    background:#04372f;
+    padding:22px 15px;
+}
+
+.salawat-button{
+    display:block;
+    width:min(700px,92%);
+    margin:0 auto;
+    padding:18px 25px;
+    border:2px solid #c9a227;
+    border-radius:18px;
+    background:#fffaf0;
+    color:#075e54;
+    font-family:Tahoma,Arial,sans-serif;
+    font-size:26px;
+    font-weight:bold;
+    line-height:1.6;
+    text-align:center;
+    cursor:pointer;
+    box-shadow:0 5px 18px rgba(0,0,0,.20);
+    transition:.25s;
+}
+
+.salawat-button:hover{
+    background:#f1df9a;
+}
+
+.salawat-button:active{
+    transform:scale(.98);
+}
+
+/* ===============================
+   الجزء السفلي
+================================ */
+
+footer{
+    background:#04372f;
+    color:white;
+    text-align:center !important;
+    padding:30px 15px;
+    border-top:3px solid #c9a227;
+}
+
+footer > div,
+.footer-name,
+.footer-contact{
+    width:100%;
+    text-align:center !important;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+footer > div:first-child{
+    font-size:24px;
+    font-weight:bold;
+    color:#f3df8a;
+    margin-bottom:10px;
+}
+
+.footer-name{
+    font-size:20px;
+    font-weight:bold;
+}
+
+.footer-contact{
+    margin-top:10px;
+    font-size:17px;
+}
+
+.footer-contact a{
+    color:#f3df8a;
+    text-decoration:none;
+    font-weight:bold;
 }
 
 @media(max-width:600px){
@@ -656,11 +831,6 @@ textarea{
         width:100%;
     }
 
-    #salawatMessage{
-        font-size:17px;
-        padding:12px;
-    }
-
     .question-options,
     .exam-options{
         grid-template-columns:1fr;
@@ -671,8 +841,13 @@ textarea{
         font-size:20px;
     }
 
+    .salawat-button{
+        font-size:21px;
+        width:95%;
+    }
+
     .exam-final-percentage{
-        font-size:42px;
+        font-size:44px;
     }
 }
 </style>
@@ -680,7 +855,9 @@ textarea{
 
 <body>
 
-<!-- شاشة التسجيل -->
+<!-- ===============================
+     شاشة التسجيل
+================================ -->
 
 <div id="welcomeScreen">
 
@@ -738,13 +915,20 @@ textarea{
 
 </div>
 
-<!-- شريط الصلاة على النبي -->
+<!-- ===============================
+     شعار صلوا على النبي
+================================ -->
 
-<div
-    id="salawatMessage"
-    onclick="playSalawat()"
->
-    ☾ صلوا على النبي ﷺ ☽
+<div id="salawatMessage">
+
+    <button
+        type="button"
+        class="salawat-button"
+        onclick="playSalawat()"
+    >
+        ☾ ✦ صلوا على النبي ﷺ ✦ ☽
+    </button>
+
 </div>
 
 <header>
@@ -763,7 +947,9 @@ textarea{
 
 </header>
 
-<!-- القائمة -->
+<!-- ===============================
+     القائمة
+================================ -->
 
 <nav>
 
@@ -809,7 +995,9 @@ textarea{
 
 </nav>
 
-<!-- الرئيسية -->
+<!-- ===============================
+     الرئيسية
+================================ -->
 
 <section id="home" class="page active">
 
@@ -883,7 +1071,9 @@ textarea{
 
 </section>
 
-<!-- القرآن -->
+<!-- ===============================
+     القرآن
+================================ -->
 
 <section id="quran" class="page">
 
@@ -918,7 +1108,9 @@ textarea{
 
 </section>
 
-<!-- التلاوة -->
+<!-- ===============================
+     التلاوة
+================================ -->
 
 <section id="recitation" class="page">
 
@@ -1030,7 +1222,9 @@ textarea{
 
 </section>
 
-<!-- التفسير -->
+<!-- ===============================
+     التفسير
+================================ -->
 
 <section id="tafsir" class="page">
 
@@ -1102,7 +1296,9 @@ textarea{
 
 </section>
 
-<!-- البحث -->
+<!-- ===============================
+     البحث
+================================ -->
 
 <section id="searchAyah" class="page">
 
@@ -1151,7 +1347,9 @@ textarea{
 
 </section>
 
-<!-- الأسئلة الدينية -->
+<!-- ===============================
+     الأسئلة
+================================ -->
 
 <section id="questions" class="page">
 
@@ -1242,7 +1440,9 @@ textarea{
 
 </section>
 
-<!-- الامتحانات الدينية -->
+<!-- ===============================
+     الامتحانات
+================================ -->
 
 <section id="religiousExams" class="page">
 
@@ -1251,6 +1451,12 @@ textarea{
         <h2>
             📝 الامتحانات الدينية
         </h2>
+
+        <div
+            id="examSecurityWarning"
+            class="exam-security-warning"
+            style="display:none"
+        ></div>
 
         <div class="exam-info">
 
@@ -1404,7 +1610,9 @@ textarea{
 
 </section>
 
-<!-- الأحكام -->
+<!-- ===============================
+     الأحكام
+================================ -->
 
 <section id="rulings" class="page">
 
@@ -1439,7 +1647,9 @@ textarea{
 
 </section>
 
-<!-- الأذكار -->
+<!-- ===============================
+     الأذكار
+================================ -->
 
 <section id="adhkar" class="page">
 
@@ -1462,7 +1672,9 @@ textarea{
 
 </section>
 
-<!-- دليل المنصة -->
+<!-- ===============================
+     دليل المنصة
+================================ -->
 
 <section id="guide" class="page">
 
@@ -1542,6 +1754,10 @@ textarea{
 
 </section>
 
+<!-- ===============================
+     الفوتر
+================================ -->
+
 <footer>
 
     <div>
@@ -1584,17 +1800,6 @@ function registerUser(){
     const welcomeScreen =
         document.getElementById("welcomeScreen");
 
-    if(
-        !nameElement ||
-        !ageElement ||
-        !welcomeScreen
-    ){
-
-        alert("حدث خطأ في شاشة التسجيل.");
-
-        return;
-    }
-
     const name =
         nameElement.value.trim();
 
@@ -1603,20 +1808,26 @@ function registerUser(){
 
     if(!name){
 
-        alert("من فضلك اكتب اسمك أولًا.");
+        alert(
+            "من فضلك اكتب اسمك أولًا."
+        );
 
         nameElement.focus();
 
         return;
+
     }
 
     if(!age){
 
-        alert("من فضلك اكتب عمرك أولًا.");
+        alert(
+            "من فضلك اكتب عمرك أولًا."
+        );
 
         ageElement.focus();
 
         return;
+
     }
 
     localStorage.setItem(
@@ -1681,16 +1892,318 @@ window.addEventListener(
 );
 
 /* =====================================================
-   التنقل
+   الأمان والتنقل
 ===================================================== */
 
+const EXAM_LOCK_KEY =
+    "noorExamLockUntil";
+
+const EXAM_LOCK_DAYS =
+    3;
+
+const EXAM_LOCK_MS =
+    EXAM_LOCK_DAYS *
+    24 *
+    60 *
+    60 *
+    1000;
+
+let examStarted =
+    false;
+
+function getExamLockUntil(){
+
+    return Number(
+        localStorage.getItem(
+            EXAM_LOCK_KEY
+        ) || 0
+    );
+
+}
+
+function isExamLocked(){
+
+    const lockUntil =
+        getExamLockUntil();
+
+    if(!lockUntil){
+
+        return false;
+
+    }
+
+    if(
+        Date.now() >=
+        lockUntil
+    ){
+
+        localStorage.removeItem(
+            EXAM_LOCK_KEY
+        );
+
+        return false;
+
+    }
+
+    return true;
+
+}
+
+function cancelExamForSecurity(){
+
+    if(!examStarted){
+
+        return;
+
+    }
+
+    const completed =
+        localStorage.getItem(
+            "noorExamCompleted"
+        ) === "true";
+
+    if(completed){
+
+        return;
+
+    }
+
+    const lockUntil =
+        Date.now() +
+        EXAM_LOCK_MS;
+
+    localStorage.setItem(
+        EXAM_LOCK_KEY,
+        String(lockUntil)
+    );
+
+    localStorage.removeItem(
+        "noorExamQuestions"
+    );
+
+    localStorage.removeItem(
+        "noorExamCurrentIndex"
+    );
+
+    localStorage.removeItem(
+        "noorExamScore"
+    );
+
+    localStorage.removeItem(
+        "noorExamUserAnswers"
+    );
+
+    localStorage.removeItem(
+        "noorExamCompleted"
+    );
+
+    localStorage.removeItem(
+        "noorExamPercentage"
+    );
+
+    dailyExam = [];
+
+    examCurrentIndex = 0;
+
+    examScoreValue = 0;
+
+    examUserAnswers = [];
+
+    examStarted = false;
+
+}
+
+function showExamSecurityWarning(){
+
+    const warning =
+        document.getElementById(
+            "examSecurityWarning"
+        );
+
+    const questionBox =
+        document.getElementById(
+            "examQuestionBox"
+        );
+
+    const scoreBox =
+        document.getElementById(
+            "examScore"
+        );
+
+    const resultBox =
+        document.getElementById(
+            "examResultBox"
+        );
+
+    const progress =
+        document.getElementById(
+            "examProgressBar"
+        );
+
+    const restartButton =
+        document.getElementById(
+            "examRestartButton"
+        );
+
+    if(!warning){
+
+        return;
+
+    }
+
+    const lockUntil =
+        getExamLockUntil();
+
+    const remaining =
+        Math.max(
+            0,
+            lockUntil - Date.now()
+        );
+
+    const days =
+        Math.max(
+            1,
+            Math.ceil(
+                remaining /
+                (
+                    24 *
+                    60 *
+                    60 *
+                    1000
+                )
+            )
+        );
+
+    warning.innerHTML =
+
+        "<div class='warning-title'>" +
+        "⚠️ تم إلغاء الامتحان" +
+        "</div>" +
+
+        "تم الخروج من الامتحان قبل إكماله." +
+        "<br>" +
+
+        "لأمان الاختبار، تم إلغاء الاختبار الحالي." +
+        "<br>" +
+
+        "لا يمكنك دخول امتحان جديد لمدة " +
+        "<b>" +
+        toArabicNumber(days) +
+        " أيام" +
+        "</b>." +
+        "<br><br>" +
+
+        "📅 بعد انتهاء المدة يمكنك العودة إلى قسم الامتحانات.";
+
+    warning.style.display =
+        "block";
+
+    if(questionBox){
+
+        questionBox.style.display =
+            "none";
+
+    }
+
+    if(scoreBox){
+
+        scoreBox.style.display =
+            "none";
+
+    }
+
+    if(resultBox){
+
+        resultBox.style.display =
+            "none";
+
+    }
+
+    if(progress){
+
+        progress.style.width =
+            "0%";
+
+    }
+
+    if(restartButton){
+
+        restartButton.style.display =
+            "none";
+
+    }
+
+}
+
+function clearExamSecurityWarning(){
+
+    const warning =
+        document.getElementById(
+            "examSecurityWarning"
+        );
+
+    if(warning){
+
+        warning.style.display =
+            "none";
+
+        warning.innerHTML =
+            "";
+
+    }
+
+}
+
+function checkExamSecurity(){
+
+    if(
+        isExamLocked()
+    ){
+
+        showExamSecurityWarning();
+
+        return true;
+
+    }
+
+    clearExamSecurityWarning();
+
+    return false;
+
+}
+
 function showPage(id){
+
+    /*
+       إذا كان المستخدم داخل امتحان غير مكتمل
+       ثم انتقل إلى قسم آخر، نعتبر ذلك خروجًا.
+    */
+
+    if(
+        examStarted &&
+        id !== "religiousExams"
+    ){
+
+        const completed =
+            localStorage.getItem(
+                "noorExamCompleted"
+            ) === "true";
+
+        if(!completed){
+
+            cancelExamForSecurity();
+
+        }
+
+    }
 
     document
         .querySelectorAll(".page")
         .forEach(
             page=>{
-                page.classList.remove("active");
+                page.classList.remove(
+                    "active"
+                );
             }
         );
 
@@ -1699,7 +2212,17 @@ function showPage(id){
 
     if(page){
 
-        page.classList.add("active");
+        page.classList.add(
+            "active"
+        );
+
+    }
+
+    if(
+        id === "religiousExams"
+    ){
+
+        checkExamSecurity();
 
     }
 
@@ -1761,37 +2284,59 @@ const surahs = [
 ];
 
 const surahGrid =
-    document.getElementById("surahGrid");
+    document.getElementById(
+        "surahGrid"
+    );
 
 const recitationSelect =
-    document.getElementById("recitationSelect");
+    document.getElementById(
+        "recitationSelect"
+    );
 
 const tafsirSurah =
-    document.getElementById("tafsirSurah");
+    document.getElementById(
+        "tafsirSurah"
+    );
 
 const reciterSelect =
-    document.getElementById("reciterSelect");
+    document.getElementById(
+        "reciterSelect"
+    );
 
 const audioPlayer =
-    document.getElementById("audioPlayer");
+    document.getElementById(
+        "audioPlayer"
+    );
 
 const audioStatus =
-    document.getElementById("audioStatus");
+    document.getElementById(
+        "audioStatus"
+    );
 
 const reciterInfo =
-    document.getElementById("reciterInfo");
+    document.getElementById(
+        "reciterInfo"
+    );
 
 const playButton =
-    document.getElementById("playButton");
+    document.getElementById(
+        "playButton"
+    );
 
 const loadRecitersButton =
-    document.getElementById("loadRecitersButton");
+    document.getElementById(
+        "loadRecitersButton"
+    );
 
 const reciterSearch =
-    document.getElementById("reciterSearch");
+    document.getElementById(
+        "reciterSearch"
+    );
 
 const searchResultsCount =
-    document.getElementById("searchResultsCount");
+    document.getElementById(
+        "searchResultsCount"
+    );
 
 surahs.forEach(
     (name,index)=>{
@@ -1800,7 +2345,9 @@ surahs.forEach(
             index + 1;
 
         const button =
-            document.createElement("button");
+            document.createElement(
+                "button"
+            );
 
         button.className =
             "surah-btn";
@@ -1841,7 +2388,9 @@ surahs.forEach(
         );
 
         const option1 =
-            document.createElement("option");
+            document.createElement(
+                "option"
+            );
 
         option1.value =
             number;
@@ -1856,7 +2405,9 @@ surahs.forEach(
         );
 
         const option2 =
-            document.createElement("option");
+            document.createElement(
+                "option"
+            );
 
         option2.value =
             number;
@@ -2156,18 +2707,7 @@ async function openTafsir(){
         );
 
         result.innerHTML =
-
-            '<div style="color:#8b1e1e;font-weight:bold;">' +
-
-            "❌ تعذر تحميل التفسير حاليًا." +
-
-            '</div>' +
-
-            '<div style="margin-top:10px;">' +
-
-            "تأكد من اتصال الإنترنت ثم حاول مرة أخرى." +
-
-            '</div>';
+            "❌ تعذر تحميل التفسير حاليًا.";
 
     }
 
@@ -2345,11 +2885,6 @@ async function searchAyah(){
                         ? match.numberInSurah
                         : "";
 
-                    const ayahText =
-                        match.text
-                        ? match.text
-                        : "";
-
                     html +=
 
                         '<div class="result-box" style="margin-top:15px;">' +
@@ -2367,7 +2902,7 @@ async function searchAyah(){
 
                             '<div style="margin-top:12px;font-family:Amiri,\'Traditional Arabic\',serif;font-size:24px;line-height:2.3;background:#fffdf5;border:1px solid #d6bd62;border-radius:12px;padding:15px;">' +
 
-                                ayahText +
+                                match.text +
 
                             "</div>" +
 
@@ -2397,18 +2932,7 @@ async function searchAyah(){
         );
 
         result.innerHTML =
-
-            '<div style="color:#8b1e1e;font-weight:bold;">' +
-
-            "❌ تعذر البحث عن الآية حاليًا." +
-
-            "</div>" +
-
-            '<div style="margin-top:10px;">' +
-
-            "تأكد من اتصال الإنترنت ثم حاول مرة أخرى." +
-
-            "</div>";
+            "❌ تعذر البحث عن الآية حاليًا.";
 
     }finally{
 
@@ -2424,29 +2948,14 @@ function openTafsirFromSearch(
     ayahNumber
 ){
 
-    const surahSelect =
-        document.getElementById(
-            "tafsirSurah"
-        );
-
-    const ayahInput =
-        document.getElementById(
-            "tafsirAyah"
-        );
-
-    if(
-        !surahSelect ||
-        !ayahInput
-    ){
-
-        return;
-
-    }
-
-    surahSelect.value =
+    document.getElementById(
+        "tafsirSurah"
+    ).value =
         String(surahNumber);
 
-    ayahInput.value =
+    document.getElementById(
+        "tafsirAyah"
+    ).value =
         String(ayahNumber);
 
     showPage("tafsir");
@@ -2495,7 +3004,7 @@ document.getElementById(
 );
 
 /* =====================================================
-   الأسئلة الدينية القديمة
+   الأسئلة الدينية
 ===================================================== */
 
 const religiousQuestions = [
@@ -2693,14 +3202,14 @@ function shuffleQuestions(){
                 (i + 1)
             );
 
-        const temp =
-            currentQuestions[i];
-
-        currentQuestions[i] =
-            currentQuestions[j];
-
-        currentQuestions[j] =
-            temp;
+        [
+            currentQuestions[i],
+            currentQuestions[j]
+        ] =
+        [
+            currentQuestions[j],
+            currentQuestions[i]
+        ];
 
     }
 
@@ -2793,14 +3302,13 @@ function loadQuestion(){
     nextButton.style.display =
         "none";
 
-    const percent =
-        (
-            currentQuestionIndex /
-            currentQuestions.length
-        ) * 100;
-
     progress.style.width =
-        percent +
+        (
+            (
+                currentQuestionIndex /
+                currentQuestions.length
+            ) * 100
+        ) +
         "%";
 
     currentQuestions[
@@ -2949,8 +3457,7 @@ function nextQuestion(){
 
     }
 
-    currentQuestionIndex +=
-        1;
+    currentQuestionIndex++;
 
     if(
         currentQuestionIndex >=
@@ -3015,7 +3522,7 @@ shuffleQuestions();
 loadQuestion();
 
 /* =====================================================
-   الامتحانات الدينية
+   بنك امتحان
 ===================================================== */
 
 const examMCQBank = [
@@ -3511,6 +4018,10 @@ const examTrueFalseBank = [
 
 ];
 
+/* =====================================================
+   متغيرات الامتحان
+===================================================== */
+
 let dailyExam = [];
 
 let examCurrentIndex =
@@ -3522,10 +4033,11 @@ let examScoreValue =
 let examAnswered =
     false;
 
-let examUserAnswers = [];
+let examUserAnswers =
+    [];
 
 /* =====================================================
-   تطبيع إجابات الكتابة
+   أدوات الامتحان
 ===================================================== */
 
 function normalizeExamText(text){
@@ -3561,14 +4073,14 @@ function shuffleArray(array){
                 (i + 1)
             );
 
-        const temp =
-            result[i];
-
-        result[i] =
-            result[j];
-
-        result[j] =
-            temp;
+        [
+            result[i],
+            result[j]
+        ] =
+        [
+            result[j],
+            result[i]
+        ];
 
     }
 
@@ -3581,31 +4093,50 @@ function getExamTodayKey(){
     const now =
         new Date();
 
-    const year =
-        now.getFullYear();
-
-    const month =
+    return (
+        now.getFullYear() +
+        "-" +
         String(
             now.getMonth() + 1
-        ).padStart(
-            2,
-            "0"
-        );
-
-    const day =
+        ).padStart(2,"0") +
+        "-" +
         String(
             now.getDate()
-        ).padStart(
-            2,
-            "0"
-        );
+        ).padStart(2,"0")
+    );
 
-    return (
-        year +
-        "-" +
-        month +
-        "-" +
-        day
+}
+
+function prepareExamBankIds(){
+
+    examMCQBank.forEach(
+        (item,index)=>{
+
+            item._examId =
+                "mcq_" +
+                index;
+
+        }
+    );
+
+    examTextBank.forEach(
+        (item,index)=>{
+
+            item._examId =
+                "text_" +
+                index;
+
+        }
+    );
+
+    examTrueFalseBank.forEach(
+        (item,index)=>{
+
+            item._examId =
+                "tf_" +
+                index;
+
+        }
     );
 
 }
@@ -3629,6 +4160,7 @@ function chooseWithoutPrevious(
 
         available =
             [...bank];
+
     }
 
     return shuffleArray(
@@ -3636,31 +4168,6 @@ function chooseWithoutPrevious(
     ).slice(
         0,
         5
-    );
-
-}
-
-function prepareExamBankIds(){
-
-    examMCQBank.forEach(
-        (item,index)=>{
-            item._examId =
-                "mcq_" + index;
-        }
-    );
-
-    examTextBank.forEach(
-        (item,index)=>{
-            item._examId =
-                "text_" + index;
-        }
-    );
-
-    examTrueFalseBank.forEach(
-        (item,index)=>{
-            item._examId =
-                "tf_" + index;
-        }
     );
 
 }
@@ -3806,6 +4313,16 @@ function createDailyExam(){
 
 function loadDailyExam(){
 
+    if(
+        isExamLocked()
+    ){
+
+        dailyExam = [];
+
+        return;
+
+    }
+
     const today =
         getExamTodayKey();
 
@@ -3899,61 +4416,6 @@ function loadDailyExam(){
 
 }
 
-function startExam(){
-
-    const completed =
-        localStorage.getItem(
-            "noorExamCompleted"
-        ) === "true";
-
-    if(completed){
-
-        examUserAnswers =
-            loadSavedExamAnswers();
-
-        examScoreValue =
-            Number(
-                localStorage.getItem(
-                    "noorExamScore"
-                ) || 0
-            );
-
-        showExamResult();
-
-        return;
-
-    }
-
-    examCurrentIndex =
-        Number(
-            localStorage.getItem(
-                "noorExamCurrentIndex"
-            ) || 0
-        );
-
-    examScoreValue =
-        Number(
-            localStorage.getItem(
-                "noorExamScore"
-            ) || 0
-        );
-
-    examCurrentIndex =
-        Math.max(
-            0,
-            Math.min(
-                examCurrentIndex,
-                dailyExam.length - 1
-            )
-        );
-
-    examUserAnswers =
-        loadSavedExamAnswers();
-
-    showExamQuestion();
-
-}
-
 function loadSavedExamAnswers(){
 
     const saved =
@@ -3995,7 +4457,88 @@ function saveExamAnswers(){
 
 }
 
+function startExam(){
+
+    if(
+        checkExamSecurity()
+    ){
+
+        return;
+
+    }
+
+    if(
+        !dailyExam.length
+    ){
+
+        loadDailyExam();
+
+    }
+
+    if(
+        !dailyExam.length
+    ){
+
+        return;
+
+    }
+
+    examStarted =
+        true;
+
+    examUserAnswers =
+        loadSavedExamAnswers();
+
+    const completed =
+        localStorage.getItem(
+            "noorExamCompleted"
+        ) === "true";
+
+    if(completed){
+
+        examScoreValue =
+            Number(
+                localStorage.getItem(
+                    "noorExamScore"
+                ) || 0
+            );
+
+        showExamResult();
+
+        return;
+
+    }
+
+    examCurrentIndex =
+        Number(
+            localStorage.getItem(
+                "noorExamCurrentIndex"
+            ) || 0
+        );
+
+    if(
+        examCurrentIndex >=
+        dailyExam.length
+    ){
+
+        examCurrentIndex =
+            0;
+
+    }
+
+    showExamQuestion();
+
+}
+
 function showExamQuestion(){
+
+    if(
+        checkExamSecurity()
+    ){
+
+        return;
+
+    }
 
     const questionBox =
         document.getElementById(
@@ -4062,24 +4605,20 @@ function showExamQuestion(){
             "examNextButton"
         );
 
-    if(
-        !dailyExam.length
-    ){
+    const current =
+        dailyExam[
+            examCurrentIndex
+        ];
 
-        return;
-
-    }
-
-    if(
-        examCurrentIndex >=
-        dailyExam.length
-    ){
+    if(!current){
 
         showExamResult();
 
         return;
 
     }
+
+    clearExamSecurityWarning();
 
     questionBox.style.display =
         "block";
@@ -4095,11 +4634,6 @@ function showExamQuestion(){
 
     examAnswered =
         false;
-
-    const current =
-        dailyExam[
-            examCurrentIndex
-        ];
 
     questionNumber.textContent =
         "السؤال " +
@@ -4163,8 +4697,7 @@ function showExamQuestion(){
                 button.onclick =
                     function(){
 
-                        submitExamMCQ(
-                            button,
+                        submitExamAnswer(
                             optionText
                         );
 
@@ -4204,8 +4737,7 @@ function showExamQuestion(){
                 button.onclick =
                     function(){
 
-                        submitExamTrueFalse(
-                            button,
+                        submitExamAnswer(
                             optionText
                         );
 
@@ -4239,21 +4771,27 @@ function showExamQuestion(){
 
     }
 
-    const percent =
-        (
-            examCurrentIndex /
-            15
-        ) * 100;
-
-    document.getElementById(
-        "examProgressBar"
-    ).style.width =
-        percent +
-        "%";
+    updateExamProgress();
 
 }
 
-function disableExamOptions(){
+function submitExamAnswer(answer){
+
+    if(examAnswered){
+
+        return;
+
+    }
+
+    examAnswered =
+        true;
+
+    examUserAnswers[
+        examCurrentIndex
+    ] =
+        answer;
+
+    saveExamAnswers();
 
     document
         .querySelectorAll(
@@ -4268,54 +4806,7 @@ function disableExamOptions(){
             }
         );
 
-}
-
-function submitExamMCQ(
-    clickedButton,
-    selectedAnswer
-){
-
-    if(examAnswered){
-
-        return;
-
-    }
-
-    examAnswered =
-        true;
-
-    examUserAnswers[
-        examCurrentIndex
-    ] =
-        selectedAnswer;
-
-    saveExamAnswers();
-
-    disableExamOptions();
-
-    /*
-       لا يتم التصحيح هنا.
-       فقط يتم حفظ الإجابة.
-    */
-
-    document.getElementById(
-        "examNextButton"
-    ).style.display =
-        "inline-block";
-
-    updateExamNextButton();
-
-}
-
-function submitExamTrueFalse(
-    clickedButton,
-    selectedAnswer
-){
-
-    submitExamMCQ(
-        clickedButton,
-        selectedAnswer
-    );
+    showNextExamButton();
 
 }
 
@@ -4332,10 +4823,10 @@ function submitExamTextAnswer(){
             "examTextAnswer"
         );
 
-    const userAnswer =
+    const value =
         input.value.trim();
 
-    if(!userAnswer){
+    if(!value){
 
         alert(
             "من فضلك اكتب إجابتك أولًا."
@@ -4353,60 +4844,79 @@ function submitExamTextAnswer(){
     examUserAnswers[
         examCurrentIndex
     ] =
-        userAnswer;
+        value;
 
     saveExamAnswers();
 
     input.disabled =
         true;
 
-    const button =
-        document.getElementById(
-            "examTextConfirmButton"
-        );
-
-    if(button){
-
-        button.disabled =
-            true;
-
-    }
-
-    /*
-       لا يتم التصحيح هنا.
-       التصحيح بالكامل في النهاية.
-    */
-
     document.getElementById(
-        "examNextButton"
-    ).style.display =
-        "inline-block";
+        "examTextConfirmButton"
+    ).disabled =
+        true;
 
-    updateExamNextButton();
+    showNextExamButton();
 
 }
 
-function updateExamNextButton(){
+function showNextExamButton(){
 
-    const nextButton =
+    const button =
         document.getElementById(
             "examNextButton"
         );
+
+    button.style.display =
+        "inline-block";
 
     if(
         examCurrentIndex >=
         dailyExam.length - 1
     ){
 
-        nextButton.textContent =
+        button.textContent =
             "🔍 فحص النتيجة";
 
     }else{
 
-        nextButton.textContent =
+        button.textContent =
             "➡️ السؤال التالي";
 
     }
+
+}
+
+function updateExamProgress(){
+
+    const progress =
+        document.getElementById(
+            "examProgressBar"
+        );
+
+    if(
+        !progress ||
+        !dailyExam.length
+    ){
+
+        return;
+
+    }
+
+    progress.style.width =
+        (
+            (
+                examCurrentIndex +
+                (
+                    examAnswered
+                    ? 1
+                    : 0
+                )
+            ) /
+            dailyExam.length
+        ) *
+        100 +
+        "%";
 
 }
 
@@ -4423,8 +4933,7 @@ function nextExamQuestion(){
         dailyExam.length - 1
     ){
 
-        examCurrentIndex +=
-            1;
+        examCurrentIndex++;
 
         localStorage.setItem(
             "noorExamCurrentIndex",
@@ -4444,7 +4953,7 @@ function nextExamQuestion(){
 }
 
 /* =====================================================
-   فحص النتيجة في النهاية فقط
+   فحص النتيجة
 ===================================================== */
 
 function checkExamResult(){
@@ -4466,25 +4975,7 @@ function checkExamResult(){
 
             if(
                 question.type ===
-                "mcq"
-            ){
-
-                if(
-                    normalizeExamText(
-                        userAnswer
-                    ) ===
-                    normalizeExamText(
-                        question.answer
-                    )
-                ){
-
-                    score++;
-
-                }
-
-            }
-
-            else if(
+                "mcq" ||
                 question.type ===
                 "tf"
             ){
@@ -4509,28 +5000,21 @@ function checkExamResult(){
                 "text"
             ){
 
-                const userNormalized =
+                const normalizedUser =
                     normalizeExamText(
                         userAnswer
                     );
 
-                const acceptedAnswers =
-                    Array.isArray(
-                        question.answers
-                    )
-                    ? question.answers
-                    : [];
-
-                const correct =
-                    acceptedAnswers.some(
+                const isCorrect =
+                    question.answers.some(
                         answer =>
                             normalizeExamText(
                                 answer
                             ) ===
-                            userNormalized
+                            normalizedUser
                     );
 
-                if(correct){
+                if(isCorrect){
 
                     score++;
 
@@ -4559,16 +5043,12 @@ function checkExamResult(){
 
     localStorage.setItem(
         "noorExamScore",
-        String(
-            score
-        )
+        String(score)
     );
 
     localStorage.setItem(
         "noorExamPercentage",
-        String(
-            percentage
-        )
+        String(percentage)
     );
 
     localStorage.setItem(
@@ -4585,12 +5065,19 @@ function checkExamResult(){
 
     saveExamAnswers();
 
+    examStarted =
+        false;
+
+    localStorage.removeItem(
+        EXAM_LOCK_KEY
+    );
+
     showExamResult();
 
 }
 
 /* =====================================================
-   عرض النتيجة
+   نتيجة الامتحان
 ===================================================== */
 
 function showExamResult(){
@@ -4630,7 +5117,14 @@ function showExamResult(){
             "examProgressBar"
         );
 
-    const savedPercentage =
+    examScoreValue =
+        Number(
+            localStorage.getItem(
+                "noorExamScore"
+            ) || 0
+        );
+
+    const percentage =
         Number(
             localStorage.getItem(
                 "noorExamPercentage"
@@ -4655,27 +5149,41 @@ function showExamResult(){
         ) +
         " / ١٥";
 
-    if(examScoreValue >= 13){
+    let message = "";
 
-        scoreMessage.innerHTML =
+    if(
+        examScoreValue >=
+        13
+    ){
+
+        message =
             "🏆 ممتاز جدًا!";
 
-    }else if(examScoreValue >= 10){
+    }else if(
+        examScoreValue >=
+        10
+    ){
 
-        scoreMessage.innerHTML =
+        message =
             "⭐ أحسنت! نتيجة جيدة جدًا.";
 
-    }else if(examScoreValue >= 7){
+    }else if(
+        examScoreValue >=
+        7
+    ){
 
-        scoreMessage.innerHTML =
+        message =
             "📖 نتيجة جيدة، واصل التعلم.";
 
     }else{
 
-        scoreMessage.innerHTML =
+        message =
             "🌱 حاول مرة أخرى وواصل التعلم.";
 
     }
+
+    scoreMessage.innerHTML =
+        message;
 
     resultBox.style.display =
         "block";
@@ -4706,7 +5214,7 @@ function showExamResult(){
 
         "<div class='exam-final-percentage'>" +
         toArabicNumber(
-            savedPercentage
+            percentage
         ) +
         "%" +
         "</div>" +
@@ -4716,7 +5224,7 @@ function showExamResult(){
         "</div>" +
 
         "<div class='exam-final-message'>" +
-        scoreMessage.textContent +
+        message +
         "</div>";
 
     resultBox.appendChild(
@@ -4724,23 +5232,24 @@ function showExamResult(){
     );
 
     /*
-       إظهار تصحيح الاختبار بعد الفحص فقط
+       بعد الفحص فقط تظهر تفاصيل التصحيح.
     */
+
+    examUserAnswers =
+        loadSavedExamAnswers();
 
     dailyExam.forEach(
         (question,index)=>{
-
-            const item =
-                document.createElement(
-                    "div"
-                );
 
             const userAnswer =
                 examUserAnswers[index] ||
                 "لم تتم الإجابة";
 
-            let isCorrect =
+            let correct =
                 false;
+
+            let correctAnswer =
+                "";
 
             if(
                 question.type ===
@@ -4749,7 +5258,10 @@ function showExamResult(){
                 "tf"
             ){
 
-                isCorrect =
+                correctAnswer =
+                    question.answer;
+
+                correct =
                     normalizeExamText(
                         userAnswer
                     ) ===
@@ -4757,14 +5269,12 @@ function showExamResult(){
                         question.answer
                     );
 
-            }
+            }else{
 
-            else if(
-                question.type ===
-                "text"
-            ){
+                correctAnswer =
+                    question.answers[0];
 
-                isCorrect =
+                correct =
                     question.answers.some(
                         answer =>
                             normalizeExamText(
@@ -4777,31 +5287,18 @@ function showExamResult(){
 
             }
 
+            const item =
+                document.createElement(
+                    "div"
+                );
+
             item.className =
                 "exam-result-item " +
                 (
-                    isCorrect
+                    correct
                     ? "correct"
                     : "wrong"
                 );
-
-            let correctAnswer =
-                "";
-
-            if(
-                question.type ===
-                "text"
-            ){
-
-                correctAnswer =
-                    question.answers[0];
-
-            }else{
-
-                correctAnswer =
-                    question.answer;
-
-            }
 
             item.innerHTML =
 
@@ -4836,7 +5333,7 @@ function showExamResult(){
                 "<br>" +
 
                 (
-                    isCorrect
+                    correct
                     ? "✅ صحيحة"
                     : "❌ غير صحيحة"
                 );
@@ -4849,10 +5346,6 @@ function showExamResult(){
     );
 
 }
-
-/* =====================================================
-   زر النتيجة بعد الانتهاء
-===================================================== */
 
 function startNewExam(){
 
@@ -4888,12 +5381,8 @@ async function loadReciters(
     showMessage=false
 ){
 
-    if(loadRecitersButton){
-
-        loadRecitersButton.disabled =
-            true;
-
-    }
+    loadRecitersButton.disabled =
+        true;
 
     if(showMessage){
 
@@ -4966,52 +5455,28 @@ async function loadReciters(
 
                         }
 
-                        let surahList = [];
-
-                        if(
-                            Array.isArray(
-                                moshaf.surah_list
+                        let surahList =
+                            String(
+                                moshaf.surah_list ||
+                                ""
                             )
-                        ){
-
-                            surahList =
-                                moshaf.surah_list
-                                .map(Number)
-                                .filter(
-                                    n =>
-                                    Number.isInteger(n) &&
+                            .split(",")
+                            .map(Number)
+                            .filter(
+                                n =>
                                     n >= 1 &&
                                     n <= 114
-                                );
+                            );
 
-                        }else{
-
-                            surahList =
-                                String(
-                                    moshaf.surah_list ||
-                                    ""
-                                )
-                                .split(",")
-                                .map(Number)
-                                .filter(
-                                    n =>
-                                    Number.isInteger(n) &&
-                                    n >= 1 &&
-                                    n <= 114
-                                );
-
-                        }
-
-                        if(
-                            !surahList.length
-                        ){
+                        if(!surahList.length){
 
                             surahList =
                                 Array.from(
                                     {
                                         length:114
                                     },
-                                    (_,i)=>i+1
+                                    (_,i)=>
+                                        i + 1
                                 );
 
                         }
@@ -5077,16 +5542,6 @@ async function loadReciters(
         availableReciters =
             unique;
 
-        if(
-            !availableReciters.length
-        ){
-
-            throw new Error(
-                "لم يتم العثور على أي قارئ"
-            );
-
-        }
-
         showAllReciters();
 
         audioStatus.innerHTML =
@@ -5135,12 +5590,8 @@ async function loadReciters(
 
     }
 
-    if(loadRecitersButton){
-
-        loadRecitersButton.disabled =
-            false;
-
-    }
+    loadRecitersButton.disabled =
+        false;
 
 }
 
@@ -5211,7 +5662,7 @@ function renderReciters(list){
     );
 
     if(
-        reciterSelect.options.length > 0
+        reciterSelect.options.length
     ){
 
         reciterSelect.selectedIndex =
@@ -5255,19 +5706,16 @@ function searchReciters(){
         availableReciters.filter(
             reciter=>{
 
-                const name =
+                return (
                     normalizeArabic(
                         reciter.name
-                    );
+                    ).includes(query)
 
-                const moshaf =
+                    ||
+
                     normalizeArabic(
                         reciter.moshafName
-                    );
-
-                return (
-                    name.includes(query) ||
-                    moshaf.includes(query)
+                    ).includes(query)
                 );
 
             }
@@ -5287,22 +5735,6 @@ function searchReciters(){
         ) +
         "</b>";
 
-    if(results.length > 0){
-
-        audioStatus.innerHTML =
-            "✅ تم العثور على " +
-            toArabicNumber(
-                results.length
-            ) +
-            " نتيجة.";
-
-    }else{
-
-        audioStatus.innerHTML =
-            "⚠️ لم يتم العثور على قارئ بهذا الاسم.";
-
-    }
-
 }
 
 function showAllReciters(){
@@ -5316,24 +5748,6 @@ function showAllReciters(){
     if(
         !availableReciters.length
     ){
-
-        reciterSelect.innerHTML =
-            "";
-
-        const option =
-            document.createElement(
-                "option"
-            );
-
-        option.value =
-            "";
-
-        option.textContent =
-            "⏳ جاري تحميل القراء...";
-
-        reciterSelect.appendChild(
-            option
-        );
 
         return;
 
@@ -5424,17 +5838,14 @@ function buildMP3QuranUrl(
 
     }
 
-    const fileNumber =
+    return (
+        cleanServer +
         String(
             surahNumber
         ).padStart(
             3,
             "0"
-        );
-
-    return (
-        cleanServer +
-        fileNumber +
+        ) +
         ".mp3"
     );
 
@@ -5603,9 +6014,7 @@ function searchRuling(){
         "<b>⚖️ البحث في فتاوى دار الإفتاء المصرية</b>" +
         "<br><br>" +
 
-        "<button " +
-        "type='button' " +
-        "class='action' " +
+        "<button type='button' class='action' " +
         "onclick=\"window.open('" +
         url +
         "','_blank')\">" +
@@ -5762,7 +6171,7 @@ function searchDhikr(){
 }
 
 /* =====================================================
-   شريط الصلاة على النبي
+   الصلاة على النبي
 ===================================================== */
 
 function showSalawatMessage(){
@@ -5775,7 +6184,7 @@ function showSalawatMessage(){
     if(message){
 
         message.style.display =
-            "block";
+            "flex";
 
     }
 
@@ -5849,7 +6258,37 @@ function playSalawat(){
 }
 
 /* =====================================================
-   تشغيل المنصة
+   أمان إغلاق الصفحة
+===================================================== */
+
+window.addEventListener(
+    "pagehide",
+    function(){
+
+        if(!examStarted){
+
+            return;
+
+        }
+
+        const completed =
+            localStorage.getItem(
+                "noorExamCompleted"
+            ) === "true";
+
+        if(completed){
+
+            return;
+
+        }
+
+        cancelExamForSecurity();
+
+    }
+);
+
+/* =====================================================
+   التشغيل
 ===================================================== */
 
 displayDhikr(
@@ -5858,7 +6297,13 @@ displayDhikr(
 
 loadDailyExam();
 
-startExam();
+if(
+    !isExamLocked()
+){
+
+    startExam();
+
+}
 
 window.addEventListener(
     "load",
@@ -5869,6 +6314,11 @@ window.addEventListener(
         loadReciters(false);
 
         showSalawatMessage();
+
+        /*
+           إذا فتح الموقع وكان الامتحان محظورًا،
+           تظهر رسالة الأمان فقط عند فتح قسم الامتحانات.
+        */
 
     }
 );
