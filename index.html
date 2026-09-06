@@ -322,95 +322,311 @@ textarea{
     font-weight:bold;
 }
 
-footer{
-    background:#04372f;
-    color:white;
-    text-align:center;
-    padding:25px;
-    margin-top:30px;
-    border-top:3px solid #c9a227;
+/* ===============================
+   قسم الأسئلة الدينية
+================================ */
+
+.questions-info{
+    background:#edf7f2;
+    border-right:5px solid #c9a227;
+    border-radius:12px;
+    padding:18px;
+    line-height:2;
+    margin-bottom:20px;
 }
 
-.footer-name{
-    margin-top:7px;
+.question-box{
+    background:#fffdf5;
+    border:2px solid #d6bd62;
+    border-radius:15px;
+    padding:22px;
+}
+
+.question-number{
+    color:#075e54;
+    font-weight:bold;
+    margin-bottom:12px;
+}
+
+.question-text{
+    color:#26352f;
+    font-size:23px;
+    font-weight:bold;
+    line-height:1.9;
+}
+
+.question-options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:20px;
+}
+
+.question-option{
+    background:#f7fffd;
+    color:#075e54;
+    border:2px solid #b8d9d1;
+    border-radius:12px;
+    padding:15px;
+    cursor:pointer;
     font-size:17px;
     font-weight:bold;
-    color:#f3df8a;
 }
 
-.footer-contact{
-    margin-top:10px;
-    font-size:16px;
+.question-option:hover{
+    background:#f2e4ae;
 }
 
-.footer-contact a{
-    color:#f3df8a;
-    text-decoration:none;
-    font-weight:bold;
+.question-option.correct{
+    background:#dff3e5;
+    border-color:#2e7d32;
+    color:#1b5e20;
 }
 
-#welcomeScreen{
-    position:fixed;
-    inset:0;
-    z-index:9999;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    background:rgba(3,45,38,.97);
+.question-option.wrong{
+    background:#fde4e4;
+    border-color:#a33a3a;
+    color:#8b1e1e;
 }
 
-.welcome-box{
-    width:min(600px,100%);
-    background:#fffaf0;
-    border:3px solid #c9a227;
-    border-radius:25px;
-    padding:30px;
-    text-align:center;
-}
-
-.welcome-symbol{
-    font-size:45px;
-    color:#c9a227;
-}
-
-.welcome-box h2{
-    color:#075e54;
-}
-
-.welcome-box label{
-    display:block;
-    text-align:right;
-    font-weight:bold;
-    color:#075e54;
-    margin-top:12px;
-}
-
-.saved-user{
-    margin-top:15px;
-    color:#075e54;
-    font-weight:bold;
-}
-
-#salawatMessage{
-    position:fixed;
-    top:0;
-    left:0;
-    right:0;
-    z-index:10001;
-    background:#c9a227;
-    color:#26352f;
-    padding:14px 20px;
-    text-align:center;
-    font-size:20px;
-    font-weight:bold;
-    cursor:pointer;
+.question-feedback{
     display:none;
-    box-shadow:0 3px 12px rgba(0,0,0,.25);
+    margin-top:18px;
+    padding:15px;
+    border-radius:12px;
+    font-weight:bold;
+    line-height:1.8;
 }
 
-#salawatMessage:hover{
-    background:#e4c85b;
+.question-feedback.success{
+    display:block;
+    background:#dff3e5;
+    border-right:5px solid #2e7d32;
+    color:#1b5e20;
+}
+
+.question-feedback.error{
+    display:block;
+    background:#fde4e4;
+    border-right:5px solid #a33a3a;
+    color:#8b1e1e;
+}
+
+.question-progress{
+    margin-top:20px;
+    background:#dce9e4;
+    height:12px;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.question-progress-bar{
+    width:0%;
+    height:100%;
+    background:#c9a227;
+    transition:.3s;
+}
+
+.question-complete{
+    display:none;
+    margin-top:20px;
+    background:#edf7f2;
+    border-right:5px solid #c9a227;
+    border-radius:12px;
+    padding:20px;
+    text-align:center;
+    color:#075e54;
+    font-weight:bold;
+    line-height:2;
+}
+
+/* ===============================
+   قسم الامتحانات الدينية الجديد
+================================ */
+
+.exam-info{
+    background:#edf7f2;
+    border-right:5px solid #c9a227;
+    border-radius:12px;
+    padding:18px;
+    line-height:2;
+    margin-bottom:20px;
+}
+
+.exam-type{
+    display:inline-block;
+    background:#fffaf0;
+    border:1px solid #d6bd62;
+    color:#075e54;
+    border-radius:20px;
+    padding:6px 12px;
+    font-weight:bold;
+    margin-bottom:15px;
+}
+
+.exam-question-box{
+    background:#fffdf5;
+    border:2px solid #d6bd62;
+    border-radius:15px;
+    padding:22px;
+}
+
+.exam-question-number{
+    color:#075e54;
+    font-weight:bold;
+    margin-bottom:10px;
+}
+
+.exam-question-text{
+    color:#26352f;
+    font-size:22px;
+    font-weight:bold;
+    line-height:1.9;
+}
+
+.exam-options{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:12px;
+    margin-top:20px;
+}
+
+.exam-option{
+    background:#f7fffd;
+    color:#075e54;
+    border:2px solid #b8d9d1;
+    border-radius:12px;
+    padding:15px;
+    cursor:pointer;
+    font-size:17px;
+    font-weight:bold;
+}
+
+.exam-option:hover{
+    background:#f2e4ae;
+}
+
+.exam-text-answer{
+    margin-top:18px;
+    position:relative;
+    z-index:20;
+}
+
+.exam-text-answer input{
+    width:100%;
+    display:block;
+    position:relative;
+    z-index:21;
+    cursor:text;
+    pointer-events:auto;
+    user-select:text;
+    -webkit-user-select:text;
+    background:#ffffff;
+    color:#26352f;
+    border:2px solid #b7c8c2;
+}
+
+.exam-text-answer input:focus{
+    outline:none;
+    border-color:#075e54;
+    box-shadow:0 0 0 3px rgba(7,94,84,.12);
+}
+
+.exam-feedback{
+    display:none !important;
+}
+
+.exam-progress{
+    margin-top:20px;
+    background:#dce9e4;
+    height:12px;
+    border-radius:20px;
+    overflow:hidden;
+}
+
+.exam-progress-bar{
+    width:0%;
+    height:100%;
+    background:#c9a227;
+    transition:.3s;
+}
+
+.exam-score{
+    margin-top:20px;
+    text-align:center;
+    background:#fffaf0;
+    border:2px solid #c9a227;
+    border-radius:15px;
+    padding:22px;
+}
+
+.exam-score-number{
+    color:#075e54;
+    font-size:32px;
+    font-weight:bold;
+}
+
+.exam-result-box{
+    display:none;
+    margin-top:20px;
+}
+
+.exam-result-item{
+    background:#f8fffd;
+    border-right:5px solid #c9a227;
+    border-radius:10px;
+    padding:15px;
+    margin-top:12px;
+    line-height:1.9;
+}
+
+.exam-result-item.correct{
+    border-right-color:#2e7d32;
+}
+
+.exam-result-item.wrong{
+    border-right-color:#a33a3a;
+}
+
+.exam-final-result{
+    background:#fffaf0;
+    border:2px solid #c9a227;
+    border-radius:15px;
+    padding:25px;
+    text-align:center;
+}
+
+.exam-final-result h3{
+    color:#075e54;
+    margin-top:0;
+    font-size:25px;
+}
+
+.exam-final-score{
+    color:#075e54;
+    font-size:34px;
+    font-weight:bold;
+    margin:12px 0;
+}
+
+.exam-final-percentage{
+    color:#c9a227;
+    font-size:52px;
+    font-weight:bold;
+    margin:8px 0;
+}
+
+.exam-final-label{
+    color:#26352f;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.exam-final-message{
+    margin-top:12px;
+    color:#075e54;
+    font-weight:bold;
+    font-size:18px;
 }
 
 @media(max-width:600px){
@@ -444,18 +660,39 @@ footer{
         font-size:17px;
         padding:12px;
     }
+
+    .question-options,
+    .exam-options{
+        grid-template-columns:1fr;
+    }
+
+    .question-text,
+    .exam-question-text{
+        font-size:20px;
+    }
+
+    .exam-final-percentage{
+        font-size:42px;
+    }
 }
 </style>
 </head>
 
 <body>
 
+<!-- شاشة التسجيل -->
+
 <div id="welcomeScreen">
+
     <div class="welcome-box">
 
-        <div class="welcome-symbol">☾ ✦ ☽</div>
+        <div class="welcome-symbol">
+            ☾ ✦ ☽
+        </div>
 
-        <h2>مرحبًا بك في منصة نور الهدى</h2>
+        <h2>
+            مرحبًا بك في منصة نور الهدى
+        </h2>
 
         <p>
             أهلًا بك في منصتنا الإسلامية.
@@ -463,7 +700,9 @@ footer{
             قبل الدخول، نرجو تسجيل بيانات بسيطة.
         </p>
 
-        <label for="userName">الاسم</label>
+        <label for="userName">
+            الاسم
+        </label>
 
         <input
             id="userName"
@@ -471,7 +710,9 @@ footer{
             placeholder="اكتب اسمك"
         >
 
-        <label for="userAge">العمر</label>
+        <label for="userAge">
+            العمر
+        </label>
 
         <input
             id="userAge"
@@ -494,9 +735,11 @@ footer{
         </div>
 
     </div>
+
 </div>
 
 <!-- شريط الصلاة على النبي -->
+
 <div
     id="salawatMessage"
     onclick="playSalawat()"
@@ -506,7 +749,9 @@ footer{
 
 <header>
 
-    <h1>منصة نور الهدى</h1>
+    <h1>
+        منصة نور الهدى
+    </h1>
 
     <div class="owner">
         يوسف أحمد شعلان
@@ -517,6 +762,8 @@ footer{
     </p>
 
 </header>
+
+<!-- القائمة -->
 
 <nav>
 
@@ -538,6 +785,14 @@ footer{
 
     <button onclick="showPage('searchAyah')">
         🔎 البحث
+    </button>
+
+    <button onclick="showPage('questions')">
+        ❓ أسئلة دينية
+    </button>
+
+    <button onclick="showPage('religiousExams')">
+        📝 امتحانات دينية
     </button>
 
     <button onclick="showPage('rulings')">
@@ -571,14 +826,18 @@ footer{
 
         <p>
             إعداد:
-            <b>يوسف أحمد شعلان</b>
+            <b>
+                يوسف أحمد شعلان
+            </b>
         </p>
 
     </div>
 
     <div class="card">
 
-        <h2>أقسام المنصة</h2>
+        <h2>
+            أقسام المنصة
+        </h2>
 
         <div class="home-buttons">
 
@@ -596,6 +855,14 @@ footer{
 
             <button onclick="showPage('searchAyah')">
                 🔎 البحث عن آية
+            </button>
+
+            <button onclick="showPage('questions')">
+                ❓ أسئلة دينية
+            </button>
+
+            <button onclick="showPage('religiousExams')">
+                📝 امتحانات دينية
             </button>
 
             <button onclick="showPage('rulings')">
@@ -622,7 +889,9 @@ footer{
 
     <div class="card">
 
-        <h2>📖 القرآن الكريم</h2>
+        <h2>
+            📖 القرآن الكريم
+        </h2>
 
         <p>
             اختر السورة:
@@ -833,7 +1102,7 @@ footer{
 
 </section>
 
-<!-- البحث عن الآيات -->
+<!-- البحث -->
 
 <section id="searchAyah" class="page">
 
@@ -877,6 +1146,259 @@ footer{
         >
             اكتب جزءًا من الآية ثم اضغط «البحث عن الآية».
         </div>
+
+    </div>
+
+</section>
+
+<!-- الأسئلة الدينية -->
+
+<section id="questions" class="page">
+
+    <div class="card">
+
+        <h2>
+            ❓ أسئلة دينية
+        </h2>
+
+        <div class="questions-info">
+
+            اختبر معلوماتك الدينية من خلال أسئلة متنوعة.
+            <br>
+            لكل سؤال أربعة اختيارات، وبعد الإجابة ستظهر لك النتيجة.
+            <br>
+            استخدم زر «السؤال التالي» للانتقال إلى السؤال التالي.
+
+        </div>
+
+        <div
+            id="questionBox"
+            class="question-box"
+        >
+
+            <div
+                id="questionNumber"
+                class="question-number"
+            >
+                السؤال ١
+            </div>
+
+            <div
+                id="questionText"
+                class="question-text"
+            >
+                جاري تحميل السؤال...
+            </div>
+
+            <div
+                id="questionOptions"
+                class="question-options"
+            ></div>
+
+            <div
+                id="questionFeedback"
+                class="question-feedback"
+            ></div>
+
+            <button
+                id="nextQuestionButton"
+                type="button"
+                class="action"
+                onclick="nextQuestion()"
+                style="display:none"
+            >
+                ➡️ السؤال التالي
+            </button>
+
+        </div>
+
+        <div class="question-progress">
+
+            <div
+                id="questionProgressBar"
+                class="question-progress-bar"
+            ></div>
+
+        </div>
+
+        <div
+            id="questionComplete"
+            class="question-complete"
+        >
+            🎉 أحسنت! لقد أكملت مجموعة الأسئلة.
+            <br>
+
+            <button
+                type="button"
+                class="action"
+                onclick="restartQuestions()"
+            >
+                🔄 مجموعة جديدة
+            </button>
+
+        </div>
+
+    </div>
+
+</section>
+
+<!-- الامتحانات الدينية -->
+
+<section id="religiousExams" class="page">
+
+    <div class="card">
+
+        <h2>
+            📝 الامتحانات الدينية
+        </h2>
+
+        <div class="exam-info">
+
+            <div class="exam-type">
+                🧾 اختبار اليوم
+            </div>
+
+            هذا الاختبار يتكون من ١٥ سؤالًا:
+
+            <br>
+
+            🟢 ٥ أسئلة اختيار من متعدد
+            <br>
+
+            🔵 ٥ أسئلة اكتب الإجابة
+            <br>
+
+            🟡 ٥ أسئلة صح أو خطأ
+
+            <br><br>
+
+            🔄 الاختبار يتغير يوميًا،
+            والأسئلة الجديدة لا تتكرر مع اختبار اليوم السابق.
+
+            <br><br>
+
+            📊 لن تظهر صحة الإجابة أثناء الحل.
+            سيتم فحص جميع الإجابات في النهاية.
+
+        </div>
+
+        <div
+            id="examQuestionBox"
+            class="exam-question-box"
+        >
+
+            <div
+                id="examQuestionNumber"
+                class="exam-question-number"
+            >
+                السؤال ١ من ١٥
+            </div>
+
+            <div
+                id="examQuestionType"
+                class="exam-type"
+            >
+                اختيار من متعدد
+            </div>
+
+            <div
+                id="examQuestionText"
+                class="exam-question-text"
+            >
+                جاري تجهيز الاختبار...
+            </div>
+
+            <div
+                id="examOptions"
+                class="exam-options"
+            ></div>
+
+            <div
+                id="examTextAnswerBox"
+                class="exam-text-answer"
+                style="display:none"
+            >
+
+                <input
+                    id="examTextAnswer"
+                    type="text"
+                    placeholder="اكتب إجابتك هنا..."
+                    autocomplete="off"
+                >
+
+                <button
+                    type="button"
+                    class="action"
+                    id="examTextConfirmButton"
+                    onclick="submitExamTextAnswer()"
+                >
+                    ✅ تأكيد الإجابة
+                </button>
+
+            </div>
+
+            <div
+                id="examFeedback"
+                class="exam-feedback"
+            ></div>
+
+            <button
+                id="examNextButton"
+                type="button"
+                class="action"
+                onclick="nextExamQuestion()"
+                style="display:none"
+            >
+                ➡️ السؤال التالي
+            </button>
+
+        </div>
+
+        <div class="exam-progress">
+
+            <div
+                id="examProgressBar"
+                class="exam-progress-bar"
+            ></div>
+
+        </div>
+
+        <div
+            id="examScore"
+            class="exam-score"
+            style="display:none"
+        >
+
+            <div>
+                درجتك في اختبار اليوم
+            </div>
+
+            <div
+                id="examScoreNumber"
+                class="exam-score-number"
+            >
+                ٠ / ١٥
+            </div>
+
+            <div id="examScoreMessage">
+            </div>
+
+        </div>
+
+        <div
+            id="examResultBox"
+            class="exam-result-box"
+        ></div>
+
+        <button
+            id="examRestartButton"
+            type="button"
+            class="action"
+            onclick="startNewExam()"
+            style="display:none"
+        >
+            🔄 عرض نتيجة اختبار اليوم
+        </button>
 
     </div>
 
@@ -972,16 +1494,32 @@ footer{
 
         <p>
             اختر السورة ورقم الآية ثم اضغط عرض التفسير.
-            سيظهر نص الآية والتفسير داخل المنصة.
         </p>
 
         <h3>
-            🔎 البحث عن الآيات
+            🔎 البحث
         </h3>
 
         <p>
-            اكتب كلمة أو جزءًا من الآية، وستظهر لك السورة ورقم الآية ونص الآية،
-            ويمكنك بعدها فتح تفسير الآية مباشرة.
+            اكتب كلمة أو جزءًا من الآية للعثور عليها داخل القرآن الكريم.
+        </p>
+
+        <h3>
+            ❓ الأسئلة الدينية
+        </h3>
+
+        <p>
+            أجب عن الأسئلة الدينية المتنوعة من خلال أربعة اختيارات.
+        </p>
+
+        <h3>
+            📝 الامتحانات الدينية
+        </h3>
+
+        <p>
+            اختبار يومي مكون من ١٥ سؤالًا:
+            ٥ اختيار من متعدد، و٥ أسئلة كتابة، و٥ صح أو خطأ.
+            الأسئلة تتغير يوميًا.
         </p>
 
         <h3>
@@ -1015,15 +1553,22 @@ footer{
     </div>
 
     <div class="footer-contact">
+
         📞 للتواصل:
+
         <a href="tel:01556407344">
             01556407344
         </a>
+
     </div>
 
 </footer>
 
 <script>
+
+/* =====================================================
+   التسجيل
+===================================================== */
 
 const googleFormURL =
     "https://forms.gle/KYqB1A5vAxmETLy18";
@@ -1135,6 +1680,10 @@ window.addEventListener(
     }
 );
 
+/* =====================================================
+   التنقل
+===================================================== */
+
 function showPage(id){
 
     document
@@ -1161,6 +1710,10 @@ function showPage(id){
 
 }
 
+/* =====================================================
+   الأرقام
+===================================================== */
+
 function toArabicNumber(number){
 
     return String(number)
@@ -1176,6 +1729,10 @@ function toArabicNumber(number){
         .replace(/9/g,"٩");
 
 }
+
+/* =====================================================
+   السور
+===================================================== */
 
 const surahs = [
 "الفاتحة","البقرة","آل عمران","النساء","المائدة",
@@ -1279,7 +1836,9 @@ surahs.forEach(
 
             };
 
-        surahGrid.appendChild(button);
+        surahGrid.appendChild(
+            button
+        );
 
         const option1 =
             document.createElement("option");
@@ -1313,6 +1872,10 @@ surahs.forEach(
 
     }
 );
+
+/* =====================================================
+   القرآن
+===================================================== */
 
 async function loadSurah(number){
 
@@ -1353,8 +1916,8 @@ async function loadSurah(number){
         const result =
             await response.json();
 
-        /* الاستعاذة فقط قبل بداية النص */
         quranText.innerHTML =
+
             '<div style="text-align:center;color:#075e54;font-weight:bold;font-size:22px;line-height:2.3;margin-bottom:25px;">' +
 
                 '<div style="font-size:24px;margin-bottom:10px;">' +
@@ -1362,12 +1925,12 @@ async function loadSurah(number){
                     surahs[number - 1] +
                 '</div>' +
 
-            (
-                number === 9
-                ? ""
-                :
-                "أعوذ بالله من الشيطان الرجيم"
-            ) +
+                (
+                    number === 9
+                    ? ""
+                    :
+                    "أعوذ بالله من الشيطان الرجيم"
+                ) +
 
             '</div>';
 
@@ -1418,6 +1981,10 @@ async function loadSurah(number){
     }
 
 }
+
+/* =====================================================
+   التفسير
+===================================================== */
 
 async function openTafsir(){
 
@@ -1639,7 +2206,9 @@ document.getElementById(
     }
 );
 
-/* البحث عن الآيات */
+/* =====================================================
+   البحث
+===================================================== */
 
 async function searchAyah(){
 
@@ -1817,16 +2386,6 @@ async function searchAyah(){
                 }
             );
 
-        if(matches.length > 30){
-
-            html +=
-
-                '<div class="small-note">' +
-                "تم عرض أول ٣٠ نتيجة فقط. حاول كتابة جزء أكثر تحديدًا من الآية." +
-                "</div>";
-
-        }
-
         result.innerHTML =
             html;
 
@@ -1875,7 +2434,10 @@ function openTafsirFromSearch(
             "tafsirAyah"
         );
 
-    if(!surahSelect || !ayahInput){
+    if(
+        !surahSelect ||
+        !ayahInput
+    ){
 
         return;
 
@@ -1932,7 +2494,2375 @@ document.getElementById(
     }
 );
 
-/* التلاوة والقراء */
+/* =====================================================
+   الأسئلة الدينية القديمة
+===================================================== */
+
+const religiousQuestions = [
+
+    {
+        question:"ما عدد أركان الإسلام؟",
+        options:[
+            "ثلاثة",
+            "أربعة",
+            "خمسة",
+            "ستة"
+        ],
+        answer:"خمسة"
+    },
+
+    {
+        question:"ما أول سورة في ترتيب المصحف؟",
+        options:[
+            "البقرة",
+            "الفاتحة",
+            "الناس",
+            "الإخلاص"
+        ],
+        answer:"الفاتحة"
+    },
+
+    {
+        question:"كم عدد الصلوات المفروضة في اليوم والليلة؟",
+        options:[
+            "ثلاث صلوات",
+            "خمس صلوات",
+            "ست صلوات",
+            "سبع صلوات"
+        ],
+        answer:"خمس صلوات"
+    },
+
+    {
+        question:"ما أطول سورة في القرآن الكريم؟",
+        options:[
+            "آل عمران",
+            "النساء",
+            "البقرة",
+            "المائدة"
+        ],
+        answer:"البقرة"
+    },
+
+    {
+        question:"ما السورة التي تبدأ بـ «قل هو الله أحد»؟",
+        options:[
+            "الفلق",
+            "الناس",
+            "الإخلاص",
+            "الكافرون"
+        ],
+        answer:"الإخلاص"
+    },
+
+    {
+        question:"في أي شهر يصوم المسلمون؟",
+        options:[
+            "شعبان",
+            "رمضان",
+            "شوال",
+            "محرم"
+        ],
+        answer:"رمضان"
+    },
+
+    {
+        question:"إلى أي جهة يتوجه المسلمون في الصلاة؟",
+        options:[
+            "المسجد النبوي",
+            "الكعبة المشرفة",
+            "المسجد الأقصى",
+            "مسجد قباء"
+        ],
+        answer:"الكعبة المشرفة"
+    },
+
+    {
+        question:"ما السورة التي لا تبدأ بالبسملة في أولها؟",
+        options:[
+            "التوبة",
+            "الفاتحة",
+            "الملك",
+            "الرحمن"
+        ],
+        answer:"التوبة"
+    },
+
+    {
+        question:"ما أول شهر في السنة الهجرية؟",
+        options:[
+            "رمضان",
+            "رجب",
+            "محرم",
+            "شعبان"
+        ],
+        answer:"محرم"
+    },
+
+    {
+        question:"ما آخر سورة في ترتيب المصحف؟",
+        options:[
+            "الفلق",
+            "النصر",
+            "الإخلاص",
+            "الناس"
+        ],
+        answer:"الناس"
+    },
+
+    {
+        question:"ما اسم الليلة التي ورد ذكرها بأنها خير من ألف شهر؟",
+        options:[
+            "ليلة العيد",
+            "ليلة القدر",
+            "ليلة الجمعة",
+            "ليلة النصف من شعبان"
+        ],
+        answer:"ليلة القدر"
+    },
+
+    {
+        question:"في أي سورة توجد آية الكرسي؟",
+        options:[
+            "الفاتحة",
+            "البقرة",
+            "آل عمران",
+            "النساء"
+        ],
+        answer:"البقرة"
+    },
+
+    {
+        question:"ما اسم الكتاب الذي أنزل على النبي محمد ﷺ؟",
+        options:[
+            "التوراة",
+            "الإنجيل",
+            "الزبور",
+            "القرآن الكريم"
+        ],
+        answer:"القرآن الكريم"
+    },
+
+    {
+        question:"ما الصلاة التي تُصلّى يوم الجمعة بدل صلاة الظهر؟",
+        options:[
+            "صلاة العصر",
+            "صلاة الجمعة",
+            "صلاة الوتر",
+            "صلاة الضحى"
+        ],
+        answer:"صلاة الجمعة"
+    },
+
+    {
+        question:"ما السورة التي سميت باسم نبي وجاءت قصته فيها بصورة متصلة؟",
+        options:[
+            "يوسف",
+            "هود",
+            "إبراهيم",
+            "مريم"
+        ],
+        answer:"يوسف"
+    }
+
+];
+
+let currentQuestions = [];
+
+let currentQuestionIndex =
+    0;
+
+let questionAnswered =
+    false;
+
+function shuffleQuestions(){
+
+    currentQuestions =
+        [...religiousQuestions];
+
+    for(
+        let i =
+            currentQuestions.length - 1;
+        i > 0;
+        i--
+    ){
+
+        const j =
+            Math.floor(
+                Math.random() *
+                (i + 1)
+            );
+
+        const temp =
+            currentQuestions[i];
+
+        currentQuestions[i] =
+            currentQuestions[j];
+
+        currentQuestions[j] =
+            temp;
+
+    }
+
+    currentQuestions =
+        currentQuestions.slice(
+            0,
+            5
+        );
+
+}
+
+function loadQuestion(){
+
+    const questionNumber =
+        document.getElementById(
+            "questionNumber"
+        );
+
+    const questionText =
+        document.getElementById(
+            "questionText"
+        );
+
+    const optionsContainer =
+        document.getElementById(
+            "questionOptions"
+        );
+
+    const feedback =
+        document.getElementById(
+            "questionFeedback"
+        );
+
+    const nextButton =
+        document.getElementById(
+            "nextQuestionButton"
+        );
+
+    const complete =
+        document.getElementById(
+            "questionComplete"
+        );
+
+    const progress =
+        document.getElementById(
+            "questionProgressBar"
+        );
+
+    if(
+        currentQuestionIndex >=
+        currentQuestions.length
+    ){
+
+        questionComplete();
+
+        return;
+
+    }
+
+    questionAnswered =
+        false;
+
+    complete.style.display =
+        "none";
+
+    questionNumber.textContent =
+        "السؤال " +
+        toArabicNumber(
+            currentQuestionIndex + 1
+        ) +
+        " من " +
+        toArabicNumber(
+            currentQuestions.length
+        );
+
+    questionText.textContent =
+        currentQuestions[
+            currentQuestionIndex
+        ].question;
+
+    optionsContainer.innerHTML =
+        "";
+
+    feedback.className =
+        "question-feedback";
+
+    feedback.textContent =
+        "";
+
+    nextButton.style.display =
+        "none";
+
+    const percent =
+        (
+            currentQuestionIndex /
+            currentQuestions.length
+        ) * 100;
+
+    progress.style.width =
+        percent +
+        "%";
+
+    currentQuestions[
+        currentQuestionIndex
+    ].options.forEach(
+        optionText=>{
+
+            const button =
+                document.createElement(
+                    "button"
+                );
+
+            button.type =
+                "button";
+
+            button.className =
+                "question-option";
+
+            button.textContent =
+                optionText;
+
+            button.onclick =
+                function(){
+
+                    answerQuestion(
+                        button,
+                        optionText
+                    );
+
+                };
+
+            optionsContainer.appendChild(
+                button
+            );
+
+        }
+    );
+
+}
+
+function answerQuestion(
+    clickedButton,
+    selectedAnswer
+){
+
+    if(questionAnswered){
+
+        return;
+
+    }
+
+    questionAnswered =
+        true;
+
+    const current =
+        currentQuestions[
+            currentQuestionIndex
+        ];
+
+    const optionButtons =
+        document.querySelectorAll(
+            ".question-option"
+        );
+
+    optionButtons.forEach(
+        button=>{
+
+            button.disabled =
+                true;
+
+            if(
+                button.textContent ===
+                current.answer
+            ){
+
+                button.classList.add(
+                    "correct"
+                );
+
+            }
+
+        }
+    );
+
+    const feedback =
+        document.getElementById(
+            "questionFeedback"
+        );
+
+    if(
+        selectedAnswer ===
+        current.answer
+    ){
+
+        clickedButton.classList.add(
+            "correct"
+        );
+
+        feedback.className =
+            "question-feedback success";
+
+        feedback.innerHTML =
+            "✅ إجابة صحيحة! أحسنت.";
+
+    }else{
+
+        clickedButton.classList.add(
+            "wrong"
+        );
+
+        feedback.className =
+            "question-feedback error";
+
+        feedback.innerHTML =
+            "❌ إجابة غير صحيحة." +
+            "<br>" +
+            "الإجابة الصحيحة هي: <b>" +
+            current.answer +
+            "</b>";
+
+    }
+
+    document.getElementById(
+        "nextQuestionButton"
+    ).style.display =
+        "inline-block";
+
+    document.getElementById(
+        "questionProgressBar"
+    ).style.width =
+        (
+            (
+                currentQuestionIndex + 1
+            ) /
+            currentQuestions.length
+        ) * 100 +
+        "%";
+
+}
+
+function nextQuestion(){
+
+    if(!questionAnswered){
+
+        return;
+
+    }
+
+    currentQuestionIndex +=
+        1;
+
+    if(
+        currentQuestionIndex >=
+        currentQuestions.length
+    ){
+
+        questionComplete();
+
+        return;
+
+    }
+
+    loadQuestion();
+
+}
+
+function questionComplete(){
+
+    document.getElementById(
+        "questionBox"
+    ).style.display =
+        "none";
+
+    document.getElementById(
+        "questionComplete"
+    ).style.display =
+        "block";
+
+    document.getElementById(
+        "questionProgressBar"
+    ).style.width =
+        "100%";
+
+}
+
+function restartQuestions(){
+
+    document.getElementById(
+        "questionBox"
+    ).style.display =
+        "block";
+
+    document.getElementById(
+        "questionComplete"
+    ).style.display =
+        "none";
+
+    currentQuestionIndex =
+        0;
+
+    questionAnswered =
+        false;
+
+    shuffleQuestions();
+
+    loadQuestion();
+
+}
+
+shuffleQuestions();
+
+loadQuestion();
+
+/* =====================================================
+   الامتحانات الدينية
+===================================================== */
+
+const examMCQBank = [
+
+    {
+        q:"ما اسم السورة التي تُسمى أم الكتاب؟",
+        options:[
+            "الفاتحة",
+            "البقرة",
+            "الإخلاص",
+            "الناس"
+        ],
+        answer:"الفاتحة"
+    },
+
+    {
+        q:"كم عدد سور القرآن الكريم؟",
+        options:[
+            "110",
+            "112",
+            "114",
+            "116"
+        ],
+        answer:"114"
+    },
+
+    {
+        q:"ما السورة التي تسمى قلب القرآن؟",
+        options:[
+            "يس",
+            "الرحمن",
+            "الملك",
+            "الواقعة"
+        ],
+        answer:"يس"
+    },
+
+    {
+        q:"ما اسم أول مسجد وضع للناس؟",
+        options:[
+            "المسجد النبوي",
+            "المسجد الحرام",
+            "المسجد الأقصى",
+            "مسجد قباء"
+        ],
+        answer:"المسجد الحرام"
+    },
+
+    {
+        q:"من هو خاتم الأنبياء والمرسلين؟",
+        options:[
+            "موسى عليه السلام",
+            "عيسى عليه السلام",
+            "محمد ﷺ",
+            "إبراهيم عليه السلام"
+        ],
+        answer:"محمد ﷺ"
+    },
+
+    {
+        q:"ما الصلاة التي عدد ركعاتها ثلاث ركعات؟",
+        options:[
+            "الفجر",
+            "المغرب",
+            "العصر",
+            "العشاء"
+        ],
+        answer:"المغرب"
+    },
+
+    {
+        q:"في أي شهر تؤدى فريضة الصيام؟",
+        options:[
+            "شعبان",
+            "رجب",
+            "رمضان",
+            "شوال"
+        ],
+        answer:"رمضان"
+    },
+
+    {
+        q:"ما اسم قبلة المسلمين؟",
+        options:[
+            "الكعبة المشرفة",
+            "المسجد النبوي",
+            "المسجد الأقصى",
+            "مسجد قباء"
+        ],
+        answer:"الكعبة المشرفة"
+    },
+
+    {
+        q:"ما السورة التي تبدأ بـ الحمد لله رب العالمين؟",
+        options:[
+            "الفاتحة",
+            "الأنعام",
+            "الكهف",
+            "الملك"
+        ],
+        answer:"الفاتحة"
+    },
+
+    {
+        q:"ما أول ركن من أركان الإسلام؟",
+        options:[
+            "الصلاة",
+            "الشهادتان",
+            "الزكاة",
+            "الحج"
+        ],
+        answer:"الشهادتان"
+    },
+
+    {
+        q:"ما اسم أم المؤمنين ابنة أبي بكر الصديق رضي الله عنه؟",
+        options:[
+            "عائشة رضي الله عنها",
+            "حفصة رضي الله عنها",
+            "زينب رضي الله عنها",
+            "صفية رضي الله عنها"
+        ],
+        answer:"عائشة رضي الله عنها"
+    },
+
+    {
+        q:"كم عدد الصلوات المفروضة؟",
+        options:[
+            "ثلاث",
+            "أربع",
+            "خمس",
+            "ست"
+        ],
+        answer:"خمس"
+    },
+
+    {
+        q:"ما السورة التي لا تبدأ بالبسملة؟",
+        options:[
+            "التوبة",
+            "الفاتحة",
+            "يس",
+            "النحل"
+        ],
+        answer:"التوبة"
+    },
+
+    {
+        q:"ما أول شهر في السنة الهجرية؟",
+        options:[
+            "رمضان",
+            "محرم",
+            "رجب",
+            "شوال"
+        ],
+        answer:"محرم"
+    },
+
+    {
+        q:"ما اسم الليلة التي هي خير من ألف شهر؟",
+        options:[
+            "ليلة العيد",
+            "ليلة القدر",
+            "ليلة الجمعة",
+            "ليلة النصف من شعبان"
+        ],
+        answer:"ليلة القدر"
+    },
+
+    {
+        q:"ما أطول سورة في القرآن؟",
+        options:[
+            "النساء",
+            "البقرة",
+            "آل عمران",
+            "المائدة"
+        ],
+        answer:"البقرة"
+    },
+
+    {
+        q:"في أي سورة توجد آية الكرسي؟",
+        options:[
+            "الفاتحة",
+            "البقرة",
+            "النساء",
+            "آل عمران"
+        ],
+        answer:"البقرة"
+    },
+
+    {
+        q:"ما عدد أركان الإيمان؟",
+        options:[
+            "أربعة",
+            "خمسة",
+            "ستة",
+            "سبعة"
+        ],
+        answer:"ستة"
+    },
+
+    {
+        q:"ما السورة الأخيرة في ترتيب المصحف؟",
+        options:[
+            "الفلق",
+            "الإخلاص",
+            "النصر",
+            "الناس"
+        ],
+        answer:"الناس"
+    },
+
+    {
+        q:"ما السورة التي سميت باسم امرأة؟",
+        options:[
+            "مريم",
+            "النساء",
+            "النور",
+            "التوبة"
+        ],
+        answer:"مريم"
+    }
+
+];
+
+const examTextBank = [
+
+    {
+        q:"ما اسم أول نبي؟",
+        answers:[
+            "ادم",
+            "آدم",
+            "آدم عليه السلام"
+        ]
+    },
+
+    {
+        q:"ما اسم والد النبي إبراهيم عليه السلام؟",
+        answers:[
+            "آزر",
+            "عازر"
+        ]
+    },
+
+    {
+        q:"ما اسم الشهر الذي يلي رمضان؟",
+        answers:[
+            "شوال"
+        ]
+    },
+
+    {
+        q:"ما اسم أطول سورة في القرآن الكريم؟",
+        answers:[
+            "البقرة",
+            "سورة البقرة"
+        ]
+    },
+
+    {
+        q:"ما اسم أول مسجد بُني في الإسلام؟",
+        answers:[
+            "قباء",
+            "مسجد قباء"
+        ]
+    },
+
+    {
+        q:"ما اسم السورة التي تبدأ بالحمد لله رب العالمين؟",
+        answers:[
+            "الفاتحة",
+            "سورة الفاتحة"
+        ]
+    },
+
+    {
+        q:"ما اسم الكتاب الذي أُنزل على النبي محمد ﷺ؟",
+        answers:[
+            "القرآن",
+            "القرآن الكريم"
+        ]
+    },
+
+    {
+        q:"ما أول شهر في السنة الهجرية؟",
+        answers:[
+            "محرم"
+        ]
+    },
+
+    {
+        q:"ما اسم القبلة التي يتوجه إليها المسلمون؟",
+        answers:[
+            "الكعبة",
+            "الكعبة المشرفة"
+        ]
+    },
+
+    {
+        q:"ما اسم الليلة التي هي خير من ألف شهر؟",
+        answers:[
+            "ليلة القدر",
+            "القدر"
+        ]
+    },
+
+    {
+        q:"كم عدد أركان الإسلام؟",
+        answers:[
+            "خمسة",
+            "5"
+        ]
+    },
+
+    {
+        q:"كم عدد الصلوات المفروضة في اليوم والليلة؟",
+        answers:[
+            "خمس",
+            "خمسة",
+            "5"
+        ]
+    },
+
+    {
+        q:"ما اسم السورة التي لا تبدأ بالبسملة؟",
+        answers:[
+            "التوبة",
+            "سورة التوبة"
+        ]
+    },
+
+    {
+        q:"ما آخر سورة في ترتيب المصحف؟",
+        answers:[
+            "الناس",
+            "سورة الناس"
+        ]
+    },
+
+    {
+        q:"ما اسم والد النبي يوسف عليه السلام؟",
+        answers:[
+            "يعقوب",
+            "يعقوب عليه السلام"
+        ]
+    },
+
+    {
+        q:"ما اسم أم المؤمنين زوجة النبي ﷺ وابنة أبي بكر؟",
+        answers:[
+            "عائشة",
+            "عائشة رضي الله عنها"
+        ]
+    },
+
+    {
+        q:"ما عدد أركان الإيمان؟",
+        answers:[
+            "ستة",
+            "6"
+        ]
+    },
+
+    {
+        q:"ما اسم السورة التي تسمى أم الكتاب؟",
+        answers:[
+            "الفاتحة",
+            "سورة الفاتحة"
+        ]
+    },
+
+    {
+        q:"ما اسم المدينة التي هاجر إليها النبي ﷺ؟",
+        answers:[
+            "المدينة",
+            "المدينة المنورة"
+        ]
+    },
+
+    {
+        q:"ما اسم أول خليفة للمسلمين بعد وفاة النبي ﷺ؟",
+        answers:[
+            "أبو بكر",
+            "أبو بكر الصديق",
+            "أبو بكر الصديق رضي الله عنه"
+        ]
+    }
+
+];
+
+const examTrueFalseBank = [
+
+    {
+        q:"عدد الصلوات المفروضة خمس صلوات.",
+        answer:"صح"
+    },
+
+    {
+        q:"سورة البقرة هي أقصر سورة في القرآن الكريم.",
+        answer:"خطأ"
+    },
+
+    {
+        q:"سورة التوبة لا تبدأ بالبسملة.",
+        answer:"صح"
+    },
+
+    {
+        q:"عدد سور القرآن الكريم 114 سورة.",
+        answer:"صح"
+    },
+
+    {
+        q:"صلاة الفجر أربع ركعات.",
+        answer:"خطأ"
+    },
+
+    {
+        q:"رمضان هو الشهر التاسع في السنة الهجرية.",
+        answer:"صح"
+    },
+
+    {
+        q:"سورة الفاتحة هي أول سورة في ترتيب المصحف.",
+        answer:"صح"
+    },
+
+    {
+        q:"المغرب ثلاث ركعات.",
+        answer:"صح"
+    },
+
+    {
+        q:"عدد أركان الإسلام أربعة.",
+        answer:"خطأ"
+    },
+
+    {
+        q:"الكعبة المشرفة هي قبلة المسلمين.",
+        answer:"صح"
+    },
+
+    {
+        q:"سورة الناس هي أول سورة في المصحف.",
+        answer:"خطأ"
+    },
+
+    {
+        q:"ليلة القدر خير من ألف شهر.",
+        answer:"صح"
+    },
+
+    {
+        q:"القرآن الكريم أُنزل على النبي محمد ﷺ.",
+        answer:"صح"
+    },
+
+    {
+        q:"صلاة الظهر ركعتان فقط.",
+        answer:"خطأ"
+    },
+
+    {
+        q:"المدينة المنورة هي المدينة التي هاجر إليها النبي ﷺ.",
+        answer:"صح"
+    },
+
+    {
+        q:"سورة الإخلاص تتحدث عن توحيد الله.",
+        answer:"صح"
+    },
+
+    {
+        q:"محرم هو أول شهر في السنة الهجرية.",
+        answer:"صح"
+    },
+
+    {
+        q:"الحج أحد أركان الإسلام.",
+        answer:"صح"
+    },
+
+    {
+        q:"عدد أركان الإيمان خمسة.",
+        answer:"خطأ"
+    },
+
+    {
+        q:"سورة الفاتحة سبع آيات.",
+        answer:"صح"
+    }
+
+];
+
+let dailyExam = [];
+
+let examCurrentIndex =
+    0;
+
+let examScoreValue =
+    0;
+
+let examAnswered =
+    false;
+
+let examUserAnswers = [];
+
+/* =====================================================
+   تطبيع إجابات الكتابة
+===================================================== */
+
+function normalizeExamText(text){
+
+    return String(text || "")
+        .trim()
+        .toLowerCase()
+        .replace(/[أإآٱ]/g,"ا")
+        .replace(/ة/g,"ه")
+        .replace(/ى/g,"ي")
+        .replace(/ؤ/g,"و")
+        .replace(/ئ/g,"ي")
+        .replace(/[ًٌٍَُِْـّ]/g,"")
+        .replace(/\s+/g," ");
+
+}
+
+function shuffleArray(array){
+
+    const result =
+        [...array];
+
+    for(
+        let i =
+            result.length - 1;
+        i > 0;
+        i--
+    ){
+
+        const j =
+            Math.floor(
+                Math.random() *
+                (i + 1)
+            );
+
+        const temp =
+            result[i];
+
+        result[i] =
+            result[j];
+
+        result[j] =
+            temp;
+
+    }
+
+    return result;
+
+}
+
+function getExamTodayKey(){
+
+    const now =
+        new Date();
+
+    const year =
+        now.getFullYear();
+
+    const month =
+        String(
+            now.getMonth() + 1
+        ).padStart(
+            2,
+            "0"
+        );
+
+    const day =
+        String(
+            now.getDate()
+        ).padStart(
+            2,
+            "0"
+        );
+
+    return (
+        year +
+        "-" +
+        month +
+        "-" +
+        day
+    );
+
+}
+
+function chooseWithoutPrevious(
+    bank,
+    previousIds
+){
+
+    let available =
+        bank.filter(
+            item =>
+                !previousIds.has(
+                    item._examId
+                )
+        );
+
+    if(
+        available.length < 5
+    ){
+
+        available =
+            [...bank];
+    }
+
+    return shuffleArray(
+        available
+    ).slice(
+        0,
+        5
+    );
+
+}
+
+function prepareExamBankIds(){
+
+    examMCQBank.forEach(
+        (item,index)=>{
+            item._examId =
+                "mcq_" + index;
+        }
+    );
+
+    examTextBank.forEach(
+        (item,index)=>{
+            item._examId =
+                "text_" + index;
+        }
+    );
+
+    examTrueFalseBank.forEach(
+        (item,index)=>{
+            item._examId =
+                "tf_" + index;
+        }
+    );
+
+}
+
+function createDailyExam(){
+
+    prepareExamBankIds();
+
+    const previousExamText =
+        localStorage.getItem(
+            "noorPreviousExam"
+        );
+
+    let previousExam =
+        [];
+
+    if(previousExamText){
+
+        try{
+
+            previousExam =
+                JSON.parse(
+                    previousExamText
+                );
+
+        }catch(error){
+
+            previousExam =
+                [];
+
+        }
+
+    }
+
+    const previousIds =
+        new Set(
+            previousExam.map(
+                item =>
+                    item.id
+            )
+        );
+
+    const mcq =
+        chooseWithoutPrevious(
+            examMCQBank,
+            previousIds
+        );
+
+    const text =
+        chooseWithoutPrevious(
+            examTextBank,
+            previousIds
+        );
+
+    const trueFalse =
+        chooseWithoutPrevious(
+            examTrueFalseBank,
+            previousIds
+        );
+
+    const exam = [
+
+        ...mcq.map(
+            item=>({
+
+                id:
+                    item._examId,
+
+                type:
+                    "mcq",
+
+                typeName:
+                    "اختيار من متعدد",
+
+                question:
+                    item.q,
+
+                options:
+                    shuffleArray(
+                        item.options
+                    ),
+
+                answer:
+                    item.answer
+
+            })
+        ),
+
+        ...text.map(
+            item=>({
+
+                id:
+                    item._examId,
+
+                type:
+                    "text",
+
+                typeName:
+                    "اكتب الإجابة",
+
+                question:
+                    item.q,
+
+                answers:
+                    item.answers
+
+            })
+        ),
+
+        ...trueFalse.map(
+            item=>({
+
+                id:
+                    item._examId,
+
+                type:
+                    "tf",
+
+                typeName:
+                    "صح أو خطأ",
+
+                question:
+                    item.q,
+
+                answer:
+                    item.answer,
+
+                options:[
+                    "صح",
+                    "خطأ"
+                ]
+
+            })
+        )
+
+    ];
+
+    return shuffleArray(
+        exam
+    );
+
+}
+
+function loadDailyExam(){
+
+    const today =
+        getExamTodayKey();
+
+    const savedDate =
+        localStorage.getItem(
+            "noorExamDate"
+        );
+
+    const savedExam =
+        localStorage.getItem(
+            "noorExamQuestions"
+        );
+
+    if(
+        savedDate === today &&
+        savedExam
+    ){
+
+        try{
+
+            const parsed =
+                JSON.parse(
+                    savedExam
+                );
+
+            if(
+                Array.isArray(parsed) &&
+                parsed.length === 15
+            ){
+
+                dailyExam =
+                    parsed;
+
+                return;
+
+            }
+
+        }catch(error){
+
+            console.error(
+                "خطأ قراءة اختبار اليوم:",
+                error
+            );
+
+        }
+
+    }
+
+    dailyExam =
+        createDailyExam();
+
+    localStorage.setItem(
+        "noorExamDate",
+        today
+    );
+
+    localStorage.setItem(
+        "noorExamQuestions",
+        JSON.stringify(
+            dailyExam
+        )
+    );
+
+    localStorage.setItem(
+        "noorPreviousExam",
+        JSON.stringify(
+            dailyExam.map(
+                question=>({
+                    id:
+                        question.id
+                })
+            )
+        )
+    );
+
+    localStorage.removeItem(
+        "noorExamCompleted"
+    );
+
+    localStorage.removeItem(
+        "noorExamScore"
+    );
+
+    localStorage.removeItem(
+        "noorExamUserAnswers"
+    );
+
+    localStorage.removeItem(
+        "noorExamPercentage"
+    );
+
+}
+
+function startExam(){
+
+    const completed =
+        localStorage.getItem(
+            "noorExamCompleted"
+        ) === "true";
+
+    if(completed){
+
+        examUserAnswers =
+            loadSavedExamAnswers();
+
+        examScoreValue =
+            Number(
+                localStorage.getItem(
+                    "noorExamScore"
+                ) || 0
+            );
+
+        showExamResult();
+
+        return;
+
+    }
+
+    examCurrentIndex =
+        Number(
+            localStorage.getItem(
+                "noorExamCurrentIndex"
+            ) || 0
+        );
+
+    examScoreValue =
+        Number(
+            localStorage.getItem(
+                "noorExamScore"
+            ) || 0
+        );
+
+    examCurrentIndex =
+        Math.max(
+            0,
+            Math.min(
+                examCurrentIndex,
+                dailyExam.length - 1
+            )
+        );
+
+    examUserAnswers =
+        loadSavedExamAnswers();
+
+    showExamQuestion();
+
+}
+
+function loadSavedExamAnswers(){
+
+    const saved =
+        localStorage.getItem(
+            "noorExamUserAnswers"
+        );
+
+    if(!saved){
+
+        return [];
+
+    }
+
+    try{
+
+        const parsed =
+            JSON.parse(saved);
+
+        return Array.isArray(parsed)
+            ? parsed
+            : [];
+
+    }catch(error){
+
+        return [];
+
+    }
+
+}
+
+function saveExamAnswers(){
+
+    localStorage.setItem(
+        "noorExamUserAnswers",
+        JSON.stringify(
+            examUserAnswers
+        )
+    );
+
+}
+
+function showExamQuestion(){
+
+    const questionBox =
+        document.getElementById(
+            "examQuestionBox"
+        );
+
+    const scoreBox =
+        document.getElementById(
+            "examScore"
+        );
+
+    const resultBox =
+        document.getElementById(
+            "examResultBox"
+        );
+
+    const restartButton =
+        document.getElementById(
+            "examRestartButton"
+        );
+
+    const questionNumber =
+        document.getElementById(
+            "examQuestionNumber"
+        );
+
+    const questionType =
+        document.getElementById(
+            "examQuestionType"
+        );
+
+    const questionText =
+        document.getElementById(
+            "examQuestionText"
+        );
+
+    const options =
+        document.getElementById(
+            "examOptions"
+        );
+
+    const textAnswerBox =
+        document.getElementById(
+            "examTextAnswerBox"
+        );
+
+    const textAnswer =
+        document.getElementById(
+            "examTextAnswer"
+        );
+
+    const textConfirmButton =
+        document.getElementById(
+            "examTextConfirmButton"
+        );
+
+    const feedback =
+        document.getElementById(
+            "examFeedback"
+        );
+
+    const nextButton =
+        document.getElementById(
+            "examNextButton"
+        );
+
+    if(
+        !dailyExam.length
+    ){
+
+        return;
+
+    }
+
+    if(
+        examCurrentIndex >=
+        dailyExam.length
+    ){
+
+        showExamResult();
+
+        return;
+
+    }
+
+    questionBox.style.display =
+        "block";
+
+    scoreBox.style.display =
+        "none";
+
+    resultBox.style.display =
+        "none";
+
+    restartButton.style.display =
+        "none";
+
+    examAnswered =
+        false;
+
+    const current =
+        dailyExam[
+            examCurrentIndex
+        ];
+
+    questionNumber.textContent =
+        "السؤال " +
+        toArabicNumber(
+            examCurrentIndex + 1
+        ) +
+        " من ١٥";
+
+    questionType.textContent =
+        current.typeName;
+
+    questionText.textContent =
+        current.question;
+
+    options.innerHTML =
+        "";
+
+    textAnswerBox.style.display =
+        "none";
+
+    textAnswer.value =
+        "";
+
+    textAnswer.disabled =
+        false;
+
+    textConfirmButton.disabled =
+        false;
+
+    feedback.className =
+        "exam-feedback";
+
+    feedback.textContent =
+        "";
+
+    nextButton.style.display =
+        "none";
+
+    if(
+        current.type ===
+        "mcq"
+    ){
+
+        current.options.forEach(
+            optionText=>{
+
+                const button =
+                    document.createElement(
+                        "button"
+                    );
+
+                button.type =
+                    "button";
+
+                button.className =
+                    "exam-option";
+
+                button.textContent =
+                    optionText;
+
+                button.onclick =
+                    function(){
+
+                        submitExamMCQ(
+                            button,
+                            optionText
+                        );
+
+                    };
+
+                options.appendChild(
+                    button
+                );
+
+            }
+        );
+
+    }
+
+    else if(
+        current.type ===
+        "tf"
+    ){
+
+        current.options.forEach(
+            optionText=>{
+
+                const button =
+                    document.createElement(
+                        "button"
+                    );
+
+                button.type =
+                    "button";
+
+                button.className =
+                    "exam-option";
+
+                button.textContent =
+                    optionText;
+
+                button.onclick =
+                    function(){
+
+                        submitExamTrueFalse(
+                            button,
+                            optionText
+                        );
+
+                    };
+
+                options.appendChild(
+                    button
+                );
+
+            }
+        );
+
+    }
+
+    else if(
+        current.type ===
+        "text"
+    ){
+
+        textAnswerBox.style.display =
+            "block";
+
+        setTimeout(
+            function(){
+
+                textAnswer.focus();
+
+            },
+            150
+        );
+
+    }
+
+    const percent =
+        (
+            examCurrentIndex /
+            15
+        ) * 100;
+
+    document.getElementById(
+        "examProgressBar"
+    ).style.width =
+        percent +
+        "%";
+
+}
+
+function disableExamOptions(){
+
+    document
+        .querySelectorAll(
+            ".exam-option"
+        )
+        .forEach(
+            button=>{
+
+                button.disabled =
+                    true;
+
+            }
+        );
+
+}
+
+function submitExamMCQ(
+    clickedButton,
+    selectedAnswer
+){
+
+    if(examAnswered){
+
+        return;
+
+    }
+
+    examAnswered =
+        true;
+
+    examUserAnswers[
+        examCurrentIndex
+    ] =
+        selectedAnswer;
+
+    saveExamAnswers();
+
+    disableExamOptions();
+
+    /*
+       لا يتم التصحيح هنا.
+       فقط يتم حفظ الإجابة.
+    */
+
+    document.getElementById(
+        "examNextButton"
+    ).style.display =
+        "inline-block";
+
+    updateExamNextButton();
+
+}
+
+function submitExamTrueFalse(
+    clickedButton,
+    selectedAnswer
+){
+
+    submitExamMCQ(
+        clickedButton,
+        selectedAnswer
+    );
+
+}
+
+function submitExamTextAnswer(){
+
+    if(examAnswered){
+
+        return;
+
+    }
+
+    const input =
+        document.getElementById(
+            "examTextAnswer"
+        );
+
+    const userAnswer =
+        input.value.trim();
+
+    if(!userAnswer){
+
+        alert(
+            "من فضلك اكتب إجابتك أولًا."
+        );
+
+        input.focus();
+
+        return;
+
+    }
+
+    examAnswered =
+        true;
+
+    examUserAnswers[
+        examCurrentIndex
+    ] =
+        userAnswer;
+
+    saveExamAnswers();
+
+    input.disabled =
+        true;
+
+    const button =
+        document.getElementById(
+            "examTextConfirmButton"
+        );
+
+    if(button){
+
+        button.disabled =
+            true;
+
+    }
+
+    /*
+       لا يتم التصحيح هنا.
+       التصحيح بالكامل في النهاية.
+    */
+
+    document.getElementById(
+        "examNextButton"
+    ).style.display =
+        "inline-block";
+
+    updateExamNextButton();
+
+}
+
+function updateExamNextButton(){
+
+    const nextButton =
+        document.getElementById(
+            "examNextButton"
+        );
+
+    if(
+        examCurrentIndex >=
+        dailyExam.length - 1
+    ){
+
+        nextButton.textContent =
+            "🔍 فحص النتيجة";
+
+    }else{
+
+        nextButton.textContent =
+            "➡️ السؤال التالي";
+
+    }
+
+}
+
+function nextExamQuestion(){
+
+    if(!examAnswered){
+
+        return;
+
+    }
+
+    if(
+        examCurrentIndex <
+        dailyExam.length - 1
+    ){
+
+        examCurrentIndex +=
+            1;
+
+        localStorage.setItem(
+            "noorExamCurrentIndex",
+            String(
+                examCurrentIndex
+            )
+        );
+
+        showExamQuestion();
+
+        return;
+
+    }
+
+    checkExamResult();
+
+}
+
+/* =====================================================
+   فحص النتيجة في النهاية فقط
+===================================================== */
+
+function checkExamResult(){
+
+    let score =
+        0;
+
+    dailyExam.forEach(
+        (question,index)=>{
+
+            const userAnswer =
+                examUserAnswers[index];
+
+            if(!userAnswer){
+
+                return;
+
+            }
+
+            if(
+                question.type ===
+                "mcq"
+            ){
+
+                if(
+                    normalizeExamText(
+                        userAnswer
+                    ) ===
+                    normalizeExamText(
+                        question.answer
+                    )
+                ){
+
+                    score++;
+
+                }
+
+            }
+
+            else if(
+                question.type ===
+                "tf"
+            ){
+
+                if(
+                    normalizeExamText(
+                        userAnswer
+                    ) ===
+                    normalizeExamText(
+                        question.answer
+                    )
+                ){
+
+                    score++;
+
+                }
+
+            }
+
+            else if(
+                question.type ===
+                "text"
+            ){
+
+                const userNormalized =
+                    normalizeExamText(
+                        userAnswer
+                    );
+
+                const acceptedAnswers =
+                    Array.isArray(
+                        question.answers
+                    )
+                    ? question.answers
+                    : [];
+
+                const correct =
+                    acceptedAnswers.some(
+                        answer =>
+                            normalizeExamText(
+                                answer
+                            ) ===
+                            userNormalized
+                    );
+
+                if(correct){
+
+                    score++;
+
+                }
+
+            }
+
+        }
+    );
+
+    examScoreValue =
+        score;
+
+    const total =
+        dailyExam.length ||
+        15;
+
+    const percentage =
+        Math.round(
+            (
+                score /
+                total
+            ) *
+            100
+        );
+
+    localStorage.setItem(
+        "noorExamScore",
+        String(
+            score
+        )
+    );
+
+    localStorage.setItem(
+        "noorExamPercentage",
+        String(
+            percentage
+        )
+    );
+
+    localStorage.setItem(
+        "noorExamCompleted",
+        "true"
+    );
+
+    localStorage.setItem(
+        "noorExamCurrentIndex",
+        String(
+            total
+        )
+    );
+
+    saveExamAnswers();
+
+    showExamResult();
+
+}
+
+/* =====================================================
+   عرض النتيجة
+===================================================== */
+
+function showExamResult(){
+
+    const questionBox =
+        document.getElementById(
+            "examQuestionBox"
+        );
+
+    const scoreBox =
+        document.getElementById(
+            "examScore"
+        );
+
+    const scoreNumber =
+        document.getElementById(
+            "examScoreNumber"
+        );
+
+    const scoreMessage =
+        document.getElementById(
+            "examScoreMessage"
+        );
+
+    const resultBox =
+        document.getElementById(
+            "examResultBox"
+        );
+
+    const restartButton =
+        document.getElementById(
+            "examRestartButton"
+        );
+
+    const progress =
+        document.getElementById(
+            "examProgressBar"
+        );
+
+    const savedPercentage =
+        Number(
+            localStorage.getItem(
+                "noorExamPercentage"
+            ) || 0
+        );
+
+    questionBox.style.display =
+        "none";
+
+    scoreBox.style.display =
+        "block";
+
+    restartButton.style.display =
+        "inline-block";
+
+    progress.style.width =
+        "100%";
+
+    scoreNumber.textContent =
+        toArabicNumber(
+            examScoreValue
+        ) +
+        " / ١٥";
+
+    if(examScoreValue >= 13){
+
+        scoreMessage.innerHTML =
+            "🏆 ممتاز جدًا!";
+
+    }else if(examScoreValue >= 10){
+
+        scoreMessage.innerHTML =
+            "⭐ أحسنت! نتيجة جيدة جدًا.";
+
+    }else if(examScoreValue >= 7){
+
+        scoreMessage.innerHTML =
+            "📖 نتيجة جيدة، واصل التعلم.";
+
+    }else{
+
+        scoreMessage.innerHTML =
+            "🌱 حاول مرة أخرى وواصل التعلم.";
+
+    }
+
+    resultBox.style.display =
+        "block";
+
+    resultBox.innerHTML =
+        "";
+
+    const finalBox =
+        document.createElement(
+            "div"
+        );
+
+    finalBox.className =
+        "exam-final-result";
+
+    finalBox.innerHTML =
+
+        "<h3>" +
+        "📊 نتيجة اختبار اليوم" +
+        "</h3>" +
+
+        "<div class='exam-final-score'>" +
+        toArabicNumber(
+            examScoreValue
+        ) +
+        " / ١٥" +
+        "</div>" +
+
+        "<div class='exam-final-percentage'>" +
+        toArabicNumber(
+            savedPercentage
+        ) +
+        "%" +
+        "</div>" +
+
+        "<div class='exam-final-label'>" +
+        "النسبة من 100%" +
+        "</div>" +
+
+        "<div class='exam-final-message'>" +
+        scoreMessage.textContent +
+        "</div>";
+
+    resultBox.appendChild(
+        finalBox
+    );
+
+    /*
+       إظهار تصحيح الاختبار بعد الفحص فقط
+    */
+
+    dailyExam.forEach(
+        (question,index)=>{
+
+            const item =
+                document.createElement(
+                    "div"
+                );
+
+            const userAnswer =
+                examUserAnswers[index] ||
+                "لم تتم الإجابة";
+
+            let isCorrect =
+                false;
+
+            if(
+                question.type ===
+                "mcq" ||
+                question.type ===
+                "tf"
+            ){
+
+                isCorrect =
+                    normalizeExamText(
+                        userAnswer
+                    ) ===
+                    normalizeExamText(
+                        question.answer
+                    );
+
+            }
+
+            else if(
+                question.type ===
+                "text"
+            ){
+
+                isCorrect =
+                    question.answers.some(
+                        answer =>
+                            normalizeExamText(
+                                answer
+                            ) ===
+                            normalizeExamText(
+                                userAnswer
+                            )
+                    );
+
+            }
+
+            item.className =
+                "exam-result-item " +
+                (
+                    isCorrect
+                    ? "correct"
+                    : "wrong"
+                );
+
+            let correctAnswer =
+                "";
+
+            if(
+                question.type ===
+                "text"
+            ){
+
+                correctAnswer =
+                    question.answers[0];
+
+            }else{
+
+                correctAnswer =
+                    question.answer;
+
+            }
+
+            item.innerHTML =
+
+                "<b>" +
+                "السؤال " +
+                toArabicNumber(
+                    index + 1
+                ) +
+                ":</b> " +
+
+                question.question +
+
+                "<br>" +
+
+                "<span style='color:#53655f;'>" +
+                "النوع: " +
+                question.typeName +
+                "</span>" +
+
+                "<br>" +
+
+                "إجابتك: <b>" +
+                userAnswer +
+                "</b>" +
+
+                "<br>" +
+
+                "الإجابة الصحيحة: <b>" +
+                correctAnswer +
+                "</b>" +
+
+                "<br>" +
+
+                (
+                    isCorrect
+                    ? "✅ صحيحة"
+                    : "❌ غير صحيحة"
+                );
+
+            resultBox.appendChild(
+                item
+            );
+
+        }
+    );
+
+}
+
+/* =====================================================
+   زر النتيجة بعد الانتهاء
+===================================================== */
+
+function startNewExam(){
+
+    showExamResult();
+
+}
+
+/* =====================================================
+   التلاوة والقراء
+===================================================== */
 
 const RECITERS_API =
     "https://www.mp3quran.net/api/v3/reciters?language=ar";
@@ -2638,6 +5568,10 @@ async function playRecitation(){
 
 }
 
+/* =====================================================
+   الأحكام
+===================================================== */
+
 function searchRuling(){
 
     const question =
@@ -2681,6 +5615,10 @@ function searchRuling(){
         "</button>";
 
 }
+
+/* =====================================================
+   الأذكار
+===================================================== */
 
 const adhkar = [
 
@@ -2823,6 +5761,10 @@ function searchDhikr(){
 
 }
 
+/* =====================================================
+   شريط الصلاة على النبي
+===================================================== */
+
 function showSalawatMessage(){
 
     const message =
@@ -2906,9 +5848,17 @@ function playSalawat(){
 
 }
 
+/* =====================================================
+   تشغيل المنصة
+===================================================== */
+
 displayDhikr(
     adhkar
 );
+
+loadDailyExam();
+
+startExam();
 
 window.addEventListener(
     "load",
