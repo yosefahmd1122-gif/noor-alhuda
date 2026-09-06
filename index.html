@@ -331,7 +331,7 @@ textarea:focus{
 }
 
 /* ===============================
-   قسم الأسئلة الدينية
+   الأسئلة
 ================================ */
 
 .questions-info{
@@ -449,7 +449,7 @@ textarea:focus{
 }
 
 /* ===============================
-   قسم الامتحانات الدينية
+   الامتحانات
 ================================ */
 
 .exam-info{
@@ -720,7 +720,7 @@ textarea:focus{
 }
 
 /* ===============================
-   شعار صلوا على النبي
+   صلوا على النبي
 ================================ */
 
 #salawatMessage{
@@ -849,7 +849,569 @@ footer > div:first-child{
     .exam-final-percentage{
         font-size:44px;
     }
+
+    .admin-switch{
+        flex-direction:column;
+        align-items:stretch;
+    }
+
+    .admin-switch button{
+        width:100%;
+    }
 }
+
+/* ===== NOOR AL-HUDA MODERN UI — VISUAL ONLY ===== */
+:root{
+    --bg:#061b18;
+    --bg-2:#0b302a;
+    --surface:#ffffff;
+    --surface-soft:#f5fbf8;
+    --primary:#0b6b5b;
+    --primary-dark:#064c42;
+    --gold:#d4af37;
+    --gold-soft:#f2df9a;
+    --text:#18312c;
+    --muted:#60736e;
+    --border:#d8e7e1;
+    --shadow:0 18px 45px rgba(0,0,0,.13);
+    --shadow-soft:0 8px 24px rgba(0,0,0,.08);
+    --radius:22px;
+}
+
+html{scroll-behavior:smooth}
+
+body{
+    margin:0;
+    font-family:"Tajawal","Cairo","Segoe UI",Tahoma,Arial,sans-serif;
+    color:var(--text);
+    background:
+      radial-gradient(circle at 15% 10%,rgba(212,175,55,.12),transparent 28%),
+      radial-gradient(circle at 85% 20%,rgba(11,107,91,.22),transparent 32%),
+      linear-gradient(145deg,var(--bg),#0a4036 55%,#05251f);
+    min-height:100vh;
+}
+
+body::before{
+    content:"✦  ❖  ✦  ❖  ✦  ❖  ✦";
+    color:rgba(212,175,55,.18);
+    font-size:20px;
+    letter-spacing:10px;
+    padding:10px;
+}
+
+header{
+    background:
+      linear-gradient(135deg,rgba(4,55,47,.96),rgba(10,105,89,.94)),
+      radial-gradient(circle at 50% 0%,rgba(212,175,55,.18),transparent 45%);
+    padding:48px 20px 38px;
+    border-bottom:1px solid rgba(212,175,55,.65);
+    box-shadow:0 12px 30px rgba(0,0,0,.16);
+}
+
+header h1{
+    font-size:clamp(30px,5vw,48px);
+    letter-spacing:-1px;
+    text-shadow:0 3px 18px rgba(0,0,0,.2);
+}
+
+.owner{
+    margin-top:12px;
+    font-size:20px;
+    color:#ffe9a2;
+}
+
+header p{
+    margin:14px auto 0;
+    max-width:760px;
+    color:#e8f4ef;
+    line-height:1.9;
+}
+
+nav{
+    position:sticky;
+    top:0;
+    background:rgba(4,55,47,.93);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    padding:12px 14px;
+    gap:9px;
+    border-bottom:1px solid rgba(212,175,55,.22);
+    box-shadow:0 8px 22px rgba(0,0,0,.12);
+}
+
+nav button,
+.home-buttons button,
+.surah-btn,
+.question-option,
+.exam-option{
+    transition:transform .2s ease,box-shadow .2s ease,background .2s ease,border-color .2s ease;
+}
+
+nav button{
+    background:rgba(255,255,255,.97);
+    border:1px solid rgba(212,175,55,.7);
+    color:var(--primary-dark);
+    padding:11px 16px;
+    border-radius:999px;
+    box-shadow:0 3px 12px rgba(0,0,0,.08);
+}
+
+nav button:hover{
+    background:#fff4c9;
+    transform:translateY(-2px);
+    box-shadow:0 7px 18px rgba(0,0,0,.14);
+}
+
+.page{
+    max-width:1180px;
+    margin:32px auto;
+    padding:18px;
+    animation:pageIn .35s ease;
+}
+
+@keyframes pageIn{
+    from{opacity:0;transform:translateY(8px)}
+    to{opacity:1;transform:none}
+}
+
+.card{
+    background:rgba(255,255,255,.97);
+    border:1px solid rgba(212,175,55,.35);
+    border-radius:var(--radius);
+    padding:28px;
+    margin-bottom:22px;
+    box-shadow:var(--shadow);
+    position:relative;
+    overflow:hidden;
+}
+
+.card::before{
+    content:"";
+    position:absolute;
+    top:0;
+    right:0;
+    width:90px;
+    height:4px;
+    background:linear-gradient(90deg,var(--gold),transparent);
+    border-radius:0 0 0 10px;
+}
+
+.card h2{
+    color:var(--primary-dark);
+    font-size:25px;
+    margin-bottom:16px;
+}
+
+.card h3{color:var(--primary)}
+
+.home-buttons{
+    gap:16px;
+}
+
+.home-buttons button{
+    min-height:108px;
+    padding:20px;
+    border:1px solid #cfe1da;
+    border-radius:18px;
+    background:linear-gradient(145deg,#ffffff,#eef8f4);
+    color:var(--primary-dark);
+    font-size:18px;
+    box-shadow:var(--shadow-soft);
+}
+
+.home-buttons button:hover{
+    transform:translateY(-4px);
+    border-color:var(--gold);
+    box-shadow:0 14px 30px rgba(0,0,0,.12);
+    background:#fffdf5;
+}
+
+select,input,textarea{
+    border:1px solid var(--border);
+    background:#fbfefd;
+    color:var(--text);
+    border-radius:13px;
+    padding:13px 14px;
+    margin:7px 0;
+    box-shadow:inset 0 1px 2px rgba(0,0,0,.03);
+    transition:border-color .2s,box-shadow .2s,background .2s;
+}
+
+input:focus,select:focus,textarea:focus{
+    border-color:var(--primary);
+    background:#fff;
+    box-shadow:0 0 0 4px rgba(11,107,91,.10);
+}
+
+.action{
+    background:linear-gradient(135deg,var(--primary),#0a806b);
+    border:1px solid rgba(212,175,55,.8);
+    border-radius:13px;
+    padding:12px 20px;
+    box-shadow:0 7px 18px rgba(6,76,66,.18);
+    transition:transform .2s,box-shadow .2s,filter .2s;
+}
+
+.action:hover{
+    background:linear-gradient(135deg,#08594d,var(--primary));
+    transform:translateY(-2px);
+    box-shadow:0 10px 22px rgba(6,76,66,.25);
+}
+
+.gold-button{
+    background:linear-gradient(135deg,#e1bf50,var(--gold));
+    box-shadow:0 8px 20px rgba(156,119,20,.22);
+    transition:transform .2s,box-shadow .2s;
+}
+
+.gold-button:hover{
+    transform:translateY(-2px);
+    box-shadow:0 12px 25px rgba(156,119,20,.28);
+}
+
+.surah-grid{gap:10px}
+
+.surah-btn{
+    background:linear-gradient(145deg,#ffffff,#f2faf7);
+    border:1px solid #cfe1da;
+    border-radius:13px;
+    box-shadow:0 4px 12px rgba(0,0,0,.05);
+}
+
+.surah-btn:hover{
+    background:#fff7d9;
+    border-color:var(--gold);
+    transform:translateY(-2px);
+}
+
+.quran-text{
+    background:
+      linear-gradient(rgba(255,253,245,.97),rgba(255,253,245,.97)),
+      repeating-linear-gradient(0deg,transparent 0,transparent 48px,rgba(212,175,55,.06) 49px);
+    border:1px solid #d8c77d;
+    border-radius:20px;
+    padding:30px;
+    line-height:2.7;
+    font-size:27px;
+    box-shadow:inset 0 0 30px rgba(212,175,55,.05);
+}
+
+.result-box,.reciter-status,.questions-info,.exam-info{
+    background:linear-gradient(145deg,#f4fbf8,#edf7f3);
+    border-right:5px solid var(--gold);
+    border-radius:14px;
+    box-shadow:0 5px 16px rgba(0,0,0,.05);
+}
+
+.tafsir-ayah-box,.question-box,.exam-question-box{
+    background:#fffdf7;
+    border:1px solid #ddcb7e;
+    border-radius:18px;
+    box-shadow:var(--shadow-soft);
+}
+
+.tafsir-explanation{
+    background:#edf8f4;
+    border-right:5px solid var(--primary);
+    border-radius:14px;
+}
+
+.question-option,.exam-option{
+    background:#f8fdfb;
+    border:1px solid #c7ddd5;
+    box-shadow:0 4px 12px rgba(0,0,0,.04);
+}
+
+.question-option:hover,.exam-option:hover{
+    background:#fff8da;
+    border-color:var(--gold);
+    transform:translateY(-2px);
+}
+
+.question-option.correct{box-shadow:0 7px 18px rgba(46,125,50,.13)}
+.question-option.wrong{box-shadow:0 7px 18px rgba(163,58,58,.13)}
+
+.question-progress,.exam-progress{
+    height:10px;
+    background:#dfece7;
+}
+
+.question-progress-bar,.exam-progress-bar{
+    background:linear-gradient(90deg,var(--primary),var(--gold));
+}
+
+.exam-security-warning{
+    box-shadow:0 8px 22px rgba(163,58,58,.10);
+}
+
+#welcomeScreen{
+    background:rgba(2,24,20,.82);
+    backdrop-filter:blur(8px);
+    -webkit-backdrop-filter:blur(8px);
+}
+
+.welcome-box{
+    max-width:520px;
+    background:linear-gradient(145deg,#fffefa,#f6fbf8);
+    border:1px solid rgba(212,175,55,.85);
+    border-radius:26px;
+    padding:32px;
+    box-shadow:0 25px 70px rgba(0,0,0,.35);
+}
+
+.welcome-symbol{font-size:40px}
+
+#salawatMessage{
+    background:linear-gradient(90deg,#032b24,#07594b,#032b24);
+    padding:16px;
+}
+
+.salawat-button{
+    max-width:760px;
+    padding:17px 24px;
+    border-radius:999px;
+    background:rgba(255,255,255,.97);
+    box-shadow:0 8px 25px rgba(0,0,0,.18);
+}
+
+footer{
+    background:linear-gradient(135deg,#032b24,#064d41);
+    border-top:1px solid rgba(212,175,55,.75);
+    padding:36px 15px;
+}
+
+footer > div:first-child{font-size:25px}
+
+@media(max-width:600px){
+    nav{
+        justify-content:flex-start;
+        overflow-x:auto;
+        flex-wrap:nowrap;
+        scrollbar-width:none;
+    }
+    nav::-webkit-scrollbar{display:none}
+    nav button{white-space:nowrap}
+    .page{margin:20px auto;padding:10px}
+    .card{padding:21px;border-radius:18px}
+    .quran-text{font-size:22px;padding:22px;line-height:2.5}
+    .home-buttons button{min-height:92px}
+    .welcome-box{padding:24px}
+}
+
+/* Preserve all existing functional classes/IDs; this block only overrides appearance. */
+
+
+/* =========================================================
+   شريط أقسام المنصة الجانبي
+   واجهة فقط — لا يغيّر وظائف الأقسام أو التسجيل
+========================================================= */
+
+body{
+    padding-left:76px;
+}
+
+#sectionsMenuToggle{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:fixed;
+    left:76px;
+    top:18px;
+    z-index:1201;
+    width:34px;
+    height:42px;
+    padding:0;
+    border:1px solid rgba(212,175,55,.8);
+    border-radius:12px 0 0 12px;
+    background:#04372f;
+    color:#fff;
+    font-size:22px;
+    font-weight:bold;
+    cursor:pointer;
+    box-shadow:0 6px 18px rgba(0,0,0,.18);
+    transition:left .25s ease,background .2s ease;
+}
+
+#mainNavigation{
+    position:fixed !important;
+    left:0 !important;
+    top:0 !important;
+    right:auto !important;
+    z-index:1200 !important;
+    width:76px;
+    height:100vh;
+    max-height:100vh;
+    overflow-x:hidden !important;
+    overflow-y:auto !important;
+    display:flex !important;
+    flex-direction:column !important;
+    flex-wrap:nowrap !important;
+    justify-content:flex-start !important;
+    align-items:stretch !important;
+    gap:8px;
+    padding:74px 8px 18px !important;
+    background:rgba(4,55,47,.98);
+    backdrop-filter:blur(14px);
+    -webkit-backdrop-filter:blur(14px);
+    box-shadow:8px 0 24px rgba(0,0,0,.20);
+    transition:width .25s ease;
+}
+
+#mainNavigation button{
+    width:100%;
+    min-height:46px;
+    flex:0 0 auto;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:9px;
+    padding:10px 7px;
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+#mainNavigation button .section-icon{
+    flex:0 0 auto;
+    font-size:20px;
+}
+
+#mainNavigation button .section-name{
+    display:none;
+}
+
+#mainNavigation.sidebar-expanded{
+    width:240px;
+    padding-left:10px !important;
+    padding-right:10px !important;
+}
+
+#mainNavigation.sidebar-expanded button{
+    justify-content:flex-start;
+    padding-left:12px;
+    padding-right:12px;
+}
+
+#mainNavigation.sidebar-expanded button .section-name{
+    display:inline;
+}
+
+body.sidebar-expanded{
+    padding-left:240px;
+}
+
+body.sidebar-expanded #sectionsMenuToggle{
+    left:240px;
+}
+
+.page{
+    max-width:1180px;
+    margin-left:auto;
+    margin-right:auto;
+}
+
+@media (max-width:600px){
+    body{
+        padding-left:64px;
+    }
+
+    #sectionsMenuToggle{
+        left:64px;
+        top:14px;
+        width:32px;
+        height:40px;
+    }
+
+    #mainNavigation{
+        width:64px;
+        padding-top:68px !important;
+    }
+
+    #mainNavigation.sidebar-expanded{
+        width:210px;
+    }
+
+    body.sidebar-expanded{
+        padding-left:210px;
+    }
+
+    body.sidebar-expanded #sectionsMenuToggle{
+        left:210px;
+    }
+
+    #mainNavigation button .section-icon{
+        font-size:18px;
+    }
+
+    #mainNavigation button{
+        min-height:44px;
+    }
+
+    .page{
+        width:auto !important;
+        max-width:1180px;
+        margin:20px auto !important;
+        padding:10px !important;
+    }
+
+    .quran-text{
+        min-width:0;
+        overflow-wrap:anywhere;
+    }
+}
+
+</style>
+
+<style>
+    ::selection{background:rgba(212,175,55,.28);color:#15342e}
+    button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{
+        outline:3px solid rgba(212,175,55,.42);
+        outline-offset:2px;
+    }
+
+/* ===============================
+   نافذة الصلاة على النبي
+================================ */
+.salawat-popup{
+    position:fixed;
+    inset:0;
+    z-index:1300;
+    display:none;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(2,24,20,.38);
+    pointer-events:none;
+}
+
+.salawat-popup.show{
+    display:flex;
+    pointer-events:auto;
+}
+
+.salawat-popup-box{
+    width:min(720px,92vw);
+    padding:24px 28px;
+    background:rgba(255,253,245,.98);
+    border:2px solid #d4af37;
+    border-radius:22px;
+    box-shadow:0 18px 45px rgba(0,0,0,.25);
+    text-align:center;
+}
+
+.salawat-popup-symbol{
+    color:#b28a12;
+    font-size:30px;
+    margin-bottom:10px;
+}
+
+.salawat-popup-text{
+    color:#075e54;
+    font-size:23px;
+    font-weight:bold;
+    line-height:1.9;
+}
+
 </style>
 </head>
 
@@ -931,6 +1493,17 @@ footer > div:first-child{
 
 </div>
 
+
+<!-- رسالة الصلاة على النبي في منتصف الصفحة -->
+<div id="salawatPopup" class="salawat-popup" role="status" aria-live="polite">
+    <div class="salawat-popup-box">
+        <div class="salawat-popup-symbol">ﷺ</div>
+        <div class="salawat-popup-text">
+            اللهم صل وسلم وبارك على سيدنا محمد وعلى آله وصحبه أجمعين.
+        </div>
+    </div>
+</div>
+
 <header>
 
     <h1>
@@ -951,47 +1524,62 @@ footer > div:first-child{
      القائمة
 ================================ -->
 
-<nav>
+<button type="button" id="sectionsMenuToggle" aria-expanded="false" aria-controls="mainNavigation" title="توسيع أقسام المنصة">
+    ‹
+</button>
 
-    <button onclick="showPage('home')">
-        🏠 الرئيسية
+<nav id="mainNavigation" aria-label="أقسام المنصة">
+
+    <button type="button" onclick="showPage('home')">
+        <span class="section-icon">🏠</span>
+        <span class="section-name">الرئيسية</span>
     </button>
 
-    <button onclick="showPage('quran')">
-        📖 القرآن الكريم
+    <button type="button" onclick="showPage('quran')">
+        <span class="section-icon">📖</span>
+        <span class="section-name">القرآن الكريم</span>
     </button>
 
-    <button onclick="showPage('recitation')">
-        🎧 التلاوة
+    <button type="button" onclick="showPage('recitation')">
+        <span class="section-icon">🎧</span>
+        <span class="section-name">التلاوة</span>
     </button>
 
-    <button onclick="showPage('tafsir')">
-        📚 التفسير
+    <button type="button" onclick="showPage('tafsir')">
+        <span class="section-icon">📚</span>
+        <span class="section-name">التفسير</span>
     </button>
 
-    <button onclick="showPage('searchAyah')">
-        🔎 البحث
+    <button type="button" onclick="showPage('searchAyah')">
+        <span class="section-icon">🔎</span>
+        <span class="section-name">البحث</span>
     </button>
 
-    <button onclick="showPage('questions')">
-        ❓ أسئلة دينية
+    <button type="button" onclick="showPage('questions')">
+        <span class="section-icon">❓</span>
+        <span class="section-name">أسئلة دينية</span>
     </button>
 
-    <button onclick="showPage('religiousExams')">
-        📝 امتحانات دينية
+    <button type="button" onclick="showPage('religiousExams')">
+        <span class="section-icon">📝</span>
+        <span class="section-name">امتحانات دينية</span>
     </button>
 
-    <button onclick="showPage('rulings')">
-        ⚖️ الأحكام
+    <button type="button" onclick="showPage('rulings')">
+        <span class="section-icon">⚖️</span>
+        <span class="section-name">الأحكام</span>
     </button>
 
-    <button onclick="showPage('adhkar')">
-        🤲 الأدعية والأذكار
+    <button type="button" onclick="showPage('adhkar')">
+        <span class="section-icon">🤲</span>
+        <span class="section-name">الأدعية والأذكار</span>
     </button>
 
-    <button onclick="showPage('guide')">
-        📘 دليل المنصة
+    <button type="button" onclick="showPage('guide')">
+        <span class="section-icon">📘</span>
+        <span class="section-name">دليل المنصة</span>
     </button>
+
 
 </nav>
 
@@ -1780,6 +2368,35 @@ footer > div:first-child{
 
 </footer>
 
+
+<script>
+/* =========================================================
+   التحكم في شريط الأقسام الجانبي — واجهة فقط
+========================================================= */
+(function(){
+    const toggle = document.getElementById("sectionsMenuToggle");
+    const nav = document.getElementById("mainNavigation");
+
+    if(!toggle || !nav) return;
+
+    function setSidebar(expanded){
+        nav.classList.toggle("sidebar-expanded", expanded);
+        document.body.classList.toggle("sidebar-expanded", expanded);
+        toggle.setAttribute("aria-expanded", expanded ? "true" : "false");
+        toggle.textContent = expanded ? "›" : "‹";
+        toggle.title = expanded
+            ? "طي أسماء الأقسام"
+            : "توسيع أسماء الأقسام";
+    }
+
+    setSidebar(false);
+
+    toggle.addEventListener("click", function(){
+        setSidebar(!nav.classList.contains("sidebar-expanded"));
+    });
+})();
+</script>
+
 <script>
 
 /* =====================================================
@@ -2172,12 +2789,12 @@ function checkExamSecurity(){
 
 }
 
+/* =====================================================
+   التنقل
+===================================================== */
+
 function showPage(id){
 
-    /*
-       إذا كان المستخدم داخل امتحان غير مكتمل
-       ثم انتقل إلى قسم آخر، نعتبر ذلك خروجًا.
-    */
 
     if(
         examStarted &&
@@ -2201,9 +2818,11 @@ function showPage(id){
         .querySelectorAll(".page")
         .forEach(
             page=>{
+
                 page.classList.remove(
                     "active"
                 );
+
             }
         );
 
@@ -2224,7 +2843,16 @@ function showPage(id){
 
         checkExamSecurity();
 
+        if(
+            !isExamLocked()
+        ){
+
+            startExam();
+
+        }
+
     }
+
 
     window.scrollTo({
         top:0,
@@ -2258,6 +2886,7 @@ function toArabicNumber(number){
 ===================================================== */
 
 const surahs = [
+
 "الفاتحة","البقرة","آل عمران","النساء","المائدة",
 "الأنعام","الأعراف","الأنفال","التوبة","يونس",
 "هود","يوسف","الرعد","إبراهيم","الحجر",
@@ -2281,6 +2910,7 @@ const surahs = [
 "القارعة","التكاثر","العصر","الهمزة","الفيل",
 "قريش","الماعون","الكوثر","الكافرون","النصر",
 "المسد","الإخلاص","الفلق","الناس"
+
 ];
 
 const surahGrid =
@@ -2373,12 +3003,12 @@ surahs.forEach(
                     );
 
                 if(quranText){
-
-                    quranText.scrollIntoView({
-                        behavior:"smooth",
-                        block:"start"
+                    requestAnimationFrame(function(){
+                        quranText.scrollIntoView({
+                            behavior:"smooth",
+                            block:"start"
+                        });
                     });
-
                 }
 
             };
@@ -3522,7 +4152,7 @@ shuffleQuestions();
 loadQuestion();
 
 /* =====================================================
-   بنك امتحان
+   بنك الامتحان
 ===================================================== */
 
 const examMCQBank = [
@@ -4459,6 +5089,7 @@ function saveExamAnswers(){
 
 function startExam(){
 
+
     if(
         checkExamSecurity()
     ){
@@ -4502,6 +5133,9 @@ function startExam(){
                     "noorExamScore"
                 ) || 0
             );
+
+        examStarted =
+            false;
 
         showExamResult();
 
@@ -4953,7 +5587,7 @@ function nextExamQuestion(){
 }
 
 /* =====================================================
-   فحص النتيجة
+   النتيجة
 ===================================================== */
 
 function checkExamResult(){
@@ -5075,10 +5709,6 @@ function checkExamResult(){
     showExamResult();
 
 }
-
-/* =====================================================
-   نتيجة الامتحان
-===================================================== */
 
 function showExamResult(){
 
@@ -5230,10 +5860,6 @@ function showExamResult(){
     resultBox.appendChild(
         finalBox
     );
-
-    /*
-       بعد الفحص فقط تظهر تفاصيل التصحيح.
-    */
 
     examUserAnswers =
         loadSavedExamAnswers();
@@ -5707,6 +6333,7 @@ function searchReciters(){
             reciter=>{
 
                 return (
+
                     normalizeArabic(
                         reciter.name
                     ).includes(query)
@@ -5716,6 +6343,7 @@ function searchReciters(){
                     normalizeArabic(
                         reciter.moshafName
                     ).includes(query)
+
                 );
 
             }
@@ -6197,11 +6825,22 @@ function playSalawat(){
             "salawatMessage"
         );
 
-    if(message){
+    const popup =
+        document.getElementById(
+            "salawatPopup"
+        );
 
-        message.style.display =
-            "none";
+    const isVisible =
+        popup &&
+        popup.classList.contains("show");
 
+    if(popup){
+        if(isVisible){
+            popup.classList.remove("show");
+            clearTimeout(window.salawatPopupTimer);
+        }else{
+            popup.classList.add("show");
+        }
     }
 
     if(
@@ -6261,6 +6900,11 @@ function playSalawat(){
    أمان إغلاق الصفحة
 ===================================================== */
 
+/*
+   لا نبدأ الامتحان تلقائيًا عند فتح الموقع.
+   يبدأ فقط عندما يدخل المستخدم قسم الامتحانات.
+*/
+
 window.addEventListener(
     "pagehide",
     function(){
@@ -6297,13 +6941,6 @@ displayDhikr(
 
 loadDailyExam();
 
-if(
-    !isExamLocked()
-){
-
-    startExam();
-
-}
 
 window.addEventListener(
     "load",
@@ -6315,14 +6952,45 @@ window.addEventListener(
 
         showSalawatMessage();
 
-        /*
-           إذا فتح الموقع وكان الامتحان محظورًا،
-           تظهر رسالة الأمان فقط عند فتح قسم الامتحانات.
-        */
-
     }
 );
 
+
+// إغلاق رسالة الصلاة على النبي عند الضغط عليها
+(function(){
+    const popup = document.getElementById("salawatPopup");
+    if(!popup) return;
+
+    popup.addEventListener("click", function(){
+        popup.classList.remove("show");
+        clearTimeout(window.salawatPopupTimer);
+    });
+})();
+
+</script>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js";
+
+const firebaseConfig = {
+    apiKey: "AIzaSyCzhpTOEMDRKpt_E96TNkO05TUgi2QkmJY",
+    authDomain: "noor-al-huda-73cb0.firebaseapp.com",
+    projectId: "noor-al-huda-73cb0",
+    storageBucket: "noor-al-huda-73cb0.firebasestorage.app",
+    messagingSenderId: "393217124880",
+    appId: "1:393217124880:web:c310850bead320cea33895",
+    measurementId: "G-PBYSPW80SN"
+};
+
+const app = initializeApp(firebaseConfig);
+
+try {
+    getAnalytics(app);
+    console.log("Firebase تم تشغيله بنجاح.");
+} catch (error) {
+    console.warn("تعذر تشغيل Firebase Analytics:", error);
+}
 </script>
 
 </body>
