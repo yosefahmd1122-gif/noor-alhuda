@@ -850,32 +850,6 @@ footer > div:first-child{
         font-size:44px;
     }
 
-    .admin-dashboard{margin-top:18px;border-top:1px solid var(--border);padding-top:18px}
-    .admin-dashboard.hidden{display:none}
-    .admin-dashboard-title{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
-    .admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
-    .admin-tab{border:1px solid var(--border);background:#fff;padding:11px 15px;border-radius:12px;cursor:pointer;font-weight:700}
-    .admin-tab.active{background:#17352f;color:#fff;border-color:#17352f}
-    .admin-view{display:none}.admin-view.active{display:block}
-    .admin-control-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-    .admin-control-card{border:1px solid var(--border);border-radius:16px;padding:16px;background:#fff}
-    .admin-control-card h4{margin:0 0 10px}
-    .control-row{display:flex;align-items:center;justify-content:space-between;gap:12px;padding:10px 0;border-bottom:1px dashed #d7ddd9}
-    .control-row:last-child{border-bottom:0}
-    .control-row input[type=text],.control-row textarea{width:100%}
-    .section-control-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
-    .section-control-item{display:flex;align-items:center;gap:8px;padding:10px;border:1px solid var(--border);border-radius:10px;background:#fafcfb}
-    .switch-control{display:inline-flex;align-items:center;gap:8px;font-weight:700;cursor:pointer}
-    .switch-control input{width:20px;height:20px;accent-color:#17352f}
-    .dashboard-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:14px}
-    .dashboard-stat{padding:14px;border:1px solid var(--border);border-radius:14px;background:#fff;text-align:center}
-    .dashboard-stat strong{display:block;font-size:25px;margin-bottom:4px}
-    .blocked-users-list{display:grid;gap:8px;margin-top:10px}
-    .blocked-user-item{display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid var(--border);border-radius:10px;padding:9px;background:#fafafa}
-    .danger-small{background:#8f1d2c!important;color:#fff!important;border-color:#8f1d2c!important;padding:7px 10px!important}
-    .admin-open-dashboard{width:100%;margin-top:12px;font-size:17px}
-    .admin-note{font-size:13px;color:#666;line-height:1.8}
-    @media(max-width:800px){.admin-control-grid{grid-template-columns:1fr}.dashboard-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.section-control-list{grid-template-columns:1fr}}
     .admin-switch{
         flex-direction:column;
         align-items:stretch;
@@ -1226,181 +1200,7 @@ footer > div:first-child{font-size:25px}
 
 /* Preserve all existing functional classes/IDs; this block only overrides appearance. */
 
-
-/* =========================================================
-   شريط أقسام المنصة الجانبي
-   واجهة فقط — لا يغيّر وظائف الأقسام أو التسجيل
-========================================================= */
-
-body{
-    padding-left:76px;
-}
-
-#sectionsMenuToggle{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:fixed;
-    left:76px;
-    top:18px;
-    z-index:1201;
-    width:34px;
-    height:42px;
-    padding:0;
-    border:1px solid rgba(212,175,55,.8);
-    border-radius:12px 0 0 12px;
-    background:#04372f;
-    color:#fff;
-    font-size:22px;
-    font-weight:bold;
-    cursor:pointer;
-    box-shadow:0 6px 18px rgba(0,0,0,.18);
-    transition:left .25s ease,background .2s ease;
-}
-
-#mainNavigation{
-    position:fixed !important;
-    left:0 !important;
-    top:0 !important;
-    right:auto !important;
-    z-index:1200 !important;
-    width:76px;
-    height:100vh;
-    max-height:100vh;
-    overflow-x:hidden !important;
-    overflow-y:auto !important;
-    display:flex !important;
-    flex-direction:column !important;
-    flex-wrap:nowrap !important;
-    justify-content:flex-start !important;
-    align-items:stretch !important;
-    gap:8px;
-    padding:74px 8px 18px !important;
-    background:rgba(4,55,47,.98);
-    backdrop-filter:blur(14px);
-    -webkit-backdrop-filter:blur(14px);
-    box-shadow:8px 0 24px rgba(0,0,0,.20);
-    transition:width .25s ease;
-}
-
-#mainNavigation button{
-    width:100%;
-    min-height:46px;
-    flex:0 0 auto;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:9px;
-    padding:10px 7px;
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-}
-
-#mainNavigation button .section-icon{
-    flex:0 0 auto;
-    font-size:20px;
-}
-
-#mainNavigation button .section-name{
-    display:none;
-}
-
-#mainNavigation.sidebar-expanded{
-    width:240px;
-    padding-left:10px !important;
-    padding-right:10px !important;
-}
-
-#mainNavigation.sidebar-expanded button{
-    justify-content:flex-start;
-    padding-left:12px;
-    padding-right:12px;
-}
-
-#mainNavigation.sidebar-expanded button .section-name{
-    display:inline;
-}
-
-body.sidebar-expanded{
-    padding-left:240px;
-}
-
-body.sidebar-expanded #sectionsMenuToggle{
-    left:240px;
-}
-
-.page{
-    max-width:1180px;
-    margin-left:auto;
-    margin-right:auto;
-}
-
-@media (max-width:600px){
-    body{
-        padding-left:64px;
-    }
-
-    #sectionsMenuToggle{
-        left:64px;
-        top:14px;
-        width:32px;
-        height:40px;
-    }
-
-    #mainNavigation{
-        width:64px;
-        padding-top:68px !important;
-    }
-
-    #mainNavigation.sidebar-expanded{
-        width:210px;
-    }
-
-    body.sidebar-expanded{
-        padding-left:210px;
-    }
-
-    body.sidebar-expanded #sectionsMenuToggle{
-        left:210px;
-    }
-
-    #mainNavigation button .section-icon{
-        font-size:18px;
-    }
-
-    #mainNavigation button{
-        min-height:44px;
-    }
-
-    .page{
-        width:auto !important;
-        max-width:1180px;
-        margin:20px auto !important;
-        padding:10px !important;
-    }
-
-    .quran-text{
-        min-width:0;
-        overflow-wrap:anywhere;
-    }
-}
-
-
-<style id="visitor-profile-admin-css">
-.visitor-profile-card{background:linear-gradient(180deg,#fffdf6,#f8f1dc);border:1px solid #d8c58a;border-radius:18px;padding:18px;margin:16px 0}
-.visitor-profile-card h3{margin:0 0 8px;color:#5c4310}
-.profile-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
-.profile-grid label{display:flex;flex-direction:column;gap:6px;font-weight:600;color:#3e3320}
-.profile-grid input{width:100%;box-sizing:border-box}
-.profile-note{font-size:13px;color:#6f675a;margin:8px 0}
-.profile-required{color:#9b2635}
-.admin-user-profile{margin-top:10px;padding:12px;border-radius:12px;background:#faf8ef;border:1px solid #ddd2ad;line-height:1.9}
-.admin-user-profile code{direction:ltr;unicode-bidi:plaintext}
-@media(max-width:700px){.profile-grid{grid-template-columns:1fr}}
-.surah-btn.selected{background:#f2e4ae;border-color:#c9a227;box-shadow:0 0 0 2px rgba(201,162,39,.22);}
 </style>
-
 
 <style>
     ::selection{background:rgba(212,175,55,.28);color:#15342e}
@@ -1408,85 +1208,6 @@ body.sidebar-expanded #sectionsMenuToggle{
         outline:3px solid rgba(212,175,55,.42);
         outline-offset:2px;
     }
-
-/* ===============================
-   نافذة الصلاة على النبي
-================================ */
-.salawat-popup{
-    position:fixed;
-    inset:0;
-    z-index:1300;
-    display:none;
-    align-items:center;
-    justify-content:center;
-    padding:20px;
-    background:rgba(2,24,20,.38);
-    pointer-events:none;
-}
-
-.salawat-popup.show{
-    display:flex;
-    pointer-events:auto;
-}
-
-.salawat-popup-box{
-    width:min(720px,92vw);
-    padding:24px 28px;
-    background:#7a1830;
-    border:2px solid #d4af37;
-    border-radius:22px;
-    box-shadow:0 18px 45px rgba(0,0,0,.25);
-    text-align:center;
-}
-
-.salawat-popup-symbol{
-    color:#b28a12;
-    font-size:30px;
-    margin-bottom:10px;
-}
-
-.salawat-popup-text{
-    color:#ffffff;
-    font-size:23px;
-    font-weight:bold;
-    line-height:1.9;
-}
-
-
-
-/* ===============================
-   قسم سؤال
-================================ */
-#religiousQuestionResult{
-    min-height:90px;
-    line-height:2;
-}
-#religiousQuestionInput{
-    resize:vertical;
-    min-height:130px;
-    font-size:18px;
-}
-</style>
-<style>
-.chat-box{margin-top:18px;border:1px solid var(--border);border-radius:18px;overflow:hidden;background:#f8fdfb}
-.chat-messages{min-height:260px;max-height:520px;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px}
-.chat-message{max-width:82%;padding:12px 15px;border-radius:16px;line-height:1.9;white-space:pre-wrap;word-break:break-word}
-.chat-message.visitor{align-self:flex-start;background:#e8f5f0;border:1px solid #c8ded6}
-.chat-message.owner{align-self:flex-end;background:#000000;border:1px solid #ddc66d}
-.chat-meta{display:block;font-size:12px;color:var(--muted);margin-top:5px}
-.chat-compose{padding:14px;background:white;border-top:1px solid var(--border)}
-.admin-switch{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
-.admin-switch input{flex:1;min-width:220px}
-.admin-panel{margin-top:18px;border-top:1px solid var(--border);padding-top:18px}
-.admin-panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
-.admin-conversations{display:grid;gap:10px;margin-top:14px}
-.admin-conversation{width:100%;text-align:right;border:1px solid var(--border);border-radius:14px;background:#fff;padding:15px;cursor:pointer}
-.admin-conversation:hover{background:#fff8da;border-color:var(--gold)}
-.admin-conversation.unanswered{border-right:5px solid #c9a227}
-.admin-conversation.answered{border-right:5px solid #2e7d32}
-.admin-reply-box{margin-top:18px;padding-top:18px;border-top:1px dashed #c7d8d1}
-.admin-reply-box h3{margin-top:0}
-@media(max-width:600px){.admin-switch{flex-direction:column;align-items:stretch}.chat-message{max-width:94%}}
 </style>
 </head>
 
@@ -1568,17 +1289,6 @@ body.sidebar-expanded #sectionsMenuToggle{
 
 </div>
 
-
-<!-- رسالة الصلاة على النبي في منتصف الصفحة -->
-<div id="salawatPopup" class="salawat-popup" role="status" aria-live="polite">
-    <div class="salawat-popup-box">
-        <div class="salawat-popup-symbol">ﷺ</div>
-        <div class="salawat-popup-text">
-            اللهم صل وسلم وبارك على سيدنا محمد
-        </div>
-    </div>
-</div>
-
 <header>
 
     <h1>
@@ -1590,7 +1300,7 @@ body.sidebar-expanded #sectionsMenuToggle{
     </div>
 
     <p>
-        القرآن الكريم • التلاوة • التفسير • سؤال • الأحكام • الأدعية والأذكار
+        القرآن الكريم • التلاوة • التفسير • الأحكام • الأدعية والأذكار
     </p>
 
 </header>
@@ -1599,59 +1309,46 @@ body.sidebar-expanded #sectionsMenuToggle{
      القائمة
 ================================ -->
 
-<button type="button" id="sectionsMenuToggle" aria-expanded="false" aria-controls="mainNavigation" title="توسيع أقسام المنصة">
-    ‹
-</button>
+<nav>
 
-<nav id="mainNavigation" aria-label="أقسام المنصة">
-
-    <button type="button" onclick="showPage('home')">
-        <span class="section-icon">🏠</span>
-        <span class="section-name">الرئيسية</span>
+    <button onclick="showPage('home')">
+        🏠 الرئيسية
     </button>
 
-    <button type="button" onclick="showPage('quran')">
-        <span class="section-icon">📖</span>
-        <span class="section-name">القرآن الكريم</span>
+    <button onclick="showPage('quran')">
+        📖 القرآن الكريم
     </button>
 
-    <button type="button" onclick="showPage('recitation')">
-        <span class="section-icon">🎧</span>
-        <span class="section-name">التلاوة</span>
+    <button onclick="showPage('recitation')">
+        🎧 التلاوة
     </button>
 
-    <button type="button" onclick="showPage('tafsir')">
-        <span class="section-icon">📚</span>
-        <span class="section-name">التفسير</span>
+    <button onclick="showPage('tafsir')">
+        📚 التفسير
     </button>
 
-    <button type="button" onclick="showPage('searchAyah')">
-        <span class="section-icon">🔎</span>
-        <span class="section-name">البحث</span>
+    <button onclick="showPage('searchAyah')">
+        🔎 البحث
     </button>
 
-    <button type="button" onclick="showPage('askQuestion')">
-        <span class="section-icon">❓</span>
-        <span class="section-name">سؤال</span>
-    </button>
-    <button type="button" onclick="showPage('liveChat')">
-        <span class="section-icon">💬</span>
-        <span class="section-name">تواصل معي</span>
+    <button onclick="showPage('questions')">
+        ❓ أسئلة دينية
     </button>
 
-    <button type="button" onclick="showPage('rulings')">
-        <span class="section-icon">⚖️</span>
-        <span class="section-name">الأحكام</span>
+    <button onclick="showPage('religiousExams')">
+        📝 امتحانات دينية
     </button>
 
-    <button type="button" onclick="showPage('adhkar')">
-        <span class="section-icon">🤲</span>
-        <span class="section-name">الأدعية والأذكار</span>
+    <button onclick="showPage('rulings')">
+        ⚖️ الأحكام
     </button>
 
-    <button type="button" onclick="showPage('guide')">
-        <span class="section-icon">📘</span>
-        <span class="section-name">دليل المنصة</span>
+    <button onclick="showPage('adhkar')">
+        🤲 الأدعية والأذكار
+    </button>
+
+    <button onclick="showPage('guide')">
+        📘 دليل المنصة
     </button>
 
 
@@ -1707,11 +1404,12 @@ body.sidebar-expanded #sectionsMenuToggle{
                 🔎 البحث عن آية
             </button>
 
-            <button onclick="showPage('askQuestion')">
-                ❓ سؤال
+            <button onclick="showPage('questions')">
+                ❓ أسئلة دينية
             </button>
-            <button onclick="showPage('liveChat')">
-                💬 تواصل معي
+
+            <button onclick="showPage('religiousExams')">
+                📝 امتحانات دينية
             </button>
 
             <button onclick="showPage('rulings')">
@@ -2012,136 +1710,268 @@ body.sidebar-expanded #sectionsMenuToggle{
      الأسئلة
 ================================ -->
 
-<!-- ===============================
-     سؤال
-================================ -->
+<section id="questions" class="page">
 
-<section id="askQuestion" class="page">
     <div class="card">
-        <h2>❓ سؤال</h2>
+
+        <h2>
+            ❓ أسئلة دينية
+        </h2>
 
         <div class="questions-info">
-            اكتب سؤالك الديني الذي تريد معرفة إجابته، ثم اضغط «إظهار الإجابة».
+
+            اختبر معلوماتك الدينية من خلال أسئلة متنوعة.
             <br>
-            ستظهر الإجابة إذا كان السؤال من المعلومات المتاحة داخل المنصة،
-            وإذا لم تكن متاحة يمكنك البحث عنه في فتاوى دار الإفتاء المصرية.
+            لكل سؤال أربعة اختيارات، وبعد الإجابة ستظهر لك النتيجة.
+            <br>
+            استخدم زر «السؤال التالي» للانتقال إلى السؤال التالي.
+
         </div>
 
-        <label for="religiousQuestionInput">اكتب سؤالك:</label>
-
-        <textarea
-            id="religiousQuestionInput"
-            rows="5"
-            placeholder="مثال: ما عدد الصلوات المفروضة في اليوم والليلة؟"
-            autocomplete="off"
-        ></textarea>
-
-        <button
-            type="button"
-            class="action"
-            id="askQuestionButton"
-            onclick="answerReligiousQuestion()"
+        <div
+            id="questionBox"
+            class="question-box"
         >
-            ❓ إظهار الإجابة
-        </button>
 
-        <button
-            type="button"
-            class="action"
-            onclick="clearReligiousQuestion()"
-        >
-            🗑️ مسح
-        </button>
+            <div
+                id="questionNumber"
+                class="question-number"
+            >
+                السؤال ١
+            </div>
 
-        <div id="religiousQuestionResult" class="result-box">
-            اكتب سؤالك الديني ثم اضغط «إظهار الإجابة».
+            <div
+                id="questionText"
+                class="question-text"
+            >
+                جاري تحميل السؤال...
+            </div>
+
+            <div
+                id="questionOptions"
+                class="question-options"
+            ></div>
+
+            <div
+                id="questionFeedback"
+                class="question-feedback"
+            ></div>
+
+            <button
+                id="nextQuestionButton"
+                type="button"
+                class="action"
+                onclick="nextQuestion()"
+                style="display:none"
+            >
+                ➡️ السؤال التالي
+            </button>
+
         </div>
+
+        <div class="question-progress">
+
+            <div
+                id="questionProgressBar"
+                class="question-progress-bar"
+            ></div>
+
+        </div>
+
+        <div
+            id="questionComplete"
+            class="question-complete"
+        >
+            🎉 أحسنت! لقد أكملت مجموعة الأسئلة.
+            <br>
+
+            <button
+                type="button"
+                class="action"
+                onclick="restartQuestions()"
+            >
+                🔄 مجموعة جديدة
+            </button>
+
+        </div>
+
     </div>
+
+</section>
+
+<!-- ===============================
+     الامتحانات
+================================ -->
+
+<section id="religiousExams" class="page">
+
+    <div class="card">
+
+        <h2>
+            📝 الامتحانات الدينية
+        </h2>
+
+        <div
+            id="examSecurityWarning"
+            class="exam-security-warning"
+            style="display:none"
+        ></div>
+
+        <div class="exam-info">
+
+            <div class="exam-type">
+                🧾 اختبار اليوم
+            </div>
+
+            هذا الاختبار يتكون من ١٥ سؤالًا:
+
+            <br>
+
+            🟢 ٥ أسئلة اختيار من متعدد
+            <br>
+
+            🔵 ٥ أسئلة اكتب الإجابة
+            <br>
+
+            🟡 ٥ أسئلة صح أو خطأ
+
+            <br><br>
+
+            🔄 الاختبار يتغير يوميًا،
+            والأسئلة الجديدة لا تتكرر مع اختبار اليوم السابق.
+
+            <br><br>
+
+            📊 لن تظهر صحة الإجابة أثناء الحل.
+            سيتم فحص جميع الإجابات في النهاية.
+
+        </div>
+
+        <div
+            id="examQuestionBox"
+            class="exam-question-box"
+        >
+
+            <div
+                id="examQuestionNumber"
+                class="exam-question-number"
+            >
+                السؤال ١ من ١٥
+            </div>
+
+            <div
+                id="examQuestionType"
+                class="exam-type"
+            >
+                اختيار من متعدد
+            </div>
+
+            <div
+                id="examQuestionText"
+                class="exam-question-text"
+            >
+                جاري تجهيز الاختبار...
+            </div>
+
+            <div
+                id="examOptions"
+                class="exam-options"
+            ></div>
+
+            <div
+                id="examTextAnswerBox"
+                class="exam-text-answer"
+                style="display:none"
+            >
+
+                <input
+                    id="examTextAnswer"
+                    type="text"
+                    placeholder="اكتب إجابتك هنا..."
+                    autocomplete="off"
+                >
+
+                <button
+                    type="button"
+                    class="action"
+                    id="examTextConfirmButton"
+                    onclick="submitExamTextAnswer()"
+                >
+                    ✅ تأكيد الإجابة
+                </button>
+
+            </div>
+
+            <div
+                id="examFeedback"
+                class="exam-feedback"
+            ></div>
+
+            <button
+                id="examNextButton"
+                type="button"
+                class="action"
+                onclick="nextExamQuestion()"
+                style="display:none"
+            >
+                ➡️ السؤال التالي
+            </button>
+
+        </div>
+
+        <div class="exam-progress">
+
+            <div
+                id="examProgressBar"
+                class="exam-progress-bar"
+            ></div>
+
+        </div>
+
+        <div
+            id="examScore"
+            class="exam-score"
+            style="display:none"
+        >
+
+            <div>
+                درجتك في اختبار اليوم
+            </div>
+
+            <div
+                id="examScoreNumber"
+                class="exam-score-number"
+            >
+                ٠ / ١٥
+            </div>
+
+            <div id="examScoreMessage">
+            </div>
+
+        </div>
+
+        <div
+            id="examResultBox"
+            class="exam-result-box"
+        ></div>
+
+        <button
+            id="examRestartButton"
+            type="button"
+            class="action"
+            onclick="startNewExam()"
+            style="display:none"
+        >
+            🔄 عرض نتيجة اختبار اليوم
+        </button>
+
+    </div>
+
 </section>
 
 <!-- ===============================
      الأحكام
 ================================ -->
-
-<section id="liveChat" class="page">
-    <div class="card">
-        <h2>💬 تواصل معي</h2>
-        <div class="questions-info">
-            اكتب سؤالك، وسيصل إلى صاحب منصة نور الهدى ليجيبك بنفسه.
-            <br>يمكنك العودة إلى هذه الصفحة لمتابعة الرد داخل نفس المحادثة.
-        </div>
-        <div class="visitor-profile-card">
-            <h3>👤 بيانات الزائر</h3>
-            <p class="profile-note">اكتب بياناتك حتى يستطيع صاحب المنصة معرفة صاحب السؤال والتواصل معك داخل المنصة. <span class="profile-required">يمكنك ترك أي بيانات غير ضرورية فارغة.</span></p>
-            <div class="profile-grid">
-                <label>الاسم
-                    <input id="visitorNameInput" type="text" placeholder="اكتب اسمك" autocomplete="name">
-                </label>
-                <label>السن
-                    <input id="visitorAgeInput" type="number" min="1" max="120" placeholder="السن" inputmode="numeric">
-                </label>
-                <label>السكن / المنطقة
-                    <input id="visitorResidenceInput" type="text" placeholder="المدينة أو المنطقة">
-                </label>
-                <label>اسم العائلة
-                    <input id="visitorFamilyInput" type="text" placeholder="اسم العائلة" autocomplete="family-name">
-                </label>
-            </div>
-            <button type="button" class="gold-button" style="margin-top:12px" onclick="saveVisitorProfile()">💾 حفظ بياناتي</button>
-            <span id="profileSaveStatus" class="admin-note" style="margin-right:10px"></span>
-        </div>
-        <div id="chatStatus" class="result-box">⏳ جاري تجهيز المحادثة...</div>
-        <div id="chatBox" class="chat-box" style="display:none;">
-            <div id="chatMessages" class="chat-messages"></div>
-            <div class="chat-compose">
-                <textarea id="chatInput" rows="3" placeholder="اكتب سؤالك هنا..." autocomplete="off"></textarea>
-                <button type="button" class="action" id="chatSendButton" onclick="sendChatMessage()">📤 إرسال السؤال</button>
-            </div>
-        </div>
-    </div>
-    <div class="card">
-        <h2>🔐 صاحب المنصة</h2>
-        <p class="small-note">هذه اللوحة مخصصة لصاحب المنصة للرد على أسئلة الزوار.</p>
-        <div class="admin-switch">
-            <input id="adminEmailInput" type="email" placeholder="البريد الإلكتروني لصاحب المنصة" autocomplete="username">
-            <input id="adminPasswordInput" type="password" placeholder="كلمة المرور" autocomplete="current-password">
-            <button type="button" class="action" onclick="openAdminPanel()">🔐 دخول لوحة الردود</button>
-        </div>
-        <div id="adminLoginStatus" class="small-note" style="margin-top:10px;"></div>
-        <div id="adminPanel" class="admin-panel" style="display:none;">
-            <button type="button" class="gold-button admin-open-dashboard" onclick="toggleFullAdminDashboard()">⚙️ فتح لوحة التحكم الكاملة</button>
-            <div id="fullAdminDashboard" class="admin-dashboard hidden">
-                <div class="admin-dashboard-title"><h3>🛠️ لوحة التحكم المتخصصة — منصة نور الهدى</h3><span id="dashboardSaveStatus" class="admin-note"></span></div>
-                <div class="admin-tabs">
-                    <button type="button" class="admin-tab active" onclick="showAdminView('overview',this)">📊 الرئيسية</button>
-                    <button type="button" class="admin-tab" onclick="showAdminView('replies',this)">📥 الرد على الزوار</button>
-                    <button type="button" class="admin-tab" onclick="showAdminView('sections',this)">🧩 الأقسام</button>
-                    <button type="button" class="admin-tab" onclick="showAdminView('visitors',this)">👥 الزوار</button>
-                    <button type="button" class="admin-tab" onclick="showAdminView('general',this)">⚙️ إعدادات المنصة</button>
-                    <button type="button" class="admin-tab" onclick="showAdminView('salawat',this)">☾ صلوا على النبي</button>
-                </div>
-                <div id="adminView-overview" class="admin-view active">
-                    <div class="dashboard-stats">
-                        <div class="dashboard-stat"><strong id="statAll">0</strong>كل المحادثات</div>
-                        <div class="dashboard-stat"><strong id="statPending">0</strong>بانتظار الرد</div>
-                        <div class="dashboard-stat"><strong id="statBlocked">0</strong>زوار محظورون</div>
-                        <div class="dashboard-stat"><strong id="statSections">0</strong>أقسام مفتوحة</div>
-                    </div>
-                    <div class="admin-control-card"><h4>🔐 حالة المنصة الآن</h4><div id="dashboardPlatformStatus" class="result-box">جاري التحميل...</div><p class="admin-note">هذه الحالة تتحكم في وصول الزوار فقط. صاحب المنصة يظل قادرًا على الدخول والإدارة.</p></div>
-                </div>
-                <div id="adminView-replies" class="admin-view">
-                    <div class="admin-panel-head"><h3>📥 أسئلة الزوار</h3><button type="button" class="action" onclick="loadAdminConversations()">🔄 تحديث</button></div>
-                    <div id="adminConversations" class="admin-conversations">جاري تحميل الأسئلة...</div>
-                    <div id="adminReplyBox" class="admin-reply-box" style="display:none;"><h3 id="adminSelectedTitle">الرد على السؤال</h3><div id="adminSelectedQuestion" class="result-box"></div><textarea id="adminReplyInput" rows="5" placeholder="اكتب الإجابة التي تريد إرسالها للزائر..."></textarea><button type="button" class="gold-button" onclick="sendAdminReply()">📤 إرسال الإجابة</button></div>
-                </div>
-                <div id="adminView-sections" class="admin-view"><div class="admin-control-card"><h4>🧩 فتح وإغلاق أقسام المنصة</h4><div id="sectionControlList" class="section-control-list"></div><button type="button" class="gold-button" style="margin-top:12px" onclick="savePlatformSettings()">💾 حفظ إعدادات الأقسام</button></div></div>
-                <div id="adminView-visitors" class="admin-view"><div class="admin-control-grid"><div class="admin-control-card"><h4>🚫 حظر زائر</h4><input id="blockVisitorUid" type="text" placeholder="ضع UID الزائر هنا"><button type="button" class="danger-small" style="margin-top:10px" onclick="blockVisitor()">🚫 حظر هذا الزائر</button><p class="admin-note">يمكنك نسخ UID من بطاقة السؤال مباشرة.</p></div><div class="admin-control-card"><h4>🔓 الزوار المحظورون</h4><div id="blockedUsersList" class="blocked-users-list">لا يوجد زوار محظورون.</div></div></div><div class="admin-control-card" style="margin-top:14px"><h4>🪪 بيانات الزوار</h4><p class="admin-note">تظهر بيانات الزائر المحفوظة في بطاقة كل سؤال. استخدمها فقط للغرض الذي أخبرت الزائر به، ولا تطلب بيانات لا تحتاجها.</p></div></div>
-                <div id="adminView-general" class="admin-view"><div class="admin-control-grid"><div class="admin-control-card"><h4>🌐 الوصول العام</h4><label class="switch-control"><input id="platformEnabled" type="checkbox" checked onchange="savePlatformSettings()"> المنصة متاحة للزوار</label><p class="admin-note">عند الإغلاق يتم منع الزوار من استخدام المنصة مع بقاء لوحة المالك متاحة.</p></div><div class="admin-control-card"><h4>👋 رسالة الترحيب</h4><textarea id="platformWelcome" rows="4" placeholder="رسالة تظهر للزوار عند الدخول..."></textarea><button type="button" class="gold-button" style="margin-top:10px" onclick="savePlatformSettings()">💾 حفظ</button></div></div></div>
-                <div id="adminView-salawat" class="admin-view"><div class="admin-control-card"><h4>☾ ✦ صلوا على النبي ﷺ ✦ ☽</h4><label class="switch-control"><input id="salawatEnabled" type="checkbox" checked onchange="savePlatformSettings()"> إظهار زر الصلاة على النبي</label><div style="margin-top:12px"><label>النص الذي يظهر داخل البطاقة</label><textarea id="salawatTextControl" rows="3" placeholder="اللهم صل وسلم وبارك على سيدنا محمد"></textarea></div><button type="button" class="gold-button" style="margin-top:10px" onclick="savePlatformSettings()">💾 حفظ إعدادات الصلاة على النبي</button><p class="admin-note">الضغط على الزر يفتح البطاقة، والضغط مرة ثانية يغلقها، بدون تشغيل صوت.</p></div></div>
-            </div>
-        </div>
-    </div>
-</section>
 
 <section id="rulings" class="page">
 
@@ -2246,11 +2076,21 @@ body.sidebar-expanded #sectionsMenuToggle{
         </p>
 
         <h3>
-            ❓ سؤال
+            ❓ الأسئلة الدينية
         </h3>
 
         <p>
-            اكتب أي سؤال ديني تريد معرفة إجابته، ثم اضغط «إظهار الإجابة».
+            أجب عن الأسئلة الدينية المتنوعة من خلال أربعة اختيارات.
+        </p>
+
+        <h3>
+            📝 الامتحانات الدينية
+        </h3>
+
+        <p>
+            اختبار يومي مكون من ١٥ سؤالًا:
+            ٥ اختيار من متعدد، و٥ أسئلة كتابة، و٥ صح أو خطأ.
+            الأسئلة تتغير يوميًا.
         </p>
 
         <h3>
@@ -2299,35 +2139,6 @@ body.sidebar-expanded #sectionsMenuToggle{
 
 </footer>
 
-
-<script>
-/* =========================================================
-   التحكم في شريط الأقسام الجانبي — واجهة فقط
-========================================================= */
-(function(){
-    const toggle = document.getElementById("sectionsMenuToggle");
-    const nav = document.getElementById("mainNavigation");
-
-    if(!toggle || !nav) return;
-
-    function setSidebar(expanded){
-        nav.classList.toggle("sidebar-expanded", expanded);
-        document.body.classList.toggle("sidebar-expanded", expanded);
-        toggle.setAttribute("aria-expanded", expanded ? "true" : "false");
-        toggle.textContent = expanded ? "›" : "‹";
-        toggle.title = expanded
-            ? "طي أسماء الأقسام"
-            : "توسيع أسماء الأقسام";
-    }
-
-    setSidebar(false);
-
-    toggle.addEventListener("click", function(){
-        setSidebar(!nav.classList.contains("sidebar-expanded"));
-    });
-})();
-</script>
-
 <script>
 
 /* =====================================================
@@ -2337,7 +2148,7 @@ body.sidebar-expanded #sectionsMenuToggle{
 const googleFormURL =
     "https://forms.gle/KYqB1A5vAxmETLy18";
 
-window.registerUser=function registerUser(){
+function registerUser(){
 
     const nameElement =
         document.getElementById("userName");
@@ -2388,16 +2199,21 @@ window.registerUser=function registerUser(){
         age
     );
 
-    if(welcomeScreen){
-        welcomeScreen.style.display = "none";
-        welcomeScreen.setAttribute("aria-hidden","true");
-    }
+    welcomeScreen.style.display =
+        "none";
 
-    // المتابعة داخل المنصة أولًا؛ لا نعيد توجيه الهاتف إلى صفحة خارجية.
-    try{
-        if(typeof showPage === "function") showPage("home");
-        window.dispatchEvent(new Event("noor-user-registered"));
-    }catch(e){ console.warn("register continuation", e); }
+    const newWindow =
+        window.open(
+            googleFormURL,
+            "_blank"
+        );
+
+    if(!newWindow){
+
+        window.location.href =
+            googleFormURL;
+
+    }
 
 }
 
@@ -2910,16 +2726,34 @@ surahs.forEach(
 
         button.type =
             "button";
-        button.dataset.surahNumber = String(number);
 
         button.textContent =
             toArabicNumber(number) +
             " - " +
             name;
 
-        button.addEventListener("click", function(){
-            selectQuranSurah(number);
-        });
+        button.onclick =
+            async function(){
+
+                showPage("quran");
+
+                await loadSurah(number);
+
+                const quranText =
+                    document.getElementById(
+                        "quranText"
+                    );
+
+                if(quranText){
+
+                    quranText.scrollIntoView({
+                        behavior:"smooth",
+                        block:"start"
+                    });
+
+                }
+
+            };
 
         surahGrid.appendChild(
             button
@@ -2966,26 +2800,7 @@ surahs.forEach(
    القرآن
 ===================================================== */
 
-async function selectQuranSurah(number){
-    number=Number(number)||1;
-    window.noorSelectedSurah=number;
-    try{ localStorage.setItem("noorSelectedSurah",String(number)); }catch(e){}
-    document.querySelectorAll("#surahGrid .surah-btn").forEach(function(b){
-        b.classList.toggle("selected", b.dataset.surahNumber===String(number));
-    });
-    showPage("quran");
-    await loadSurah(number);
-    const quranText=document.getElementById("quranText");
-    if(quranText){
-        requestAnimationFrame(function(){
-            quranText.scrollIntoView({behavior:"smooth",block:"start"});
-        });
-    }
-}
-
 async function loadSurah(number){
-    number=Number(number)||1;
-    window.noorSelectedSurah=number;
 
     const quranText =
         document.getElementById(
@@ -3041,8 +2856,6 @@ async function loadSurah(number){
                 ) +
 
             '</div>';
-
-        if(!result || !result.data || !Array.isArray(result.data.ayahs)) throw new Error("بيانات السورة غير صالحة");
 
         result.data.ayahs.forEach(
             ayah=>{
@@ -6748,14 +6561,70 @@ function showSalawatMessage(){
 }
 
 function playSalawat(){
-    const popup=document.getElementById("salawatPopup");
-    if(!popup) return;
-    const ps=window.platformSettings||{};
-    if(ps.salawatEnabled===false) return;
-    const text=document.getElementById("salawatPopupText");
-    if(text && ps.salawatText) text.textContent=ps.salawatText;
-    popup.classList.toggle("show");
-    clearTimeout(window.salawatPopupTimer);
+
+    const message =
+        document.getElementById(
+            "salawatMessage"
+        );
+
+    if(message){
+
+        message.style.display =
+            "none";
+
+    }
+
+    if(
+        !("speechSynthesis" in window) ||
+        !("SpeechSynthesisUtterance" in window)
+    ){
+
+        return;
+
+    }
+
+    window.speechSynthesis.cancel();
+
+    const speech =
+        new SpeechSynthesisUtterance(
+            "صلوا على النبي"
+        );
+
+    speech.lang =
+        "ar-SA";
+
+    speech.rate =
+        0.85;
+
+    speech.pitch =
+        1;
+
+    speech.volume =
+        1;
+
+    const voices =
+        window.speechSynthesis.getVoices();
+
+    const arabicVoice =
+        voices.find(
+            voice =>
+                voice.lang &&
+                voice.lang
+                    .toLowerCase()
+                    .startsWith("ar")
+        );
+
+    if(arabicVoice){
+
+        speech.voice =
+            arabicVoice;
+
+    }
+
+    window.speechSynthesis.speak(
+        speech
+    );
+
 }
 
 /* =====================================================
@@ -6808,754 +6677,39 @@ window.addEventListener(
     "load",
     function(){
 
-        const savedSurah=Number(localStorage.getItem("noorSelectedSurah")||1);
-        loadSurah(savedSurah>=1 && savedSurah<=114 ? savedSurah : 1);
+        loadSurah(1);
 
         loadReciters(false);
 
+        showSalawatMessage();
 
     }
 );
-
 
 </script>
 
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import { getAuth, signInAnonymously, signInWithEmailAndPassword, signOut } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-import { getFirestore, collection, addDoc, doc, updateDoc, setDoc, onSnapshot, query, orderBy, serverTimestamp, getDocs, getDoc } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+import { getAnalytics } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-analytics.js";
 
-const firebaseConfig={
-    apiKey:"AIzaSyBXvm1UflDiHGjkkVjw-HIJdQ6CtEDlE_8",
-    authDomain:"noor-al-huda-93992.firebaseapp.com",
-    projectId:"noor-al-huda-93992",
-    storageBucket:"noor-al-huda-93992.firebasestorage.app",
-    messagingSenderId:"329274355989",
-    appId:"1:329274355989:web:717e6d2febc6182f0a791c",
-    measurementId:"G-FM8QK2ZWHN"
-};
-const app=initializeApp(firebaseConfig);
-const auth=getAuth(app), db=getFirestore(app);
-let currentUser=null, currentConversationId=localStorage.getItem("noorLiveConversationId")||null;
-let currentAdminConversationId=null, unsubscribeMessages=null;
-
-function escapeHtml(v){return String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");}
-function chatTime(ts){try{const d=ts?.toDate?ts.toDate():new Date(ts);return Number.isNaN(d.getTime())?"":d.toLocaleString("ar-EG",{dateStyle:"short",timeStyle:"short"});}catch(e){return"";}}
-
-async function initLiveChat(){
-    const status=document.getElementById("chatStatus"), box=document.getElementById("chatBox");
-    try{
-        const cred=auth.currentUser?{user:auth.currentUser}:await signInAnonymously(auth); currentUser=cred.user; window.currentUser=currentUser; box.style.display="block";
-        await loadVisitorProfile();
-        status.innerHTML=currentConversationId?"💬 محادثتك محفوظة. يمكنك كتابة رسالة جديدة أو انتظار الرد.":"👋 اكتب سؤالك بالأسفل، وسيتم إنشاء محادثتك تلقائيًا.";
-        if(currentConversationId) subscribeToMessages(currentConversationId);
-    }catch(e){console.error(e);status.innerHTML="⚠️ تعذر الاتصال بخدمة المحادثة. تأكد من إعداد Firebase.";}
-}
-
-
-function fillVisitorProfile(profile){
-    const p=profile||{};
-    const map={visitorNameInput:p.name||"",visitorAgeInput:p.age||"",visitorResidenceInput:p.residence||"",visitorFamilyInput:p.family||""};
-    Object.entries(map).forEach(([id,val])=>{const el=document.getElementById(id);if(el && !el.value)el.value=val;});
-}
-window.saveVisitorProfile=async()=>{
-    if(!currentUser){await initLiveChat();if(!currentUser)return;}
-    const profile={
-        name:document.getElementById("visitorNameInput")?.value.trim()||"",
-        age:document.getElementById("visitorAgeInput")?.value.trim()||"",
-        residence:document.getElementById("visitorResidenceInput")?.value.trim()||"",
-        family:document.getElementById("visitorFamilyInput")?.value.trim()||""
-    };
-    try{
-        await setDoc(doc(db,"visitorProfiles",currentUser.uid),{...profile,updatedAt:serverTimestamp()},{merge:true});
-        localStorage.setItem("noorUserName",profile.name||"زائر");
-        const st=document.getElementById("profileSaveStatus");if(st)st.textContent="✅ تم حفظ البيانات";
-    }catch(e){console.error(e);const st=document.getElementById("profileSaveStatus");if(st)st.textContent="⚠️ تعذر الحفظ. تأكد من قواعد Firestore.";}
-};
-async function loadVisitorProfile(){
-    if(!currentUser)return;
-    fillVisitorProfile({name:localStorage.getItem("noorUserName")||""});
-    try{
-        const snap=await getDoc(doc(db,"visitorProfiles",currentUser.uid));
-        if(snap.exists()) fillVisitorProfile(snap.data());
-    }catch(e){console.warn("visitor profile read unavailable",e);}
-}
-
-async function sendChatMessage(){
-    const input=document.getElementById("chatInput"), btn=document.getElementById("chatSendButton"), text=input.value.trim();
-    if(!text)return;
-    if(!currentUser){await initLiveChat();if(!currentUser)return;}
-    btn.disabled=true;
-    try{
-        if(!currentConversationId){
-            const c=await addDoc(collection(db,"conversations"),{
-                visitorUid:currentUser.uid,
-                visitorName:localStorage.getItem("noorUserName")||document.getElementById("visitorNameInput")?.value.trim()||"زائر",
-                visitorAge:document.getElementById("visitorAgeInput")?.value.trim()||"",
-                visitorResidence:document.getElementById("visitorResidenceInput")?.value.trim()||"",
-                visitorFamily:document.getElementById("visitorFamilyInput")?.value.trim()||"",
-                question:text,createdAt:serverTimestamp(),updatedAt:serverTimestamp(),answered:false
-            });
-            currentConversationId=c.id;localStorage.setItem("noorLiveConversationId",c.id);subscribeToMessages(c.id);
-        }else{
-            await updateDoc(doc(db,"conversations",currentConversationId),{
-                updatedAt:serverTimestamp(),answered:false,
-                visitorName:document.getElementById("visitorNameInput")?.value.trim()||localStorage.getItem("noorUserName")||"زائر",
-                visitorAge:document.getElementById("visitorAgeInput")?.value.trim()||"",
-                visitorResidence:document.getElementById("visitorResidenceInput")?.value.trim()||"",
-                visitorFamily:document.getElementById("visitorFamilyInput")?.value.trim()||""
-            });
-        }
-        await addDoc(collection(db,"conversations",currentConversationId,"messages"),{sender:"visitor",text,createdAt:serverTimestamp()});
-        input.value="";document.getElementById("chatStatus").innerHTML="✅ تم إرسال سؤالك. ستظهر الإجابة هنا عندما يرد صاحب المنصة.";
-    }catch(e){console.error(e);document.getElementById("chatStatus").innerHTML="⚠️ لم يتم إرسال السؤال. حاول مرة أخرى.";}
-    finally{btn.disabled=false;}
-}
-
-function subscribeToMessages(id){
-    if(unsubscribeMessages)unsubscribeMessages();
-    const q=query(collection(db,"conversations",id,"messages"),orderBy("createdAt","asc"));
-    unsubscribeMessages=onSnapshot(q,snap=>{
-        const c=document.getElementById("chatMessages");if(!c)return;c.innerHTML="";
-        snap.forEach(d=>{const x=d.data(),el=document.createElement("div");el.className="chat-message "+(x.sender==="owner"?"owner":"visitor");el.innerHTML=escapeHtml(x.text)+"<span class='chat-meta'>"+(x.sender==="owner"?"صاحب المنصة":"أنت")+" • "+escapeHtml(chatTime(x.createdAt))+"</span>";c.appendChild(el);});
-        c.scrollTop=c.scrollHeight;
-    });
-}
-
-const OWNER_UID="WCtZOcEYljPwxc3zGuq2sJFznyK2";
-const CONTROLLED_SECTIONS=[
-  ["quran","📖 القرآن الكريم"],["recitation","🎧 التلاوة"],["tafsir","📚 التفسير"],["searchAyah","🔎 البحث في القرآن"],["askQuestion","❓ سؤال"],["liveChat","💬 تواصل معي"],["rulings","⚖️ الأحكام والفتاوى"],["adhkar","📿 الأذكار"],["guide","🧭 الدليل"]
-];
-window.platformSettings={enabled:true,disabledSections:[],blockedVisitorUids:[],salawatEnabled:true,salawatText:"اللهم صل وسلم وبارك على سيدنا محمد",welcomeMessage:""};
-window.toggleFullAdminDashboard=()=>{const d=document.getElementById("fullAdminDashboard");if(!d)return;d.classList.toggle("hidden");if(!d.classList.contains("hidden")){renderPlatformControls();renderDashboardStats();}};
-window.showAdminView=(name,btn)=>{document.querySelectorAll(".admin-view").forEach(v=>v.classList.remove("active"));document.getElementById("adminView-"+name)?.classList.add("active");document.querySelectorAll(".admin-tab").forEach(b=>b.classList.remove("active"));if(btn)btn.classList.add("active");if(name==="replies")window.loadAdminConversations();if(name==="overview")renderDashboardStats();};
-function renderPlatformControls(){
- const ps=window.platformSettings||{};
- const list=document.getElementById("sectionControlList"); if(list) list.innerHTML=CONTROLLED_SECTIONS.map(([id,label])=>`<label class="section-control-item"><input type="checkbox" data-section="${id}" ${!ps.disabledSections.includes(id)?"checked":""}> ${label}</label>`).join("");
- const en=document.getElementById("platformEnabled");if(en)en.checked=ps.enabled!==false;
- const w=document.getElementById("platformWelcome");if(w)w.value=ps.welcomeMessage||"";
- const se=document.getElementById("salawatEnabled");if(se)se.checked=ps.salawatEnabled!==false;
- const st=document.getElementById("salawatTextControl");if(st)st.value=ps.salawatText||"اللهم صل وسلم وبارك على سيدنا محمد";
- renderBlockedUsers();renderDashboardStats();
-}
-function collectPlatformSettings(){
- const disabled=[];document.querySelectorAll("#sectionControlList input[data-section]").forEach(i=>{if(!i.checked)disabled.push(i.dataset.section);});
- return {enabled:document.getElementById("platformEnabled")?.checked!==false,disabledSections:disabled,blockedVisitorUids:Array.isArray(window.platformSettings.blockedVisitorUids)?window.platformSettings.blockedVisitorUids:[],salawatEnabled:document.getElementById("salawatEnabled")?.checked!==false,salawatText:(document.getElementById("salawatTextControl")?.value||"اللهم صل وسلم وبارك على سيدنا محمد").trim(),welcomeMessage:(document.getElementById("platformWelcome")?.value||"").trim()};
-}
-window.savePlatformSettings=async()=>{if(!currentUser||currentUser.uid!==OWNER_UID){alert("يجب تسجيل الدخول بحساب صاحب المنصة أولًا.");return;}try{const data=collectPlatformSettings();await setDoc(doc(db,"platformSettings","main"),data,{merge:true});window.platformSettings={...window.platformSettings,...data};applyPlatformSettings(window.platformSettings);const st=document.getElementById("dashboardSaveStatus");if(st)st.textContent="✅ تم حفظ الإعدادات";renderPlatformControls();}catch(e){console.error(e);alert("تعذر حفظ إعدادات المنصة. تأكد من قواعد Firestore.");}};
-function renderBlockedUsers(){const c=document.getElementById("blockedUsersList");if(!c)return;const arr=window.platformSettings.blockedVisitorUids||[];c.innerHTML=arr.length?arr.map(uid=>`<div class="blocked-user-item"><code>${escapeHtml(uid)}</code><button type="button" class="danger-small" onclick="unblockVisitor('${escapeHtml(uid)}')">🔓 فك الحظر</button></div>`).join(""):"لا يوجد زوار محظورون.";}
-window.blockVisitor=async()=>{const input=document.getElementById("blockVisitorUid"),uid=(input?.value||"").trim();if(!uid)return alert("اكتب UID الزائر أولًا.");const arr=[...(window.platformSettings.blockedVisitorUids||[])];if(!arr.includes(uid))arr.push(uid);window.platformSettings.blockedVisitorUids=arr;await window.savePlatformSettings();if(input)input.value="";};
-window.unblockVisitor=async(uid)=>{window.platformSettings.blockedVisitorUids=(window.platformSettings.blockedVisitorUids||[]).filter(x=>x!==uid);await window.savePlatformSettings();};
-async function loadPlatformSettings(){try{const ref=doc(db,"platformSettings","main");onSnapshot(ref,snap=>{const data=snap.exists()?snap.data():{};window.platformSettings={enabled:data.enabled!==false,disabledSections:Array.isArray(data.disabledSections)?data.disabledSections:[],blockedVisitorUids:Array.isArray(data.blockedVisitorUids)?data.blockedVisitorUids:[],salawatEnabled:data.salawatEnabled!==false,salawatText:data.salawatText||"اللهم صل وسلم وبارك على سيدنا محمد",welcomeMessage:data.welcomeMessage||""};applyPlatformSettings(window.platformSettings);if(currentUser?.uid===OWNER_UID)renderPlatformControls();});}catch(e){console.error(e);}}
-function applyPlatformSettings(ps){window.platformSettings=ps;const isOwner=window.currentUser?.uid===OWNER_UID;const locked=!isOwner&&(ps.enabled===false||(ps.blockedVisitorUids||[]).includes(window.currentUser?.uid));document.body.classList.toggle("platform-visitor-locked",locked);CONTROLLED_SECTIONS.forEach(([id])=>{const b=document.querySelector(`#mainNavigation button[onclick="showPage('${id}')"]`);if(b)b.style.display=isOwner||(!ps.disabledSections||!ps.disabledSections.includes(id))?"":"none";});const sb=document.querySelector('[onclick="playSalawat()"]');if(sb)sb.style.display=ps.salawatEnabled===false?"none":"";const txt=document.getElementById("salawatPopupText");if(txt&&ps.salawatText)txt.textContent=ps.salawatText;}
-function renderDashboardStats(){const all=document.querySelectorAll("#adminConversations .admin-conversation").length;const pending=document.querySelectorAll("#adminConversations .unanswered").length;const statAll=document.getElementById("statAll"),statPending=document.getElementById("statPending"),statBlocked=document.getElementById("statBlocked"),statSections=document.getElementById("statSections");if(statAll)statAll.textContent=all;if(statPending)statPending.textContent=pending;if(statBlocked)statBlocked.textContent=(window.platformSettings.blockedVisitorUids||[]).length;if(statSections)statSections.textContent=CONTROLLED_SECTIONS.filter(([id])=>!(window.platformSettings.disabledSections||[]).includes(id)).length;const st=document.getElementById("dashboardPlatformStatus");if(st)st.innerHTML=window.platformSettings.enabled!==false?"🟢 المنصة مفتوحة للزوار":"🔴 المنصة مغلقة للزوار";}
-loadPlatformSettings();
-
-
-window.openAdminPanel=async()=>{
-    const email=document.getElementById("adminEmailInput").value.trim();
-    const password=document.getElementById("adminPasswordInput").value;
-    const status=document.getElementById("adminLoginStatus");
-    const panel=document.getElementById("adminPanel");
-    if(!email || !password){
-        status.textContent="⚠️ اكتب البريد الإلكتروني وكلمة المرور أولًا.";
-        return;
-    }
-    status.textContent="⏳ جاري تسجيل الدخول...";
-    try{
-        // تسجيل الزائر المجهول لا يجب أن يمنع حساب صاحب المنصة من تسجيل الدخول.
-        if(auth.currentUser?.isAnonymous){
-            await signOut(auth);
-            currentUser=null;
-            window.currentUser=null;
-        }
-        const cred=await signInWithEmailAndPassword(auth,email,password);
-        if(cred.user.uid!==OWNER_UID){
-            await signOut(auth);
-            status.textContent="⛔ هذا الحساب ليس حساب صاحب المنصة.";
-            return;
-        }
-        currentUser=cred.user; window.currentUser=currentUser;
-        panel.style.display="block";
-        status.textContent="✅ تم تسجيل الدخول كصاحب المنصة.";
-        renderPlatformControls();
-        await window.loadAdminConversations();
-    }catch(e){
-        console.error(e);
-        status.textContent="⚠️ تعذر تسجيل الدخول. تأكد من البريد الإلكتروني وكلمة المرور.";
-    }
+const firebaseConfig = {
+    apiKey: "AIzaSyCzhpTOEMDRKpt_E96TNkO05TUgi2QkmJY",
+    authDomain: "noor-al-huda-73cb0.firebaseapp.com",
+    projectId: "noor-al-huda-73cb0",
+    storageBucket: "noor-al-huda-73cb0.firebasestorage.app",
+    messagingSenderId: "393217124880",
+    appId: "1:393217124880:web:c310850bead320cea33895",
+    measurementId: "G-PBYSPW80SN"
 };
 
-window.loadAdminConversations=async()=>{
-    if(!currentUser || currentUser.uid!==OWNER_UID){alert("يجب تسجيل الدخول بحساب صاحب المنصة أولًا.");return;}
-    const c=document.getElementById("adminConversations");c.innerHTML="⏳ جاري تحميل أسئلة الزوار...";
-    try{
-        const snap=await getDocs(collection(db,"conversations"));const rows=snap.docs.map(d=>({id:d.id,data:d.data()})).sort((a,b)=>{
-            const ta=a.data.updatedAt?.toMillis?a.data.updatedAt.toMillis():0, tb=b.data.updatedAt?.toMillis?b.data.updatedAt.toMillis():0;return tb-ta;
-        });
-        if(!rows.length){c.innerHTML="لا توجد أسئلة حتى الآن.";renderDashboardStats();return;}c.innerHTML="";
-        rows.forEach(r=>{const x=r.data,el=document.createElement("button");el.type="button";el.className="admin-conversation "+(x.answered?"answered":"unanswered");el.innerHTML="<strong>"+escapeHtml(x.visitorName||"زائر")+"</strong> — "+(x.answered?"✅ تم الرد":"🟡 بانتظار الرد")+"<div style='margin-top:7px;line-height:1.8;'>"+escapeHtml(x.question||"")+"</div><div class='admin-user-profile'><div><b>🆔 UID:</b> <code>"+escapeHtml(x.visitorUid||"غير متاح")+"</code> <button type='button' class='action' style='padding:5px 9px;margin-right:6px' onclick='event.stopPropagation();copyVisitorUid("+JSON.stringify(x.visitorUid||"")+")'>📋 نسخ</button> <button type='button' class='danger-small' style='padding:5px 9px' onclick='event.stopPropagation();blockVisitorDirect("+JSON.stringify(x.visitorUid||"")+")'>🚫 حظر</button></div><div>🎂 السن: "+escapeHtml(x.visitorAge||"غير مسجل")+"</div><div>🏠 السكن: "+escapeHtml(x.visitorResidence||"غير مسجل")+"</div><div>👪 العائلة: "+escapeHtml(x.visitorFamily||"غير مسجل")+"</div></div><span class='chat-meta'>آخر تحديث: "+escapeHtml(chatTime(x.updatedAt))+"</span>";el.onclick=()=>selectAdminConversation(r.id,x);c.appendChild(el);});
-        renderDashboardStats();
-    }catch(e){console.error(e);c.innerHTML="⚠️ تعذر تحميل الأسئلة. تأكد من صلاحيات Firestore.";}
-};
+const app = initializeApp(firebaseConfig);
 
-
-window.copyVisitorUid=async(uid)=>{
-    if(!uid)return;
-    try{await navigator.clipboard.writeText(uid);alert("✅ تم نسخ UID المستخدم.");}
-    catch(e){prompt("انسخ UID المستخدم:",uid);}
-};
-window.blockVisitorDirect=async(uid)=>{
-    if(!uid)return;
-    if(!confirm("هل تريد حظر هذا المستخدم؟"))return;
-    const arr=[...(window.platformSettings.blockedVisitorUids||[])];
-    if(!arr.includes(uid))arr.push(uid);
-    window.platformSettings.blockedVisitorUids=arr;
-    await window.savePlatformSettings();
-    alert("🚫 تم حظر المستخدم.");
-    window.loadAdminConversations();
-};
-
-function selectAdminConversation(id,x){
-    currentAdminConversationId=id;document.getElementById("adminReplyBox").style.display="block";
-    document.getElementById("adminSelectedTitle").textContent="الرد على سؤال "+(x.visitorName||"الزائر");
-    document.getElementById("adminSelectedQuestion").innerHTML="<strong>السؤال:</strong><br>"+escapeHtml(x.question||"");
-    document.getElementById("adminReplyInput").value="";document.getElementById("adminReplyInput").focus();
+try {
+    getAnalytics(app);
+    console.log("Firebase تم تشغيله بنجاح.");
+} catch (error) {
+    console.warn("تعذر تشغيل Firebase Analytics:", error);
 }
-window.sendAdminReply=async()=>{
-    if(!currentUser || currentUser.uid!==OWNER_UID){alert("يجب تسجيل الدخول بحساب صاحب المنصة أولًا.");return;}
-    const input=document.getElementById("adminReplyInput"),text=input.value.trim();if(!currentAdminConversationId||!text){alert("اكتب الإجابة أولًا.");return;}
-    try{
-        await addDoc(collection(db,"conversations",currentAdminConversationId,"messages"),{sender:"owner",text,createdAt:serverTimestamp()});
-        await updateDoc(doc(db,"conversations",currentAdminConversationId),{answered:true,answer:text,updatedAt:serverTimestamp()});
-        input.value="";document.getElementById("adminSelectedTitle").textContent="✅ تم إرسال الإجابة";await window.loadAdminConversations();
-    }catch(e){console.error(e);alert("تعذر إرسال الإجابة.");}
-};
-window.sendChatMessage=sendChatMessage;
-window.addEventListener("load",initLiveChat);
-</script>
-
-<script>
-/* =====================================================
-   سؤال ديني
-===================================================== */
-
-const religiousQuestionAnswers = [
-    {keys:["اركان الاسلام","أركان الإسلام"], answer:"أركان الإسلام خمسة: شهادة أن لا إله إلا الله وأن محمدًا رسول الله، وإقام الصلاة، وإيتاء الزكاة، وصوم رمضان، وحج البيت لمن استطاع إليه سبيلًا."},
-    {keys:["عدد الصلوات","الصلوات المفروضة","كم صلاة"], answer:"الصلوات المفروضة في اليوم والليلة خمس صلوات: الفجر، والظهر، والعصر، والمغرب، والعشاء."},
-    {keys:["اول سورة","أول سورة"], answer:"أول سورة في ترتيب المصحف هي سورة الفاتحة."},
-    {keys:["اطول سورة","أطول سورة"], answer:"أطول سورة في القرآن الكريم هي سورة البقرة."},
-    {keys:["قل هو الله احد","قل هو الله أحد"], answer:"السورة التي تبدأ بـ «قل هو الله أحد» هي سورة الإخلاص."},
-    {keys:["شهر يصوم","شهر الصيام","في اي شهر يصوم","في أي شهر يصوم"], answer:"يصوم المسلمون شهر رمضان."},
-    {keys:["جهة الصلاة","اتجاه الصلاة","الى اين يتوجه","إلى أين يتوجه","القبلة"], answer:"يتوجه المسلمون في الصلاة إلى الكعبة المشرفة."},
-    {keys:["السورة التي لا تبدأ بالبسملة","لا تبدأ بالبسملة","بدون بسملة"], answer:"السورة التي لا تبدأ بالبسملة في أولها هي سورة التوبة."},
-    {keys:["اول شهر هجري","أول شهر هجري","اول شهر في السنة الهجرية","أول شهر في السنة الهجرية"], answer:"أول شهر في السنة الهجرية هو شهر محرم."},
-    {keys:["اخر سورة","آخر سورة"], answer:"آخر سورة في ترتيب المصحف هي سورة الناس."},
-    {keys:["ليلة خير من الف شهر","ليلة خير من ألف شهر","خير من الف شهر","خير من ألف شهر"], answer:"هي ليلة القدر، وقد قال الله تعالى: «ليلة القدر خير من ألف شهر»."},
-    {keys:["اية الكرسي","آية الكرسي","اين توجد اية الكرسي","أين توجد آية الكرسي"], answer:"آية الكرسي هي الآية 255 من سورة البقرة."},
-    {keys:["الكتاب الذي انزل","الكتاب الذي أُنزل","ما اسم الكتاب"], answer:"الكتاب الذي أنزله الله على النبي محمد ﷺ هو القرآن الكريم."},
-    {keys:["صلاة الجمعة","بدل الظهر يوم الجمعة"], answer:"صلاة الجمعة تُصلّى يوم الجمعة بدل صلاة الظهر لمن تجب عليه الجمعة."},
-    {keys:["سورة سميت باسم نبي","سورة باسم نبي","قصة يوسف"], answer:"سورة يوسف سُمّيت باسم النبي يوسف عليه السلام، وتعرض قصته بصورة متصلة."},
-    {keys:["اول ما يحاسب عليه العبد","أول ما يحاسب عليه العبد","اول شيء يحاسب عليه العبد","أول شيء يحاسب عليه العبد","اول ما يحاسب الناس به يوم القيامة","أول ما يحاسب الناس به يوم القيامة","اول ما يحاسب عليه الانسان يوم القيامة","أول ما يحاسب عليه الإنسان يوم القيامة","اول ما يحاسب يوم القيامة","أول ما يحاسب يوم القيامة","الصلاة اول ما يحاسب عليه","الصلاة أول ما يحاسب عليه"], answer:"أول ما يُحاسَب عليه العبد يوم القيامة من عمله الصلاة؛ فإن صلحت صلح سائر عمله، وإن فسدت فسد سائر عمله. وإذا كان فيها نقص نُظر في تطوعه ليُجبر به ما نقص من الفريضة."},
-    {keys:["اول ما يقضى بين الناس","أول ما يقضى بين الناس","الدماء يوم القيامة"], answer:"أول ما يُقضى بين الناس يوم القيامة في الدماء، كما جاء في الحديث الصحيح عن النبي ﷺ."},
-    {keys:["احب الاعمال الى الله","أحب الأعمال إلى الله","احب عمل الى الله"], answer:"من أحب الأعمال إلى الله الصلاة على وقتها، كما جاء في حديث عبد الله بن مسعود رضي الله عنه في الصحيحين."},
-    {keys:["احب الكلام الى الله","أحب الكلام إلى الله"], answer:"أحب الكلام إلى الله أربع: سبحان الله، والحمد لله، ولا إله إلا الله، والله أكبر."},
-    {keys:["افضل الذكر","أفضل الذكر"], answer:"من أفضل الذكر: لا إله إلا الله، وقد جاء في الحديث: «أفضل الذكر لا إله إلا الله»."},
-    {keys:["افضل الدعاء","أفضل الدعاء"], answer:"من جوامع الدعاء: «ربنا آتنا في الدنيا حسنة وفي الآخرة حسنة وقنا عذاب النار»."},
-    {keys:["سيد الاستغفار","ما هو سيد الاستغفار"], answer:"سيد الاستغفار هو: «اللهم أنت ربي لا إله إلا أنت، خلقتني وأنا عبدك...»، وهو في صحيح البخاري."},
-    {keys:["من هم العشرة المبشرون","العشرة المبشرون بالجنة"], answer:"العشرة المبشرون بالجنة هم: أبو بكر، وعمر، وعثمان، وعلي، وطلحة، والزبير، وعبد الرحمن بن عوف، وسعد بن أبي وقاص، وسعيد بن زيد، وأبو عبيدة بن الجراح رضي الله عنهم."},
-    {keys:["اول من اسلم","أول من أسلم"], answer:"أول من آمن بالنبي ﷺ من النساء خديجة رضي الله عنها، ومن الرجال الأحرار أبو بكر الصديق رضي الله عنه، ومن الصبيان علي بن أبي طالب رضي الله عنه."},
-    {keys:["اول من اسلم من النساء","أول من أسلم من النساء"], answer:"أول من آمنت بالنبي ﷺ من النساء هي خديجة بنت خويلد رضي الله عنها."},
-    {keys:["اسم النبي كاملا","اسم الرسول كاملا","نسب النبي"], answer:"هو محمد بن عبد الله بن عبد المطلب بن هاشم، رسول الله ﷺ."},
-    {keys:["متى ولد النبي","متى ولد الرسول","مولد النبي"], answer:"وُلد النبي محمد ﷺ في عام الفيل، في مكة المكرمة، والمشهور أنه وُلد يوم الاثنين."},
-    {keys:["متى توفي النبي","وفاة النبي","وفاة الرسول"], answer:"توفي النبي محمد ﷺ في المدينة المنورة سنة 11 هـ، وكان عمره ثلاثًا وستين سنة."},
-    {keys:["كم عاش النبي","عمر النبي عند الوفاة"], answer:"عاش النبي محمد ﷺ ثلاثًا وستين سنة على المشهور."},
-    {keys:["كم سنة مكث النبي في مكة","مدة الدعوة في مكة"], answer:"مكث النبي ﷺ في مكة بعد البعثة نحو ثلاث عشرة سنة، ثم هاجر إلى المدينة."},
-    {keys:["كم سنة في المدينة","مدة الدعوة في المدينة"], answer:"أقام النبي ﷺ في المدينة عشر سنوات تقريبًا حتى توفاه الله."},
-    {keys:["اول هجرة في الاسلام","أول هجرة في الإسلام"], answer:"كانت أول هجرة للمسلمين إلى الحبشة، فرارًا بدينهم من أذى قريش."},
-    {keys:["هجرة النبي","متى هاجر النبي","الهجرة النبوية"], answer:"هاجر النبي ﷺ من مكة إلى المدينة، وكانت الهجرة حدثًا عظيمًا بدأ به التأريخ الهجري."},
-    {keys:["غار حراء","اين نزل الوحي اول مرة","أين نزل الوحي أول مرة"], answer:"نزل الوحي أول مرة على النبي ﷺ في غار حراء، وكان أول ما نزل صدر سورة العلق."},
-    {keys:["اول ما نزل من القران","أول ما نزل من القرآن"], answer:"أول ما نزل من القرآن صدر سورة العلق: «اقرأ باسم ربك الذي خلق»."},
-    {keys:["آخر ما نزل من القرآن","اخر ما نزل من القران"], answer:"وردت أقوال متعددة في آخر ما نزل من القرآن، ومن أشهرها قوله تعالى: «واتقوا يومًا ترجعون فيه إلى الله» من سورة البقرة."},
-    {keys:["كم عدد سور القرآن","عدد سور القران"], answer:"عدد سور القرآن الكريم 114 سورة."},
-    {keys:["كم عدد اجزاء القران","عدد اجزاء القرآن"], answer:"القرآن الكريم ثلاثون جزءًا."},
-    {keys:["كم حزب في القران","عدد احزاب القرآن"], answer:"المشهور أن القرآن الكريم ستون حزبًا."},
-    {keys:["كم سجدة في القران","سجدات التلاوة"], answer:"ورد في عدد سجدات التلاوة خلاف بين أهل العلم، والمشهور عند كثير من العلماء أنها خمس عشرة سجدة."},
-    {keys:["اطول اية في القرآن","أطول آية في القرآن"], answer:"أطول آية في القرآن هي آية الدَّين، الآية 282 من سورة البقرة."},
-    {keys:["اقصر سورة","أقصر سورة"], answer:"أقصر سورة في القرآن هي سورة الكوثر."},
-    {keys:["قلب القران","قلب القرآن"], answer:"يُشاع وصف سورة يس بأنها قلب القرآن، لكن الحديث المشهور في ذلك ضعيف؛ فلا يصح الجزم بأن النبي ﷺ قال ذلك."},
-    {keys:["ام الكتاب","أم الكتاب"], answer:"سورة الفاتحة تُسمى أم الكتاب وأم القرآن، وهي سبع آيات."},
-    {keys:["السبع المثاني","ما هي السبع المثاني"], answer:"السبع المثاني هي سورة الفاتحة، كما فسرها النبي ﷺ في الحديث الصحيح."},
-    {keys:["اكثر نبي ذكر في القران","أكثر نبي ذكر في القرآن"], answer:"أكثر الأنبياء ذكرًا في القرآن هو موسى عليه السلام."},
-    {keys:["كم مرة ذكر موسى","عدد ذكر موسى في القرآن"], answer:"ذُكر موسى عليه السلام في القرآن مرات كثيرة، وهو أكثر الأنبياء ذكرًا فيه."},
-    {keys:["ابو الانبياء","من هو ابو الانبياء"], answer:"يُلقب إبراهيم عليه السلام بأبي الأنبياء؛ لأن كثيرًا من الأنبياء بعده كانوا من ذريته."},
-    {keys:["خليل الله","من هو خليل الله"], answer:"إبراهيم عليه السلام هو خليل الرحمن، كما قال الله تعالى: «واتخذ الله إبراهيم خليلا»."},
-    {keys:["كليم الله","من هو كليم الله"], answer:"موسى عليه السلام هو كليم الله، وقد كلمه الله تكليمًا."},
-    {keys:["روح الله","من هو روح الله"], answer:"عيسى ابن مريم عليه السلام وُصف في القرآن بأنه «روح منه»، وليس معنى ذلك أنه جزء من ذات الله تعالى."},
-    {keys:["اول قبلة للمسلمين","القبلة الاولى"], answer:"كانت قبلة المسلمين الأولى بيت المقدس، ثم حُولت القبلة إلى الكعبة المشرفة."},
-    {keys:["متى فرضت الصلاة","فرض الصلاة"], answer:"فُرضت الصلوات الخمس ليلة الإسراء والمعراج."},
-    {keys:["صلاة لا ركوع فيها","ما الصلاة التي لا ركوع فيها"], answer:"صلاة الجنازة لا ركوع فيها ولا سجود، وإنما فيها تكبيرات ودعاء."},
-    {keys:["صلاة الوتر","كم ركعة الوتر"], answer:"صلاة الوتر سنة مؤكدة، وأقلها ركعة، ويجوز أن تُصلّى أكثر من ذلك على صفات وردت عن النبي ﷺ."},
-    {keys:["صلاة الضحى","وقت صلاة الضحى"], answer:"وقت صلاة الضحى يبدأ بعد ارتفاع الشمس، ويمتد إلى قبيل الزوال، وهي سنة مستحبة."},
-    {keys:["صلاة الاستخارة","كيف اصلي الاستخارة"], answer:"صلاة الاستخارة ركعتان من غير الفريضة، ثم يدعو المسلم بدعاء الاستخارة الوارد عن النبي ﷺ ويسأل الله أن يختار له الخير."},
-    {keys:["كم ركعة صلاة الفجر","عدد ركعات الفجر"], answer:"صلاة الفجر فريضة من ركعتين."},
-    {keys:["كم ركعة صلاة الظهر","عدد ركعات الظهر"], answer:"صلاة الظهر فريضة من أربع ركعات."},
-    {keys:["كم ركعة صلاة العصر","عدد ركعات العصر"], answer:"صلاة العصر فريضة من أربع ركعات."},
-    {keys:["كم ركعة صلاة المغرب","عدد ركعات المغرب"], answer:"صلاة المغرب فريضة من ثلاث ركعات."},
-    {keys:["كم ركعة صلاة العشاء","عدد ركعات العشاء"], answer:"صلاة العشاء فريضة من أربع ركعات."},
-    {keys:["نواقض الوضوء","ما هي نواقض الوضوء"], answer:"من أشهر نواقض الوضوء: الخارج من السبيلين، وزوال العقل بنوم مستغرق أو إغماء ونحوه، ومس الفرج على قول معتبر عند أهل العلم؛ وتفاصيل النواقض فيها مسائل خلافية."},
-    {keys:["فرائض الوضوء","أركان الوضوء"], answer:"من فرائض الوضوء: غسل الوجه، وغسل اليدين إلى المرفقين، ومسح الرأس، وغسل الرجلين إلى الكعبين، مع النية والترتيب والموالاة عند من يقول بوجوبهما."},
-    {keys:["الغسل من الجنابة","متى يجب الغسل"], answer:"يجب الغسل من الجنابة، ومن خروج المني بشهوة، ومن الجماع، وكذلك بعد انقطاع الحيض والنفاس."},
-    {keys:["مبطلات الصيام","ما يبطل الصيام"], answer:"من مبطلات الصيام المتفق عليها الأكل والشرب عمدًا، والجماع في نهار رمضان، ويُلحق بها ما كان في معناها مما يفطر الصائم؛ أما الخطأ والنسيان فلهما أحكام أخرى."},
-    {keys:["من اكل ناسيا في رمضان","الأكل ناسيا في الصيام"], answer:"من أكل أو شرب ناسيًا وهو صائم فليتم صومه، فإنما أطعمه الله وسقاه، كما جاء في الحديث الصحيح."},
-    {keys:["زكاة المال","متى تجب الزكاة"], answer:"تجب زكاة المال إذا بلغ المال النصاب وحال عليه الحول في الأموال التي يشترط لها الحول، مع اختلاف التفاصيل بحسب نوع المال."},
-    {keys:["نصاب الذهب","نصاب زكاة الذهب"], answer:"نصاب الذهب الذي تُبنى عليه زكاته يُقدّر بنحو 85 جرامًا من الذهب الخالص، وتفاصيل حساب القيمة تتغير بحسب سعر الذهب."},
-    {keys:["من يستحق الزكاة","مصارف الزكاة"], answer:"مصارف الزكاة ثمانية أصناف بيّنها الله في سورة التوبة: الفقراء، والمساكين، والعاملون عليها، والمؤلفة قلوبهم، وفي الرقاب، والغارمون، وفي سبيل الله، وابن السبيل."},
-    {keys:["الحج متى فرض","متى فرض الحج"], answer:"فرض الحج في السنة التاسعة للهجرة على المشهور عند أهل العلم."},
-    {keys:["اركان الحج","أركان الحج"], answer:"من أركان الحج: الإحرام، والوقوف بعرفة، وطواف الإفاضة، والسعي بين الصفا والمروة عند جمهور الفقهاء."},
-    {keys:["مواقيت الحج","مواقيت الإحرام"], answer:"للحج والعمرة مواقيت مكانية حددها النبي ﷺ لأهل الآفاق، منها ذو الحليفة، والجحفة، وقرن المنازل، ويلملم، وذات عرق."},
-    {keys:["شروط الصلاة","ما هي شروط الصلاة"], answer:"من شروط صحة الصلاة: دخول الوقت، والطهارة من الحدث والنجس، وستر العورة، واستقبال القبلة، والنية، مع تفاصيل فقهية في بعض الجزئيات."},
-    {keys:["اركان الصلاة","أركان الصلاة"], answer:"للصلاة أركان متعددة، منها القيام للقادر، وتكبيرة الإحرام، وقراءة الفاتحة، والركوع، والرفع منه، والسجود، والجلوس بين السجدتين، والتشهد الأخير، والسلام، مع اختلاف في عد بعض الأركان بين المذاهب."},
-    {keys:["بر الوالدين","حكم بر الوالدين"], answer:"بر الوالدين من أعظم الطاعات، وقد قرنه الله بتوحيده في مواضع من القرآن، وأمر بالإحسان إليهما وعدم عقوقهما."},
-    {keys:["عقوق الوالدين","حكم عقوق الوالدين"], answer:"عقوق الوالدين من كبائر الذنوب، ويجب على المسلم الإحسان إليهما وطاعتهما في المعروف."},
-    {keys:["صلة الرحم","حكم صلة الرحم"], answer:"صلة الرحم من الأعمال العظيمة، وقطيعة الرحم من الذنوب، وتكون الصلة بحسب القدرة والعرف وبما يحقق الإحسان."},
-    {keys:["الغيبة","ما هي الغيبة"], answer:"الغيبة هي ذكرك أخاك بما يكره لو بلغه، وقد نهى الله عنها في سورة الحجرات وشبهها بأكل لحم الأخ ميتًا."},
-    {keys:["النميمة","ما هي النميمة"], answer:"النميمة هي نقل الكلام بين الناس على وجه يفسد العلاقات ويوقع العداوة، وهي من الذنوب التي نهى عنها الشرع."},
-    {keys:["الكذب","حكم الكذب"], answer:"الكذب محرم في الأصل، ويجب على المسلم الصدق، وقد ورد الوعيد الشديد في الكذب، مع استثناءات محدودة جاءت بها السنة لمصالح معتبرة."},
-    {keys:["التوبة","شروط التوبة"], answer:"من شروط التوبة: الإقلاع عن الذنب، والندم عليه، والعزم على عدم العودة إليه، ورد الحقوق إلى أصحابها إذا تعلق الذنب بحقوق العباد."},
-    {keys:["هل يقبل الله التوبة","قبول التوبة"], answer:"نعم، يقبل الله توبة من تاب إليه توبة صادقة، قال تعالى: «إن الله يغفر الذنوب جميعًا» لمن تاب وآمن وعمل صالحًا."},
-    {keys:["فضل الاستغفار","فضل الاستغفار"], answer:"الاستغفار من أسباب مغفرة الذنوب ونزول الرحمة والخير، وقد أمر الله به ومدح المستغفرين."},
-    {keys:["الصلاة على النبي","فضل الصلاة على النبي"], answer:"الصلاة على النبي ﷺ عبادة عظيمة، وقد قال الله تعالى: «إن الله وملائكته يصلون على النبي يا أيها الذين آمنوا صلوا عليه وسلموا تسليمًا»."},
-    {keys:["فضل قراءة القرآن","ثواب قراءة القرآن"], answer:"قراءة القرآن من أعظم القربات، وجاء في الحديث أن من قرأ حرفًا من كتاب الله فله به حسنة، والحسنة بعشر أمثالها."},
-    {keys:["هل يجوز الكذب","متى يجوز الكذب"], answer:"الأصل تحريم الكذب، وقد جاءت السنة برخص محدودة في مواضع منها الإصلاح بين الناس، والحرب، وما بين الزوجين فيما يُستصلح به الود، مع عدم أكل الحقوق أو ظلم أحد."},
-    {keys:["الحسد","ما هو الحسد"], answer:"الحسد هو تمني زوال النعمة عن الغير، وهو مذموم. أما الغبطة فهي أن يتمنى الإنسان مثل النعمة من غير تمني زوالها عن صاحبها."},
-    {keys:["الصدقة","فضل الصدقة"], answer:"الصدقة من الأعمال الصالحة العظيمة، وهي سبب للأجر والإحسان، وقد حث القرآن والسنة عليها."},
-    {keys:["أفضل الصدقة","افضل الصدقة"], answer:"جاءت نصوص متعددة في فضل الصدقة، ومن أعظمها الصدقة مع الحاجة وبذل ما يستطيع الإنسان، وتختلف الأفضلية باختلاف الحال والمصلحة."},
-    {keys:["الجنة","كم عدد ابواب الجنة"], answer:"ورد في السنة أن للجنة ثمانية أبواب."},
-    {keys:["ابواب النار","كم عدد ابواب النار"], answer:"ذكر الله تعالى أن لجهنم سبعة أبواب، قال تعالى: «لها سبعة أبواب لكل باب منهم جزء مقسوم»."},
-    {keys:["اول طعام اهل الجنة","أول طعام أهل الجنة"], answer:"أول طعام يأكله أهل الجنة ورد في الحديث أنه زيادة كبد حوت."},
-    {keys:["ملك الموت","اسم ملك الموت"], answer:"يسمى في القرآن «ملك الموت»، ولم يثبت في نص صحيح صريح أن اسمه عزرائيل، لذلك الأفضل أن يقال: ملك الموت."},
-    {keys:["ملك الوحي","من هو ملك الوحي"], answer:"جبريل عليه السلام هو الملك الذي نزل بالوحي على الأنبياء، ومنهم النبي محمد ﷺ."},
-    {keys:["اسرافيل","من هو اسرافيل"], answer:"إسرافيل عليه السلام من الملائكة، واشتهر في السنة بأنه الموكل بالنفخ في الصور."},
-    {keys:["ميكائيل","من هو ميكائيل"], answer:"ميكائيل عليه السلام من الملائكة المذكورين في القرآن، وهو من الملائكة الكرام."},
-    {keys:["عدد الملائكة","هل نعرف عدد الملائكة"], answer:"لا نعرف عدد الملائكة على وجه الإجمال، وقد قال الله تعالى: «وما يعلم جنود ربك إلا هو»."},
-    {keys:["الايمان بالملائكة","ما هو الايمان بالملائكة"], answer:"الإيمان بالملائكة هو اعتقاد وجودهم وأنهم عباد مكرمون خلقهم الله لطاعته، والإيمان بما ثبت من أسمائهم وأعمالهم وصفاتهم."},
-    {keys:["اركان الايمان","أركان الإيمان"], answer:"أركان الإيمان ستة: الإيمان بالله، وملائكته، وكتبه، ورسله، واليوم الآخر، والقدر خيره وشره."},
-    {keys:["اركان الاسلام خمسة","كم ركن الاسلام"], answer:"أركان الإسلام خمسة كما ثبت في حديث ابن عمر رضي الله عنهما: الشهادتان، وإقام الصلاة، وإيتاء الزكاة، وصوم رمضان، وحج البيت."},
-    {keys:["ما هو التوحيد","تعريف التوحيد"], answer:"التوحيد هو إفراد الله تعالى بما يختص به من الربوبية والألوهية والأسماء والصفات، وأصل الدين شهادة أن لا إله إلا الله."},
-    {keys:["ما معنى لا اله الا الله","معنى لا إله إلا الله"], answer:"معناها: لا معبود بحق إلا الله، فهي تتضمن نفي العبادة عما سوى الله وإثباتها لله وحده."},
-    {keys:["ما معنى محمد رسول الله","معنى محمد رسول الله"], answer:"معناها الإيمان بأن محمدًا ﷺ رسول الله إلى الناس، وتصديقه فيما أخبر، وطاعته فيما أمر، واجتناب ما نهى عنه وزجر، وألا يُعبد الله إلا بما شرع."},
-    {keys:["ليلة القدر","متى ليلة القدر"], answer:"ليلة القدر في العشر الأواخر من رمضان، وتُتحرى في الليالي الوترية منها، ولا يُجزم بليلة معينة كل عام."},
-    {keys:["فضل ليلة القدر","ما فضل ليلة القدر"], answer:"ليلة القدر خير من ألف شهر، والعبادة فيها عظيمة، وقد قال الله تعالى: «ليلة القدر خير من ألف شهر»."},
-    {keys:["دعاء ليلة القدر","ماذا اقول في ليلة القدر"], answer:"من أفضل ما يُدعى به في ليلة القدر الدعاء الذي علّمه النبي ﷺ لعائشة رضي الله عنها: «اللهم إنك عفو تحب العفو فاعف عني»."},
-    {keys:["صيام عاشوراء","فضل صيام عاشوراء"], answer:"صيام عاشوراء سنة، ويُستحب أن يصام معه يوم قبله أو بعده مخالفة لليهود، وصيامه سبب لتكفير ذنوب سنة ماضية."},
-    {keys:["صيام يوم عرفة","فضل صيام عرفة"], answer:"صيام يوم عرفة لغير الحاج من أفضل صيام التطوع، وقد جاء أنه يكفر السنة الماضية والسنة الباقية."},
-    {keys:["افضل يوم في الاسبوع","أفضل يوم في الأسبوع"], answer:"يوم الجمعة خير أيام الأسبوع، وقد ورد في فضله أحاديث صحيحة."},
-    {keys:["ساعة الاجابة يوم الجمعة","ساعة الإجابة يوم الجمعة"], answer:"في يوم الجمعة ساعة إجابة لا يوافقها عبد مسلم يسأل الله خيرًا إلا أعطاه، وقد اختلف العلماء في تعيينها، ومن أشهر الأقوال أنها آخر ساعة بعد العصر أو من حين يجلس الإمام إلى انقضاء الصلاة."},
-    {keys:["ما هو الربا","تعريف الربا"], answer:"الربا من المعاملات المحرمة في الشريعة، وله صور متعددة في البيوع والقروض، وتحريم الربا ثابت بالقرآن والسنة."},
-    {keys:["البيع والشراء","حكم البيع والشراء"], answer:"الأصل في البيع والشراء الإباحة، ما لم يشتمل على محرم كالربا أو الغرر الفاحش أو الغش أو أكل أموال الناس بالباطل."},
-    {keys:["الغش","حكم الغش"], answer:"الغش محرم، وقد قال النبي ﷺ: «من غشنا فليس منا»."},
-    {keys:["الرشوة","حكم الرشوة"], answer:"الرشوة من الأموال المحرمة، وهي من كبائر الذنوب لما فيها من إفساد الحقوق والعدالة."},
-    {keys:["اليمين الكاذبة","حكم اليمين الكاذبة"], answer:"اليمين الكاذبة من الذنوب العظيمة، ويجب على من وقع فيها التوبة والصدق ورد الحقوق إن ترتب عليها ظلم."},
-    {keys:["كفارة اليمين","ما كفارة اليمين"], answer:"كفارة اليمين: إطعام عشرة مساكين من أوسط ما تطعمون أهليكم، أو كسوتهم، أو تحرير رقبة؛ فمن لم يجد فصيام ثلاثة أيام."},
-    {keys:["الطلاق","حكم الطلاق"], answer:"الطلاق مشروع عند الحاجة، لكنه ليس أمرًا يُتعجل فيه، وله أحكام وشروط وآثار تختلف بحسب الحالة، ولذلك مسائل الطلاق الواقعية ينبغي عرضها على جهة إفتاء موثوقة."},
-    {keys:["الزواج","حكم الزواج"], answer:"الزواج من سنن الأنبياء ومن أسباب العفة وبناء الأسرة، ويختلف حكمه في حق الشخص بحسب حاله وقدرته وخوفه من الوقوع في الحرام."},
-    {keys:["الصداق","المهر"], answer:"المهر حق للزوجة يجب بالعقد، وقد شرع تكريمًا لها، ويكون بالتراضي بين الزوجين وفق الأحكام الشرعية."},
-    {keys:["الوصية","حكم الوصية"], answer:"الوصية مشروعة، ولا وصية لوارث في الأصل إلا إذا أجاز بقية الورثة بعد الوفاة، ولها ضوابط شرعية، وأشهرها ألا تتجاوز ثلث المال لغير الوارث."},
-    {keys:["الميراث","من يرث"], answer:"الميراث له أنصبة وضوابط محددة في القرآن والسنة والفقه، ولا يصح تحديد نصيب شخص بعينه دون معرفة جميع الورثة والبيانات المؤثرة."},
-    {keys:["الدين","سداد الدين"], answer:"قضاء الدين واجب على المدين القادر، والمماطلة مع القدرة ظلم، وقد أمر الشرع بإعطاء المعسر مهلة."},
-    {keys:["الاستدانة","حكم الاقتراض"], answer:"الاقتراض جائز إذا كان خاليًا من الربا والمحرمات، ويجب الوفاء بالدين في موعده."},
-    {keys:["الوالدان الكافران","بر الوالدين غير المسلمين"], answer:"يجوز الإحسان إلى الوالدين غير المسلمين وبرهما وصلتهما في غير معصية، مع الثبات على الدين وعدم طاعتهما في الكفر أو المعصية."},
-    {keys:["هل الاسلام دين يسر","الإسلام دين يسر"], answer:"نعم، من خصائص الشريعة رفع الحرج والتيسير المشروع، قال تعالى: «يريد الله بكم اليسر ولا يريد بكم العسر»."},
-    {keys:["الدين النصيحة","ما معنى الدين النصيحة"], answer:"قال النبي ﷺ: «الدين النصيحة»، والنصيحة تكون لله ولكتابه ولرسوله ولأئمة المسلمين وعامتهم."},
-    {keys:["المسلم من سلم المسلمون","من هو المسلم الحقيقي"], answer:"من كمال الإسلام أن يسلم المسلمون من لسان الإنسان ويده، كما جاء في الحديث: «المسلم من سلم المسلمون من لسانه ويده»."},
-    {keys:["من لا يرحم لا يرحم","معنى من لا يرحم لا يرحم"], answer:"المعنى أن الرحمة بالخلق سبب لنيل رحمة الله، وقد قال النبي ﷺ: «من لا يَرحم لا يُرحم»."},
-    {keys:["الاعمال بالنيات","إنما الأعمال بالنيات"], answer:"معنى الحديث أن الأعمال معتبرة بمقاصدها ونيات أصحابها، وهو حديث عظيم أصل في باب النيات، رواه البخاري ومسلم."}
-
-];
-
-/* =====================================================
-   قاعدة أسئلة موسعة جدًا — أكثر من 30 ألف سؤال
-   يتم توليدها من آيات القرآن التي تُحمّل من نفس مصدر القرآن
-   المستخدم في المنصة، بدل تخزين عشرات الآلاف من النصوص داخل HTML.
-===================================================== */
-let hugeReligiousQuestionBank = [];
-let quranQuestionBankLoaded = false;
-let quranQuestionBankLoading = null;
-let quranQuestionData = null;
-
-function normalizeReligiousQuestion(text){
-    return String(text || "").toLowerCase()
-        .replace(/[أإآ]/g,"ا")
-        .replace(/ى/g,"ي")
-        .replace(/ة/g,"ه")
-        .replace(/[ًٌٍَُِّْـ]/g,"")
-        .replace(/[؟?!.،,:;«»"'`()\[\]{}]/g," ")
-        .replace(/\s+/g," ")
-        .trim();
-}
-
-function escapeHtml(text){
-    const div=document.createElement("div");
-    div.textContent=text;
-    return div.innerHTML;
-}
-
-function arabicNumberToEnglish(value){
-    return String(value || "")
-        .replace(/[٠-٩]/g, ch => "٠١٢٣٤٥٦٧٨٩".indexOf(ch))
-        .replace(/[۰-۹]/g, ch => "۰۱۲۳۴۵۶۷۸۹".indexOf(ch));
-}
-
-function findSurahNumberByName(name){
-    const normalized=normalizeReligiousQuestion(name)
-        .replace(/^سوره\s*/,"")
-        .trim();
-
-    return surahs.findIndex(s => normalizeReligiousQuestion(s) === normalized) + 1;
-}
-
-async function loadHugeReligiousQuestionBank(){
-    if(quranQuestionBankLoaded) return hugeReligiousQuestionBank;
-    if(quranQuestionBankLoading) return quranQuestionBankLoading;
-
-    quranQuestionBankLoading=(async()=>{
-        const response=await fetch(
-            "https://api.alquran.cloud/v1/quran/quran-uthmani"
-        );
-
-        if(!response.ok){
-            throw new Error("تعذر تحميل قاعدة القرآن");
-        }
-
-        const payload=await response.json();
-        quranQuestionData=payload.data;
-
-        const bank=[];
-
-        quranQuestionData.surahs.forEach(surah=>{
-            const surahName=surah.name.replace(/^سورة\s*/," ").trim() || surahs[surah.number-1];
-
-            surah.ayahs.forEach(ayah=>{
-                const n=ayah.numberInSurah;
-                const text=ayah.text;
-                const label=`سورة ${surahName} — الآية ${toArabicNumber(n)}`;
-
-                bank.push({q:`ما نص الآية رقم ${toArabicNumber(n)} من سورة ${surahName}؟`, a:text, label});
-                bank.push({q:`ماذا ورد في الآية ${toArabicNumber(n)} من سورة ${surahName}؟`, a:text, label});
-                bank.push({q:`اذكر نص الآية ${toArabicNumber(n)} من سورة ${surahName}.`, a:text, label});
-                bank.push({q:`ما الآية رقم ${toArabicNumber(n)} في سورة ${surahName}؟`, a:text, label});
-                bank.push({q:`أريد الآية ${toArabicNumber(n)} من سورة ${surahName}.`, a:text, label});
-            });
-        });
-
-        hugeReligiousQuestionBank=bank;
-        quranQuestionBankLoaded=true;
-        return bank;
-    })().catch(error=>{
-        quranQuestionBankLoading=null;
-        throw error;
-    });
-
-    return quranQuestionBankLoading;
-}
-
-function renderReligiousAnswer(question, answer, title="الإجابة"){
-    const result=document.getElementById("religiousQuestionResult");
-    result.innerHTML=
-        "<div style='font-weight:bold;color:#075e54;font-size:19px;'>📖 السؤال</div>"+
-        "<div style='margin:8px 0 14px;'>"+escapeHtml(question)+"</div>"+
-        "<div style='font-weight:bold;color:#075e54;font-size:19px;'>✅ "+escapeHtml(title)+"</div>"+
-        "<div style='margin-top:8px;line-height:2;'>"+escapeHtml(answer)+"</div>"+
-        "<div class='small-note'>قاعدة المنصة تجمع أكثر من ٣١ ألف صيغة سؤال قرآني، وتبحث أيضًا في قواعد أسئلة وأجوبة إسلامية موسعة. للمسائل الفقهية الخاصة يُفضّل الرجوع إلى جهة إفتاء موثوقة.</div>";
-}
-
-function tryDirectQuranQuestion(question){
-    if(!quranQuestionData) return false;
-
-    const normalized=normalizeReligiousQuestion(question);
-
-    /* مثال: ما نص الآية 5 من سورة البقرة؟ */
-    const numberMatch=normalized.match(/(?:الاية|ايه|اية|رقم)\s*(?:رقم\s*)?(\d+)/);
-    if(!numberMatch) return false;
-
-    const number=Number(arabicNumberToEnglish(numberMatch[1]));
-    if(!Number.isInteger(number) || number<1) return false;
-
-    let surahNumber=0;
-    surahs.forEach((name,index)=>{
-        if(normalized.includes("سوره "+normalizeReligiousQuestion(name)) ||
-           normalized.includes("سورة "+normalizeReligiousQuestion(name)) ||
-           normalized.endsWith(normalizeReligiousQuestion(name))){
-            surahNumber=index+1;
-        }
-    });
-
-    if(!surahNumber) return false;
-
-    const surah=quranQuestionData.surahs.find(s=>s.number===surahNumber);
-    const ayah=surah && surah.ayahs.find(a=>a.numberInSurah===number);
-    if(!ayah) return false;
-
-    renderReligiousAnswer(question, ayah.text, `نص سورة ${surah.name.replace(/^سورة\s*/,"")} — الآية ${toArabicNumber(number)}`);
-    return true;
-}
-
-
-async function searchIslamicQADatasets(question){
-    const endpoints = [
-        "https://datasets-server.huggingface.co/search?dataset=NightPrince%2Fislamic-arabic-qa&config=default&split=train&query=" + encodeURIComponent(question) + "&offset=0&length=10",
-        "https://datasets-server.huggingface.co/search?dataset=Omar-youssef%2Fislamic-qa-egyptian-arabic&config=default&split=train&query=" + encodeURIComponent(question) + "&offset=0&length=10"
-    ];
-
-    const responses = await Promise.allSettled(endpoints.map(url => fetch(url, {method:"GET"})));
-    const candidates=[];
-
-    for(const r of responses){
-        if(r.status!=="fulfilled" || !r.value.ok) continue;
-        try{
-            const data=await r.value.json();
-            for(const item of (data.rows || [])){
-                const row=item.row || {};
-                if(row.question && row.answer){
-                    candidates.push({q:String(row.question), a:String(row.answer)});
-                }
-            }
-        }catch(e){}
-    }
-
-    if(!candidates.length) return null;
-
-    const nq=normalizeReligiousQuestion(question);
-    const tokens=nq.split(" ").filter(t=>t.length>=2);
-    let best=null, bestScore=-1;
-
-    for(const item of candidates){
-        const cq=normalizeReligiousQuestion(item.q);
-        let score=0;
-        for(const token of tokens){
-            if(cq.includes(token)) score += 4;
-        }
-        if(cq===nq) score += 100;
-        if(cq.includes(nq) || nq.includes(cq)) score += 30;
-        if(score>bestScore){ bestScore=score; best=item; }
-    }
-
-    return best && bestScore>=4 ? best : null;
-}
-
-/* =====================================================
-   بنك موسّع جدًا للأسئلة غير الشائعة
-   نُنشئ صيغًا مختلفة للسؤال لكل سؤال قرآني موجود في القاعدة.
-   الهدف: أكثر من 100,000 صيغة سؤال قابلة للبحث مع نفس الإجابة.
-===================================================== */
-const expandedQuestionBank=[];
-let expandedQuestionBankReady=false;
-
-function build100kQuestionBank(){
-    expandedQuestionBank.length=0;
-    const templates=[
-        "ما الإجابة عن: {q}", "ماذا ورد عن: {q}", "ما حكم مسألة: {q}",
-        "كيف نفهم: {q}", "ما الدليل على: {q}", "هل ورد في القرآن: {q}",
-        "ما الذي يقوله القرآن عن: {q}", "أريد معرفة: {q}",
-        "ماذا يعني: {q}", "ما المقصود بـ: {q}", "هل توجد آية عن: {q}",
-        "ما الآية التي تتحدث عن: {q}", "اذكر لي ما ورد في: {q}",
-        "لو سمحت وضّح لي: {q}", "عندي سؤال عن: {q}",
-        "هل يمكن أن توضح: {q}", "ما المعنى الشرعي لـ: {q}",
-        "ما الذي نتعلمه من: {q}", "ما العبرة من: {q}",
-        "ما وجه الاستدلال في: {q}", "ما الذي يدل عليه: {q}",
-        "هل هناك نص يجيب عن: {q}", "أين ورد: {q}",
-        "في أي آية جاء: {q}", "ما الآيات المتعلقة بـ: {q}",
-        "ما تفسير السؤال: {q}", "كيف تكون الإجابة عن: {q}",
-        "ما الصحيح في موضوع: {q}", "أريد جوابًا عن هذا الأمر: {q}",
-        "سؤال غير شائع: {q}", "لو خطر ببالي سؤال: {q} فماذا تكون الإجابة؟",
-        "ما الذي يمكن أن أستفيده من: {q}", "كيف أعرف الجواب عن: {q}",
-        "هل يوجد دليل قرآني على: {q}", "ما النص القرآني المرتبط بـ: {q}"
-    ];
-    const source=Array.isArray(hugeReligiousQuestionBank)?hugeReligiousQuestionBank:[];
-    const target=100000;
-    if(!source.length) return 0;
-    for(let i=0; expandedQuestionBank.length<target; i++){
-        const item=source[i%source.length];
-        const template=templates[i%templates.length];
-        const base=(item.q||"").trim();
-        if(!base) continue;
-        expandedQuestionBank.push({q:template.replace("{q}",base),a:item.a});
-    }
-    expandedQuestionBankReady=true;
-    window.expandedQuestionBankCount=expandedQuestionBank.length;
-    return expandedQuestionBank.length;
-}
-
-function search100kQuestionBank(question){
-    if(!expandedQuestionBankReady || !expandedQuestionBank.length) return null;
-    const normalized=normalizeReligiousQuestion(question);
-    const tokens=normalized.split(" ").filter(t=>t.length>=2);
-    let best=null,bestScore=0;
-    for(const item of expandedQuestionBank){
-        const nq=normalizeReligiousQuestion(item.q);
-        let score=0;
-        for(const token of tokens){ if(nq.includes(token)) score+=3; }
-        if(nq.includes(normalized)) score+=30;
-        if(score>bestScore){bestScore=score;best=item;}
-    }
-    return best && bestScore>=4 ? best : null;
-}
-
-async function answerReligiousQuestion(){
-    const input=document.getElementById("religiousQuestionInput");
-    const result=document.getElementById("religiousQuestionResult");
-    const question=input.value.trim();
-
-    if(!question){
-        result.innerHTML="⚠️ اكتب سؤالك الديني أولًا.";
-        input.focus();
-        return;
-    }
-
-    if(question.length<3){
-        result.innerHTML="⚠️ اكتب سؤالًا أوضح من فضلك.";
-        input.focus();
-        return;
-    }
-
-    const normalized=normalizeReligiousQuestion(question);
-    const found=religiousQuestionAnswers.find(item =>
-        item.keys.some(key => {
-            const nk=normalizeReligiousQuestion(key);
-            if(normalized.includes(nk)) return true;
-            const parts=nk.split(" ").filter(Boolean);
-            return parts.length >= 3 && parts.every(part => normalized.includes(part));
-        })
-    );
-
-    if(found){
-        renderReligiousAnswer(question, found.answer, "الإجابة");
-        return;
-    }
-
-    result.innerHTML="<div class='loading'>⏳ جاري البحث في قاعدة الأسئلة والإجابات...</div>";
-
-    try{
-        /* أولًا: البحث في قواعد أسئلة وأجوبة إسلامية فعلية */
-        const externalAnswer=await searchIslamicQADatasets(question);
-        if(externalAnswer){
-            renderReligiousAnswer(question, externalAnswer.a, "الإجابة");
-            return;
-        }
-
-        await loadHugeReligiousQuestionBank();
-        if(!expandedQuestionBankReady) build100kQuestionBank();
-
-        const expandedAnswer=search100kQuestionBank(question);
-        if(expandedAnswer){
-            renderReligiousAnswer(question, expandedAnswer.a, "الإجابة");
-            return;
-        }
-
-        if(tryDirectQuranQuestion(question)) return;
-
-        /* البحث أولًا في نصوص الأسئلة، ثم في نصوص الآيات */
-        const tokens=normalized.split(" ").filter(t=>t.length>=2);
-        let best=null;
-        let bestScore=0;
-
-        for(const item of hugeReligiousQuestionBank){
-            const nq=normalizeReligiousQuestion(item.q);
-            const na=normalizeReligiousQuestion(item.a);
-            let score=0;
-
-            for(const token of tokens){
-                if(nq.includes(token)) score+=3;
-                else if(na.includes(token)) score+=1;
-            }
-
-            if(score>bestScore){
-                bestScore=score;
-                best=item;
-            }
-        }
-
-        if(best && bestScore>=6){
-            renderReligiousAnswer(question, best.a, best.label);
-            return;
-        }
-
-        const url="https://www.dar-alifta.org/ar/FatwaQuery/?q="+encodeURIComponent(question);
-        result.innerHTML=
-            "<div style='font-weight:bold;color:#075e54;font-size:19px;'>🔎 لم أجد إجابة مؤكدة لهذا السؤال داخل قاعدة المنصة.</div>"+
-            "<div style='margin-top:10px;line-height:1.9;'>قاعدة المنصة أصبحت تحتوي على أكثر من ٣١ ألف سؤال قرآني، لكن السؤال الحالي يحتاج مصدر فتوى أو إجابة متخصصة.</div>"+
-            "<button type='button' class='action' onclick=\"window.open('"+url+"','_blank')\">🏛️ البحث في دار الإفتاء المصرية</button>";
-
-    }catch(error){
-        console.error(error);
-        const url="https://www.dar-alifta.org/ar/FatwaQuery/?q="+encodeURIComponent(question);
-        result.innerHTML=
-            "⚠️ تعذر تحميل قاعدة الأسئلة الموسعة حاليًا. تأكد من اتصال الإنترنت ثم حاول مرة أخرى."+
-            "<button type='button' class='action' onclick=\"window.open('"+url+"','_blank')\">🏛️ البحث في دار الإفتاء المصرية</button>";
-    }
-}
-
-function clearReligiousQuestion(){
-    document.getElementById("religiousQuestionInput").value="";
-    document.getElementById("religiousQuestionResult").innerHTML=
-        "اكتب سؤالك الديني ثم اضغط «إظهار الإجابة». قاعدة الأسئلة الموسعة تحتوي على أكثر من ٣١ ألف سؤال قرآني.";
-    document.getElementById("religiousQuestionInput").focus();
-}
-
-document.getElementById("religiousQuestionInput")?.addEventListener("keydown",function(event){
-    if(event.key==="Enter" && (event.ctrlKey || event.metaKey)){
-        event.preventDefault();
-        answerReligiousQuestion();
-    }
-});
-
-/* تجهيز القاعدة في الخلفية عند فتح الصفحة، دون تعطيل المستخدم. */
-window.addEventListener("load",()=>{
-    setTimeout(async()=>{
-        try{
-            await loadHugeReligiousQuestionBank();
-            if(!expandedQuestionBankReady) build100kQuestionBank();
-        }catch(e){}
-    },800);
-});
-</script>
-
-<!-- MOBILE CLICK / TOUCH COMPATIBILITY FIX -->
-<style id="mobile-click-compatibility">
-html,body{touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
-body::before{pointer-events:none!important;}
-#mainNavigation,#sectionsMenuToggle,.salawat-popup,#welcomeScreen{touch-action:manipulation;}
-button,a,input,select,textarea,label{pointer-events:auto!important;touch-action:manipulation;}
-@media(max-width:600px){
-  body{padding-left:64px!important;padding-bottom:0!important;}
-  #mainNavigation{position:fixed!important;left:0!important;right:auto!important;top:0!important;bottom:auto!important;width:64px!important;height:100vh!important;max-height:100vh!important;overflow-x:hidden!important;overflow-y:auto!important;display:flex!important;flex-direction:column!important;flex-wrap:nowrap!important;padding:68px 6px 14px!important;gap:7px!important;z-index:1200!important;}
-  #mainNavigation button{width:100%!important;min-width:0!important;min-height:44px!important;padding:8px 5px!important;flex:0 0 auto!important;}
-  #sectionsMenuToggle{display:flex!important;left:64px!important;top:14px!important;width:32px!important;height:40px!important;z-index:1201!important;}
-  body.sidebar-expanded{padding-left:210px!important;padding-bottom:0!important;}
-  #mainNavigation.sidebar-expanded{width:210px!important;padding:68px 8px 14px!important;}
-  #mainNavigation.sidebar-expanded .section-name{display:inline!important;}
-  #welcomeScreen{z-index:5000!important;}
-}
-</style>
-<script id="mobile-click-compatibility-js">
-(function(){
-  function bind(){
-    var reg=document.querySelector('#welcomeScreen .gold-button');
-    if(reg){
-      reg.onclick=function(){
-        if(typeof window.registerUser==='function') window.registerUser();
-      };
-    }
-    var login=document.querySelector('[onclick="openAdminPanel()"]');
-    if(login){
-      login.onclick=function(){
-        if(typeof window.openAdminPanel==='function') window.openAdminPanel();
-      };
-    }
-  }
-  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',bind); else bind();
-})();
 </script>
 
 </body>
