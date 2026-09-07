@@ -1487,25 +1487,6 @@ body.sidebar-expanded #sectionsMenuToggle{
 .admin-reply-box h3{margin-top:0}
 @media(max-width:600px){.admin-switch{flex-direction:column;align-items:stretch}.chat-message{max-width:94%}}
 </style>
-
-<style id="mobile-touch-fixes">
-button, input, select, textarea, a {
-    -webkit-tap-highlight-color: transparent;
-    touch-action: manipulation;
-}
-button {
-    -webkit-user-select: none;
-    user-select: none;
-}
-@media (max-width: 600px){
-    #welcomeScreen { z-index: 2000; }
-    .welcome-box { width: min(520px, calc(100vw - 28px)); }
-    .gold-button, .action, nav button, .surah-btn, .home-buttons button {
-        min-height: 44px;
-    }
-    #mainNavigation { -webkit-overflow-scrolling: touch; }
-}
-</style>
 </head>
 
 <body>
@@ -2355,7 +2336,7 @@ button {
 const googleFormURL =
     "https://forms.gle/KYqB1A5vAxmETLy18";
 
-function registerUser(){
+window.registerUser=function registerUser(){
 
     const nameElement =
         document.getElementById("userName");
@@ -2409,17 +2390,9 @@ function registerUser(){
     welcomeScreen.style.display =
         "none";
 
-    const newWindow =
-        window.open(
-            googleFormURL,
-            "_blank"
-        );
-
-    if(!newWindow){
-
-        window.location.href =
-            googleFormURL;
-
+    /* لا نفتح نافذة خارجية تلقائيًا على الهاتف؛ نحفظ التسجيل وننتقل داخل نفس الصفحة إذا لزم الأمر. */
+    if(googleFormURL){
+        try{ window.location.assign(googleFormURL); }catch(e){ console.warn(e); }
     }
 
 }
@@ -2803,7 +2776,10 @@ function showPage(id){
     }
 
 
-    try{ window.scrollTo({top:0,behavior:"smooth"}); }catch(e){ window.scrollTo(0,0); }
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
 
 }
 
@@ -2941,7 +2917,6 @@ surahs.forEach(
 
                 showPage("quran");
 
-                try{ localStorage.setItem("noorSelectedSurah", String(number)); }catch(e){}
                 await loadSurah(number);
 
                 const quranText =
@@ -3006,6 +2981,8 @@ surahs.forEach(
 ===================================================== */
 
 async function loadSurah(number){
+    number=Number(number)||1;
+    window.noorSelectedSurah=number;
 
     const quranText =
         document.getElementById(
@@ -3026,25 +3003,23 @@ async function loadSurah(number){
 
     try{
 
-        const quranUrls = [
-            "https://api.alquran.cloud/v1/surah/" + number + "/quran-uthmani-quran-academy",
-            "https://api.alquran.cloud/v1/surah/" + number + "/quran-uthmani"
-        ];
-        let result = null;
-        let lastError = null;
-        for(const url of quranUrls){
-            try{
-                const response = await fetch(url, {method:"GET", cache:"no-store"});
-                if(!response.ok) throw new Error("HTTP " + response.status);
-                const data = await response.json();
-                if(data?.code !== 200 || !data?.data?.ayahs) throw new Error("بيانات القرآن غير مكتملة");
-                result = data;
-                break;
-            }catch(err){
-                lastError = err;
-            }
+        const response =
+            await fetch(
+                "https://api.alquran.cloud/v1/surah/" +
+                number +
+                "/quran-uthmani-quran-academy"
+            );
+
+        if(!response.ok){
+
+            throw new Error(
+                "فشل تحميل القرآن"
+            );
+
         }
-        if(!result) throw lastError || new Error("فشل تحميل القرآن");
+
+        const result =
+            await response.json();
 
         quranText.innerHTML =
 
@@ -3063,6 +3038,8 @@ async function loadSurah(number){
                 ) +
 
             '</div>';
+
+        if(!result || !result.data || !Array.isArray(result.data.ayahs)) throw new Error("بيانات السورة غير صالحة");
 
         result.data.ayahs.forEach(
             ayah=>{
@@ -6864,7 +6841,7 @@ function chatTime(ts){try{const d=ts?.toDate?ts.toDate():new Date(ts);return Num
 async function initLiveChat(){
     const status=document.getElementById("chatStatus"), box=document.getElementById("chatBox");
     try{
-        const cred=await signInAnonymously(auth); currentUser=cred.user; box.style.display="block";
+        const cred=auth.currentUser?{user:auth.currentUser}:await signInAnonymously(auth); currentUser=cred.user; window.currentUser=currentUser; box.style.display="block";
         await loadVisitorProfile();
         status.innerHTML=currentConversationId?"💬 محادثتك محفوظة. يمكنك كتابة رسالة جديدة أو انتظار الرد.":"👋 اكتب سؤالك بالأسفل، وسيتم إنشاء محادثتك تلقائيًا.";
         if(currentConversationId) subscribeToMessages(currentConversationId);
@@ -6982,24 +6959,20 @@ window.openAdminPanel=async()=>{
     }
     status.textContent="⏳ جاري تسجيل الدخول...";
     try{
-        if(auth.currentUser?.isAnonymous){
-            await signOut(auth);
-        }
         const cred=await signInWithEmailAndPassword(auth,email,password);
         if(cred.user.uid!==OWNER_UID){
             await signOut(auth);
             status.textContent="⛔ هذا الحساب ليس حساب صاحب المنصة.";
             return;
         }
-        currentUser=cred.user;
+        currentUser=cred.user; window.currentUser=currentUser;
         panel.style.display="block";
         status.textContent="✅ تم تسجيل الدخول كصاحب المنصة.";
         renderPlatformControls();
         await window.loadAdminConversations();
     }catch(e){
         console.error(e);
-        const code = e?.code || "unknown";
-        status.textContent="⚠️ تعذر تسجيل الدخول. تأكد من البريد الإلكتروني وكلمة المرور. ("+code+")";
+        status.textContent="⚠️ تعذر تسجيل الدخول. تأكد من البريد الإلكتروني وكلمة المرور.";
     }
 };
 
@@ -7537,5 +7510,39 @@ window.addEventListener("load",()=>{
     },800);
 });
 </script>
+
+<!-- MOBILE CLICK / TOUCH COMPATIBILITY FIX -->
+<style id="mobile-click-compatibility">
+html,body{touch-action:manipulation;-webkit-tap-highlight-color:transparent;}
+body::before{pointer-events:none!important;}
+#mainNavigation,#sectionsMenuToggle,.salawat-popup,#welcomeScreen{touch-action:manipulation;}
+button,a,input,select,textarea,label{pointer-events:auto!important;touch-action:manipulation;}
+@media(max-width:600px){
+  body{padding-left:0!important;padding-bottom:74px!important;}
+  #mainNavigation{position:fixed!important;left:0!important;right:0!important;top:auto!important;bottom:0!important;width:100%!important;height:64px!important;max-height:64px!important;overflow-x:auto!important;overflow-y:hidden!important;display:flex!important;flex-direction:row!important;padding:5px 6px!important;gap:6px!important;z-index:1200!important;}
+  #mainNavigation button{width:auto!important;min-width:58px!important;min-height:52px!important;padding:6px!important;flex:0 0 auto!important;}
+  #sectionsMenuToggle{display:none!important;}
+  body.sidebar-expanded{padding-left:0!important;}
+  #mainNavigation.sidebar-expanded{width:100%!important;padding:5px 6px!important;}
+  #mainNavigation.sidebar-expanded .section-name{display:none!important;}
+  #welcomeScreen{z-index:5000!important;}
+}
+</style>
+<script id="mobile-click-compatibility-js">
+(function(){
+  function activate(fn){ return function(e){ if(e){e.preventDefault();e.stopPropagation();} try{fn();}catch(err){console.error(err);} }; }
+  function bind(){
+    var reg=document.querySelector('#welcomeScreen .gold-button');
+    if(reg){reg.onclick=activate(function(){window.registerUser&&window.registerUser();});}
+    var login=document.querySelector('[onclick="openAdminPanel()"]');
+    if(login){login.onclick=activate(function(){window.openAdminPanel&&window.openAdminPanel();});}
+    document.querySelectorAll('.surah-btn').forEach(function(b){
+      b.addEventListener('touchend',function(e){e.preventDefault(); b.click();},{passive:false});
+    });
+  }
+  if(document.readyState==='loading') document.addEventListener('DOMContentLoaded',bind); else bind();
+})();
+</script>
+
 </body>
 </html>
