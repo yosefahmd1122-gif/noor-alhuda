@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+d<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -479,6 +479,11 @@ footer{
 .admin-chat-header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 16px;background:#17352f;color:#fff}
 .admin-chat-header h3{margin:0;color:#fff}
 .admin-chat-header .admin-note{color:#dcebe6}
+.admin-selected-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:7px}
+.admin-selected-uid{display:inline-flex;align-items:center;gap:5px}
+.admin-block-selected{background:#8f1d2c!important;color:#fff!important;border:1px solid #8f1d2c!important;border-radius:9px;padding:7px 11px;font-weight:bold;cursor:pointer}
+.admin-block-selected.unblock{background:#2e7d32!important;border-color:#2e7d32!important}
+.admin-block-selected:disabled{opacity:.65;cursor:not-allowed}
 .admin-chat-messages{min-height:300px;max-height:520px;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;background:#f8fdfb}
 .admin-chat-message{max-width:82%;padding:12px 15px;border-radius:16px;line-height:1.9;white-space:pre-wrap;word-break:break-word}
 .admin-chat-message.visitor{align-self:flex-start;background:#dbeafe;border:1px solid #60a5fa;color:#000!important}.admin-chat-message.visitor *{color:#000!important}
@@ -2616,6 +2621,14 @@ async function initLiveChat(){
             currentUser=auth.currentUser;
             window.currentUser=currentUser;
         }
+
+        if(isVisitorBlocked(currentUser.uid)){
+            applyPlatformSettings(window.platformSettings||{});
+            box.style.display="none";
+            status.innerHTML='<b style="color:#8f1d2c">🚫 تم حظرك من استخدام هذه المنصة.</b>';
+            return;
+        }
+
         box.style.display="block";
         await loadVisitorProfile();
         status.innerHTML=currentConversationId?"💬 محادثتك محفوظة. يمكنك كتابة رسالة جديدة أو انتظار الرد.":"👋 اكتب سؤالك بالأسفل، وسيتم إنشاء محادثتك تلقائيًا.";
@@ -2652,6 +2665,10 @@ window.sendChatMessage=async()=>{
     const input=document.getElementById("chatInput"),btn=document.getElementById("chatSendButton"),text=input?.value.trim();
     if(!text)return;
     if(!currentUser||!currentUser.isAnonymous){await initLiveChat();if(!currentUser)return;}
+    if(isVisitorBlocked(currentUser.uid)){
+        applyPlatformSettings(window.platformSettings||{});
+        return;
+    }
     btn.disabled=true;
     try{
         if(!currentConversationId){
@@ -2709,23 +2726,53 @@ function renderBlockedUsers(){const c=document.getElementById("blockedUsersList"
 window.blockVisitor=async()=>{const input=document.getElementById("blockVisitorUid"),uid=(input?.value||"").trim();if(!uid)return alert("اكتب UID الزائر أولًا.");const arr=[...(window.platformSettings.blockedVisitorUids||[])];if(!arr.includes(uid))arr.push(uid);window.platformSettings.blockedVisitorUids=arr;await window.savePlatformSettings();if(input)input.value="";};
 window.unblockVisitor=async(uid)=>{window.platformSettings.blockedVisitorUids=(window.platformSettings.blockedVisitorUids||[]).filter(x=>x!==uid);await window.savePlatformSettings();};
 async function loadPlatformSettings(){try{onSnapshot(doc(db,"platformSettings","main"),snap=>{const data=snap.exists()?snap.data():{};window.platformSettings={enabled:data.enabled!==false,disabledSections:Array.isArray(data.disabledSections)?data.disabledSections:[],blockedVisitorUids:Array.isArray(data.blockedVisitorUids)?data.blockedVisitorUids:[],welcomeMessage:data.welcomeMessage||""};applyPlatformSettings(window.platformSettings);if(currentUser?.uid===OWNER_UID)renderPlatformControls();});}catch(e){console.error(e);}}
+function isVisitorBlocked(uid){
+    if(!uid) return false;
+    const blocked=Array.isArray(window.platformSettings?.blockedVisitorUids)
+        ? window.platformSettings.blockedVisitorUids
+        : [];
+    return blocked.includes(uid);
+}
+
 function applyPlatformSettings(ps){
-    const isOwner=auth.currentUser?.uid===OWNER_UID || window.currentUser?.uid===OWNER_UID;
+    const user=auth.currentUser||window.currentUser||currentUser;
+    const isOwner=user?.uid===OWNER_UID;
+    const isBlocked=!isOwner && isVisitorBlocked(user?.uid);
     const overlay=document.getElementById("maintenanceOverlay");
     const message=document.getElementById("maintenanceMessage");
+    const unlockBtn=document.querySelector(".maintenance-unlock-btn");
+
     if(overlay){
-        if(!isOwner && ps.enabled===false){
+        if(isBlocked){
+            overlay.style.display="flex";
+            if(message)message.textContent="تم حظرك من استخدام هذه المنصة.";
+            if(unlockBtn)unlockBtn.style.display="none";
+            document.querySelectorAll("body > *:not(#maintenanceOverlay)").forEach(el=>el.style.pointerEvents="none");
+        }else if(!isOwner && ps.enabled===false){
             overlay.style.display="flex";
             if(message)message.textContent=ps.welcomeMessage || "المنصة مغلقة حاليًا للصيانة أو التحديث. يرجى المحاولة لاحقًا.";
+            if(unlockBtn)unlockBtn.style.display="";
             document.querySelectorAll("body > *:not(#maintenanceOverlay)").forEach(el=>el.style.pointerEvents="none");
         }else{
             overlay.style.display="none";
+            if(unlockBtn)unlockBtn.style.display="";
             document.querySelectorAll("body > *:not(#maintenanceOverlay)").forEach(el=>el.style.pointerEvents="");
         }
     }
+
+    if(isBlocked){
+        const status=document.getElementById("chatStatus");
+        const box=document.getElementById("chatBox");
+        if(box)box.style.display="none";
+        if(status){
+            status.innerHTML='<b style="color:#8f1d2c">🚫 تم حظرك من استخدام هذه المنصة.</b>';
+            status.style.display="block";
+        }
+    }
+
     CONTROLLED_SECTIONS.forEach(([id])=>{
         const buttons=[...document.querySelectorAll("nav button, .home-buttons button")].filter(x=>x.getAttribute("onclick")?.includes(`showPage('${id}')`));
-        buttons.forEach(b=>b.style.display=isOwner||!ps.disabledSections.includes(id)?"":"none");
+        buttons.forEach(b=>b.style.display=isOwner||(!isBlocked&&!ps.disabledSections.includes(id))?"":"none");
     });
     const st=document.getElementById("platformOpenStatus");
     if(st)st.innerHTML=ps.enabled!==false?"🟢 <b>المنصة مفتوحة</b> — الزوار يستطيعون الدخول.":"🔴 <b>المنصة مغلقة</b> — وضع الصيانة مفعل.";
@@ -2846,15 +2893,91 @@ function subscribeToAdminMessages(conversationId,visitorName){
     });
 }
 
+window.blockSelectedVisitor=async function(){
+    const uid=(window.selectedAdminVisitorUid||"").trim();
+    if(!uid || uid==="غير متاح"){
+        alert("لا يوجد UID صالح لهذا الزائر.");
+        return;
+    }
+    if(!auth.currentUser || auth.currentUser.uid!==OWNER_UID){
+        alert("يجب تسجيل الدخول بحساب صاحب المنصة أولًا.");
+        return;
+    }
+    if(isVisitorBlocked(uid)){
+        alert("هذا الزائر محظور بالفعل.");
+        return;
+    }
+    if(!confirm("هل تريد حظر هذا الزائر؟\\nلن يستطيع هذا الـUID استخدام المنصة بعد الحظر."))return;
+    const button=document.getElementById("blockSelectedVisitorButton");
+    if(button){button.disabled=true;button.textContent="⏳ جاري الحظر...";}
+    try{
+        const arr=[...(window.platformSettings.blockedVisitorUids||[])];
+        if(!arr.includes(uid))arr.push(uid);
+        await setDoc(doc(db,"platformSettings","main"),{blockedVisitorUids:arr},{merge:true});
+        window.platformSettings={...(window.platformSettings||{}),blockedVisitorUids:arr};
+        applyPlatformSettings(window.platformSettings);
+        renderBlockedUsers();
+        renderDashboardStats();
+        updateSelectedVisitorBlockButton(uid);
+        alert("🚫 تم حظر الزائر بنجاح.");
+    }catch(e){
+        console.error(e);
+        alert("تعذر حظر الزائر. تأكد من صلاحيات Firestore.");
+    }finally{
+        const b=document.getElementById("blockSelectedVisitorButton");
+        if(b)b.disabled=false;
+    }
+};
+
+function updateSelectedVisitorBlockButton(uid){
+    const b=document.getElementById("blockSelectedVisitorButton");
+    if(!b)return;
+    const blocked=isVisitorBlocked(uid);
+    b.textContent=blocked?"🔓 فك الحظر":"🚫 حظر";
+    b.classList.toggle("unblock",blocked);
+    b.onclick=blocked?()=>unblockSelectedVisitor():()=>blockSelectedVisitor();
+}
+
+window.unblockSelectedVisitor=async function(){
+    const uid=(window.selectedAdminVisitorUid||"").trim();
+    if(!uid)return;
+    if(!confirm("هل تريد فك الحظر عن هذا الزائر؟"))return;
+    const b=document.getElementById("blockSelectedVisitorButton");
+    if(b){b.disabled=true;b.textContent="⏳ جاري فك الحظر...";}
+    try{
+        const arr=(window.platformSettings.blockedVisitorUids||[]).filter(x=>x!==uid);
+        await setDoc(doc(db,"platformSettings","main"),{blockedVisitorUids:arr},{merge:true});
+        window.platformSettings={...(window.platformSettings||{}),blockedVisitorUids:arr};
+        applyPlatformSettings(window.platformSettings);
+        renderBlockedUsers();
+        renderDashboardStats();
+        updateSelectedVisitorBlockButton(uid);
+        alert("🔓 تم فك الحظر عن الزائر.");
+    }catch(e){
+        console.error(e);
+        alert("تعذر فك الحظر. تأكد من صلاحيات Firestore.");
+    }finally{
+        const btn=document.getElementById("blockSelectedVisitorButton");
+        if(btn)btn.disabled=false;
+    }
+};
+
 function selectAdminConversation(id,x){
     currentAdminConversationId=id;
+    window.selectedAdminVisitorUid=(x.visitorUid||"").trim();
     const replyBox=document.getElementById("adminReplyBox");
     const title=document.getElementById("adminSelectedTitle");
     const visitor=document.getElementById("adminSelectedVisitor");
     const input=document.getElementById("adminReplyInput");
+    const uid=window.selectedAdminVisitorUid;
     if(replyBox)replyBox.style.display="block";
     if(title)title.textContent="💬 محادثة مع "+(x.visitorName||"الزائر");
-    if(visitor)visitor.innerHTML="🆔 UID: <code>"+escapeHtml(x.visitorUid||"غير متاح")+"</code>";
+    if(visitor){
+        visitor.innerHTML='<div class="admin-selected-actions"><span class="admin-selected-uid">🆔 UID: <code>'+escapeHtml(uid||"غير متاح")+'</code></span>' +
+            (uid?'<button type="button" id="blockSelectedVisitorButton" class="admin-block-selected" onclick="blockSelectedVisitor()">🚫 حظر</button>':"") +
+            '</div>';
+    }
+    if(uid)updateSelectedVisitorBlockButton(uid);
     if(input)input.value="";
     subscribeToAdminMessages(id,x.visitorName||"الزائر");
     if(replyBox)setTimeout(()=>replyBox.scrollIntoView({behavior:"smooth",block:"start"}),50);
@@ -2863,6 +2986,7 @@ function selectAdminConversation(id,x){
 
 window.closeAdminConversation=()=>{
     currentAdminConversationId=null;
+    window.selectedAdminVisitorUid="";
     if(unsubscribeAdminMessages){
         unsubscribeAdminMessages();
         unsubscribeAdminMessages=null;
@@ -2902,6 +3026,7 @@ onAuthStateChanged(auth,(user)=>{
     if(emailInput && !emailInput.value){
         emailInput.value=localStorage.getItem("noorAdminEmail")||((user?.uid===OWNER_UID)?(user.email||""):"");
     }
+    applyPlatformSettings(window.platformSettings||{});
     if(user?.uid===OWNER_UID){
         const panel=document.getElementById("adminPanel");
         const status=document.getElementById("adminLoginStatus");
