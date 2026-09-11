@@ -1,4 +1,4 @@
-d<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -497,6 +497,21 @@ footer{
 @media(max-width:800px){.admin-control-grid{grid-template-columns:1fr}.dashboard-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.section-control-list{grid-template-columns:1fr}}
 @media(max-width:600px){.admin-switch{flex-direction:column;align-items:stretch}.chat-message{max-width:94%}}
 
+
+/* ===============================
+   الذكاء الاصطناعي
+================================ */
+.ai-chat-box{margin-top:18px;border:1px solid #d8e7e1;border-radius:18px;overflow:hidden;background:#f8fdfb}
+.ai-messages{min-height:220px;max-height:560px;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px}
+.ai-message{max-width:88%;padding:13px 16px;border-radius:16px;line-height:1.95;white-space:pre-wrap;word-break:break-word}
+.ai-message.user{align-self:flex-start;background:#dbeafe;border:1px solid #60a5fa;color:#000}
+.ai-message.assistant{align-self:flex-end;background:#edf7f2;border:1px solid #9bc7b9;color:#17352f}
+.ai-message.system{align-self:center;background:#fff8da;border:1px solid #d4af37;color:#4d431d;max-width:96%;font-size:14px}
+.ai-compose{padding:14px;background:#fff;border-top:1px solid #d8e7e1}
+.ai-settings-note{background:#f8fdfb;border:1px dashed #9bc7b9;border-radius:12px;padding:12px;line-height:1.8}
+.ai-settings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media(max-width:800px){.ai-settings-grid{grid-template-columns:1fr}.ai-message{max-width:94%}}
+
 </style>
 </head>
 
@@ -556,6 +571,7 @@ footer{
     <button onclick="showPage('rulings')">⚖️ الأحكام</button>
     <button onclick="showPage('adhkar')">🤲 الأدعية والأذكار</button>
     <button onclick="showPage('guide')">📘 دليل المنصة</button>
+    <button onclick="showPage('ai')">🤖 اسأل نور الهدى</button>
     <button onclick="showPage('contact'); initLiveChat();">💬 تواصل معي</button>
 </nav>
 
@@ -576,6 +592,7 @@ footer{
             <button onclick="showPage('rulings')">⚖️ الأحكام الشرعية</button>
             <button onclick="showPage('adhkar')">🤲 الأدعية والأذكار</button>
             <button onclick="showPage('guide')">📘 دليل المنصة</button>
+    <button onclick="showPage('ai')">🤖 اسأل نور الهدى</button>
             <button onclick="showPage('contact'); initLiveChat();">💬 تواصل معي</button>
         </div>
     </div>
@@ -731,6 +748,24 @@ footer{
 </section>
 
 
+<section id="ai" class="page">
+    <div class="card">
+        <h2>🤖 اسأل نور الهدى</h2>
+        <p>مساعد ذكي للإجابة عن الأسئلة العامة. في المسائل الشرعية الحساسة أو الفتاوى الخاصة، راجع جهة إفتاء موثوقة.</p>
+        <div id="aiStatus" class="result-box">⏳ جاري تجهيز المساعد...</div>
+        <div id="aiChatBox" class="ai-chat-box">
+            <div id="aiMessages" class="ai-messages">
+                <div class="ai-message assistant">السلام عليكم ورحمة الله وبركاته. اكتب سؤالك وسأحاول مساعدتك بإجابة واضحة.</div>
+            </div>
+            <div class="ai-compose">
+                <textarea id="aiInput" rows="4" placeholder="اكتب سؤالك هنا..." autocomplete="off"></textarea>
+                <button type="button" class="gold-button" id="aiSendButton" onclick="askNoorAI()">🤖 إرسال السؤال</button>
+                <button type="button" class="action" onclick="clearNoorAIChat()">🗑️ مسح المحادثة</button>
+            </div>
+        </div>
+    </div>
+</section>
+
 <section id="contact" class="page">
     <div class="card">
         <h2>💬 تواصل معي</h2>
@@ -781,6 +816,7 @@ footer{
                     <button type="button" class="admin-tab" onclick="showAdminView('sections',this)">🧩 الأقسام</button>
                     <button type="button" class="admin-tab" onclick="showAdminView('visitors',this)">👥 الزوار</button>
                     <button type="button" class="admin-tab" onclick="showAdminView('general',this)">⚙️ إعدادات المنصة</button>
+                    <button type="button" class="admin-tab" onclick="showAdminView('ai',this)">🤖 الذكاء الاصطناعي</button>
                 </div>
 
                 <div id="adminView-overview" class="admin-view active">
@@ -835,6 +871,39 @@ footer{
                             <h4>🔓 الزوار المحظورون</h4>
                             <div id="blockedUsersList" class="blocked-users-list">لا يوجد زوار محظورون.</div>
                         </div>
+                    </div>
+                </div>
+
+
+                <div id="adminView-ai" class="admin-view">
+                    <div class="admin-control-card">
+                        <h4>🤖 إعدادات الذكاء الاصطناعي</h4>
+                        <div class="ai-settings-note">
+                            المساعد يستخدم Firebase AI Logic مع Gemini. يجب تفعيل AI Logic في مشروع Firebase، ثم تفعيل App Check للإنتاج حسب إعدادات مشروعك. لا تضع مفتاح API سريًا داخل ملف المنصة.
+                        </div>
+                        <div class="ai-settings-grid" style="margin-top:14px;">
+                            <div class="admin-control-card">
+                                <h4>🔘 تشغيل المساعد</h4>
+                                <label class="switch-control"><input id="aiEnabled" type="checkbox"> السماح للزوار باستخدام الذكاء الاصطناعي</label>
+                            </div>
+                            <div class="admin-control-card">
+                                <h4>🧠 النموذج</h4>
+                                <select id="aiModel">
+                                    <option value="gemini-3.7-flash">gemini-3.7-flash</option>
+                                    <option value="gemini-3.8-flash">gemini-3.8-flash</option>
+                                    <option value="gemini-3.5-flash-lite">gemini-3.5-flash-lite</option>
+                                </select>
+                            </div>
+                        </div>
+                        <label style="display:block;margin-top:14px;">📝 تعليمات المساعد
+                            <textarea id="aiSystemInstruction" rows="8" placeholder="اكتب هنا طريقة إجابة المساعد..."></textarea>
+                        </label>
+                        <label class="switch-control" style="margin-top:10px;"><input id="aiSaveHistory" type="checkbox"> حفظ أسئلة وإجابات الذكاء الاصطناعي في Firestore</label>
+                        <div style="margin-top:12px;">
+                            <button type="button" class="gold-button" onclick="saveAISettings()">💾 حفظ إعدادات الذكاء الاصطناعي</button>
+                            <button type="button" class="action" onclick="testNoorAI()">🧪 اختبار المساعد</button>
+                        </div>
+                        <div id="aiAdminStatus" class="result-box" style="margin-top:12px;">لم يتم الاختبار بعد.</div>
                     </div>
                 </div>
 
@@ -927,6 +996,9 @@ footer{
 
         <h3>🤲 الأدعية والأذكار</h3>
         <p>يمكنك البحث داخل الأذكار.</p>
+
+        <h3>🤖 اسأل نور الهدى</h3>
+        <p>اكتب سؤالك وسيحاول المساعد الذكي الإجابة عليه. المسائل الشرعية الخاصة تحتاج إلى الرجوع إلى جهة إفتاء موثوقة.</p>
 
     </div>
 </section>
@@ -1045,6 +1117,8 @@ window.addEventListener(
 );
 
 function showPage(id){
+
+    if(id==="ai") setTimeout(()=>initNoorAI(),50);
 
     document
         .querySelectorAll(".page")
@@ -2568,9 +2642,10 @@ window.addEventListener(
 
 
 <script type="module">
-import { initializeApp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-app.js";
-import { getAuth, signInAnonymously, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-auth.js";
-import { getFirestore, collection, addDoc, doc, updateDoc, setDoc, onSnapshot, query, orderBy, getDocs, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/10.12.5/firebase-firestore.js";
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+import { getAuth, signInAnonymously, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+import { getFirestore, collection, addDoc, doc, updateDoc, setDoc, onSnapshot, query, orderBy, getDocs, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+import { getAI, getGenerativeModel, GoogleAIBackend } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-ai.js";
 
 const firebaseConfig={
     apiKey:"AIzaSyBXvm1UflDiHGjkkVjw-HIJdQ6CtEDlE_8",
@@ -2583,6 +2658,8 @@ const firebaseConfig={
 };
 const app=initializeApp(firebaseConfig);
 const auth=getAuth(app), db=getFirestore(app);
+let noorAI=null;
+let noorAIModel=null;
 let currentUser=null;
 let authReadyResolve;
 const authReady=new Promise(resolve=>{authReadyResolve=resolve;});
@@ -2592,10 +2669,10 @@ let unsubscribeMessages=null;
 let unsubscribeAdminMessages=null;
 const OWNER_UID="WCtZOcEYljPwxc3zGuq2sJFznyK2";
 const CONTROLLED_SECTIONS=[
-  ["quran","📖 القرآن الكريم"],["recitation","🎧 التلاوة"],["tafsir","📚 التفسير"],
+  ["quran","📖 القرآن الكريم"],["recitation","🎧 التلاوة"],["ai","🤖 الذكاء الاصطناعي"],["tafsir","📚 التفسير"],
   ["contact","💬 تواصل معي"],["rulings","⚖️ الأحكام والفتاوى"],["adhkar","📿 الأذكار"],["guide","🧭 الدليل"]
 ];
-window.platformSettings={enabled:true,disabledSections:[],blockedVisitorUids:[],welcomeMessage:""};
+window.platformSettings={enabled:true,disabledSections:[],blockedVisitorUids:[],welcomeMessage:"",aiEnabled:false,aiModel:"gemini-3.7-flash",aiSystemInstruction:"أنت مساعد منصة نور الهدى. أجب بالعربية الواضحة، وكن محترمًا ودقيقًا. في الفتاوى والمسائل الشرعية الخاصة أو المختلف فيها نبّه المستخدم إلى ضرورة الرجوع إلى عالم أو جهة إفتاء موثوقة. لا تدّع أنك مفتي، ولا تخترع نصوصًا أو أحاديث.",aiSaveHistory:false};
 
 function escapeHtml(v){return String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");}
 function chatTime(ts){try{const d=ts?.toDate?ts.toDate():new Date(ts);return Number.isNaN(d.getTime())?"":d.toLocaleString("ar-EG",{dateStyle:"short",timeStyle:"short"});}catch(e){return "";}}
@@ -2711,12 +2788,105 @@ function renderPlatformControls(){
     if(list)list.innerHTML=CONTROLLED_SECTIONS.map(([id,label])=>`<label class="section-control-item"><input type="checkbox" data-section="${id}" ${!ps.disabledSections.includes(id)?"checked":""}> ${label}</label>`).join("");
     const en=document.getElementById("platformEnabled");if(en)en.checked=ps.enabled!==false;
     const w=document.getElementById("platformWelcome");if(w)w.value=ps.welcomeMessage||"";
+    const ae=document.getElementById("aiEnabled");if(ae)ae.checked=ps.aiEnabled===true;
+    const am=document.getElementById("aiModel");if(am)am.value=ps.aiModel||"gemini-3.7-flash";
+    const asi=document.getElementById("aiSystemInstruction");if(asi)asi.value=ps.aiSystemInstruction||"";
+    const ah=document.getElementById("aiSaveHistory");if(ah)ah.checked=ps.aiSaveHistory===true;
     renderBlockedUsers();renderDashboardStats();
 }
 function collectPlatformSettings(){
     const disabled=[];document.querySelectorAll("#sectionControlList input[data-section]").forEach(i=>{if(!i.checked)disabled.push(i.dataset.section);});
-    return {enabled:document.getElementById("platformEnabled")?.checked!==false,disabledSections:disabled,blockedVisitorUids:Array.isArray(window.platformSettings.blockedVisitorUids)?window.platformSettings.blockedVisitorUids:[],welcomeMessage:(document.getElementById("platformWelcome")?.value||"").trim()};
+    return {enabled:document.getElementById("platformEnabled")?.checked!==false,disabledSections:disabled,blockedVisitorUids:Array.isArray(window.platformSettings.blockedVisitorUids)?window.platformSettings.blockedVisitorUids:[],welcomeMessage:(document.getElementById("platformWelcome")?.value||"").trim(),aiEnabled:document.getElementById("aiEnabled")?.checked===true,aiModel:(document.getElementById("aiModel")?.value||"gemini-3.7-flash").trim(),aiSystemInstruction:(document.getElementById("aiSystemInstruction")?.value||"").trim(),aiSaveHistory:document.getElementById("aiSaveHistory")?.checked===true};
 }
+
+window.saveAISettings=async()=>{
+    currentUser=auth.currentUser||currentUser;
+    if(!currentUser||currentUser.uid!==OWNER_UID){alert("يجب تسجيل الدخول بحساب صاحب المنصة أولًا.");return;}
+    const data={aiEnabled:document.getElementById("aiEnabled")?.checked===true,aiModel:(document.getElementById("aiModel")?.value||"gemini-3.7-flash").trim(),aiSystemInstruction:(document.getElementById("aiSystemInstruction")?.value||"").trim(),aiSaveHistory:document.getElementById("aiSaveHistory")?.checked===true};
+    try{
+        await setDoc(doc(db,"platformSettings","main"),data,{merge:true});
+        window.platformSettings={...(window.platformSettings||{}),...data};
+        noorAI=null; noorAIModel=null;
+        const st=document.getElementById("aiAdminStatus");if(st)st.innerHTML="✅ تم حفظ إعدادات الذكاء الاصطناعي.";
+    }catch(e){console.error(e);alert("تعذر حفظ إعدادات الذكاء الاصطناعي. تأكد من صلاحيات Firestore.");}
+};
+
+async function initNoorAI(){
+    const status=document.getElementById("aiStatus");
+    if(!status)return;
+    const ps=window.platformSettings||{};
+    if((auth.currentUser?.uid!==OWNER_UID) && isVisitorBlocked(auth.currentUser?.uid)){status.innerHTML='<b style="color:#8f1d2c">🚫 تم حظرك من استخدام هذه المنصة.</b>';return false;}
+    if(ps.aiEnabled!==true){status.textContent="🔒 المساعد الذكي غير متاح حاليًا.";return false;}
+    try{
+        if(!noorAI){noorAI=getAI(app,{backend:new GoogleAIBackend()});}
+        const modelName=ps.aiModel||"gemini-3.7-flash";
+        noorAIModel=getGenerativeModel(noorAI,{model:modelName,systemInstruction:ps.aiSystemInstruction||"أنت مساعد منصة نور الهدى. أجب بالعربية الواضحة والدقيقة، ولا تدّع أنك مفتي."});
+        status.textContent="🟢 المساعد الذكي جاهز. اكتب سؤالك.";
+        return true;
+    }catch(e){
+        console.error("Noor AI INIT ERROR",e);
+        const code=e?.code||"غير معروف";
+        const message=e?.message||String(e)||"خطأ غير معروف";
+        status.innerHTML="⚠️ تعذر تجهيز المساعد.<br><b>رمز الخطأ:</b> "+escapeHtml(code)+"<br><b>التفاصيل:</b> "+escapeHtml(message);
+        return false;
+    }
+}
+
+function addNoorAIMessage(text,type){
+    const c=document.getElementById("aiMessages");if(!c)return;
+    const el=document.createElement("div");el.className="ai-message "+type;el.textContent=text;c.appendChild(el);c.scrollTop=c.scrollHeight;
+}
+window.clearNoorAIChat=()=>{const c=document.getElementById("aiMessages");if(c)c.innerHTML='<div class="ai-message assistant">تم مسح المحادثة. اكتب سؤالك من جديد.</div>';};
+window.askNoorAI=async()=>{
+    const input=document.getElementById("aiInput"),btn=document.getElementById("aiSendButton"),status=document.getElementById("aiStatus"),text=input?.value.trim()||"";
+    if(!text){alert("اكتب سؤالك أولًا.");return;}
+    if(!auth.currentUser){try{await signInAnonymously(auth);}catch(e){console.error(e);}}
+    if(isVisitorBlocked(auth.currentUser?.uid)){applyPlatformSettings(window.platformSettings||{});return;}
+    if(!(await initNoorAI()))return;
+    addNoorAIMessage(text,"user"); input.value=""; if(btn)btn.disabled=true; if(status)status.textContent="⏳ جاري تجهيز الإجابة...";
+    try{
+        const result=await noorAIModel.generateContent(text);
+        const answer=result.response.text()||"لم أتمكن من توليد إجابة الآن.";
+        addNoorAIMessage(answer,"assistant");
+        if((window.platformSettings||{}).aiSaveHistory===true && auth.currentUser){
+            await addDoc(collection(db,"aiQuestions"),{visitorUid:auth.currentUser.uid,visitorName:localStorage.getItem("noorUserName")||"زائر",question:text,answer,model:window.platformSettings.aiModel||"gemini-3.7-flash",createdAt:serverTimestamp()});
+        }
+        if(status)status.textContent="✅ تم إعداد الإجابة.";
+    }catch(e){
+        console.error("Noor AI FULL ERROR",e);
+        const code=e?.code||"غير معروف";
+        const message=e?.message||String(e)||"خطأ غير معروف";
+        let hint="";
+        if(/app.?check|appcheck/i.test(message)||/app.?check/i.test(code)){
+            hint="السبب المحتمل: App Check غير مفعّل أو غير مضبوط لهذا الموقع.";
+        }else if(/permission|unauth|unauthorized|403/i.test(message)||/permission|unauth/i.test(code)){
+            hint="السبب المحتمل: صلاحيات Firebase أو AI Logic تمنع الطلب.";
+        }else if(/not.?found|404|model/i.test(message)){
+            hint="السبب المحتمل: اسم النموذج أو توفره في مشروع Firebase.";
+        }else if(/400|invalid/i.test(message)||/invalid/i.test(code)){
+            hint="السبب المحتمل: إعداد غير صحيح في طلب الذكاء الاصطناعي.";
+        }else if(/429|quota|resource.?exhausted/i.test(message)||/quota|resource.?exhausted/i.test(code)){
+            hint="السبب المحتمل: تم تجاوز الحد المسموح أو معدل الطلبات.";
+        }
+        addNoorAIMessage("⚠️ تعذر الحصول على الإجابة.\n\nرمز الخطأ: "+code+"\nالتفاصيل: "+message+(hint?"\n\n"+hint:"")+"\n\nإذا أرسلت لي رمز الخطأ والتفاصيل الظاهرة هنا، أقدر أحدد لك الإعداد المطلوب.","system");
+        if(status)status.textContent="⚠️ ظهر خطأ مفصل أسفل الرسالة.";
+    }finally{if(btn)btn.disabled=false;}
+};
+window.testNoorAI=async()=>{
+    const st=document.getElementById("aiAdminStatus");if(st)st.textContent="⏳ جاري اختبار المساعد...";
+    const ok=await initNoorAI();
+    if(!ok){if(st)st.textContent="⚠️ فشل تهيئة المساعد. راجع إعدادات Firebase AI Logic.";return;}
+    try{
+        const r=await noorAIModel.generateContent("أجب بجملة قصيرة: ما اسم هذه المنصة؟");
+        if(st)st.innerHTML="✅ الاختبار نجح: "+escapeHtml(r.response.text()||"");
+    }catch(e){
+        console.error("Noor AI TEST ERROR",e);
+        const code=e?.code||"غير معروف";
+        const message=e?.message||String(e)||"خطأ غير معروف";
+        if(st)st.innerHTML="❌ الاختبار فشل.<br><b>رمز الخطأ:</b> "+escapeHtml(code)+"<br><b>التفاصيل:</b> "+escapeHtml(message)+"<br><br>هذا النص سيساعدنا على تحديد المشكلة بدقة.";
+    }
+};
+
 window.savePlatformSettings=async()=>{
     currentUser=auth.currentUser||currentUser;
     if(!currentUser||currentUser.uid!==OWNER_UID){alert("يجب تسجيل الدخول بحساب صاحب المنصة أولًا.");return;}
@@ -2725,7 +2895,7 @@ window.savePlatformSettings=async()=>{
 function renderBlockedUsers(){const c=document.getElementById("blockedUsersList");if(!c)return;const arr=window.platformSettings.blockedVisitorUids||[];c.innerHTML=arr.length?arr.map(uid=>`<div class="blocked-user-item"><code>${escapeHtml(uid)}</code><button type="button" class="danger-small" onclick="unblockVisitor('${escapeHtml(uid)}')">🔓 فك الحظر</button></div>`).join(""):"لا يوجد زوار محظورون.";}
 window.blockVisitor=async()=>{const input=document.getElementById("blockVisitorUid"),uid=(input?.value||"").trim();if(!uid)return alert("اكتب UID الزائر أولًا.");const arr=[...(window.platformSettings.blockedVisitorUids||[])];if(!arr.includes(uid))arr.push(uid);window.platformSettings.blockedVisitorUids=arr;await window.savePlatformSettings();if(input)input.value="";};
 window.unblockVisitor=async(uid)=>{window.platformSettings.blockedVisitorUids=(window.platformSettings.blockedVisitorUids||[]).filter(x=>x!==uid);await window.savePlatformSettings();};
-async function loadPlatformSettings(){try{onSnapshot(doc(db,"platformSettings","main"),snap=>{const data=snap.exists()?snap.data():{};window.platformSettings={enabled:data.enabled!==false,disabledSections:Array.isArray(data.disabledSections)?data.disabledSections:[],blockedVisitorUids:Array.isArray(data.blockedVisitorUids)?data.blockedVisitorUids:[],welcomeMessage:data.welcomeMessage||""};applyPlatformSettings(window.platformSettings);if(currentUser?.uid===OWNER_UID)renderPlatformControls();});}catch(e){console.error(e);}}
+async function loadPlatformSettings(){try{onSnapshot(doc(db,"platformSettings","main"),snap=>{const data=snap.exists()?snap.data():{};window.platformSettings={enabled:data.enabled!==false,disabledSections:Array.isArray(data.disabledSections)?data.disabledSections:[],blockedVisitorUids:Array.isArray(data.blockedVisitorUids)?data.blockedVisitorUids:[],welcomeMessage:data.welcomeMessage||"",aiEnabled:data.aiEnabled===true,aiModel:data.aiModel||"gemini-3.7-flash",aiSystemInstruction:data.aiSystemInstruction||"أنت مساعد منصة نور الهدى. أجب بالعربية الواضحة والدقيقة. في الفتاوى والمسائل الشرعية الخاصة أو المختلف فيها نبّه المستخدم إلى ضرورة الرجوع إلى جهة إفتاء موثوقة. لا تدّع أنك مفتي ولا تخترع نصوصًا أو أحاديث.",aiSaveHistory:data.aiSaveHistory===true};applyPlatformSettings(window.platformSettings);if(currentUser?.uid===OWNER_UID)renderPlatformControls();});}catch(e){console.error(e);}}
 function isVisitorBlocked(uid){
     if(!uid) return false;
     const blocked=Array.isArray(window.platformSettings?.blockedVisitorUids)
@@ -2820,7 +2990,7 @@ window.setPlatformOpen=async function(isOpen){
         return;
     }
     const current=window.platformSettings||{};
-    const data={enabled:!!isOpen,disabledSections:Array.isArray(current.disabledSections)?current.disabledSections:[],blockedVisitorUids:Array.isArray(current.blockedVisitorUids)?current.blockedVisitorUids:[],welcomeMessage:current.welcomeMessage||""};
+    const data={enabled:!!isOpen,disabledSections:Array.isArray(current.disabledSections)?current.disabledSections:[],blockedVisitorUids:Array.isArray(current.blockedVisitorUids)?current.blockedVisitorUids:[],welcomeMessage:current.welcomeMessage||"",aiEnabled:current.aiEnabled===true,aiModel:current.aiModel||"gemini-3.7-flash",aiSystemInstruction:current.aiSystemInstruction||"",aiSaveHistory:current.aiSaveHistory===true};
     try{
         await setDoc(doc(db,"platformSettings","main"),data,{merge:true});
         window.platformSettings={...current,...data};
