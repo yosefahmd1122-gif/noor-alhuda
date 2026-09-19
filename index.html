@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+ي<!DOCTYPE html>
 <html lang="ar" dir="rtl">
 <head>
 <meta charset="UTF-8">
@@ -164,8 +164,6 @@ textarea{
     cursor:not-allowed;
 }
 
-#platformAIEditInput{width:100%;padding:14px;border:2px solid #b7c8c2;border-radius:12px;font-size:16px;resize:vertical;min-height:120px;background:#fff;}
-#platformAIEditInput:focus{outline:none;border-color:#c9a227;box-shadow:0 0 0 3px rgba(201,162,39,.12);}
 .gold-button{
     background:#c9a227;
     color:#26352f;
@@ -514,44 +512,7 @@ footer{
 .ai-settings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
 @media(max-width:800px){.ai-settings-grid{grid-template-columns:1fr}.ai-message{max-width:94%}}
 
-/* ===============================
-   الإضافات الإسلامية الجديدة
-================================ */
-.feature-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:15px}
-.feature-card{background:#f8fffd;border:1px solid #d8e7e1;border-radius:16px;padding:16px;line-height:1.9}
-.feature-card h3{margin-top:0;color:#075e54}
-.feature-card button{margin-top:8px}
-.prayer-grid{display:grid;grid-template-columns:repeat(5,minmax(0,1fr));gap:10px;margin-top:15px}
-.prayer-item{background:#fff;border:1px solid #d8e7e1;border-radius:14px;padding:13px;text-align:center}
-.prayer-item strong{display:block;color:#075e54;font-size:17px;margin-bottom:5px}
-.prayer-item span{font-size:20px;font-weight:700}
-.countdown-box{font-size:20px;text-align:center;background:#fff8da;border:1px solid #d4af37;border-radius:14px;padding:15px;margin-top:14px}
-.ward-progress{height:16px;background:#e6eee9;border-radius:20px;overflow:hidden;margin:12px 0}.ward-progress>div{height:100%;width:0;background:#075e54;transition:.25s}
-.counter-value{font-size:46px;font-weight:800;text-align:center;color:#075e54;margin:10px}
-.favorite-item,.achievement-item,.quiz-option,.announcement-box{background:#f8fffd;border:1px solid #d8e7e1;border-radius:14px;padding:12px;margin:9px 0}
-.quiz-option{width:100%;text-align:right;cursor:pointer}.quiz-option:hover{background:#eef8f4}
-.qibla-box{text-align:center}.qibla-arrow{font-size:90px;display:inline-block;transition:transform .5s;margin:15px}
-.article-list{display:grid;gap:12px}.article-list article{background:#f8fffd;border:1px solid #d8e7e1;border-radius:15px;padding:15px;line-height:1.9}
-.notification-box{background:#eef6ff;border:1px solid #9ec5ed;border-radius:14px;padding:14px;line-height:1.9}
-.admin-extra-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
-@media(max-width:800px){.feature-grid,.admin-extra-grid{grid-template-columns:1fr}.prayer-grid{grid-template-columns:repeat(2,minmax(0,1fr))}}
-
-
-/* ===== تحديثات منصة نور الهدى ===== */
-.clickable-card{cursor:pointer;border:1px solid rgba(201,162,39,.35);text-align:right;width:100%;transition:transform .15s,box-shadow .15s}.clickable-card:hover{transform:translateY(-2px);box-shadow:0 8px 22px rgba(0,0,0,.12)}
-.daily-ward-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:14px}.prophet-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin-top:14px}.encyclopedia-full{line-height:2;background:#f8fffd;border:1px solid rgba(201,162,39,.35);border-radius:16px;padding:18px;margin-top:14px}.encyclopedia-full h2,.encyclopedia-full h3{color:#075e54}.ayah-daily-button{display:block;width:100%;border:1px solid rgba(201,162,39,.4);background:#fffdf4;border-radius:14px;padding:16px;text-align:right;cursor:pointer}.ayah-daily-button p{margin:6px 0;line-height:2}.modal-overlay{position:fixed;inset:0;background:rgba(0,0,0,.55);display:flex;align-items:center;justify-content:center;z-index:99999;padding:16px}.modal-card{background:#fff;border-radius:18px;max-width:520px;width:100%;padding:24px;position:relative;text-align:center}.modal-close{position:absolute;top:8px;left:8px;border:0;background:transparent;font-size:22px;cursor:pointer}.dhikr-big{font-size:34px;font-weight:700;color:#075e54;margin:22px 0;line-height:1.8}
-
-/* وصول سريع: يظهر لصاحب المنصة فقط، ويمكنه تجربة المنصة كزائر */
-.owner-mode-toggle{position:fixed;top:14px;left:14px;z-index:100001;border:1px solid #c9a227;background:#fffaf0;color:#075e54;padding:9px 14px;border-radius:10px;cursor:pointer;font-weight:bold;box-shadow:0 4px 14px rgba(0,0,0,.18)}
-.owner-mode-toggle:hover{background:#f1df9a}
-.contact-floating-bar{position:fixed;right:14px;bottom:14px;z-index:100000;border:1px solid #c9a227;background:#fffaf0;color:#075e54;padding:9px 16px;border-radius:12px;cursor:pointer;font-weight:bold;box-shadow:0 4px 14px rgba(0,0,0,.2);white-space:nowrap}
-.contact-floating-bar:hover{background:#f1df9a}
-@media(max-width:600px){.owner-mode-toggle{top:10px;left:10px;padding:8px 11px;font-size:13px}.contact-floating-bar{right:10px;bottom:10px;padding:8px 12px;font-size:13px}}
-
-/* دليل المنصة: شريط قصير ثابت أعلى اليمين */
-.guide-top-bar{position:fixed;top:12px;right:12px;z-index:100002;padding:7px 14px;border:1px solid #c9a227;border-radius:18px;background:rgba(255,253,245,.96);color:#155d3a;font-weight:700;font-size:13px;box-shadow:0 4px 14px rgba(0,0,0,.12);cursor:pointer;}
-@media(max-width:600px){.guide-top-bar{top:8px;right:8px;padding:6px 10px;font-size:12px;}}
-\n.admin-form-grid{display:grid;gap:10px}.admin-form-grid input,.admin-form-grid textarea,.theme-toolbar input{width:100%;box-sizing:border-box;padding:11px;border:1px solid #cdbb83;border-radius:12px;font-family:inherit}.admin-actions-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin-top:10px}.theme-toolbar{display:flex;gap:10px;align-items:center;margin:12px 0}.theme-gallery{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px;max-height:560px;overflow:auto;padding:5px}.theme-card{border:1px solid #d8c894;border-radius:16px;padding:10px;background:#fffdf5;text-align:right;cursor:pointer;display:flex;flex-direction:column;gap:6px;font-family:inherit}.theme-card.selected{outline:3px solid #c9a227}.theme-swatch{height:58px;border-radius:12px;background:linear-gradient(135deg,hsl(var(--th) 48% 24%),hsl(var(--ta) 62% 48%));position:relative;overflow:hidden}.theme-swatch:after{content:'☾';position:absolute;right:10px;top:7px;color:#fff;font-size:28px}.theme-card small{opacity:.7}.custom-sections-list{display:grid;gap:10px;margin-top:14px}.custom-section-row{padding:12px;border:1px solid #ddcfaa;border-radius:14px;background:#fffdf7;display:flex;justify-content:space-between;gap:12px;align-items:center}.custom-ai-services{display:grid;gap:12px;margin-top:15px}.custom-ai-services .card{margin:0}.danger-small{border:0;border-radius:10px;padding:8px 10px;cursor:pointer}@media(max-width:650px){.custom-section-row{flex-direction:column;align-items:stretch}.theme-toolbar{flex-direction:column;align-items:stretch}}\n</style>
+</style>
 </head>
 
 <body>
@@ -596,10 +557,6 @@ footer{
     ☾ صلوا على النبي ﷺ ☽
 </div>
 
-<!-- أزرار الوصول السريع -->
-<button id="contactFloatingBar" class="contact-floating-bar" type="button" onclick="showPage('contact'); initLiveChat();">💬 تواصل معي</button>
-<button id="guideTopBar" class="guide-top-bar" type="button" onclick="showPage('guide')">📘 دليل المنصة</button>
-
 <header>
     <h1>منصة نور الهدى</h1>
     <div class="owner">يوسف أحمد شعلان</div>
@@ -615,13 +572,7 @@ footer{
     <button onclick="showPage('adhkar')">🤲 الأدعية والأذكار</button>
     <button onclick="showPage('guide')">📘 دليل المنصة</button>
     <button onclick="showPage('ai')">🤖 اسأل نور الهدى</button>
-    <button onclick="showPage('prayer')">🕌 مواقيت الصلاة</button>
-    <button onclick="showPage('qibla')">🧭 القبلة</button>
-    <button onclick="showPage('hijri')">📅 التقويم الهجري</button>
-    <button onclick="showPage('ramadan')">🌙 رمضان</button>
-    <button onclick="showPage('announcement')">📰 إعلانات المنصة</button>
-    <button onclick="showPage('info')">🎁 معلومة إسلامية</button>
-    <button onclick="showPage('notifications')">🔔 الإشعارات</button>
+    <button onclick="showPage('contact'); initLiveChat();">💬 تواصل معي</button>
 </nav>
 
 <section id="home" class="page active">
@@ -642,16 +593,9 @@ footer{
             <button onclick="showPage('adhkar')">🤲 الأدعية والأذكار</button>
             <button onclick="showPage('guide')">📘 دليل المنصة</button>
     <button onclick="showPage('ai')">🤖 اسأل نور الهدى</button>
-            <button onclick="showPage('prayer')">🕌 مواقيت الصلاة</button>
-    <button onclick="showPage('qibla')">🧭 القبلة</button>
-    <button onclick="showPage('hijri')">📅 التقويم الهجري</button>
-    <button onclick="showPage('ramadan')">🌙 رمضان</button>
-    <button onclick="showPage('announcement')">📰 إعلانات المنصة</button>
-    <button onclick="showPage('info')">🎁 معلومة إسلامية</button>
-    <button onclick="showPage('notifications')">🔔 الإشعارات</button>
+            <button onclick="showPage('contact'); initLiveChat();">💬 تواصل معي</button>
         </div>
     </div>
-
 </section>
 
 <section id="quran" class="page">
@@ -870,7 +814,6 @@ footer{
                     <button type="button" class="admin-tab active" onclick="showAdminView('overview',this)">📊 الرئيسية</button>
                     <button type="button" class="admin-tab" onclick="showAdminView('replies',this)">📥 الرد على الزوار</button>
                     <button type="button" class="admin-tab" onclick="showAdminView('sections',this)">🧩 الأقسام</button>
-                    <button type="button" class="admin-tab" onclick="showAdminView('customize',this)">🤖 تعديل المنصة بالذكاء الاصطناعي</button>
                     <button type="button" class="admin-tab" onclick="showAdminView('visitors',this)">👥 الزوار</button>
                     <button type="button" class="admin-tab" onclick="showAdminView('general',this)">⚙️ إعدادات المنصة</button>
                     <button type="button" class="admin-tab" onclick="showAdminView('ai',this)">🤖 الذكاء الاصطناعي</button>
@@ -881,7 +824,7 @@ footer{
                         <div class="dashboard-stat"><strong id="statAll">0</strong>كل المحادثات</div>
                         <div class="dashboard-stat"><strong id="statPending">0</strong>بانتظار الرد</div>
                         <div class="dashboard-stat"><strong id="statBlocked">0</strong>زوار محظورون</div>
-                        <div class="dashboard-stat"><strong id="statSections">0</strong>أقسام مفتوحة</div><div class="dashboard-stat"><strong id="statAIQuestions">0</strong>أسئلة الذكاء الاصطناعي</div>
+                        <div class="dashboard-stat"><strong id="statSections">0</strong>أقسام مفتوحة</div>
                     </div>
                     <div class="admin-control-card"><h4>🔐 حالة المنصة الآن</h4><div id="dashboardPlatformStatus" class="result-box">جاري التحميل...</div></div>
                 </div>
@@ -917,70 +860,7 @@ footer{
                     </div>
                 </div>
 
-                <div id="adminView-customize" class="admin-view">
-  <div class="admin-control-card" style="margin-bottom:14px;">
-    <h4>🤖 تعديل المنصة باستخدام الذكاء الاصطناعي</h4>
-    <p class="small-note">اكتب أي تعديل تريده باللغة العربية، ثم اضغط تنفيذ. يقوم المساعد بتطبيق التعديلات الممكنة على المنصة وحفظها.</p>
-    <textarea id="platformAIEditInput" rows="6" placeholder="مثال: غيّر اسم المنصة، عدّل رسالة الترحيب، أضف قسمًا اسمه قصص الأنبياء، أو احذف قسمًا مخصصًا... "></textarea>
-    <div class="admin-actions-row">
-      <button id="platformAIEditButton" type="button" class="gold-button" onclick="applyPlatformAIEdit()">🤖 تنفيذ التعديلات</button>
-      <button type="button" class="action" onclick="document.getElementById('platformAIEditInput').value=''">🧹 مسح الطلب</button>
-    </div>
-    <div id="platformAIEditStatus" class="result-box" style="margin-top:10px;">اكتب التعديل الذي تريده ثم اضغط تنفيذ.</div>
-  </div>
-
-  <div class="admin-tabs" style="margin-bottom:14px;">
-    <button type="button" class="admin-tab active" onclick="showPlatformCustomizeView('sections',this)">➕➖ إضافة أو حذف الأقسام</button>
-    <button type="button" class="admin-tab" onclick="showPlatformCustomizeView('interface',this)">🎨 تعديل الواجهة</button>
-  </div>
-
-  <div id="platformCustomize-sections" class="admin-view active">
-    <div class="admin-control-card" id="customSectionsAdmin">
-      <h4>➕➖ إضافة أو حذف الأقسام</h4>
-      <p class="small-note">من هنا تضيف أي قسم جديد للمنصة أو تحذف أي قسم مخصص قمت بإضافته. ويمكنك أيضًا تعديل القسم بالذكاء الاصطناعي.</p>
-      <h4 style="margin-top:16px;">➕ إضافة قسم</h4>
-      <div class="admin-form-grid">
-        <input id="customSectionName" type="text" placeholder="اسم القسم" autocomplete="off">
-        <textarea id="customSectionDescription" rows="4" placeholder="وصف القسم وما الذي يحتوي عليه"></textarea>
-      </div>
-      <div class="admin-actions-row">
-        <button type="button" class="gold-button" onclick="addCustomSection()">➕ إضافة القسم</button>
-        <button type="button" class="action" onclick="generateCustomSectionAI()">🤖 إنشاء القسم بالذكاء الاصطناعي</button>
-      </div>
-      <div id="customSectionAIStatus" class="admin-note"></div>
-      <h4 style="margin-top:18px;">📂 الأقسام المضافة</h4>
-      <div id="customSectionsList" class="custom-sections-list"></div>
-    </div>
-  </div>
-
-  <div id="platformCustomize-interface" class="admin-view">
-    <div class="admin-control-card">
-      <h4>🎨 تعديل المنصة — أكثر من 100 واجهة</h4>
-      <p class="small-note">اختر أي واجهة من القائمة. الاختيار يحفظ في إعدادات المنصة ويظهر لجميع الزوار.</p>
-      <div class="theme-toolbar"><input id="themeSearch" type="search" placeholder="🔎 ابحث عن واجهة..." oninput="renderThemeGallery()"><span id="themeCount" class="admin-note"></span></div>
-      <div id="themeGallery" class="theme-gallery"></div>
-      <div class="admin-actions-row"><button type="button" class="gold-button" onclick="saveThemeSelection()">💾 حفظ الواجهة المختارة</button><span id="themeSaveStatus" class="admin-note"></span></div>
-    </div>
-  </div>
-
-</div>
-
-<div id="adminView-platform-ai" class="admin-view">
-  <div class="admin-control-card">
-    <h4>🤖 تعديل المنصة باستخدام الذكاء الاصطناعي</h4>
-    <p class="small-note">اكتب التعديل الذي تريده، وسيحوّله المساعد إلى تعديل على إعدادات المنصة والأقسام المتاحة.</p>
-    <textarea id="platformAICommand" rows="6" placeholder="مثال: أضف قسمًا باسم قصص الأنبياء، أو احذف قسمًا، أو غيّر رسالة الترحيب..."></textarea>
-    <div class="admin-actions-row"><button type="button" class="gold-button" onclick="applyPlatformAICommand()">✨ تنفيذ التعديل</button><span id="platformAIStatus" class="admin-note"></span></div>
-  </div>
-  <div class="admin-control-card" style="margin-top:14px">
-    <h4>🧩 إضافة أو حذف الأقسام</h4>
-    <p class="small-note">اختر القسم الذي تريد حذفه، أو أضف قسمًا جديدًا من هنا فقط.</p>
-    <div id="platformAISectionsList"></div>
-    <div class="admin-actions-row" style="margin-top:12px"><button type="button" class="gold-button" onclick="renderCustomSectionsAdmin()">🔄 تحديث الأقسام</button></div>
-  </div>
-</div>
-
-<div id="adminView-visitors" class="admin-view">
+                <div id="adminView-visitors" class="admin-view">
                     <div class="admin-control-grid">
                         <div class="admin-control-card">
                             <h4>🚫 حظر زائر</h4>
@@ -1009,6 +889,8 @@ footer{
                             <div class="admin-control-card">
                                 <h4>🧠 النموذج</h4>
                                 <select id="aiModel">
+                                    <option value="gemini-3.7-flash">gemini-3.7-flash</option>
+                                    <option value="gemini-3.8-flash">gemini-3.8-flash</option>
                                     <option value="gemini-3.5-flash-lite">gemini-3.5-flash-lite</option>
                                 </select>
                             </div>
@@ -1046,41 +928,12 @@ footer{
                             <button type="button" class="gold-button" style="margin-top:10px" onclick="savePlatformSettings()">💾 حفظ</button>
                         </div>
                     </div>
-                    <div class="admin-control-card" style="margin-top:14px;">
-                        <h4>🎁 معلومة إسلامية — من صاحب المنصة</h4><p class="small-note">اكتب المعلومة التي تريد عرضها للزوار.</p><textarea id="ownerIslamicInfo" rows="5" placeholder="اكتب المعلومة الإسلامية هنا..."></textarea><button type="button" class="gold-button" style="margin-top:10px" onclick="saveOwnerIslamicInfo()">💾 حفظ المعلومة</button><div id="ownerInfoAdminStatus" class="result-box" style="margin-top:10px">لم يتم الحفظ بعد.</div>
-                    </div>
-                    <div class="admin-control-card" style="margin-top:14px;">
-                        <h4>🧩 المسابقة اليومية — من صاحب المنصة</h4><p class="small-note">أدخل السؤال والاختيارات الأربعة وحدد الإجابة الصحيحة.</p><input id="adminQuizQuestion" type="text" placeholder="السؤال"><input id="adminQuizOption1" type="text" placeholder="الاختيار الأول"><input id="adminQuizOption2" type="text" placeholder="الاختيار الثاني"><input id="adminQuizOption3" type="text" placeholder="الاختيار الثالث"><input id="adminQuizOption4" type="text" placeholder="الاختيار الرابع"><select id="adminQuizCorrect"><option value="0">الإجابة الصحيحة: الأول</option><option value="1">الإجابة الصحيحة: الثاني</option><option value="2">الإجابة الصحيحة: الثالث</option><option value="3">الإجابة الصحيحة: الرابع</option></select><button type="button" class="gold-button" style="margin-top:10px" onclick="saveOwnerDailyQuiz()">💾 حفظ سؤال المسابقة</button><div id="ownerQuizAdminStatus" class="result-box" style="margin-top:10px">لم يتم الحفظ بعد.</div>
-                    </div>
-                    <div class="admin-control-card" style="margin-top:14px;">
-                        <h4>📰 إعلان المنصة</h4>
-                        <label class="switch-control"><input id="announcementEnabled" type="checkbox" checked> إظهار الإعلان للزوار</label>
-                        <input id="announcementTitle" type="text" placeholder="عنوان الإعلان" style="margin-top:10px;">
-                        <textarea id="announcementText" rows="4" placeholder="نص الإعلان" style="margin-top:10px;"></textarea>
-                        <button type="button" class="gold-button" style="margin-top:10px;" onclick="saveAnnouncementSettings()">💾 حفظ الإعلان</button>
-                        <div id="announcementAdminStatus" class="result-box" style="margin-top:10px;">لم يتم الحفظ بعد.</div>
-                    </div>
                 </div>
             </div>
         </div>
     </div>
 </section>
 
-
-<section id="prayer" class="page">
-<div class="card"><h2>🕌 مواقيت الصلاة والأذان</h2><p>عند دخول وقت الصلاة يحاول المتصفح تشغيل أذان محمود خليل الحصري بعد تفعيل الصوت مرة واحدة.</p>
-<div class="feature-grid"><div class="feature-card"><label>المدينة<input id="prayerCity" type="text" placeholder="مثال: القاهرة"></label><label>الدولة<input id="prayerCountry" type="text" value="مصر"></label><button class="gold-button" type="button" onclick="loadPrayerByCity()">📍 تحميل حسب المدينة</button><button class="action" type="button" onclick="loadPrayerByLocation()">📡 استخدام موقعي</button><button class="gold-button" type="button" onclick="enableAdhanAudio()">🔊 تفعيل صوت الأذان</button></div><div class="feature-card"><h3>⏰ الصلاة القادمة</h3><div id="nextPrayerName">--</div><div id="nextPrayerCountdown" class="countdown-box">--</div><div id="adhanStatus" class="small-note">صوت الأذان غير مفعّل بعد.</div></div></div>
-<div id="prayerDate" class="result-box">لم يتم تحميل المواقيت بعد.</div><div id="prayerTimes" class="prayer-grid"></div><div id="prayerStatus" class="small-note"></div><audio id="adhanAudio" preload="auto"></audio></div>
-</section>
-<section id="qibla" class="page"><div class="card qibla-box"><h2>🧭 اتجاه القبلة</h2><p>يُحسب الاتجاه من موقع الجهاز إلى الكعبة المشرفة.</p><button class="gold-button" type="button" onclick="loadQibla()">🧭 تحديد اتجاه القبلة</button><div id="qiblaArrow" class="qibla-arrow">↑</div><div id="qiblaDegree" class="result-box">لم يتم تحديد الموقع بعد.</div></div></section>
-<section id="hijri" class="page"><div class="card"><h2>📅 التقويم الهجري</h2><div id="hijriToday" class="countdown-box">جاري الحساب...</div><div class="feature-grid"><div class="feature-card"><h3>اليوم الميلادي</h3><div id="gregToday"></div></div><div class="feature-card"><h3>اليوم الهجري</h3><div id="hijriTodayText"></div></div></div><button class="action" type="button" onclick="updateHijriCalendar()">🔄 تحديث التاريخ</button></div></section>
-<section id="ramadan" class="page"><div class="card"><h2>🌙 رمضان</h2><p>عداد ديناميكي يبحث عن بداية رمضان التالية باستخدام التقويم الهجري المتاح في المتصفح.</p><div id="ramadanCountdown" class="countdown-box">جاري الحساب...</div><div class="feature-grid"><div class="feature-card"><h3>📿 ورد رمضاني مقترح</h3><p>قراءة القرآن، أذكار الصباح والمساء، الصلاة في وقتها، والدعاء.</p></div><div class="feature-card"><h3>🤲 دعاء</h3><p>اللهم أعنا على ذكرك وشكرك وحسن عبادتك.</p></div></div></div></section>
-
-<section id="announcement" class="page"><div class="card"><h2>📰 إعلانات المنصة</h2><div id="announcementBox" class="announcement-box">لا توجد إعلانات حاليًا.</div></div></section>
-<section id="daily" class="page"><div class="card"><h2>🌿 آية وقصة اليوم</h2><div id="dailyAyah" class="article-list"></div><div id="dailyStory" class="article-list" style="margin-top:14px"></div></div></section>
-<section id="info" class="page"><div class="card"><h2>🎁 معلومة إسلامية</h2><div id="dailyInfo" class="countdown-box">جاري تحميل معلومة صاحب المنصة...</div><button class="gold-button" type="button" onclick="showAnotherIslamicInfo()">🔄 تحديث المعلومة</button></div></section>
-<section id="quiz" class="page" style="display:none !important;"><div class="card"><h2>🧩 المسابقة اليومية</h2><div id="quizQuestion" class="announcement-box">جاري تحميل السؤال...</div><div id="quizOptions"></div><div id="quizResult" class="result-box">اختر إجابة.</div></div></section>
-<section id="notifications" class="page"><div class="card"><h2>🔔 الإشعارات</h2><div class="notification-box">يمكن للمنصة إظهار تنبيهات الصلاة داخل الصفحة، ويمكن طلب إذن إشعارات المتصفح أثناء بقاء الصفحة مفتوحة.</div><button class="gold-button" type="button" onclick="enablePrayerNotifications()">🔔 تفعيل إشعارات الصلاة</button><div id="notificationStatus" class="result-box">لم يتم التفعيل.</div></div></section>
 <section id="rulings" class="page">
     <div class="card">
 
@@ -1125,7 +978,29 @@ footer{
 </section>
 
 <section id="guide" class="page">
-<div class="card"><h2>📘 دليل منصة نور الهدى</h2><p>دليل شامل لجميع أقسام المنصة. اضغط على أي قسم للانتقال إليه.</p><div id="guideAllSections" class="feature-grid"></div></div>
+    <div class="card">
+
+        <h2>📘 دليل منصة نور الهدى</h2>
+
+        <h3>📖 القرآن الكريم</h3>
+        <p>اختر السورة من القائمة وستظهر آياتها.</p>
+
+        <h3>🎧 التلاوة</h3>
+        <p>ابحث عن القارئ، ثم اختر السورة واضغط تشغيل.</p>
+
+        <h3>📚 التفسير</h3>
+        <p>اختر السورة ورقم الآية وسيظهر التفسير داخل المنصة مباشرة، ويمكنك أيضًا الضغط على أي آية من القرآن لفتح تفسيرها تلقائيًا.</p>
+
+        <h3>⚖️ الأحكام</h3>
+        <p>ابحث عن الحكم الشرعي.</p>
+
+        <h3>🤲 الأدعية والأذكار</h3>
+        <p>يمكنك البحث داخل الأذكار.</p>
+
+        <h3>🤖 اسأل نور الهدى</h3>
+        <p>اكتب سؤالك وسيحاول المساعد الذكي الإجابة عليه. المسائل الشرعية الخاصة تحتاج إلى الرجوع إلى جهة إفتاء موثوقة.</p>
+
+    </div>
 </section>
 
 <footer>
@@ -1193,8 +1068,18 @@ function registerUser(){
     welcomeScreen.style.display =
         "none";
 
-    // فتح نموذج التسجيل مباشرة من نفس الصفحة.
-    window.location.href = googleFormURL;
+    const newWindow =
+        window.open(
+            googleFormURL,
+            "_blank"
+        );
+
+    if(!newWindow){
+
+        window.location.href =
+            googleFormURL;
+
+    }
 
 }
 
@@ -1232,82 +1117,35 @@ window.addEventListener(
 );
 
 function showPage(id){
-    if(id==="guide") setTimeout(()=>window.renderGuideAllSections?.(),50);
-    if(id==="info") setTimeout(()=>window.renderOwnerInfo?.(),50);
-    if(id==="daily") setTimeout(()=>window.renderDaily?.(),50);
-    if(id==="quiz") setTimeout(()=>window.renderQuiz?.(),50);
 
-    /* أولًا نفتح القسم نفسه، ثم نشغّل وظائفه الاختيارية.
-       هذا يمنع تعطل التنقل إذا كانت إحدى خدمات القسم غير متاحة. */
+    if(id==="ai") setTimeout(()=>initNoorAI(),50);
+
     document
         .querySelectorAll(".page")
-        .forEach(page => page.classList.remove("active"));
+        .forEach(page => {
 
-    const page = document.getElementById(id);
+            page.classList.remove(
+                "active"
+            );
 
-    if(!page){
-        console.warn("القسم غير موجود:", id);
-        return;
+        });
+
+    const page =
+        document.getElementById(id);
+
+    if(page){
+
+        page.classList.add(
+            "active"
+        );
+
     }
-
-    page.classList.add("active");
 
     window.scrollTo({
         top:0,
         behavior:"smooth"
     });
 
-    /* تشغيل الوظائف الخاصة بالقسم بعد فتحه.
-       جميع الوظائف القادمة من module أصبحت مكشوفة على window. */
-    setTimeout(()=>{
-        try{
-            if(id==="ai" && typeof window.initNoorAI==="function"){
-                window.initNoorAI();
-            }
-
-            if(id==="prayer" && typeof window.loadPrayerByLocation==="function"){
-                window.loadPrayerByLocation();
-            }
-
-            if(id==="qibla"){
-                /* لا حاجة لتحميل الموقع قبل ضغط الزائر على زر القبلة. */
-            }
-
-            if(id==="hijri" && typeof window.updateHijriCalendar==="function"){
-                window.updateHijriCalendar();
-            }
-
-            if(id==="ramadan" && typeof window.updateRamadan==="function"){
-                window.updateRamadan();
-            }
-
-                        if(id==="achievements" && typeof window.renderAchievements==="function"){
-                window.renderAchievements();
-            }
-
-            if(id==="daily" && typeof window.renderDaily==="function"){
-                window.renderDaily();
-            }
-
-            if(id==="info" && typeof window.showAnotherIslamicInfo==="function"){
-                window.showAnotherIslamicInfo();
-            }
-
-            if(id==="quiz" && typeof window.renderQuiz==="function"){
-                window.renderQuiz();
-            }
-
-            if(id==="announcement" && typeof window.renderAnnouncement==="function"){
-                window.renderAnnouncement();
-            }
-
-            if(id==="contact" && typeof window.initLiveChat==="function"){
-                window.initLiveChat();
-            }
-        }catch(error){
-            console.error("خطأ أثناء تهيئة القسم:", id, error);
-        }
-    },50);
 }
 
 function toArabicNumber(number){
@@ -2691,14 +2529,115 @@ function searchDhikr(){
 </script>
 
 <script>
-/* تهيئة آمنة: لا نستدعي وظائف تعتمد على Firebase قبل اكتمال تحميل وحدة المنصة. */
-window.addEventListener("load", function(){
-  try {
-    if (typeof window.loadSurah === "function") window.loadSurah(1);
-    if (typeof window.loadReciters === "function") window.loadReciters(false);
-    if (typeof window.showSalawatMessage === "function") window.showSalawatMessage();
-  } catch (e) { console.warn("تهيئة أولية مؤجلة:", e); }
-});
+
+/* =====================================================
+   شريط الصلاة على النبي ﷺ
+===================================================== */
+
+function showSalawatMessage(){
+
+    const message =
+        document.getElementById(
+            "salawatMessage"
+        );
+
+    if(message){
+
+        message.style.display =
+            "block";
+
+    }
+
+}
+
+function playSalawat(){
+
+    const message =
+        document.getElementById(
+            "salawatMessage"
+        );
+
+    if(message){
+
+        message.style.display =
+            "none";
+
+    }
+
+    if(
+        !("speechSynthesis" in window) ||
+        !("SpeechSynthesisUtterance" in window)
+    ){
+
+        return;
+
+    }
+
+    window.speechSynthesis.cancel();
+
+    const speech =
+        new SpeechSynthesisUtterance(
+            "صلوا على النبي"
+        );
+
+    speech.lang =
+        "ar-SA";
+
+    speech.rate =
+        0.85;
+
+    speech.pitch =
+        1;
+
+    speech.volume =
+        1;
+
+    const voices =
+        window.speechSynthesis.getVoices();
+
+    const arabicVoice =
+        voices.find(
+            voice =>
+                voice.lang &&
+                voice.lang
+                    .toLowerCase()
+                    .startsWith("ar")
+        );
+
+    if(arabicVoice){
+
+        speech.voice =
+            arabicVoice;
+
+    }
+
+    window.speechSynthesis.speak(
+        speech
+    );
+
+}
+
+/* =====================================================
+   البداية
+===================================================== */
+
+displayDhikr(
+    adhkar
+);
+
+window.addEventListener(
+    "load",
+    function(){
+
+        loadSurah(1);
+
+        loadReciters(false);
+
+        showSalawatMessage();
+
+    }
+);
+
 </script>
 
 
@@ -2706,12 +2645,7 @@ window.addEventListener("load", function(){
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 import { getAuth, signInAnonymously, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 import { getFirestore, collection, addDoc, doc, updateDoc, setDoc, onSnapshot, query, orderBy, getDocs, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
-let noorAISDK = null;
-async function getNoorAISDK(){
-    if(noorAISDK) return noorAISDK;
-    noorAISDK = await import("https://www.gstatic.com/firebasejs/12.19.0/firebase-ai.js");
-    return noorAISDK;
-}
+import { getAI, getGenerativeModel, GoogleAIBackend } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-ai.js";
 
 const firebaseConfig={
     apiKey:"AIzaSyBXvm1UflDiHGjkkVjw-HIJdQ6CtEDlE_8",
@@ -2734,51 +2668,11 @@ let currentAdminConversationId=null;
 let unsubscribeMessages=null;
 let unsubscribeAdminMessages=null;
 const OWNER_UID="WCtZOcEYljPwxc3zGuq2sJFznyK2";
-
-function updateOwnerModeButton(user){
-    const b=document.getElementById("ownerModeToggle");
-    if(!b)return;
-    const owner=user?.uid===OWNER_UID;
-    const ownerModeAllowed=localStorage.getItem("noorOwnerModeAllowed")==="1";
-    b.style.display=(owner||ownerModeAllowed)?"block":"none";
-    b.textContent=owner?"استخدام كزائر":"استخدام كصاحب المنصة";
-}
-window.toggleVisitorMode=async function(){
-    const user=auth.currentUser||currentUser;
-    if(user?.uid===OWNER_UID){
-        localStorage.setItem("noorOwnerModeAllowed","1");
-        localStorage.setItem("noorOwnerEmail",user.email||localStorage.getItem("noorAdminEmail")||"");
-        await signOut(auth);
-        const cred=await signInAnonymously(auth);
-        currentUser=cred.user;window.currentUser=cred.user;
-        applyPlatformSettings(window.platformSettings||{});
-        showPage("home");
-        return;
-    }
-    const email=(localStorage.getItem("noorOwnerEmail")||localStorage.getItem("noorAdminEmail")||"").trim() || (window.prompt("اكتب البريد الإلكتروني لصاحب المنصة:")||"").trim();
-    if(!email){alert("لم يتم إدخال البريد الإلكتروني.");return;}
-    const password=window.prompt("اكتب كلمة مرور صاحب المنصة:");
-    if(password===null||password==="")return;
-    try{
-        await signOut(auth);
-        const cred=await signInWithEmailAndPassword(auth,email,password);
-        if(cred.user.uid!==OWNER_UID){await signOut(auth);alert("هذا الحساب ليس حساب صاحب المنصة.");return;}
-        localStorage.setItem("noorOwnerModeAllowed","1");
-        localStorage.setItem("noorOwnerEmail",email);
-        localStorage.setItem("noorAdminEmail",email);
-        currentUser=cred.user;window.currentUser=cred.user;
-        applyPlatformSettings(window.platformSettings||{});
-        showPage("home");
-    }catch(e){console.error(e);alert("تعذر تسجيل الدخول كصاحب المنصة. تأكد من البريد وكلمة المرور.");}
-};
-
 const CONTROLLED_SECTIONS=[
   ["quran","📖 القرآن الكريم"],["recitation","🎧 التلاوة"],["ai","🤖 الذكاء الاصطناعي"],["tafsir","📚 التفسير"],
-  ["contact","💬 تواصل معي"],["rulings","⚖️ الأحكام والفتاوى"],["adhkar","📿 الأذكار"],["guide","🧭 الدليل"],
-  ["prayer","🕌 مواقيت الصلاة"],["qibla","🧭 القبلة"],["hijri","📅 التقويم الهجري"],["ramadan","🌙 رمضان"],["achievements","🏆 إنجازاتي"],
-  ["announcement","📰 الإعلانات"],["info","🎁 معلومة إسلامية"],["quiz","🧩 المسابقة اليومية"],["notifications","🔔 الإشعارات"]
+  ["contact","💬 تواصل معي"],["rulings","⚖️ الأحكام والفتاوى"],["adhkar","📿 الأذكار"],["guide","🧭 الدليل"]
 ];
-window.platformSettings={enabled:true,disabledSections:[],blockedVisitorUids:[],welcomeMessage:"",aiEnabled:false,aiModel:"gemini-3.5-flash-lite",aiSystemInstruction:"أنت مساعد منصة نور الهدى. أجب بالعربية الواضحة، وكن محترمًا ودقيقًا. في الفتاوى والمسائل الشرعية الخاصة أو المختلف فيها نبّه المستخدم إلى ضرورة الرجوع إلى عالم أو جهة إفتاء موثوقة. لا تدّع أنك مفتي، ولا تخترع نصوصًا أو أحاديث.",aiSaveHistory:false,announcementEnabled:true,announcementTitle:"",announcementText:"",ownerIslamicInfo:"",dailyQuiz:null,customSections:[]};
+window.platformSettings={enabled:true,disabledSections:[],blockedVisitorUids:[],welcomeMessage:"",aiEnabled:false,aiModel:"gemini-3.7-flash",aiSystemInstruction:"أنت مساعد منصة نور الهدى. أجب بالعربية الواضحة، وكن محترمًا ودقيقًا. في الفتاوى والمسائل الشرعية الخاصة أو المختلف فيها نبّه المستخدم إلى ضرورة الرجوع إلى عالم أو جهة إفتاء موثوقة. لا تدّع أنك مفتي، ولا تخترع نصوصًا أو أحاديث.",aiSaveHistory:false};
 
 function escapeHtml(v){return String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");}
 function chatTime(ts){try{const d=ts?.toDate?ts.toDate():new Date(ts);return Number.isNaN(d.getTime())?"":d.toLocaleString("ar-EG",{dateStyle:"short",timeStyle:"short"});}catch(e){return "";}}
@@ -2888,142 +2782,27 @@ function subscribeToMessages(id){
 
 window.toggleFullAdminDashboard=()=>{const d=document.getElementById("fullAdminDashboard");if(!d)return;d.classList.toggle("hidden");if(!d.classList.contains("hidden")){renderPlatformControls();renderDashboardStats();}};
 window.showAdminView=(name,btn)=>{document.querySelectorAll(".admin-view").forEach(v=>v.classList.remove("active"));document.getElementById("adminView-"+name)?.classList.add("active");document.querySelectorAll(".admin-tab").forEach(b=>b.classList.remove("active"));if(btn)btn.classList.add("active");if(name==="replies")window.loadAdminConversations();if(name==="overview")renderDashboardStats();};
-window.showPlatformCustomizeView=(name,btn)=>{document.querySelectorAll('#adminView-customize > .admin-view').forEach(v=>v.classList.remove('active'));document.getElementById('platformCustomize-'+name)?.classList.add('active');document.querySelectorAll('#adminView-customize > .admin-tabs .admin-tab').forEach(b=>b.classList.remove('active'));if(btn)btn.classList.add('active');if(name==='sections')renderCustomSectionsAdmin();if(name==='interface')renderThemeGallery();};
-
-// إدارة الأقسام المخصصة: الاسم + الوصف + خدمات مولدة بالذكاء الاصطناعي
-const NOOR_THEME_PALETTES=[
-  "زمرد ملكي","ليالي مكة","مخطوط ذهبي","حدائق الجنة","أندلسي فاخر","فيروزي سماوي","ليلة القدر","مسجد عثماني","نقوش عربية","حرير زمردي","ذهب معتّق","رمال الصحراء","لؤلؤ أبيض","ياقوت داكن","سندس أخضر","أزرق المدينة","نخيل وذهب","رخام إسلامي","محراب فاخر","ماء زمزم"
-];
-const NOOR_THEME_STYLES=Array.from({length:120},(_,i)=>({
- id:"theme_"+(i+1), name:(i+1)+" — "+NOOR_THEME_PALETTES[i%NOOR_THEME_PALETTES.length],
- hue:(i*29)%360, accent:(i*47)%360, radius:[8,14,20,28,36][i%5], pattern:i%6
-}));
-function applyThemeById(id){
- const t=NOOR_THEME_STYLES.find(x=>x.id===id)||NOOR_THEME_STYLES[0];
- const root=document.documentElement;
- root.style.setProperty('--noor-theme-h',t.hue+''); root.style.setProperty('--noor-theme-a',t.accent+''); root.style.setProperty('--noor-theme-radius',t.radius+'px');
- root.dataset.noorTheme=t.id;
- let st=document.getElementById('noorDynamicTheme');
- if(!st){st=document.createElement('style');st.id='noorDynamicTheme';document.head.appendChild(st);}
- st.textContent=`:root{--noor-green:hsl(${t.hue} 45% 28%);--noor-green2:hsl(${t.hue} 42% 20%);--noor-gold:hsl(${t.accent} 65% 45%)} body{background:radial-gradient(circle at 20% 0%,hsla(${t.hue},45%,92%,.9),transparent 38%),radial-gradient(circle at 100% 20%,hsla(${t.accent},60%,92%,.65),transparent 34%),#f8f5ea!important} header{background:linear-gradient(135deg,hsl(${t.hue} 45% 20%),hsl(${t.hue} 48% 34%),hsl(${t.accent} 55% 30%))!important} nav{border-color:hsl(${t.accent} 60% 48%)!important} .card,.admin-control-card{border-radius:${t.radius}px!important;border-color:hsla(${t.accent},55%,42%,.38)!important} button.gold-button{background:linear-gradient(135deg,hsl(${t.accent} 65% 45%),hsl(${t.accent} 60% 34%))!important}`;
-}
-function renderThemeGallery(){
- const c=document.getElementById('themeGallery'); if(!c)return;
- const q=(document.getElementById('themeSearch')?.value||'').trim().toLowerCase();
- const list=NOOR_THEME_STYLES.filter(t=>!q||t.name.toLowerCase().includes(q));
- const selected=window.platformSettings?.themeId||'theme_1';
- c.innerHTML=list.map(t=>`<button type="button" class="theme-card ${t.id===selected?'selected':''}" onclick="selectTheme('${t.id}')"><span class="theme-swatch" style="--th:${t.hue};--ta:${t.accent}"></span><b>${escapeHtml(t.name)}</b><small>واجهة إسلامية رقم ${t.id.replace('theme_','')}</small></button>`).join('');
- const count=document.getElementById('themeCount');if(count)count.textContent=`${list.length} واجهة معروضة من أصل 120`;
-}
-function selectTheme(id){window.platformSettings={...(window.platformSettings||{}),themeId:id};applyThemeById(id);renderThemeGallery();}
-async function saveThemeSelection(){
- currentUser=auth.currentUser||currentUser;if(!currentUser||currentUser.uid!==OWNER_UID){alert('يجب تسجيل الدخول بحساب صاحب المنصة أولًا.');return;}
- try{const themeId=window.platformSettings?.themeId||'theme_1';await setDoc(doc(db,'platformSettings','main'),{themeId},{merge:true});window.platformSettings={...window.platformSettings,themeId};applyThemeById(themeId);const st=document.getElementById('themeSaveStatus');if(st)st.textContent='✅ تم حفظ الواجهة.';}catch(e){console.error(e);alert('تعذر حفظ الواجهة. تأكد من صلاحيات Firestore.');}
-}
-function customSections(){try{return JSON.parse(localStorage.getItem('noorCustomSections')||'[]')}catch{return []}}
-function saveCustomSections(a){localStorage.setItem('noorCustomSections',JSON.stringify(a))}
-function addCustomSection(){
- const input=document.getElementById('customSectionName'),desc=document.getElementById('customSectionDescription'); const name=(input?.value||'').trim(),description=(desc?.value||'').trim();
- if(!name){alert('اكتب اسم القسم أولًا.');return;} if(!description){alert('اكتب شرح القسم وما الذي تريد أن يقدمه.');return;}
- const id='custom_'+Date.now(); const saved=customSections(); saved.push({id,name,description,services:[]}); saveCustomSections(saved); renderCustomSections(); input.value='';desc.value='';
-}
-function renderCustomSections(){
- const sections=customSections(),nav=document.querySelector('header + nav');
- if(nav){nav.querySelectorAll('[data-custom-section]').forEach(x=>x.remove());sections.forEach(x=>{const b=document.createElement('button');b.dataset.customSection=x.id;b.textContent='📂 '+x.name;b.onclick=()=>showPage(x.id);nav.appendChild(b);});}
- sections.forEach(x=>{let sec=document.getElementById(x.id);if(!sec){sec=document.createElement('section');sec.id=x.id;sec.className='page';document.body.appendChild(sec);}const services=Array.isArray(x.services)?x.services:[];sec.innerHTML=`<div class="card"><h2>📂 ${escapeHtml(x.name)}</h2><p>${escapeHtml(x.description||'')}</p><div class="custom-ai-services">${services.map(v=>`<article class="card"><h3>${escapeHtml(v.name||'خدمة')}</h3><p>${escapeHtml(v.description||'')}</p>${v.content?`<div class="small-note" style="white-space:pre-line">${escapeHtml(v.content)}</div>`:''}</article>`).join('')}</div></div>`;});
- renderCustomSectionsAdmin();
-}
-function renderCustomSectionsAdmin(){const c=document.getElementById('customSectionsList');if(!c)return;const a=customSections();c.innerHTML=a.length?a.map(x=>`<div class="custom-section-row"><div><b>📂 ${escapeHtml(x.name)}</b><div class="small-note">${escapeHtml(x.description||'')}</div></div><div class="admin-actions-row"><button type="button" class="action" onclick="editCustomSectionAI('${x.id}')">🤖 تعديل بالذكاء الاصطناعي</button><button type="button" class="action" onclick="copyCustomSection('${x.id}')">📋 نسخ القسم</button><button type="button" class="action" onclick="generateCustomSectionAI('${x.id}')">🤖 إضافة خدمات بالذكاء الاصطناعي</button><button type="button" class="danger-small" onclick="deleteCustomSection('${x.id}')">🗑️ حذف</button></div></div>`).join(''):'لا توجد أقسام مخصصة بعد.'}
-function copyCustomSection(id){const a=customSections(),x=a.find(v=>v.id===id);if(!x)return;const copy={...x,id:'custom_'+Date.now(),name:x.name+' — نسخة',services:Array.isArray(x.services)?x.services.map(v=>({...v})):[]};a.push(copy);saveCustomSections(a);renderCustomSections();showPage(copy.id);}
-function deleteCustomSection(id){if(!confirm('هل تريد حذف هذا القسم؟'))return;saveCustomSections(customSections().filter(x=>x.id!==id));document.getElementById(id)?.remove();renderCustomSections();}
-async function editCustomSectionAI(id){
- const a=customSections(),item=a.find(x=>x.id===id);
- if(!item)return;
- const status=document.getElementById('customSectionAIStatus');
- const instruction=window.prompt('اكتب ما تريد تعديله في هذا القسم، وسيقوم الذكاء الاصطناعي بتحديث الاسم والوصف والخدمات عند الحاجة:', 'طوّر القسم وحسّن خدماته مع الحفاظ على فكرته الأساسية.');
- if(instruction===null)return;
- if(!instruction.trim()){alert('اكتب وصف التعديل أولًا.');return;}
- if(status)status.textContent='⏳ الذكاء الاصطناعي يعدّل القسم...';
- try{
-   if(!(await initNoorAI())){if(status)status.textContent='⚠️ فعّل الذكاء الاصطناعي من إعداداته أولًا.';return;}
-   const prompt=`عدّل قسمًا موجودًا داخل منصة نور الهدى بناءً على طلب صاحب المنصة. البيانات الحالية: الاسم: ${item.name}. الوصف: ${item.description||''}. الخدمات الحالية: ${JSON.stringify(item.services||[])}. طلب التعديل: ${instruction}. أرجع JSON فقط بالشكل {"name":"اسم القسم","description":"وصف القسم","services":[{"name":"اسم الخدمة","description":"شرح قصير","content":"محتوى مفيد مختصر"}]} مع الحفاظ على فكرة القسم الأساسية وعدم إضافة HTML أو أكواد. اجعل الخدمات من 3 إلى 6 خدمات عملية.`;
-   const r=await noorAIModel.generateContent(prompt),raw=r?.response?.text?.()||'',clean=raw.replace(/^```json\s*/i,'').replace(/```$/,'').trim();let data;try{data=JSON.parse(clean)}catch{const m=clean.match(/\{[\s\S]*\}/);data=m?JSON.parse(m[0]):null;}
-   if(!data?.name||!data?.description||!Array.isArray(data.services))throw new Error('لم يُرجع الذكاء الاصطناعي بيانات تعديل صالحة.');
-   const idx=a.findIndex(x=>x.id===id);if(idx<0)return;
-   a[idx]={...a[idx],name:String(data.name).trim(),description:String(data.description).trim(),services:data.services};
-   saveCustomSections(a);renderCustomSections();if(status)status.textContent='✅ تم تعديل القسم بالذكاء الاصطناعي.';
- }catch(e){console.error(e);if(status)status.textContent='⚠️ تعذر تعديل القسم: '+(e?.message||'خطأ غير معروف');}
-}
-
-async function generateCustomSectionAI(existingId){
- const input=document.getElementById('customSectionName'),desc=document.getElementById('customSectionDescription'),status=document.getElementById('customSectionAIStatus');
- let item;if(existingId)item=customSections().find(x=>x.id===existingId); else {const name=(input?.value||'').trim(),description=(desc?.value||'').trim();if(!name||!description){alert('اكتب اسم القسم وشرح القسم أولًا.');return;} item={id:'custom_'+Date.now(),name,description,services:[]};}
- if(status)status.textContent='⏳ الذكاء الاصطناعي ينشئ خدمات القسم...';
- try{if(!(await initNoorAI())){if(status)status.textContent='⚠️ فعّل الذكاء الاصطناعي من إعداداته أولًا.';return;}
- const prompt=`أنشئ محتوى لقسم داخل منصة نور الهدى. اسم القسم: ${item.name}. الوصف: ${item.description}. أرجع JSON فقط بالشكل {"services":[{"name":"اسم الخدمة","description":"شرح قصير","content":"محتوى مفيد مختصر"}]} وأنشئ من 3 إلى 6 خدمات عملية مرتبطة مباشرة بالوصف، بدون HTML وبدون أكواد.`;
- const r=await noorAIModel.generateContent(prompt),raw=r?.response?.text?.()||'',clean=raw.replace(/^```json\s*/i,'').replace(/```$/,'').trim();let data;try{data=JSON.parse(clean)}catch{const m=clean.match(/\{[\s\S]*\}/);data=m?JSON.parse(m[0]):null;}if(!data?.services?.length)throw new Error('لم يُرجع الذكاء الاصطناعي خدمات صالحة.');
- const a=customSections(); if(existingId){const idx=a.findIndex(x=>x.id===existingId);if(idx>=0)a[idx]={...a[idx],services:data.services};}else{item.services=data.services;a.push(item);if(input)input.value='';if(desc)desc.value='';} saveCustomSections(a);renderCustomSections();if(status)status.textContent='✅ تم إنشاء القسم وخدماته بالذكاء الاصطناعي.';if(existingId)showPage(existingId);else showPage(item.id);
- }catch(e){console.error(e);if(status)status.textContent='⚠️ تعذر إنشاء الخدمات: '+(e?.message||'خطأ غير معروف');}
-}
-window.addCustomSection=addCustomSection;window.renderCustomSections=renderCustomSections;window.editCustomSectionAI=editCustomSectionAI;window.generateCustomSectionAI=generateCustomSectionAI;window.copyCustomSection=copyCustomSection;window.deleteCustomSection=deleteCustomSection;window.renderThemeGallery=renderThemeGallery;window.selectTheme=selectTheme;window.saveThemeSelection=saveThemeSelection;
-
-async function applyPlatformAIEdit(){
-    const input=document.getElementById("platformAIEditInput"),btn=document.getElementById("platformAIEditButton"),status=document.getElementById("platformAIEditStatus");
-    const request=(input?.value||"").trim();
-    if(!request){if(status)status.textContent="⚠️ اكتب التعديل الذي تريده أولًا.";return;}
-    currentUser=auth.currentUser||currentUser;
-    if(!currentUser||currentUser.uid!==OWNER_UID){if(status)status.textContent="🔒 هذه الميزة متاحة لصاحب المنصة فقط.";return;}
-    if(btn)btn.disabled=true;
-    if(status)status.textContent="⏳ الذكاء الاصطناعي يفهم طلبك ويطبق التعديلات...";
-    try{
-        if(!(await initNoorAI()))return;
-        const ps=window.platformSettings||{},sections=customSections();
-        const snapshot={platformTitle:ps.platformTitle||document.querySelector('header h1')?.textContent||"منصة نور الهدى",platformOwner:ps.platformOwner||document.querySelector('header .owner')?.textContent||"يوسف أحمد شعلان",welcomeMessage:ps.welcomeMessage||"",announcementTitle:ps.announcementTitle||"",announcementText:ps.announcementText||"",announcementEnabled:ps.announcementEnabled!==false,enabled:ps.enabled!==false,disabledSections:Array.isArray(ps.disabledSections)?ps.disabledSections:[],themeId:ps.themeId||"theme_1",customSections:sections};
-        const prompt=`أنت مدير تعديلات منصة نور الهدى. نفّذ طلب صاحب المنصة على البيانات الحالية فقط. أرجع JSON صالحًا فقط بدون Markdown بالشكل: {"platformTitle":"...","platformOwner":"...","welcomeMessage":"...","announcementTitle":"...","announcementText":"...","announcementEnabled":true,"enabled":true,"disabledSections":[],"themeId":"theme_1","customSections":[{"id":"custom_...","name":"...","description":"...","services":[{"name":"...","description":"...","content":"..."}]}]}. حافظ على كل قيمة لم يطلب صاحب المنصة تغييرها. لا تحذف أو تنشئ أقسامًا إلا إذا طلب ذلك أو كان واضحًا من الطلب. يمكنك تعديل وحذف وإنشاء الأقسام المخصصة. themeId من theme_1 إلى theme_120 فقط. لا تستخدم HTML أو JavaScript داخل النصوص.\n\nالبيانات الحالية:\n${JSON.stringify(snapshot)}\n\nطلب صاحب المنصة:\n${request}`;
-        const r=await noorAIModel.generateContent(prompt),raw=r?.response?.text?.()||"",clean=raw.replace(/^```json\s*/i,'').replace(/```$/,'').trim();
-        let data;try{data=JSON.parse(clean)}catch{const m=clean.match(/\{[\s\S]*\}/);data=m?JSON.parse(m[0]):null;}
-        if(!data||typeof data!=="object")throw new Error("لم يُرجع المساعد تعديلات صالحة.");
-        const next={...ps};
-        ["platformTitle","platformOwner","welcomeMessage","announcementTitle","announcementText"].forEach(k=>{if(typeof data[k]==="string")next[k]=data[k].trim();});
-        ["announcementEnabled","enabled"].forEach(k=>{if(typeof data[k]==="boolean")next[k]=data[k];});
-        if(Array.isArray(data.disabledSections))next.disabledSections=data.disabledSections.filter(x=>typeof x==="string");
-        if(/^theme_(?:[1-9]|[1-9]\d|1[01]\d|120)$/.test(String(data.themeId||"")))next.themeId=data.themeId;
-        if(Array.isArray(data.customSections)){
-            const cleaned=data.customSections.filter(x=>x&&typeof x.id==="string"&&typeof x.name==="string").map(x=>({id:x.id.startsWith("custom_")?x.id:"custom_"+Date.now()+Math.random().toString(36).slice(2,6),name:String(x.name).trim(),description:String(x.description||"").trim(),services:Array.isArray(x.services)?x.services.filter(v=>v&&typeof v.name==="string").map(v=>({name:String(v.name).trim(),description:String(v.description||"").trim(),content:String(v.content||"").trim()})):[]}));
-            saveCustomSections(cleaned);
-        }
-        await setDoc(doc(db,"platformSettings","main"),next,{merge:true});
-        window.platformSettings={...ps,...next};
-        applyPlatformSettings(window.platformSettings);renderPlatformControls();renderCustomSections();renderCustomSectionsAdmin();
-        if(input)input.value="";
-        if(status)status.textContent="✅ تم تنفيذ التعديل تلقائيًا وحفظه.";
-    }catch(e){console.error("Platform AI edit",e);if(status)status.textContent="⚠️ تعذر تنفيذ التعديل: "+(e?.message||"خطأ غير معروف");}
-    finally{if(btn)btn.disabled=false;}
-}
-window.applyPlatformAIEdit=applyPlatformAIEdit;
-
 function renderPlatformControls(){
     const ps=window.platformSettings||{};
-    applyThemeById(ps.themeId||'theme_1');
     const list=document.getElementById("sectionControlList");
     if(list)list.innerHTML=CONTROLLED_SECTIONS.map(([id,label])=>`<label class="section-control-item"><input type="checkbox" data-section="${id}" ${!ps.disabledSections.includes(id)?"checked":""}> ${label}</label>`).join("");
     const en=document.getElementById("platformEnabled");if(en)en.checked=ps.enabled!==false;
     const w=document.getElementById("platformWelcome");if(w)w.value=ps.welcomeMessage||"";
     const ae=document.getElementById("aiEnabled");if(ae)ae.checked=ps.aiEnabled===true;
-    const am=document.getElementById("aiModel");if(am)am.value=normalizeNoorAIModel(ps.aiModel);
+    const am=document.getElementById("aiModel");if(am)am.value=ps.aiModel||"gemini-3.7-flash";
     const asi=document.getElementById("aiSystemInstruction");if(asi)asi.value=ps.aiSystemInstruction||"";
     const ah=document.getElementById("aiSaveHistory");if(ah)ah.checked=ps.aiSaveHistory===true;
-    renderBlockedUsers();renderDashboardStats();renderThemeGallery();renderCustomSectionsAdmin();
+    renderBlockedUsers();renderDashboardStats();
 }
 function collectPlatformSettings(){
     const disabled=[];document.querySelectorAll("#sectionControlList input[data-section]").forEach(i=>{if(!i.checked)disabled.push(i.dataset.section);});
-    return {enabled:document.getElementById("platformEnabled")?.checked!==false,disabledSections:disabled,blockedVisitorUids:Array.isArray(window.platformSettings.blockedVisitorUids)?window.platformSettings.blockedVisitorUids:[],welcomeMessage:(document.getElementById("platformWelcome")?.value||"").trim(),aiEnabled:document.getElementById("aiEnabled")?.checked===true,aiModel:normalizeNoorAIModel(document.getElementById("aiModel")?.value),aiSystemInstruction:(document.getElementById("aiSystemInstruction")?.value||"").trim(),aiSaveHistory:document.getElementById("aiSaveHistory")?.checked===true,announcementEnabled:document.getElementById("announcementEnabled")?.checked!==false,announcementTitle:(document.getElementById("announcementTitle")?.value||"").trim(),announcementText:(document.getElementById("announcementText")?.value||"").trim(),themeId:window.platformSettings?.themeId||'theme_1',platformTitle:(document.getElementById("platformTitleInput")?.value||window.platformSettings?.platformTitle||"منصة نور الهدى").trim(),platformOwner:(document.getElementById("platformOwnerInput")?.value||window.platformSettings?.platformOwner||"يوسف أحمد شعلان").trim()};
+    return {enabled:document.getElementById("platformEnabled")?.checked!==false,disabledSections:disabled,blockedVisitorUids:Array.isArray(window.platformSettings.blockedVisitorUids)?window.platformSettings.blockedVisitorUids:[],welcomeMessage:(document.getElementById("platformWelcome")?.value||"").trim(),aiEnabled:document.getElementById("aiEnabled")?.checked===true,aiModel:(document.getElementById("aiModel")?.value||"gemini-3.7-flash").trim(),aiSystemInstruction:(document.getElementById("aiSystemInstruction")?.value||"").trim(),aiSaveHistory:document.getElementById("aiSaveHistory")?.checked===true};
 }
 
 window.saveAISettings=async()=>{
     currentUser=auth.currentUser||currentUser;
     if(!currentUser||currentUser.uid!==OWNER_UID){alert("يجب تسجيل الدخول بحساب صاحب المنصة أولًا.");return;}
-    const data={aiEnabled:document.getElementById("aiEnabled")?.checked===true,aiModel:normalizeNoorAIModel(document.getElementById("aiModel")?.value),aiSystemInstruction:(document.getElementById("aiSystemInstruction")?.value||"").trim(),aiSaveHistory:document.getElementById("aiSaveHistory")?.checked===true,ownerIslamicInfo:(document.getElementById("ownerIslamicInfo")?.value||window.platformSettings?.ownerIslamicInfo||"").trim(),dailyQuiz:window.platformSettings?.dailyQuiz||null};
+    const data={aiEnabled:document.getElementById("aiEnabled")?.checked===true,aiModel:(document.getElementById("aiModel")?.value||"gemini-3.7-flash").trim(),aiSystemInstruction:(document.getElementById("aiSystemInstruction")?.value||"").trim(),aiSaveHistory:document.getElementById("aiSaveHistory")?.checked===true};
     try{
         await setDoc(doc(db,"platformSettings","main"),data,{merge:true});
         window.platformSettings={...(window.platformSettings||{}),...data};
@@ -3032,43 +2811,23 @@ window.saveAISettings=async()=>{
     }catch(e){console.error(e);alert("تعذر حفظ إعدادات الذكاء الاصطناعي. تأكد من صلاحيات Firestore.");}
 };
 
-function normalizeNoorAIModel(model){
-    const m=String(model||"").trim();
-    // Old/deprecated model names are migrated automatically so Firestore cannot
-    // keep the app stuck on a model that is no longer available to new users.
-    if(!m || m==="gemini-2.5-flash-lite" || m==="gemini-3.7-flash" || m==="gemini-3.8-flash") return "gemini-3.5-flash-lite";
-    return m;
-}
-
 async function initNoorAI(){
     const status=document.getElementById("aiStatus");
-    if(!status)return false;
+    if(!status)return;
     const ps=window.platformSettings||{};
-    if((auth.currentUser?.uid!==OWNER_UID) && isVisitorBlocked(auth.currentUser?.uid)){
-        status.innerHTML='<b style="color:#8f1d2c">🚫 تم حظرك من استخدام هذه المنصة.</b>';
-        return false;
-    }
-    if(ps.aiEnabled!==true){
-        status.textContent="🔒 المساعد الذكي غير متاح حاليًا. فعّله من لوحة التحكم ثم اضغط حفظ.";
-        return false;
-    }
+    if((auth.currentUser?.uid!==OWNER_UID) && isVisitorBlocked(auth.currentUser?.uid)){status.innerHTML='<b style="color:#8f1d2c">🚫 تم حظرك من استخدام هذه المنصة.</b>';return false;}
+    if(ps.aiEnabled!==true){status.textContent="🔒 المساعد الذكي غير متاح حاليًا.";return false;}
     try{
-        const aiSdk=await getNoorAISDK();
-        if(!noorAI){noorAI=aiSdk.getAI(app,{backend:new aiSdk.GoogleAIBackend()});}
-        const modelName=normalizeNoorAIModel(ps.aiModel);
-        // Migrate any old value loaded from Firestore in memory immediately.
-        if(ps.aiModel!==modelName){
-            window.platformSettings={...ps,aiModel:modelName};
-        }
-        noorAIModel=aiSdk.getGenerativeModel(noorAI,{
-            model:modelName,
-            systemInstruction:ps.aiSystemInstruction||"أنت مساعد منصة نور الهدى. أجب بالعربية الواضحة والدقيقة، ولا تدّع أنك مفتي."
-        });
+        if(!noorAI){noorAI=getAI(app,{backend:new GoogleAIBackend()});}
+        const modelName=ps.aiModel||"gemini-3.7-flash";
+        noorAIModel=getGenerativeModel(noorAI,{model:modelName,systemInstruction:ps.aiSystemInstruction||"أنت مساعد منصة نور الهدى. أجب بالعربية الواضحة والدقيقة، ولا تدّع أنك مفتي."});
         status.textContent="🟢 المساعد الذكي جاهز. اكتب سؤالك.";
         return true;
     }catch(e){
-        console.error("Noor AI init",e);
-        status.textContent="⚠️ تعذر تجهيز المساعد: "+(e?.message||"خطأ غير معروف");
+        console.error("Noor AI INIT ERROR",e);
+        const code=e?.code||"غير معروف";
+        const message=e?.message||String(e)||"خطأ غير معروف";
+        status.innerHTML="⚠️ تعذر تجهيز المساعد.<br><b>رمز الخطأ:</b> "+escapeHtml(code)+"<br><b>التفاصيل:</b> "+escapeHtml(message);
         return false;
     }
 }
@@ -3080,78 +2839,52 @@ function addNoorAIMessage(text,type){
 window.clearNoorAIChat=()=>{const c=document.getElementById("aiMessages");if(c)c.innerHTML='<div class="ai-message assistant">تم مسح المحادثة. اكتب سؤالك من جديد.</div>';};
 window.askNoorAI=async()=>{
     const input=document.getElementById("aiInput"),btn=document.getElementById("aiSendButton"),status=document.getElementById("aiStatus"),text=input?.value.trim()||"";
-    if(!text){if(status)status.textContent="⚠️ اكتب سؤالك أولًا.";return;}
-    if(btn)btn.disabled=true;
-    if(status)status.textContent="⏳ جاري الاتصال بالمساعد...";
+    if(!text){alert("اكتب سؤالك أولًا.");return;}
+    if(!auth.currentUser){try{await signInAnonymously(auth);}catch(e){console.error(e);}}
+    if(isVisitorBlocked(auth.currentUser?.uid)){applyPlatformSettings(window.platformSettings||{});return;}
+    if(!(await initNoorAI()))return;
+    addNoorAIMessage(text,"user"); input.value=""; if(btn)btn.disabled=true; if(status)status.textContent="⏳ جاري تجهيز الإجابة...";
     try{
-        if(!auth.currentUser){
-            const cred=await signInAnonymously(auth);
-            currentUser=cred.user;
-            window.currentUser=currentUser;
-        }
-        if(isVisitorBlocked(auth.currentUser?.uid)){applyPlatformSettings(window.platformSettings||{});return;}
-        if(!(await initNoorAI()))return;
-        addNoorAIMessage(text,"user");
-        input.value="";
-        if(status)status.textContent="⏳ جاري تجهيز الإجابة...";
         const result=await noorAIModel.generateContent(text);
-        const answer=result?.response?.text?.()||"لم أتمكن من توليد إجابة الآن.";
+        const answer=result.response.text()||"لم أتمكن من توليد إجابة الآن.";
         addNoorAIMessage(answer,"assistant");
         if((window.platformSettings||{}).aiSaveHistory===true && auth.currentUser){
-            await addDoc(collection(db,"aiQuestions"),{visitorUid:auth.currentUser.uid,visitorName:localStorage.getItem("noorUserName")||"زائر",question:text,answer,model:normalizeNoorAIModel(window.platformSettings.aiModel),createdAt:serverTimestamp()});
+            await addDoc(collection(db,"aiQuestions"),{visitorUid:auth.currentUser.uid,visitorName:localStorage.getItem("noorUserName")||"زائر",question:text,answer,model:window.platformSettings.aiModel||"gemini-3.7-flash",createdAt:serverTimestamp()});
         }
         if(status)status.textContent="✅ تم إعداد الإجابة.";
     }catch(e){
-        console.error("Noor AI request",e);
-        const msg=e?.message||String(e||"خطأ غير معروف");
-        addNoorAIMessage("⚠️ لم يتم إرسال السؤال إلى المساعد.\n\nالتفاصيل: "+msg,"system");
-        if(status)status.textContent="⚠️ فشل الاتصال بالمساعد. راجع إعداد Firebase AI Logic والنموذج المحدد.";
+        console.error("Noor AI FULL ERROR",e);
+        const code=e?.code||"غير معروف";
+        const message=e?.message||String(e)||"خطأ غير معروف";
+        let hint="";
+        if(/app.?check|appcheck/i.test(message)||/app.?check/i.test(code)){
+            hint="السبب المحتمل: App Check غير مفعّل أو غير مضبوط لهذا الموقع.";
+        }else if(/permission|unauth|unauthorized|403/i.test(message)||/permission|unauth/i.test(code)){
+            hint="السبب المحتمل: صلاحيات Firebase أو AI Logic تمنع الطلب.";
+        }else if(/not.?found|404|model/i.test(message)){
+            hint="السبب المحتمل: اسم النموذج أو توفره في مشروع Firebase.";
+        }else if(/400|invalid/i.test(message)||/invalid/i.test(code)){
+            hint="السبب المحتمل: إعداد غير صحيح في طلب الذكاء الاصطناعي.";
+        }else if(/429|quota|resource.?exhausted/i.test(message)||/quota|resource.?exhausted/i.test(code)){
+            hint="السبب المحتمل: تم تجاوز الحد المسموح أو معدل الطلبات.";
+        }
+        addNoorAIMessage("⚠️ تعذر الحصول على الإجابة.\n\nرمز الخطأ: "+code+"\nالتفاصيل: "+message+(hint?"\n\n"+hint:"")+"\n\nإذا أرسلت لي رمز الخطأ والتفاصيل الظاهرة هنا، أقدر أحدد لك الإعداد المطلوب.","system");
+        if(status)status.textContent="⚠️ ظهر خطأ مفصل أسفل الرسالة.";
     }finally{if(btn)btn.disabled=false;}
 };
-
 window.testNoorAI=async()=>{
-    const st=document.getElementById("aiAdminStatus");
-    if(st)st.textContent="⏳ جاري اختبار المساعد...";
+    const st=document.getElementById("aiAdminStatus");if(st)st.textContent="⏳ جاري اختبار المساعد...";
     const ok=await initNoorAI();
-    if(!ok){
-        if(st)st.textContent="⚠️ فشل تهيئة المساعد. تأكد من تشغيل المساعد وحفظ الإعدادات.";
-        return;
-    }
+    if(!ok){if(st)st.textContent="⚠️ فشل تهيئة المساعد. راجع إعدادات Firebase AI Logic.";return;}
     try{
-        const modelName=normalizeNoorAIModel(window.platformSettings?.aiModel);
         const r=await noorAIModel.generateContent("أجب بجملة قصيرة: ما اسم هذه المنصة؟");
-        const answer=r?.response?.text?.()||"";
-        if(st)st.textContent="✅ الاختبار نجح باستخدام "+modelName+": "+answer;
+        if(st)st.innerHTML="✅ الاختبار نجح: "+escapeHtml(r.response.text()||"");
     }catch(e){
-        console.error("Noor AI test",e);
-        if(st)st.textContent="⚠️ الاختبار فشل.\n"+(e?.message||String(e||"خطأ غير معروف"));
+        console.error("Noor AI TEST ERROR",e);
+        const code=e?.code||"غير معروف";
+        const message=e?.message||String(e)||"خطأ غير معروف";
+        if(st)st.innerHTML="❌ الاختبار فشل.<br><b>رمز الخطأ:</b> "+escapeHtml(code)+"<br><b>التفاصيل:</b> "+escapeHtml(message)+"<br><br>هذا النص سيساعدنا على تحديد المشكلة بدقة.";
     }
-};
-
-
-window.applyPlatformAICommand=async()=>{
- const input=document.getElementById("platformAICommand"),st=document.getElementById("platformAIStatus");
- const text=(input?.value||"").trim(); if(!text){if(st)st.textContent="⚠️ اكتب التعديل أولًا.";return;}
- if(st)st.textContent="⏳ جاري تنفيذ التعديل...";
- try{
-  if(!auth.currentUser||auth.currentUser.uid!==OWNER_UID) throw new Error("يجب تسجيل الدخول بحساب صاحب المنصة.");
-  if(!(await initNoorAI())) throw new Error("تعذر تشغيل الذكاء الاصطناعي.");
-  const prompt=`أنت مساعد تعديل منصة. حوّل طلب صاحب المنصة إلى JSON فقط بلا شرح. الصيغة: {"action":"add_section|delete_section|update_welcome|unknown","name":"","description":"","sectionId":"","welcomeMessage":""}. الطلب: ${text}`;
-  const r=await noorAIModel.generateContent(prompt); const raw=r?.response?.text?.()||"{}";
-  const m=raw.match(/\{[\s\S]*\}/); const cmd=JSON.parse(m?m[0]:raw);
-  if(cmd.action==="add_section"&&cmd.name){
-    const arr=Array.isArray(window.platformSettings.customSections)?window.platformSettings.customSections:[];
-    arr.push({id:"custom_"+Date.now(),name:cmd.name,description:cmd.description||""});
-    await setDoc(doc(db,"platformSettings","main"),{customSections:arr},{merge:true}); window.platformSettings.customSections=arr;
-  }else if(cmd.action==="delete_section"){
-    const key=(cmd.sectionId||cmd.name||"").toLowerCase();
-    const arr=(window.platformSettings.customSections||[]).filter(x=>String(x.id).toLowerCase()!==key&&String(x.name).toLowerCase()!==key);
-    await setDoc(doc(db,"platformSettings","main"),{customSections:arr},{merge:true}); window.platformSettings.customSections=arr;
-  }else if(cmd.action==="update_welcome"){
-    await setDoc(doc(db,"platformSettings","main"),{welcomeMessage:cmd.welcomeMessage||""},{merge:true}); window.platformSettings.welcomeMessage=cmd.welcomeMessage||"";
-  }else throw new Error("لم أفهم التعديل المطلوب. اكتب طلبًا أكثر تحديدًا.");
-  if(input)input.value=""; renderCustomSectionsAdmin(); if(st)st.textContent="✅ تم تنفيذ التعديل وحفظه.";
- }catch(e){if(st)st.textContent="⚠️ "+(e?.message||"تعذر تنفيذ التعديل.");}
 };
 
 window.savePlatformSettings=async()=>{
@@ -3162,7 +2895,7 @@ window.savePlatformSettings=async()=>{
 function renderBlockedUsers(){const c=document.getElementById("blockedUsersList");if(!c)return;const arr=window.platformSettings.blockedVisitorUids||[];c.innerHTML=arr.length?arr.map(uid=>`<div class="blocked-user-item"><code>${escapeHtml(uid)}</code><button type="button" class="danger-small" onclick="unblockVisitor('${escapeHtml(uid)}')">🔓 فك الحظر</button></div>`).join(""):"لا يوجد زوار محظورون.";}
 window.blockVisitor=async()=>{const input=document.getElementById("blockVisitorUid"),uid=(input?.value||"").trim();if(!uid)return alert("اكتب UID الزائر أولًا.");const arr=[...(window.platformSettings.blockedVisitorUids||[])];if(!arr.includes(uid))arr.push(uid);window.platformSettings.blockedVisitorUids=arr;await window.savePlatformSettings();if(input)input.value="";};
 window.unblockVisitor=async(uid)=>{window.platformSettings.blockedVisitorUids=(window.platformSettings.blockedVisitorUids||[]).filter(x=>x!==uid);await window.savePlatformSettings();};
-async function loadPlatformSettings(){try{onSnapshot(doc(db,"platformSettings","main"),snap=>{const data=snap.exists()?snap.data():{};window.platformSettings={enabled:data.enabled!==false,disabledSections:Array.isArray(data.disabledSections)?data.disabledSections:[],blockedVisitorUids:Array.isArray(data.blockedVisitorUids)?data.blockedVisitorUids:[],welcomeMessage:data.welcomeMessage||"",aiEnabled:data.aiEnabled===true,aiModel:normalizeNoorAIModel(data.aiModel),aiSystemInstruction:data.aiSystemInstruction||"أنت مساعد منصة نور الهدى. أجب بالعربية الواضحة والدقيقة. في الفتاوى والمسائل الشرعية الخاصة أو المختلف فيها نبّه المستخدم إلى ضرورة الرجوع إلى جهة إفتاء موثوقة. لا تدّع أنك مفتي ولا تخترع نصوصًا أو أحاديث.",aiSaveHistory:data.aiSaveHistory===true,announcementEnabled:data.announcementEnabled!==false,announcementTitle:data.announcementTitle||"",announcementText:data.announcementText||"",ownerIslamicInfo:data.ownerIslamicInfo||"",dailyQuiz:data.dailyQuiz||null,themeId:data.themeId||'theme_1',platformTitle:data.platformTitle||"منصة نور الهدى",platformOwner:data.platformOwner||"يوسف أحمد شعلان"};applyPlatformSettings(window.platformSettings);renderAnnouncement();renderAdminAnnouncement();renderOwnerInfo();renderQuiz();if(currentUser?.uid===OWNER_UID)renderPlatformControls();});}catch(e){console.error(e);}}
+async function loadPlatformSettings(){try{onSnapshot(doc(db,"platformSettings","main"),snap=>{const data=snap.exists()?snap.data():{};window.platformSettings={enabled:data.enabled!==false,disabledSections:Array.isArray(data.disabledSections)?data.disabledSections:[],blockedVisitorUids:Array.isArray(data.blockedVisitorUids)?data.blockedVisitorUids:[],welcomeMessage:data.welcomeMessage||"",aiEnabled:data.aiEnabled===true,aiModel:data.aiModel||"gemini-3.7-flash",aiSystemInstruction:data.aiSystemInstruction||"أنت مساعد منصة نور الهدى. أجب بالعربية الواضحة والدقيقة. في الفتاوى والمسائل الشرعية الخاصة أو المختلف فيها نبّه المستخدم إلى ضرورة الرجوع إلى جهة إفتاء موثوقة. لا تدّع أنك مفتي ولا تخترع نصوصًا أو أحاديث.",aiSaveHistory:data.aiSaveHistory===true};applyPlatformSettings(window.platformSettings);if(currentUser?.uid===OWNER_UID)renderPlatformControls();});}catch(e){console.error(e);}}
 function isVisitorBlocked(uid){
     if(!uid) return false;
     const blocked=Array.isArray(window.platformSettings?.blockedVisitorUids)
@@ -3172,12 +2905,6 @@ function isVisitorBlocked(uid){
 }
 
 function applyPlatformSettings(ps){
-    applyThemeById(ps.themeId||'theme_1');
-    const titleEl=document.querySelector('header h1');
-    const ownerEl=document.querySelector('header .owner');
-    if(titleEl)titleEl.textContent=ps.platformTitle||"منصة نور الهدى";
-    if(ownerEl)ownerEl.textContent=ps.platformOwner||"يوسف أحمد شعلان";
-    document.title=ps.platformTitle||"منصة نور الهدى";
     const user=auth.currentUser||window.currentUser||currentUser;
     const isOwner=user?.uid===OWNER_UID;
     const isBlocked=!isOwner && isVisitorBlocked(user?.uid);
@@ -3263,7 +2990,7 @@ window.setPlatformOpen=async function(isOpen){
         return;
     }
     const current=window.platformSettings||{};
-    const data={enabled:!!isOpen,disabledSections:Array.isArray(current.disabledSections)?current.disabledSections:[],blockedVisitorUids:Array.isArray(current.blockedVisitorUids)?current.blockedVisitorUids:[],welcomeMessage:current.welcomeMessage||"",aiEnabled:current.aiEnabled===true,aiModel:"gemini-3.5-flash-lite",aiSystemInstruction:current.aiSystemInstruction||"",aiSaveHistory:current.aiSaveHistory===true};
+    const data={enabled:!!isOpen,disabledSections:Array.isArray(current.disabledSections)?current.disabledSections:[],blockedVisitorUids:Array.isArray(current.blockedVisitorUids)?current.blockedVisitorUids:[],welcomeMessage:current.welcomeMessage||"",aiEnabled:current.aiEnabled===true,aiModel:current.aiModel||"gemini-3.7-flash",aiSystemInstruction:current.aiSystemInstruction||"",aiSaveHistory:current.aiSaveHistory===true};
     try{
         await setDoc(doc(db,"platformSettings","main"),data,{merge:true});
         window.platformSettings={...current,...data};
@@ -3272,12 +2999,11 @@ window.setPlatformOpen=async function(isOpen){
     }catch(e){console.error(e);alert("تعذر تغيير حالة المنصة. تأكد من صلاحيات Firestore.");}
 };
 
-async function renderDashboardStats(){
+function renderDashboardStats(){
     const all=document.querySelectorAll("#adminConversations .admin-conversation").length;
     const pending=document.querySelectorAll("#adminConversations .unanswered").length;
-    const a=document.getElementById("statAll"),p=document.getElementById("statPending"),b=document.getElementById("statBlocked"),s=document.getElementById("statSections"),ai=document.getElementById("statAIQuestions");
+    const a=document.getElementById("statAll"),p=document.getElementById("statPending"),b=document.getElementById("statBlocked"),s=document.getElementById("statSections");
     if(a)a.textContent=all;if(p)p.textContent=pending;if(b)b.textContent=(window.platformSettings.blockedVisitorUids||[]).length;if(s)s.textContent=CONTROLLED_SECTIONS.filter(([id])=>!window.platformSettings.disabledSections.includes(id)).length;
-    if(ai){try{const snap=await getDocs(collection(db,"aiQuestions"));ai.textContent=snap.size;}catch(e){ai.textContent="—";}}
     const st=document.getElementById("dashboardPlatformStatus");if(st)st.innerHTML=window.platformSettings.enabled!==false?"🟢 المنصة مفتوحة للزوار":"🔴 المنصة مغلقة للزوار";
 }
 window.openAdminPanel=async()=>{
@@ -3289,7 +3015,6 @@ window.openAdminPanel=async()=>{
         const cred=await signInWithEmailAndPassword(auth,email,password);
         if(cred.user.uid!==OWNER_UID){await signOut(auth);status.textContent="⛔ هذا الحساب ليس حساب صاحب المنصة.";return;}
         currentUser=cred.user;window.currentUser=currentUser;
-        updateOwnerModeButton(cred.user);
         localStorage.setItem("noorAdminEmail",email);
         panel.style.display="block";status.textContent="✅ تم تسجيل الدخول كصاحب المنصة.";renderPlatformControls();await window.loadAdminConversations();
     }catch(e){console.error(e);status.textContent="⚠️ تعذر تسجيل الدخول. تأكد من البريد وكلمة المرور. ("+(e?.code||"unknown")+")";}
@@ -3463,99 +3188,8 @@ window.sendAdminReply=async()=>{
 };
 
 
-
-/* =====================================================
-   الإضافات الإسلامية الجديدة
-===================================================== */
-let prayerTimesData=null;
-let prayerCountdownTimer=null;
-let prayerNotificationTimer=null;
-const prayerNames={Fajr:"الفجر",Dhuhr:"الظهر",Asr:"العصر",Maghrib:"المغرب",Isha:"العشاء"};
-function setPrayerStatus(t){const e=document.getElementById("prayerStatus");if(e)e.textContent=t||"";}
-function renderPrayerTimes(data,locationText){
-  prayerTimesData=data.timings||{};
-  const box=document.getElementById("prayerTimes"); if(!box)return;
-  box.innerHTML=Object.entries(prayerNames).map(([k,n])=>`<div class="prayer-item"><strong>${n}</strong><span>${escapeHtml(prayerTimesData[k]||"--")}</span></div>`).join("");
-  const d=document.getElementById("prayerDate");if(d)d.textContent=`📅 ${escapeHtml(data.date?.readable||"")} — ${escapeHtml(locationText||"")}`;
-  updateNextPrayer();
-}
-async function fetchPrayerTimes(url,locationText){
-  try{setPrayerStatus("⏳ جاري تحميل مواقيت الصلاة...");const r=await fetch(url);const j=await r.json();if(j.code!==200)throw new Error(j.status||"تعذر تحميل المواقيت");renderPrayerTimes(j.data,locationText);setPrayerStatus("✅ تم تحديث المواقيت.");}catch(e){console.error(e);setPrayerStatus("⚠️ تعذر تحميل المواقيت. جرّب مدينة أخرى أو تحقق من الاتصال.");}}
-window.loadPrayerByCity=()=>{const c=(document.getElementById("prayerCity")?.value||"").trim(),co=(document.getElementById("prayerCountry")?.value||"").trim();if(!c||!co){alert("اكتب المدينة والدولة أولًا.");return;}fetchPrayerTimes(`https://api.aladhan.com/v1/timingsByCity?city=${encodeURIComponent(c)}&country=${encodeURIComponent(co)}&method=5`,`${c} - ${co}`);};
-window.loadPrayerByLocation=()=>{if(!navigator.geolocation){alert("المتصفح لا يدعم تحديد الموقع.");return;}setPrayerStatus("📡 نطلب إذن الموقع...");navigator.geolocation.getCurrentPosition(pos=>{const {latitude,longitude}=pos.coords;fetchPrayerTimes(`https://api.aladhan.com/v1/timings?latitude=${latitude}&longitude=${longitude}&method=5`,`موقع الجهاز (${latitude.toFixed(2)}, ${longitude.toFixed(2)})`);},()=>setPrayerStatus("⚠️ لم يتم السماح بالموقع. استخدم المدينة يدويًا."),{enableHighAccuracy:true,timeout:10000});};
-function parsePrayerTime(t){const m=String(t||"").match(/^(\d{1,2}):(\d{2})/);return m?{h:+m[1],m:+m[2]}:null;}
-function updateNextPrayer(){if(!prayerTimesData)return;const now=new Date(), list=Object.entries(prayerNames).map(([k,n])=>{const x=parsePrayerTime(prayerTimesData[k]);if(!x)return null;const d=new Date(now);d.setHours(x.h,x.m,0,0);if(d<=now)d.setDate(d.getDate()+1);return {k,n,d};}).filter(Boolean).sort((a,b)=>a.d-b.d);const next=list[0];if(!next)return;const name=document.getElementById("nextPrayerName"),cd=document.getElementById("nextPrayerCountdown");if(name)name.textContent=`الصلاة القادمة: ${next.n}`;if(cd){const ms=next.d-Date.now(),h=Math.floor(ms/3600000),m=Math.floor(ms%3600000/60000),sec=Math.floor(ms%60000/1000);cd.textContent=`متبقي ${h} ساعة و${m} دقيقة و${sec} ثانية`;}if(!prayerCountdownTimer)prayerCountdownTimer=setInterval(()=>{updateNextPrayer();},1000);}
-window.enablePrayerNotifications=async()=>{const st=document.getElementById("notificationStatus");try{if(!("Notification" in window)){if(st)st.textContent="المتصفح لا يدعم إشعارات النظام.";return;}const p=await Notification.requestPermission();if(p==="granted"){if(st)st.textContent="✅ تم السماح بالإشعارات. ستعمل أثناء بقاء الصفحة مفتوحة.";localStorage.setItem("noorPrayerNotifications","1");if(!prayerNotificationTimer)prayerNotificationTimer=setInterval(checkPrayerNotification,30000);}else if(st)st.textContent="لم يتم السماح بالإشعارات.";}catch(e){if(st)st.textContent="تعذر تفعيل الإشعارات.";}};
-function checkPrayerNotification(){if(!prayerTimesData||Notification.permission!=="granted")return;const now=new Date();for(const [k,n] of Object.entries(prayerNames)){const x=parsePrayerTime(prayerTimesData[k]);if(x&&now.getHours()===x.h&&now.getMinutes()===x.m&&now.getSeconds()<30){const key=`noorNotified-${now.toDateString()}-${k}`;if(!sessionStorage.getItem(key)){new Notification(`حان الآن وقت صلاة ${n}`);sessionStorage.setItem(key,"1");}}}}
-function getCoords(){return new Promise((res,rej)=>{if(!navigator.geolocation)return rej();navigator.geolocation.getCurrentPosition(p=>res(p.coords),rej,{enableHighAccuracy:true,timeout:10000});});}
-window.loadQibla=async()=>{const out=document.getElementById("qiblaDegree"),arrow=document.getElementById("qiblaArrow");try{const c=await getCoords();const lat1=c.latitude*Math.PI/180,lon1=c.longitude*Math.PI/180,lat2=21.422487*Math.PI/180,lon2=39.826206*Math.PI/180;let brng=Math.atan2(Math.sin(lon2-lon1)*Math.cos(lat2),Math.cos(lat1)*Math.sin(lat2)-Math.sin(lat1)*Math.cos(lat2)*Math.cos(lon2-lon1))*180/Math.PI;brng=(brng+360)%360;if(out)out.textContent=`🧭 اتجاه القبلة: ${brng.toFixed(1)}° من الشمال`;if(arrow)arrow.style.transform=`rotate(${brng}deg)`;}catch(e){if(out)out.textContent="⚠️ اسمح للموقع أولًا لتحديد اتجاه القبلة.";}};
-window.updateHijriCalendar=()=>{const now=new Date(),g=new Intl.DateTimeFormat("ar-EG",{dateStyle:"full"}).format(now);let h="غير متاح في هذا المتصفح";try{h=new Intl.DateTimeFormat("ar-SA-u-ca-islamic-umalqura",{dateStyle:"full"}).format(now);}catch(e){}const a=document.getElementById("gregToday"),b=document.getElementById("hijriTodayText"),c=document.getElementById("hijriToday");if(a)a.textContent=g;if(b)b.textContent=h;if(c)c.textContent=`📅 ${h}`;};
-function islamicParts(d){try{const f=new Intl.DateTimeFormat("en-u-ca-islamic-umalqura",{year:"numeric",month:"numeric",day:"numeric"});const parts=f.formatToParts(d);const get=k=>+(parts.find(x=>x.type===k)?.value||0);return {y:get("year"),m:get("month"),d:get("day")};}catch(e){return null;}}
-function updateRamadan(){const box=document.getElementById("ramadanCountdown");if(!box)return;let target=null;const start=new Date();for(let i=0;i<500;i++){const d=new Date(start);d.setDate(start.getDate()+i);const p=islamicParts(d);if(p&&p.m===9&&p.d===1){target=d;break;}}if(!target){box.textContent="تعذر حساب بداية رمضان في هذا المتصفح.";return;}const ms=target-Date.now();if(ms<=0){box.textContent="🌙 رمضان مبارك!";return;}const days=Math.floor(ms/86400000),hours=Math.floor(ms%86400000/3600000);box.textContent=`🌙 متبقي على رمضان: ${days} يومًا و${hours} ساعة تقريبًا (${target.toLocaleDateString("ar-EG")})`;}
-const wardKey="noorWard";
-function wardDate(){return new Date().toISOString().slice(0,10)}
-function defaultWard(){return {date:wardDate(),goals:{quran:1,dhikr:100,morning:false,evening:false},done:{quran:false,dhikr:false,morning:false,evening:false}}}
-function loadWard(){let x;try{x=JSON.parse(localStorage.getItem(wardKey)||"null")}catch(e){}if(!x||x.date!==wardDate())x=defaultWard();return x;}
-function renderWard(){const x=loadWard();["quran","dhikr"].forEach(k=>{const e=document.getElementById("ward"+k[0].toUpperCase()+k.slice(1));if(e)e.value=x.goals[k];});["morning","evening"].forEach(k=>{const e=document.getElementById("ward"+k[0].toUpperCase()+k.slice(1));if(e)e.checked=x.goals[k];});const parts=Object.keys(x.done),done=parts.filter(k=>x.done[k]).length,p=Math.round(done/parts.length*100);const bar=document.getElementById("wardProgressBar"),txt=document.getElementById("wardProgressText");if(bar)bar.style.width=p+"%";if(txt)txt.textContent=`إنجاز اليوم: ${p}% (${done}/${parts.length})`;localStorage.setItem(wardKey,JSON.stringify(x));const ql=document.getElementById("wardQuranPagesLabel");if(ql)ql.textContent=`صفحة ${x.goals.quran}`;const dl=document.getElementById("wardDhikrLabel");if(dl)dl.textContent=`${x.goals.dhikr} مرة — لا إله إلا الله`;renderAchievements();}
-window.saveWardGoals=()=>{const x=loadWard();x.goals.quran=+(document.getElementById("wardQuran")?.value||0);x.goals.dhikr=+(document.getElementById("wardDhikr")?.value||0);x.goals.morning=document.getElementById("wardMorning")?.checked===true;x.goals.evening=document.getElementById("wardEvening")?.checked===true;localStorage.setItem(wardKey,JSON.stringify(x));renderWard();};
-window.completeWardPart=k=>{const x=loadWard();x.done[k]=true;localStorage.setItem(wardKey,JSON.stringify(x));renderWard();};
-window.resetWardToday=()=>{localStorage.setItem(wardKey,JSON.stringify(defaultWard()));renderWard();};
-function renderAchievements(){const c=document.getElementById("achievementsList");if(!c)return;const x=loadWard(),all=Object.values(x.done).every(Boolean),days=+(localStorage.getItem("noorVisitDays")||1);const arr=[all?["🏆","أتممت ورد اليوم","مبروك، أتممت جميع عناصر الورد اليوم."]:null,days>=7?["🔥","مواظب 7 أيام","استمرارك اليومي ممتاز."]:null,localStorage.getItem("noorUserName")?["👤","عضو مسجل","أكملت بيانات الدخول الأساسية."]:null,localStorage.getItem("noorQuizCorrect")?["🧩","محب المسابقات","أجبت إجابة صحيحة في المسابقة."]:null].filter(Boolean);c.innerHTML=arr.length?arr.map(a=>`<div class="achievement-item"><b>${a[0]} ${a[1]}</b><br>${a[2]}</div>`).join(""):"ابدأ باستخدام الورد اليومي لفتح الشارات.";}
-const dailyAyahData=[
-{ayah:"فَإِنَّ مَعَ الْعُسْرِ يُسْرًا ۝ إِنَّ مَعَ الْعُسْرِ يُسْرًا",ref:"الشرح: 5-6",surah:94,ayahNo:5,story:"مرّ رسول الله ﷺ وأصحابه في مكة بسنوات من الأذى والحصار، ومع ذلك استمروا في الدعوة والصبر. ثم جاء الفرج بالهجرة إلى المدينة، وبُني مجتمع المسلمين، وبعد الشدة جاءت مراحل من النصر والتمكين. وتذكّر الآية أن الشدة لا تدوم وأن مع العسر يسرًا."},
-{ayah:"وَاصْبِرْ وَمَا صَبْرُكَ إِلَّا بِاللَّهِ",ref:"النحل: 127",surah:16,ayahNo:127,story:"من أعظم صور الصبر قصة يوسف عليه السلام؛ انتقل من الجب إلى الرق ثم إلى السجن ظلمًا، ولم يترك ثقته بالله، ثم أكرمه الله بالتمكين وجمعه بأهله. الصبر ثبات على الحق مع الاستعانة بالله."},
-{ayah:"وَقُلْ رَبِّ زِدْنِي عِلْمًا",ref:"طه: 114",surah:20,ayahNo:114,story:"يعلم القرآن المسلم أن يطلب الزيادة من العلم النافع. فالعلم يقود إلى معرفة الله وحسن العبادة وحسن التعامل، ولذلك يجعل المسلم التعلم عبادة مستمرة."},
-{ayah:"إِنَّ اللَّهَ مَعَ الصَّابِرِينَ",ref:"البقرة: 153",surah:2,ayahNo:153,story:"لما خرج موسى عليه السلام ببني إسرائيل وظهر البحر أمامهم والعدو خلفهم، قال أصحابه إنهم مدركون، فكان جواب موسى ثقة بنصر الله، ثم جاء الفرج وانفلق البحر. القصة تعلم اليقين مع الأخذ بالأسباب."},
-{ayah:"وَتَوَكَّلْ عَلَى الْحَيِّ الَّذِي لَا يَمُوتُ",ref:"الفرقان: 58",surah:25,ayahNo:58,story:"التوكل يظهر في سيرة إبراهيم عليه السلام؛ ترك ما يألفه الإنسان من وطن وقوم عندما أمره الله، وهاجر في سبيله، وبنى البيت مع إسماعيل، وظل قلبه معلقًا بالله. التوكل يجمع بين الاعتماد على الله والعمل."},
-{ayah:"إِنَّ اللَّهَ لَا يُغَيِّرُ مَا بِقَوْمٍ حَتَّىٰ يُغَيِّرُوا مَا بِأَنْفُسِهِمْ",ref:"الرعد: 11",surah:13,ayahNo:11,story:"بعد الهجرة إلى المدينة بدأ المسلمون بناء مجتمع جديد، فغيّروا عادات كثيرة من الجاهلية إلى أخلاق الإيمان والتعاون. الإصلاح يبدأ من الإنسان ثم ينتقل إلى الأسرة والمجتمع."},
-{ayah:"وَاعْفُوا وَاصْفَحُوا أَلَا تُحِبُّونَ أَنْ يَغْفِرَ اللَّهُ لَكُمْ",ref:"النور: 22",surah:24,ayahNo:22,story:"من صور العفو ما وقع يوم فتح مكة؛ دخل النبي ﷺ مكة بعد سنوات من الأذى والحرب، ومع قدرته على الانتقام اختار العفو عن كثير من خصومه. العفو عند القدرة خلق عظيم مع بقاء العدل."}
-];
-function renderDaily(){const i=new Date().getDate()%dailyAyahData.length,item=dailyAyahData[i],a=document.getElementById('dailyAyah'),st=document.getElementById('dailyStory');if(a)a.innerHTML=`<article><h3>📖 آية اليوم</h3><button type="button" class="ayah-daily-button" onclick="openDailyAyahTafsir()"><p style="font-size:25px">${item.ayah}</p><p>📌 ${item.ref}</p><small>اضغط على الآية لفتح التفسير داخل المنصة</small></button></article>`;if(st)st.innerHTML=`<article><h3>📜 قصة مرتبطة بالآية</h3><p style="line-height:2">${item.story}</p></article>`;const w=document.getElementById('wardAyahText');if(w)w.textContent=item.ayah;}
-window.openDailyAyahTafsir=()=>{const item=dailyAyahData[new Date().getDate()%dailyAyahData.length];showPage('tafsir');setTimeout(()=>{const ss=document.getElementById('tafsirSurah'),inp=document.getElementById('tafsirAyah');if(ss)ss.value=String(item.surah);if(inp)inp.value=String(item.ayahNo);if(typeof window.openTafsir==='function')window.openTafsir();},100);};
-const fallbackIslamicInfos=["الصلاة هي الركن الثاني من أركان الإسلام.","القرآن الكريم كتاب الله المنزل على محمد ﷺ.","المحافظة على الصلاة في وقتها من أعظم الأعمال.","الصدق والأمانة من أخلاق الإسلام."];
-function renderOwnerInfo(){const e=document.getElementById('dailyInfo');if(e)e.textContent=(window.platformSettings?.ownerIslamicInfo||'').trim()||fallbackIslamicInfos[new Date().getDate()%fallbackIslamicInfos.length];const a=document.getElementById('ownerIslamicInfo');if(a)a.value=window.platformSettings?.ownerIslamicInfo||'';}
-window.showAnotherIslamicInfo=()=>renderOwnerInfo();
-window.saveOwnerIslamicInfo=async()=>{if(!currentUser||currentUser.uid!==OWNER_UID){alert('سجل الدخول كصاحب المنصة أولًا.');return;}const text=(document.getElementById('ownerIslamicInfo')?.value||'').trim();try{await setDoc(doc(db,'platformSettings','main'),{ownerIslamicInfo:text},{merge:true});window.platformSettings={...(window.platformSettings||{}),ownerIslamicInfo:text};renderOwnerInfo();const st=document.getElementById('ownerInfoAdminStatus');if(st)st.textContent='✅ تم حفظ المعلومة.';}catch(e){console.error(e);alert('تعذر حفظ المعلومة.');}};
-const fallbackQuizBank=[{q:"كم عدد سور القرآن الكريم؟",o:["114","100","120","99"],a:0},{q:"ما اسم أول سورة في المصحف؟",o:["البقرة","الفاتحة","الإخلاص","الناس"],a:1},{q:"في أي شهر يصوم المسلمون الصيام المفروض؟",o:["شعبان","رمضان","محرم","رجب"],a:1},{q:"كم عدد الصلوات المفروضة في اليوم والليلة؟",o:["3","4","5","6"],a:2}];
-function renderQuiz(){const q=window.platformSettings?.dailyQuiz?.q?window.platformSettings.dailyQuiz:fallbackQuizBank[new Date().getDate()%fallbackQuizBank.length],qe=document.getElementById('quizQuestion'),op=document.getElementById('quizOptions'),res=document.getElementById('quizResult');if(qe)qe.innerHTML=`<b>${escapeHtml(q.q)}</b>`;if(op)op.innerHTML=q.o.map((x,i)=>`<button class="quiz-option" type="button" onclick="answerQuiz(${i})">${escapeHtml(x)}</button>`).join('');if(res)res.textContent='اختر إجابة.';window.currentDailyQuiz=q;const vals=[q.q,...q.o,String(q.a)];['adminQuizQuestion','adminQuizOption1','adminQuizOption2','adminQuizOption3','adminQuizOption4','adminQuizCorrect'].forEach((id,i)=>{const e=document.getElementById(id);if(e)e.value=vals[i]||'';});}
-window.saveOwnerDailyQuiz=async()=>{if(!currentUser||currentUser.uid!==OWNER_UID){alert('سجل الدخول كصاحب المنصة أولًا.');return;}const q=(document.getElementById('adminQuizQuestion')?.value||'').trim(),o=[1,2,3,4].map(i=>(document.getElementById('adminQuizOption'+i)?.value||'').trim()),a=+(document.getElementById('adminQuizCorrect')?.value||0);if(!q||o.some(x=>!x)){alert('أكمل السؤال والاختيارات الأربعة.');return;}const quiz={q,o,a};try{await setDoc(doc(db,'platformSettings','main'),{dailyQuiz:quiz},{merge:true});window.platformSettings={...(window.platformSettings||{}),dailyQuiz:quiz};renderQuiz();const st=document.getElementById('ownerQuizAdminStatus');if(st)st.textContent='✅ تم حفظ سؤال المسابقة اليومية.';}catch(e){console.error(e);alert('تعذر حفظ سؤال المسابقة.');}};
-window.answerQuiz=i=>{const q=window.currentDailyQuiz,res=document.getElementById('quizResult');if(!q)return;if(i===q.a){if(res)res.textContent='✅ إجابة صحيحة! أحسنت.';localStorage.setItem('noorQuizCorrect','1');}else if(res)res.textContent=`❌ ليست الإجابة الصحيحة. الإجابة: ${q.o[q.a]}`;renderAchievements();};
-function renderAnnouncement(){const b=document.getElementById("announcementBox"),ps=window.platformSettings||{};if(!b)return;if(ps.announcementEnabled===false||(!ps.announcementTitle&&!ps.announcementText)){b.textContent="لا توجد إعلانات حاليًا.";return;}b.innerHTML=`<h3>${escapeHtml(ps.announcementTitle||"إعلان من المنصة")}</h3><p>${escapeHtml(ps.announcementText||"").replace(/\n/g,"<br>")}</p>`;}
-function renderAdminAnnouncement(){const ps=window.platformSettings||{};const a=document.getElementById("announcementEnabled"),t=document.getElementById("announcementTitle"),x=document.getElementById("announcementText");if(a)a.checked=ps.announcementEnabled!==false;if(t)t.value=ps.announcementTitle||"";if(x)x.value=ps.announcementText||"";}
-window.saveAnnouncementSettings=async()=>{if(!currentUser||currentUser.uid!==OWNER_UID){alert("سجل الدخول كصاحب المنصة أولًا.");return;}const data={announcementEnabled:document.getElementById("announcementEnabled")?.checked!==false,announcementTitle:(document.getElementById("announcementTitle")?.value||"").trim(),announcementText:(document.getElementById("announcementText")?.value||"").trim()};try{await setDoc(doc(db,"platformSettings","main"),data,{merge:true});window.platformSettings={...(window.platformSettings||{}),...data};renderAnnouncement();const st=document.getElementById("announcementAdminStatus");if(st)st.textContent="✅ تم حفظ الإعلان.";}catch(e){console.error(e);alert("تعذر حفظ الإعلان. تأكد من قواعد Firestore.");}};
-function recordFeatureVisit(){const key="noorVisitDayLast",today=wardDate(),last=localStorage.getItem(key);if(last!==today){let n=+(localStorage.getItem("noorVisitDays")||0)+1;localStorage.setItem("noorVisitDays",String(n));localStorage.setItem(key,today);}renderAchievements();}
-function renderGuideAllSections(){
-    const c=document.getElementById("guideAllSections");
-    if(!c)return;
-    const sections=[
-      ["quran","📖 القرآن الكريم","اقرأ سور القرآن الكريم واختر السورة التي تريدها بسهولة.\nتصفح الآيات داخل المنصة واستخدم أدوات العرض المتاحة للقراءة.\nهذا القسم هو المكان الأساسي لقراءة المصحف داخل المنصة."],
-      ["recitation","🎧 التلاوة","اختر القارئ واستمع إلى تلاوة السور من داخل المنصة.\nيمكنك الانتقال بين السور ومتابعة الاستماع بسهولة.\nاستخدم هذا القسم للاستماع للقرآن أثناء القراءة أو في وقتك اليومي."],
-      ["tafsir","📚 تفسير القرآن","اختر السورة والآية لعرض التفسير المرتبط بها.\nاستخدمه لفهم المعاني العامة للآيات بصورة مبسطة.\nيمكنك الوصول إليه أيضًا من الآيات التي توفر رابطًا للتفسير."],
-      ["rulings","⚖️ الأحكام","تعرّف على مجموعة من الأحكام والمسائل الشرعية داخل المنصة.\nاقرأ المعلومات المعروضة للاستفادة والتعلّم.\nفي المسائل الخاصة أو المختلف فيها يُفضّل الرجوع إلى جهة إفتاء موثوقة."],
-      ["adhkar","🤲 الأدعية والأذكار","ستجد هنا الأدعية والأذكار مرتبة لتسهيل الوصول إليها.\nاستخدم البحث إذا أردت العثور على ذكر أو دعاء محدد.\nيمكنك قراءة الأذكار والاستفادة منها في أوقاتك اليومية."],
-      ["ai","🤖 اسأل نور الهدى","اكتب سؤالك في المساعد ليحاول إرشادك بالمعلومات المتاحة.\nاستخدم عبارات واضحة ومحددة للحصول على إجابة أفضل.\nفي الفتاوى والمسائل الخاصة لا تعتمد على المساعد وحده وارجع إلى مختص موثوق."],
-      ["prayer","🕌 مواقيت الصلاة","اعرض مواقيت الصلاة بحسب موقعك أو أدخل المدينة والدولة يدويًا.\nاسمح للموقع إذا أردت حساب المواقيت تلقائيًا لمكانك.\nيمكنك أيضًا متابعة العدّ التنازلي للصلاة القادمة."],
-      ["qibla","🧭 القبلة","اضغط على زر تحديد اتجاه القبلة واسمح للموقع عند الطلب.\nسيحسب القسم اتجاه القبلة من موقع جهازك.\nتأكد من أن إعدادات الموقع في جهازك مفعلة للحصول على نتيجة أدق."],
-      ["hijri","📅 التقويم الهجري","يعرض لك التاريخ الميلادي والهجري لليوم.\nاستخدمه لمعرفة التاريخ الهجري الحالي بسهولة.\nيمكنك تحديث التاريخ من داخل القسم عند الحاجة."],
-      ["ramadan","🌙 رمضان","تابع العدّ التنازلي لبداية رمضان القادمة.\nستجد أيضًا اقتراحات بسيطة للعبادة والدعاء في رمضان.\nاستخدم القسم كمرجع سريع للاستعداد للشهر المبارك."],
-      ["achievements","🏆 إنجازاتي","يعرض لك الشارات والإنجازات المرتبطة باستخدام بعض ميزات المنصة.\nاستمر في استخدام المنصة لإكمال ما يناسبك من الأنشطة.\nيمكنك العودة إلى هذا القسم لمتابعة ما حققته."],
-      ["announcement","📰 إعلانات المنصة","هنا تظهر الإعلانات والتنبيهات التي يضعها صاحب المنصة.\nراجع القسم لمعرفة أي تحديثات أو رسائل جديدة.\nإذا لم توجد إعلانات فستظهر رسالة تفيد بذلك."],
-      ["daily","🌿 آية وقصة اليوم","يعرض هذا القسم آية يومية مع قصة مرتبطة بها.\nاضغط على الآية للوصول إلى التفسير داخل المنصة.\nالهدف منه تقديم فائدة إيمانية قصيرة وسهلة كل يوم."],
-      ["info","🎁 معلومة إسلامية","يعرض معلومة إسلامية مختارة من إعداد المنصة.\nيمكنك تحديث المعلومة لعرض محتوى آخر عند توفره.\nهذا القسم مناسب للحصول على فائدة سريعة أثناء التصفح."],
-      ["quiz","🧩 المسابقة اليومية","أجب عن سؤال المسابقة اليومية واختر الإجابة التي تراها صحيحة.\nبعد الاختيار ستظهر لك نتيجة إجابتك مباشرة.\nاستخدم المسابقة للمراجعة والتعلّم بطريقة تفاعلية."],
-      ["notifications","🔔 الإشعارات","فعّل إشعارات الصلاة إذا أردت تنبيهات أوقات الصلاة من المتصفح.\nسيطلب المتصفح إذنك قبل إرسال إشعارات النظام.\nيمكنك التحكم في الإشعارات من إعدادات المتصفح عند الحاجة."],
-      ["contact","💬 تواصل معي","اكتب سؤالك أو استفسارك في صفحة التواصل مع صاحب المنصة.\nيمكنك إضافة بيانات اختيارية مثل الاسم والعمر والمنطقة.\nبعد إرسال الرسالة يمكنك العودة للمحادثة لمتابعة الرد." ]
-    ];
-    c.innerHTML=sections.map(([id,title,text])=>`<button type="button" class="feature-card clickable-card" onclick="showPage('${id}')"><h3>${title}</h3><p style="white-space:pre-line;line-height:1.9">${escapeHtml(text)}</p></button>`).join("");
-}
-window.renderGuideAllSections=renderGuideAllSections;
-
-function initNewFeatures(){recordFeatureVisit();updateHijriCalendar();updateRamadan();renderDaily();renderOwnerInfo();renderQuiz();renderAnnouncement();renderGuideAllSections();if(localStorage.getItem("noorPrayerNotifications")==="1"&&"Notification" in window&&Notification.permission==="granted"&&!prayerNotificationTimer)prayerNotificationTimer=setInterval(checkPrayerNotification,30000);if(!window.noorAdhanTimer)window.noorAdhanTimer=setInterval(checkPrayerAdhan,1000);}
-window.addEventListener("load",()=>{initNewFeatures();renderCustomSections();});
-
 onAuthStateChanged(auth,(user)=>{
     currentUser=user;
-    updateOwnerModeButton(user);
     window.currentUser=user;
     authReadyResolve();
     const emailInput=document.getElementById("adminEmailInput");
@@ -3584,88 +3218,6 @@ window.addEventListener("DOMContentLoaded",()=>{
             }
         });
     }
-});
-
-
-
-
-// إصلاح زر إرسال رسالة الذكاء الاصطناعي دون تغيير وظائف الذكاء الاصطناعي
-document.addEventListener("click", function(e){
-  const btn=e.target.closest("button");
-  if(btn && btn.id==="aiSendButton"){e.preventDefault();if(typeof window.askNoorAI==="function")window.askNoorAI();return;}
-  if(!btn) return;
-  const txt=(btn.textContent||"").trim();
-  if(txt.includes("إرسال الرسالة")){
-    e.preventDefault();
-    if(typeof window.sendNoorAIMessage==="function") window.sendNoorAIMessage();
-    else if(typeof window.sendAIMessage==="function") window.sendAIMessage();
-    else if(typeof window.addNoorAIMessage==="function"){
-      const input=document.getElementById("aiInput")||document.getElementById("noorAIInput");
-      if(input && input.value.trim()) window.addNoorAIMessage(input.value.trim());
-    }
-  }
-});
-
-/* =====================================================
-   جسر التوافق مع أزرار HTML
-   إصلاح مهم: دوال type="module" لا تصبح عامة تلقائيًا.
-   لذلك نكشف الدوال التي تستعملها أزرار المنصة على window.
-===================================================== */
-Object.assign(window,{
-    addCustomSection,
-    renderCustomSections,
-    initNoorAI,
-    renderAchievements,
-    renderDaily,
-    renderQuiz,
-    renderAnnouncement,
-    updateHijriCalendar,
-    updateRamadan,
-    renderGuideAllSections,
-    renderOwnerInfo,
-    enableAdhanAudio,
-    openTafsirForAyah,
-
-    getNoorAISDK,
-    escapeHtml,
-    chatTime,
-    initLiveChat,
-    fillVisitorProfile,
-    loadVisitorProfile,
-    subscribeToMessages,
-    renderPlatformControls,
-    collectPlatformSettings,
-    normalizeNoorAIModel,
-    initNoorAI,
-    addNoorAIMessage,
-    renderBlockedUsers,
-    loadPlatformSettings,
-    isVisitorBlocked,
-    applyPlatformSettings,
-    renderDashboardStats,
-    subscribeToAdminMessages,
-    updateSelectedVisitorBlockButton,
-    selectAdminConversation,
-    setPrayerStatus,
-    renderPrayerTimes,
-    fetchPrayerTimes,
-    parsePrayerTime,
-    updateNextPrayer,
-    checkPrayerNotification,
-    getCoords,
-    islamicParts,
-    updateRamadan,
-    wardDate,
-    defaultWard,
-    loadWard,
-    renderAchievements,
-    renderDaily,
-    renderOwnerInfo,
-    renderQuiz,
-    renderAnnouncement,
-    renderAdminAnnouncement,
-    recordFeatureVisit,
-    initNewFeatures
 });
 
 window.addEventListener("load",()=>{loadPlatformSettings();});
