@@ -1,0 +1,3227 @@
+ي<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>منصة نور الهدى</title>
+
+<style>
+*{box-sizing:border-box}
+
+body{
+    margin:0;
+    font-family:Tahoma,Arial,sans-serif;
+    color:#26352f;
+    background:#063f36;
+    min-height:100vh;
+}
+
+body::before{
+    content:"✦ ❖ ✦ ❖ ✦ ❖ ✦ ❖ ✦";
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    text-align:center;
+    color:rgba(201,162,39,.35);
+    font-size:25px;
+    letter-spacing:12px;
+    padding:8px;
+    pointer-events:none;
+}
+
+header{
+    position:relative;
+    z-index:1;
+    background:linear-gradient(rgba(3,52,44,.92),rgba(7,95,80,.96));
+    color:white;
+    text-align:center;
+    padding:38px 20px 30px;
+    border-bottom:4px solid #c9a227;
+}
+
+header::after{
+    content:"☾ ✦ ﷽ ✦ ☽";
+    display:block;
+    color:#e4c85b;
+    font-size:23px;
+    margin-top:14px;
+}
+
+header h1{
+    margin:0;
+    font-size:38px;
+}
+
+.owner{
+    margin-top:8px;
+    font-size:20px;
+    font-weight:bold;
+    color:#f3df8a;
+}
+
+header p{
+    margin:12px 0 0;
+}
+
+nav{
+    position:relative;
+    z-index:2;
+    display:flex;
+    flex-wrap:wrap;
+    justify-content:center;
+    gap:8px;
+    background:#04372f;
+    padding:12px;
+}
+
+nav button{
+    border:1px solid #c9a227;
+    background:#fffaf0;
+    color:#075e54;
+    padding:10px 14px;
+    border-radius:12px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+nav button:hover{
+    background:#f1df9a;
+}
+
+.page{
+    display:none;
+    position:relative;
+    z-index:1;
+    max-width:1100px;
+    margin:25px auto;
+    padding:20px;
+}
+
+.page.active{
+    display:block;
+}
+
+.card{
+    background:rgba(255,250,240,.97);
+    border:2px solid rgba(201,162,39,.55);
+    border-radius:18px;
+    padding:22px;
+    margin-bottom:20px;
+    box-shadow:0 8px 25px rgba(0,0,0,.18);
+}
+
+.card h2{
+    color:#075e54;
+    margin-top:0;
+}
+
+.home-buttons{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(180px,1fr));
+    gap:15px;
+}
+
+.home-buttons button{
+    padding:20px;
+    border:1px solid #c9a227;
+    border-radius:15px;
+    background:#edf7f2;
+    color:#075e54;
+    font-size:18px;
+    font-weight:bold;
+    cursor:pointer;
+}
+
+select,
+input,
+textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #b7c8c2;
+    border-radius:10px;
+    margin:7px 0;
+    font-size:16px;
+}
+
+.action{
+    background:#075e54;
+    color:white;
+    border:1px solid #c9a227;
+    border-radius:10px;
+    padding:12px 20px;
+    cursor:pointer;
+    font-weight:bold;
+    margin:5px 3px;
+}
+
+.action:hover{
+    background:#06483f;
+}
+
+.action:disabled{
+    opacity:.6;
+    cursor:not-allowed;
+}
+
+.gold-button{
+    background:#c9a227;
+    color:#26352f;
+    border:0;
+    border-radius:12px;
+    padding:14px 22px;
+    cursor:pointer;
+    font-weight:bold;
+    font-size:16px;
+}
+
+.surah-grid{
+    display:none;
+    grid-template-columns:repeat(auto-fit,minmax(150px,1fr));
+    gap:8px;
+    margin-top:15px;
+}
+
+.surah-grid.open{display:grid;}
+
+.surah-picker{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:10px;
+    border:2px solid #c9a227;
+    background:#edf7f2;
+    color:#075e54;
+    padding:15px 18px;
+    border-radius:12px;
+    cursor:pointer;
+    font-size:18px;
+    font-weight:bold;
+}
+
+.surah-picker:hover{background:#f2e4ae;}
+.surah-picker-arrow{font-size:20px;transition:transform .2s;}
+.surah-picker.open .surah-picker-arrow{transform:rotate(180deg);}
+
+.surah-btn{
+    border:1px solid #b8d9d1;
+    background:#f7fffd;
+    color:#075e54;
+    padding:12px 8px;
+    border-radius:10px;
+    cursor:pointer;
+    font-weight:bold;
+}
+
+.surah-btn:hover{
+    background:#f2e4ae;
+}
+
+.surah-title{
+    text-align:center;
+    color:#075e54;
+    margin:20px 0;
+}
+
+.quran-text{
+    background:#fffdf5;
+    border:2px solid #d6bd62;
+    border-radius:15px;
+    padding:25px;
+    line-height:2.5;
+    font-size:25px;
+    font-family:"Amiri","Traditional Arabic",serif;
+}
+
+.ayah-clickable{
+    cursor:pointer;
+    border-radius:8px;
+    transition:background .2s, box-shadow .2s;
+}
+
+.ayah-clickable:hover{
+    background:#f2e4ae;
+    box-shadow:0 2px 8px rgba(0,0,0,.08);
+}
+
+.ayah-clickable:active{
+    background:#e7d48a;
+}
+
+.ayah-number{
+    display:inline-block;
+    color:#075e54;
+    font-size:21px;
+    font-weight:bold;
+    margin:0 5px;
+    font-family:Tahoma,Arial,sans-serif;
+}
+
+.loading{
+    text-align:center;
+    padding:25px;
+    color:#075e54;
+    font-weight:bold;
+}
+
+.result-box{
+    background:#f8fffd;
+    border-right:5px solid #c9a227;
+    padding:18px;
+    border-radius:10px;
+    margin-top:15px;
+    line-height:1.8;
+}
+
+.tafsir-tools{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+}
+
+.reciter-status{
+    margin-top:12px;
+    padding:12px;
+    border-radius:10px;
+    background:#edf7f2;
+    color:#075e54;
+    font-weight:bold;
+    line-height:1.8;
+}
+
+.small-note{
+    font-size:14px;
+    line-height:1.8;
+    color:#4d5f59;
+    margin-top:10px;
+}
+
+.reciter-search-box{
+    display:flex;
+    gap:8px;
+    align-items:center;
+}
+
+.reciter-search-box input{
+    flex:1;
+}
+
+.search-results-count{
+    background:#edf7f2;
+    color:#075e54;
+    padding:10px;
+    border-radius:10px;
+    margin:8px 0;
+    font-weight:bold;
+}
+
+footer{
+    background:#04372f;
+    color:white;
+    text-align:center;
+    padding:25px;
+    margin-top:30px;
+    border-top:3px solid #c9a227;
+}
+
+.footer-name{
+    margin-top:7px;
+    font-size:17px;
+    font-weight:bold;
+    color:#f3df8a;
+}
+
+#welcomeScreen{
+    position:fixed;
+    inset:0;
+    z-index:9999;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    padding:20px;
+    background:rgba(3,45,38,.97);
+}
+
+.welcome-box{
+    width:min(600px,100%);
+    background:#fffaf0;
+    border:3px solid #c9a227;
+    border-radius:25px;
+    padding:30px;
+    text-align:center;
+}
+
+.welcome-symbol{
+    font-size:45px;
+    color:#c9a227;
+}
+
+.welcome-box h2{
+    color:#075e54;
+}
+
+.welcome-box label{
+    display:block;
+    text-align:right;
+    font-weight:bold;
+    color:#075e54;
+    margin-top:12px;
+}
+
+.saved-user{
+    margin-top:15px;
+    color:#075e54;
+    font-weight:bold;
+}
+
+/* شريط الصلاة على النبي */
+#salawatMessage{
+    position:fixed;
+    top:0;
+    left:0;
+    right:0;
+    z-index:10001;
+    background:#c9a227;
+    color:#26352f;
+    padding:14px 20px;
+    text-align:center;
+    font-size:20px;
+    font-weight:bold;
+    cursor:pointer;
+    display:none;
+    box-shadow:0 3px 12px rgba(0,0,0,.25);
+}
+
+#salawatMessage:hover{
+    background:#e4c85b;
+}
+
+@media(max-width:600px){
+
+    header h1{
+        font-size:28px;
+    }
+
+    .quran-text{
+        font-size:21px;
+    }
+
+    .tafsir-tools{
+        grid-template-columns:1fr;
+    }
+
+    .reciter-search-box{
+        flex-direction:column;
+    }
+
+    .reciter-search-box input,
+    .reciter-search-box button{
+        width:100%;
+    }
+
+    #salawatMessage{
+        font-size:17px;
+        padding:12px;
+    }
+}
+
+/* ===============================
+   تواصل معي + لوحة التحكم
+================================ */
+.chat-box{margin-top:18px;border:1px solid #d8e7e1;border-radius:18px;overflow:hidden;background:#f8fdfb}
+.chat-messages{min-height:260px;max-height:520px;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px}
+.chat-message{max-width:82%;padding:12px 15px;border-radius:16px;line-height:1.9;white-space:pre-wrap;word-break:break-word}
+.chat-message.visitor{align-self:flex-start;background:#dbeafe;border:1px solid #60a5fa;color:#000}
+.chat-message.owner{align-self:flex-end;background:#dbeafe;border:1px solid #60a5fa;color:#000}
+.chat-meta{display:block;font-size:12px;color:#60736e;margin-top:5px}
+.chat-compose{padding:14px;background:white;border-top:1px solid #d8e7e1}
+.admin-switch{display:flex;gap:10px;align-items:center;flex-wrap:wrap}
+.admin-switch input{flex:1;min-width:220px}
+.admin-panel{margin-top:18px;border-top:1px solid #d8e7e1;padding-top:18px}
+.admin-panel-head{display:flex;align-items:center;justify-content:space-between;gap:10px}
+.admin-conversations{display:grid;gap:10px;margin-top:14px}
+.admin-conversation{width:100%;text-align:right;border:1px solid #d8e7e1;border-radius:14px;background:#fff;padding:15px;cursor:pointer}
+.admin-conversation:hover{background:#fff8da;border-color:#d4af37}
+.admin-conversation.unanswered{border-right:5px solid #c9a227}
+.admin-conversation.answered{border-right:5px solid #2e7d32}
+.admin-reply-box{margin-top:18px;padding-top:18px;border-top:1px dashed #c7d8d1}
+.admin-reply-box h3{margin-top:0}
+.admin-dashboard{margin-top:18px;border-top:1px solid #d8e7e1;padding-top:18px}
+.admin-dashboard.hidden{display:none}
+.admin-dashboard-title{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;margin-bottom:14px}
+.admin-tabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.admin-tab{border:1px solid #d8e7e1;background:#fff;padding:11px 15px;border-radius:12px;cursor:pointer;font-weight:700}
+.admin-tab.active{background:#17352f;color:#fff;border-color:#17352f}
+.admin-view{display:none}.admin-view.active{display:block}
+.maintenance-overlay{position:fixed;inset:0;z-index:99999;background:rgba(10,25,22,.97);display:flex;align-items:center;justify-content:center;padding:24px;text-align:center;}
+.maintenance-unlock-btn{margin-top:18px;padding:12px 24px;border:0;border-radius:12px;background:#c9a227;color:#fff;font-size:17px;font-weight:bold;cursor:pointer;box-shadow:0 4px 12px rgba(0,0,0,.18)}
+.maintenance-unlock-btn:hover{transform:translateY(-1px)}
+.maintenance-status{margin-top:12px;min-height:24px;font-size:14px;line-height:1.7}
+.maintenance-box{max-width:560px;width:100%;background:#fff;border-radius:22px;padding:30px;box-shadow:0 20px 60px rgba(0,0,0,.35);}
+.maintenance-icon{font-size:52px;margin-bottom:8px}.maintenance-box h2{margin:8px 0 12px}.maintenance-box p{line-height:1.9;margin:0;color:#555}
+.admin-control-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+.admin-control-card{border:1px solid #d8e7e1;border-radius:16px;padding:16px;background:#fff}
+.admin-control-card h4{margin:0 0 10px}
+.section-control-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px}
+.section-control-item{display:flex;align-items:center;gap:8px;padding:10px;border:1px solid #d8e7e1;border-radius:10px;background:#fafcfb}
+.switch-control{display:inline-flex;align-items:center;gap:8px;font-weight:700;cursor:pointer}
+.switch-control input{width:20px;height:20px}
+.dashboard-stats{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px;margin-bottom:14px}
+.dashboard-stat{padding:14px;border:1px solid #d8e7e1;border-radius:14px;background:#fff;text-align:center}
+.dashboard-stat strong{display:block;font-size:25px;margin-bottom:4px}
+.blocked-users-list{display:grid;gap:8px;margin-top:10px}
+.blocked-user-item{display:flex;justify-content:space-between;align-items:center;gap:8px;border:1px solid #d8e7e1;border-radius:10px;padding:9px;background:#fafafa}
+.danger-small{background:#8f1d2c!important;color:#fff!important;border-color:#8f1d2c!important;padding:7px 10px!important}
+.admin-open-dashboard{width:100%;margin-top:12px;font-size:17px}
+.admin-note{font-size:13px;color:#666;line-height:1.8}
+.admin-chat-shell{margin-top:18px;border:2px solid #d8e7e1;border-radius:18px;overflow:hidden;background:#f8fdfb}
+.admin-chat-header{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap;padding:14px 16px;background:#17352f;color:#fff}
+.admin-chat-header h3{margin:0;color:#fff}
+.admin-chat-header .admin-note{color:#dcebe6}
+.admin-selected-actions{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-top:7px}
+.admin-selected-uid{display:inline-flex;align-items:center;gap:5px}
+.admin-block-selected{background:#8f1d2c!important;color:#fff!important;border:1px solid #8f1d2c!important;border-radius:9px;padding:7px 11px;font-weight:bold;cursor:pointer}
+.admin-block-selected.unblock{background:#2e7d32!important;border-color:#2e7d32!important}
+.admin-block-selected:disabled{opacity:.65;cursor:not-allowed}
+.admin-chat-messages{min-height:300px;max-height:520px;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px;background:#f8fdfb}
+.admin-chat-message{max-width:82%;padding:12px 15px;border-radius:16px;line-height:1.9;white-space:pre-wrap;word-break:break-word}
+.admin-chat-message.visitor{align-self:flex-start;background:#dbeafe;border:1px solid #60a5fa;color:#000!important}.admin-chat-message.visitor *{color:#000!important}
+.admin-chat-message.owner{align-self:flex-end;background:#3b82f6!important;border:1px solid #2563eb!important;color:#000!important}.admin-chat-message.owner *{color:#000!important}
+.admin-chat-text{display:block;color:#000!important;font-weight:700}.admin-chat-message.owner .admin-chat-text,.admin-chat-message.visitor .admin-chat-text{color:#000!important}.admin-chat-meta{display:block;font-size:12px;color:#334155!important;margin-top:5px}.admin-chat-message.owner .admin-chat-meta,.admin-chat-message.visitor .admin-chat-meta{color:#334155!important}
+.admin-chat-compose{padding:14px;background:#fff;border-top:1px solid #d8e7e1}
+.admin-chat-compose textarea{margin-bottom:8px}
+.admin-chat-empty{text-align:center;padding:40px 15px;color:#60736e;line-height:1.9}
+.admin-chat-close{background:#8f1d2c!important;color:#fff!important;border-color:#8f1d2c!important;padding:8px 12px!important}
+
+@media(max-width:800px){.admin-control-grid{grid-template-columns:1fr}.dashboard-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.section-control-list{grid-template-columns:1fr}}
+@media(max-width:600px){.admin-switch{flex-direction:column;align-items:stretch}.chat-message{max-width:94%}}
+
+
+/* ===============================
+   الذكاء الاصطناعي
+================================ */
+.ai-chat-box{margin-top:18px;border:1px solid #d8e7e1;border-radius:18px;overflow:hidden;background:#f8fdfb}
+.ai-messages{min-height:220px;max-height:560px;overflow-y:auto;padding:18px;display:flex;flex-direction:column;gap:12px}
+.ai-message{max-width:88%;padding:13px 16px;border-radius:16px;line-height:1.95;white-space:pre-wrap;word-break:break-word}
+.ai-message.user{align-self:flex-start;background:#dbeafe;border:1px solid #60a5fa;color:#000}
+.ai-message.assistant{align-self:flex-end;background:#edf7f2;border:1px solid #9bc7b9;color:#17352f}
+.ai-message.system{align-self:center;background:#fff8da;border:1px solid #d4af37;color:#4d431d;max-width:96%;font-size:14px}
+.ai-compose{padding:14px;background:#fff;border-top:1px solid #d8e7e1}
+.ai-settings-note{background:#f8fdfb;border:1px dashed #9bc7b9;border-radius:12px;padding:12px;line-height:1.8}
+.ai-settings-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}
+@media(max-width:800px){.ai-settings-grid{grid-template-columns:1fr}.ai-message{max-width:94%}}
+
+</style>
+</head>
+
+<body>
+<div id="maintenanceOverlay" class="maintenance-overlay" style="display:none;">
+  <div class="maintenance-box">
+    <div class="maintenance-icon">🛠️</div>
+    <h2>منصة نور الهدى مغلقة مؤقتًا</h2>
+    <p id="maintenanceMessage">المنصة مغلقة حاليًا للصيانة أو التحديث.</p>
+    <button type="button" class="maintenance-unlock-btn" onclick="unlockPlatform()">🔓 فتح المنصة</button>
+    <div id="maintenanceLoginStatus" class="maintenance-status"></div>
+  </div>
+</div>
+
+<div id="welcomeScreen">
+    <div class="welcome-box">
+        <div class="welcome-symbol">☾ ✦ ☽</div>
+        <h2>مرحبًا بك في منصة نور الهدى</h2>
+        <p>
+            أهلًا بك في منصتنا الإسلامية.
+            <br>
+            قبل الدخول، نرجو تسجيل بيانات بسيطة.
+        </p>
+
+        <label for="userName">الاسم</label>
+        <input id="userName" type="text" placeholder="اكتب اسمك">
+
+        <label for="userAge">العمر</label>
+        <input id="userAge" type="number" min="1" max="120" placeholder="اكتب عمرك">
+
+        <button type="button" class="gold-button" onclick="registerUser()">
+            📝 التسجيل والمتابعة
+        </button>
+
+        <div class="saved-user">
+            بعد التسجيل سيتم فتح نموذج Google Forms.
+        </div>
+    </div>
+</div>
+
+<!-- شريط الصلاة على النبي -->
+<div id="salawatMessage" onclick="playSalawat()">
+    ☾ صلوا على النبي ﷺ ☽
+</div>
+
+<header>
+    <h1>منصة نور الهدى</h1>
+    <div class="owner">يوسف أحمد شعلان</div>
+    <p>القرآن الكريم • التلاوة • التفسير • الأحكام • الأدعية والأذكار</p>
+</header>
+
+<nav>
+    <button onclick="showPage('home')">🏠 الرئيسية</button>
+    <button onclick="showPage('quran')">📖 القرآن الكريم</button>
+    <button onclick="showPage('recitation')">🎧 التلاوة</button>
+    <button onclick="showPage('tafsir')">📚 التفسير</button>
+    <button onclick="showPage('rulings')">⚖️ الأحكام</button>
+    <button onclick="showPage('adhkar')">🤲 الأدعية والأذكار</button>
+    <button onclick="showPage('guide')">📘 دليل المنصة</button>
+    <button onclick="showPage('ai')">🤖 اسأل نور الهدى</button>
+    <button onclick="showPage('contact'); initLiveChat();">💬 تواصل معي</button>
+</nav>
+
+<section id="home" class="page active">
+    <div class="card">
+        <h2>☾ مرحبًا بك في منصة نور الهدى</h2>
+        <p>منصة إسلامية مبسطة للقرآن الكريم والتلاوة والتفسير والأحكام والأدعية والأذكار.</p>
+        <p>إعداد: <b>يوسف أحمد شعلان</b></p>
+    </div>
+
+    <div class="card">
+        <h2>أقسام المنصة</h2>
+
+        <div class="home-buttons">
+            <button onclick="showPage('quran')">📖 القرآن الكريم</button>
+            <button onclick="showPage('recitation')">🎧 التلاوة</button>
+            <button onclick="showPage('tafsir')">📚 تفسير القرآن</button>
+            <button onclick="showPage('rulings')">⚖️ الأحكام الشرعية</button>
+            <button onclick="showPage('adhkar')">🤲 الأدعية والأذكار</button>
+            <button onclick="showPage('guide')">📘 دليل المنصة</button>
+    <button onclick="showPage('ai')">🤖 اسأل نور الهدى</button>
+            <button onclick="showPage('contact'); initLiveChat();">💬 تواصل معي</button>
+        </div>
+    </div>
+</section>
+
+<section id="quran" class="page">
+    <div class="card">
+        <h2>📖 القرآن الكريم</h2>
+        <p>اختر السورة لعرض جميع السور:</p>
+
+        <button type="button" id="surahPicker" class="surah-picker" onclick="toggleSurahPicker()">
+            <span>📖 اختر السورة</span>
+            <span class="surah-picker-arrow">▼</span>
+        </button>
+
+        <div id="surahGrid" class="surah-grid"></div>
+
+        <h2 id="surahTitle" class="surah-title"></h2>
+
+        <div id="quranText" class="quran-text">
+            اختر سورة من القائمة.
+        </div>
+    </div>
+</section>
+
+<section id="recitation" class="page">
+    <div class="card">
+
+        <h2>🎧 تلاوة القرآن الكريم</h2>
+
+        <label for="reciterSearch">🔎 ابحث عن القارئ:</label>
+
+        <div class="reciter-search-box">
+
+            <input
+                id="reciterSearch"
+                type="search"
+                placeholder="اكتب اسم القارئ مثل: العفاسي"
+                autocomplete="off"
+            >
+
+            <button
+                type="button"
+                class="action"
+                onclick="searchReciters()"
+            >
+                🔎 بحث
+            </button>
+
+            <button
+                type="button"
+                class="action"
+                onclick="showAllReciters()"
+            >
+                👥 كل القراء
+            </button>
+
+        </div>
+
+        <div
+            id="searchResultsCount"
+            class="search-results-count"
+            style="display:none"
+        ></div>
+
+        <label for="reciterSelect">اختر القارئ:</label>
+
+        <select id="reciterSelect">
+            <option value="">⏳ جاري تحميل القراء...</option>
+        </select>
+
+        <label for="recitationSelect">اختر السورة:</label>
+
+        <select id="recitationSelect"></select>
+
+        <button
+            id="loadRecitersButton"
+            type="button"
+            class="action"
+            onclick="loadReciters(true)"
+        >
+            🔄 تحديث القراء
+        </button>
+
+        <button
+            id="playButton"
+            type="button"
+            class="action"
+            onclick="playRecitation()"
+        >
+            ▶️ تشغيل التلاوة
+        </button>
+
+        <audio
+            id="audioPlayer"
+            controls
+            preload="none"
+            style="width:100%;margin-top:20px;"
+        ></audio>
+
+        <div id="audioStatus" class="result-box">
+            ⏳ جاري تحميل قائمة القراء...
+        </div>
+
+        <div id="reciterInfo" class="reciter-status">
+            سيتم تحميل القراء من MP3Quran.
+        </div>
+
+        <div class="small-note">
+            ابحث عن القارئ، اختره، ثم اختر السورة واضغط تشغيل.
+        </div>
+
+    </div>
+</section>
+
+<section id="tafsir" class="page">
+    <div class="card">
+
+        <h2>📚 تفسير القرآن الكريم</h2>
+
+        <div class="tafsir-tools">
+
+            <div>
+                <label>السورة:</label>
+                <select id="tafsirSurah"></select>
+            </div>
+
+            <div>
+                <label>رقم الآية:</label>
+                <input
+                    type="number"
+                    id="tafsirAyah"
+                    min="1"
+                    value="1"
+                >
+            </div>
+
+        </div>
+
+        <button
+            type="button"
+            class="action"
+            onclick="openTafsir()"
+        >
+            📚 عرض التفسير
+        </button>
+
+        <div id="tafsirResult" class="result-box">
+            اختر السورة ورقم الآية.
+        </div>
+
+    </div>
+</section>
+
+
+<section id="ai" class="page">
+    <div class="card">
+        <h2>🤖 اسأل نور الهدى</h2>
+        <p>مساعد ذكي للإجابة عن الأسئلة العامة. في المسائل الشرعية الحساسة أو الفتاوى الخاصة، راجع جهة إفتاء موثوقة.</p>
+        <div id="aiStatus" class="result-box">⏳ جاري تجهيز المساعد...</div>
+        <div id="aiChatBox" class="ai-chat-box">
+            <div id="aiMessages" class="ai-messages">
+                <div class="ai-message assistant">السلام عليكم ورحمة الله وبركاته. اكتب سؤالك وسأحاول مساعدتك بإجابة واضحة.</div>
+            </div>
+            <div class="ai-compose">
+                <textarea id="aiInput" rows="4" placeholder="اكتب سؤالك هنا..." autocomplete="off"></textarea>
+                <button type="button" class="gold-button" id="aiSendButton" onclick="askNoorAI()">🤖 إرسال السؤال</button>
+                <button type="button" class="action" onclick="clearNoorAIChat()">🗑️ مسح المحادثة</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="page">
+    <div class="card">
+        <h2>💬 تواصل معي</h2>
+        <p>إذا كان لديك سؤال أو استفسار، اكتب رسالتك هنا. ستصل إلى صاحب المنصة، وعندما يرد ستظهر الإجابة داخل نفس المحادثة.</p>
+
+        <div class="card" style="background:#f8fffd;margin-bottom:0;">
+            <h3>👤 بياناتك (اختيارية)</h3>
+            <label>الاسم
+                <input id="visitorNameInput" type="text" placeholder="اكتب اسمك">
+            </label>
+            <label>العمر
+                <input id="visitorAgeInput" type="number" min="1" max="120" placeholder="اكتب عمرك">
+            </label>
+            <label>المدينة / المنطقة
+                <input id="visitorResidenceInput" type="text" placeholder="المدينة أو المنطقة">
+            </label>
+            <button type="button" class="gold-button" onclick="saveVisitorProfile()">💾 حفظ بياناتي</button>
+            <span id="profileSaveStatus" class="admin-note" style="margin-right:10px"></span>
+        </div>
+
+        <div id="chatStatus" class="result-box">⏳ جاري تجهيز المحادثة...</div>
+        <div id="chatBox" class="chat-box" style="display:none;">
+            <div id="chatMessages" class="chat-messages"></div>
+            <div class="chat-compose">
+                <textarea id="chatInput" rows="3" placeholder="اكتب سؤالك هنا..." autocomplete="off"></textarea>
+                <button type="button" class="action" id="chatSendButton" onclick="sendChatMessage()">📤 إرسال السؤال</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card">
+        <h2>🔐 صاحب المنصة</h2>
+        <p class="small-note">هذه المنطقة لصاحب المنصة فقط، ويمكن من خلالها قراءة أسئلة الزوار والرد عليهم والتحكم في الأقسام.</p>
+        <div class="admin-switch">
+            <input id="adminEmailInput" type="email" placeholder="البريد الإلكتروني لصاحب المنصة" autocomplete="username">
+            <input id="adminPasswordInput" type="password" placeholder="كلمة المرور" autocomplete="current-password">
+            <button type="button" class="action" onclick="openAdminPanel()">🔐 دخول لوحة التحكم</button>
+        </div>
+        <div id="adminLoginStatus" class="small-note" style="margin-top:10px;"></div>
+
+        <div id="adminPanel" class="admin-panel" style="display:none;">
+            <button type="button" class="gold-button admin-open-dashboard" onclick="toggleFullAdminDashboard()">⚙️ فتح لوحة التحكم الكاملة</button>
+            <div id="fullAdminDashboard" class="admin-dashboard hidden">
+                <div class="admin-dashboard-title"><h3>🛠️ لوحة تحكم منصة نور الهدى</h3><span id="dashboardSaveStatus" class="admin-note"></span></div>
+                <div class="admin-tabs">
+                    <button type="button" class="admin-tab active" onclick="showAdminView('overview',this)">📊 الرئيسية</button>
+                    <button type="button" class="admin-tab" onclick="showAdminView('replies',this)">📥 الرد على الزوار</button>
+                    <button type="button" class="admin-tab" onclick="showAdminView('sections',this)">🧩 الأقسام</button>
+                    <button type="button" class="admin-tab" onclick="showAdminView('visitors',this)">👥 الزوار</button>
+                    <button type="button" class="admin-tab" onclick="showAdminView('general',this)">⚙️ إعدادات المنصة</button>
+                    <button type="button" class="admin-tab" onclick="showAdminView('ai',this)">🤖 الذكاء الاصطناعي</button>
+                </div>
+
+                <div id="adminView-overview" class="admin-view active">
+                    <div class="dashboard-stats">
+                        <div class="dashboard-stat"><strong id="statAll">0</strong>كل المحادثات</div>
+                        <div class="dashboard-stat"><strong id="statPending">0</strong>بانتظار الرد</div>
+                        <div class="dashboard-stat"><strong id="statBlocked">0</strong>زوار محظورون</div>
+                        <div class="dashboard-stat"><strong id="statSections">0</strong>أقسام مفتوحة</div>
+                    </div>
+                    <div class="admin-control-card"><h4>🔐 حالة المنصة الآن</h4><div id="dashboardPlatformStatus" class="result-box">جاري التحميل...</div></div>
+                </div>
+
+                <div id="adminView-replies" class="admin-view">
+                    <div class="admin-panel-head"><h3>📥 أسئلة الزوار</h3><button type="button" class="action" onclick="loadAdminConversations()">🔄 تحديث</button></div>
+                    <div id="adminConversations" class="admin-conversations">جاري تحميل الأسئلة...</div>
+                    <div id="adminReplyBox" class="admin-reply-box" style="display:none;">
+                        <div class="admin-chat-shell">
+                            <div class="admin-chat-header">
+                                <div>
+                                    <h3 id="adminSelectedTitle">💬 محادثة الزائر</h3>
+                                    <div id="adminSelectedVisitor" class="admin-note">اختر سؤالًا لفتح المحادثة</div>
+                                </div>
+                                <button type="button" class="action admin-chat-close" onclick="closeAdminConversation()">✖️ إغلاق</button>
+                            </div>
+                            <div id="adminChatMessages" class="admin-chat-messages">
+                                <div class="admin-chat-empty">💬 اختر سؤالًا من القائمة لعرض المحادثة كاملة.</div>
+                            </div>
+                            <div class="admin-chat-compose">
+                                <textarea id="adminReplyInput" rows="3" placeholder="اكتب ردك للزائر..." autocomplete="off"></textarea>
+                                <button type="button" class="gold-button" id="adminSendReplyButton" onclick="sendAdminReply()">📤 إرسال الرد</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="adminView-sections" class="admin-view">
+                    <div class="admin-control-card">
+                        <h4>🧩 فتح وإغلاق أقسام المنصة</h4>
+                        <div id="sectionControlList" class="section-control-list"></div>
+                        <button type="button" class="gold-button" style="margin-top:12px" onclick="savePlatformSettings()">💾 حفظ إعدادات الأقسام</button>
+                    </div>
+                </div>
+
+                <div id="adminView-visitors" class="admin-view">
+                    <div class="admin-control-grid">
+                        <div class="admin-control-card">
+                            <h4>🚫 حظر زائر</h4>
+                            <input id="blockVisitorUid" type="text" placeholder="ضع UID الزائر هنا">
+                            <button type="button" class="danger-small" style="margin-top:10px" onclick="blockVisitor()">🚫 حظر هذا الزائر</button>
+                        </div>
+                        <div class="admin-control-card">
+                            <h4>🔓 الزوار المحظورون</h4>
+                            <div id="blockedUsersList" class="blocked-users-list">لا يوجد زوار محظورون.</div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div id="adminView-ai" class="admin-view">
+                    <div class="admin-control-card">
+                        <h4>🤖 إعدادات الذكاء الاصطناعي</h4>
+                        <div class="ai-settings-note">
+                            المساعد يستخدم Firebase AI Logic مع Gemini. يجب تفعيل AI Logic في مشروع Firebase، ثم تفعيل App Check للإنتاج حسب إعدادات مشروعك. لا تضع مفتاح API سريًا داخل ملف المنصة.
+                        </div>
+                        <div class="ai-settings-grid" style="margin-top:14px;">
+                            <div class="admin-control-card">
+                                <h4>🔘 تشغيل المساعد</h4>
+                                <label class="switch-control"><input id="aiEnabled" type="checkbox"> السماح للزوار باستخدام الذكاء الاصطناعي</label>
+                            </div>
+                            <div class="admin-control-card">
+                                <h4>🧠 النموذج</h4>
+                                <select id="aiModel">
+                                    <option value="gemini-3.7-flash">gemini-3.7-flash</option>
+                                    <option value="gemini-3.8-flash">gemini-3.8-flash</option>
+                                    <option value="gemini-3.5-flash-lite">gemini-3.5-flash-lite</option>
+                                </select>
+                            </div>
+                        </div>
+                        <label style="display:block;margin-top:14px;">📝 تعليمات المساعد
+                            <textarea id="aiSystemInstruction" rows="8" placeholder="اكتب هنا طريقة إجابة المساعد..."></textarea>
+                        </label>
+                        <label class="switch-control" style="margin-top:10px;"><input id="aiSaveHistory" type="checkbox"> حفظ أسئلة وإجابات الذكاء الاصطناعي في Firestore</label>
+                        <div style="margin-top:12px;">
+                            <button type="button" class="gold-button" onclick="saveAISettings()">💾 حفظ إعدادات الذكاء الاصطناعي</button>
+                            <button type="button" class="action" onclick="testNoorAI()">🧪 اختبار المساعد</button>
+                        </div>
+                        <div id="aiAdminStatus" class="result-box" style="margin-top:12px;">لم يتم الاختبار بعد.</div>
+                    </div>
+                </div>
+
+                <div id="adminView-general" class="admin-view">
+                    <div class="admin-control-card" style="margin-bottom:14px;">
+                        <h4>🌐 فتح وإغلاق المنصة بالكامل</h4>
+                        <p class="small-note">استخدم هذه الأزرار أثناء الصيانة أو التحديث. عند الإغلاق لن يستطيع الزوار استخدام المنصة، بينما تظل لوحة التحكم متاحة لصاحب المنصة.</p>
+                        <div style="display:flex;gap:10px;flex-wrap:wrap;margin-top:12px;">
+                            <button type="button" class="gold-button" onclick="setPlatformOpen(true)">🟢 فتح المنصة</button>
+                            <button type="button" class="danger-small" style="padding:11px 16px;" onclick="setPlatformOpen(false)">🔴 إغلاق المنصة للصيانة</button>
+                        </div>
+                        <div id="platformOpenStatus" class="result-box" style="margin-top:12px;">جاري التحميل...</div>
+                    </div>
+                    <div class="admin-control-grid">
+                        <div class="admin-control-card">
+                            <h4>🌐 الوصول العام</h4>
+                            <label class="switch-control"><input id="platformEnabled" type="checkbox" checked onchange="savePlatformSettings()"> المنصة متاحة للزوار</label>
+                        </div>
+                        <div class="admin-control-card">
+                            <h4>👋 رسالة الترحيب</h4>
+                            <textarea id="platformWelcome" rows="4" placeholder="رسالة تظهر للزوار..."></textarea>
+                            <button type="button" class="gold-button" style="margin-top:10px" onclick="savePlatformSettings()">💾 حفظ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<section id="rulings" class="page">
+    <div class="card">
+
+        <h2>⚖️ الأحكام والفتاوى</h2>
+
+        <input
+            id="rulingQuestion"
+            type="text"
+            placeholder="اكتب سؤالك هنا..."
+        >
+
+        <button
+            type="button"
+            class="action"
+            onclick="searchRuling()"
+        >
+            🔎 البحث عن الحكم
+        </button>
+
+        <div id="rulingResult" class="result-box">
+            اكتب موضوع الحكم ثم اضغط بحث.
+        </div>
+
+    </div>
+</section>
+
+<section id="adhkar" class="page">
+    <div class="card">
+
+        <h2>🤲 الأدعية والأذكار</h2>
+
+        <input
+            id="dhikrSearch"
+            type="text"
+            placeholder="ابحث في الأدعية والأذكار..."
+            oninput="searchDhikr()"
+        >
+
+        <div id="dhikrList"></div>
+
+    </div>
+</section>
+
+<section id="guide" class="page">
+    <div class="card">
+
+        <h2>📘 دليل منصة نور الهدى</h2>
+
+        <h3>📖 القرآن الكريم</h3>
+        <p>اختر السورة من القائمة وستظهر آياتها.</p>
+
+        <h3>🎧 التلاوة</h3>
+        <p>ابحث عن القارئ، ثم اختر السورة واضغط تشغيل.</p>
+
+        <h3>📚 التفسير</h3>
+        <p>اختر السورة ورقم الآية وسيظهر التفسير داخل المنصة مباشرة، ويمكنك أيضًا الضغط على أي آية من القرآن لفتح تفسيرها تلقائيًا.</p>
+
+        <h3>⚖️ الأحكام</h3>
+        <p>ابحث عن الحكم الشرعي.</p>
+
+        <h3>🤲 الأدعية والأذكار</h3>
+        <p>يمكنك البحث داخل الأذكار.</p>
+
+        <h3>🤖 اسأل نور الهدى</h3>
+        <p>اكتب سؤالك وسيحاول المساعد الذكي الإجابة عليه. المسائل الشرعية الخاصة تحتاج إلى الرجوع إلى جهة إفتاء موثوقة.</p>
+
+    </div>
+</section>
+
+<footer>
+    <div>منصة نور الهدى</div>
+    <div class="footer-name">يوسف أحمد شعلان</div>
+</footer>
+
+<script>
+
+const googleFormURL =
+    "https://forms.gle/KYqB1A5vAxmETLy18";
+
+function registerUser(){
+
+    const nameElement =
+        document.getElementById("userName");
+
+    const ageElement =
+        document.getElementById("userAge");
+
+    const welcomeScreen =
+        document.getElementById("welcomeScreen");
+
+    if(!nameElement || !ageElement || !welcomeScreen){
+
+        alert("حدث خطأ في شاشة التسجيل.");
+
+        return;
+    }
+
+    const name =
+        nameElement.value.trim();
+
+    const age =
+        ageElement.value.trim();
+
+    if(!name){
+
+        alert("من فضلك اكتب اسمك أولًا.");
+
+        nameElement.focus();
+
+        return;
+    }
+
+    if(!age){
+
+        alert("من فضلك اكتب عمرك أولًا.");
+
+        ageElement.focus();
+
+        return;
+    }
+
+    localStorage.setItem(
+        "noorUserName",
+        name
+    );
+
+    localStorage.setItem(
+        "noorUserAge",
+        age
+    );
+
+    welcomeScreen.style.display =
+        "none";
+
+    const newWindow =
+        window.open(
+            googleFormURL,
+            "_blank"
+        );
+
+    if(!newWindow){
+
+        window.location.href =
+            googleFormURL;
+
+    }
+
+}
+
+window.addEventListener(
+    "load",
+    function(){
+
+        const name =
+            localStorage.getItem(
+                "noorUserName"
+            );
+
+        const age =
+            localStorage.getItem(
+                "noorUserAge"
+            );
+
+        if(name && age){
+
+            const welcomeScreen =
+                document.getElementById(
+                    "welcomeScreen"
+                );
+
+            if(welcomeScreen){
+
+                welcomeScreen.style.display =
+                    "none";
+
+            }
+
+        }
+
+    }
+);
+
+function showPage(id){
+
+    if(id==="ai") setTimeout(()=>initNoorAI(),50);
+
+    document
+        .querySelectorAll(".page")
+        .forEach(page => {
+
+            page.classList.remove(
+                "active"
+            );
+
+        });
+
+    const page =
+        document.getElementById(id);
+
+    if(page){
+
+        page.classList.add(
+            "active"
+        );
+
+    }
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+}
+
+function toArabicNumber(number){
+
+    return String(number)
+        .replace(/0/g,"٠")
+        .replace(/1/g,"١")
+        .replace(/2/g,"٢")
+        .replace(/3/g,"٣")
+        .replace(/4/g,"٤")
+        .replace(/5/g,"٥")
+        .replace(/6/g,"٦")
+        .replace(/7/g,"٧")
+        .replace(/8/g,"٨")
+        .replace(/9/g,"٩");
+
+}
+
+const surahs = [
+"الفاتحة","البقرة","آل عمران","النساء","المائدة",
+"الأنعام","الأعراف","الأنفال","التوبة","يونس",
+"هود","يوسف","الرعد","إبراهيم","الحجر",
+"النحل","الإسراء","الكهف","مريم","طه",
+"الأنبياء","الحج","المؤمنون","النور","الفرقان",
+"الشعراء","النمل","القصص","العنكبوت","الروم",
+"لقمان","السجدة","الأحزاب","سبأ","فاطر",
+"يس","الصافات","ص","الزمر","غافر",
+"فصلت","الشورى","الزخرف","الدخان","الجاثية",
+"الأحقاف","محمد","الفتح","الحجرات","ق",
+"الذاريات","الطور","النجم","القمر","الرحمن",
+"الواقعة","الحديد","المجادلة","الحشر","الممتحنة",
+"الصف","الجمعة","المنافقون","التغابن","الطلاق",
+"التحريم","الملك","القلم","الحاقة","المعارج",
+"نوح","الجن","المزمل","المدثر","القيامة",
+"الإنسان","المرسلات","النبأ","النازعات","عبس",
+"التكوير","الانفطار","المطففين","الانشقاق","البروج",
+"الطارق","الأعلى","الغاشية","الفجر","البلد",
+"الشمس","الليل","الضحى","الشرح","التين",
+"العلق","القدر","البينة","الزلزلة","العاديات",
+"القارعة","التكاثر","العصر","الهمزة","الفيل",
+"قريش","الماعون","الكوثر","الكافرون","النصر",
+"المسد","الإخلاص","الفلق","الناس"
+];
+
+const surahGrid =
+    document.getElementById("surahGrid");
+
+const recitationSelect =
+    document.getElementById("recitationSelect");
+
+const tafsirSurah =
+    document.getElementById("tafsirSurah");
+
+const reciterSelect =
+    document.getElementById("reciterSelect");
+
+const audioPlayer =
+    document.getElementById("audioPlayer");
+
+const audioStatus =
+    document.getElementById("audioStatus");
+
+const reciterInfo =
+    document.getElementById("reciterInfo");
+
+const playButton =
+    document.getElementById("playButton");
+
+const loadRecitersButton =
+    document.getElementById("loadRecitersButton");
+
+const reciterSearch =
+    document.getElementById("reciterSearch");
+
+const searchResultsCount =
+    document.getElementById("searchResultsCount");
+
+surahs.forEach(
+    (name,index)=>{
+
+        const number =
+            index + 1;
+
+        const button =
+            document.createElement(
+                "button"
+            );
+
+        button.className =
+            "surah-btn";
+
+        button.type =
+            "button";
+
+        button.textContent =
+            toArabicNumber(number) +
+            " - " +
+            name;
+
+        button.onclick =
+            function(){
+
+                showPage("quran");
+                loadSurah(number);
+
+            };
+
+        surahGrid.appendChild(
+            button
+        );
+
+        const option1 =
+            document.createElement(
+                "option"
+            );
+
+        option1.value =
+            number;
+
+        option1.textContent =
+            toArabicNumber(number) +
+            " - " +
+            name;
+
+        recitationSelect.appendChild(
+            option1
+        );
+
+        const option2 =
+            document.createElement(
+                "option"
+            );
+
+        option2.value =
+            number;
+
+        option2.textContent =
+            toArabicNumber(number) +
+            " - " +
+            name;
+
+        tafsirSurah.appendChild(
+            option2
+        );
+
+    }
+);
+
+function toggleSurahPicker(){
+    const grid = document.getElementById("surahGrid");
+    const picker = document.getElementById("surahPicker");
+    if(!grid || !picker) return;
+    const isOpen = grid.classList.toggle("open");
+    picker.classList.toggle("open", isOpen);
+}
+
+async function loadSurah(number){
+
+    const quranText =
+        document.getElementById("quranText");
+
+    const surahTitle =
+        document.getElementById("surahTitle");
+
+    surahTitle.textContent =
+        "سورة " +
+        surahs[number - 1];
+
+    quranText.innerHTML =
+        '<div class="loading">⏳ جاري تحميل السورة...</div>';
+
+    // نستخدم أكثر من مصدر احتياطي حتى لا تتوقف السورة إذا تعطل إصدار واحد من الـ API.
+    const apiUrls = [
+        "https://api.alquran.cloud/v1/surah/" +
+        number +
+        "/quran-uthmani",
+        "https://api.alquran.cloud/v1/surah/" +
+        number +
+        "/quran-uthmani-quran-academy"
+    ];
+
+    let result = null;
+    let lastError = null;
+
+    for(const apiUrl of apiUrls){
+        try{
+            const response = await fetch(apiUrl, {
+                method:"GET",
+                cache:"no-store"
+            });
+
+            if(!response.ok){
+                throw new Error("HTTP " + response.status);
+            }
+
+            const data = await response.json();
+
+            if(
+                !data ||
+                !data.data ||
+                !Array.isArray(data.data.ayahs) ||
+                !data.data.ayahs.length
+            ){
+                throw new Error("بيانات السورة غير صحيحة");
+            }
+
+            result = data;
+            break;
+
+        }catch(error){
+            lastError = error;
+            console.warn("تعذر مصدر القرآن:", apiUrl, error);
+        }
+    }
+
+    if(!result){
+        console.error("فشل تحميل السورة:", lastError);
+        quranText.innerHTML =
+            "❌ تعذر تحميل السورة حاليًا. " +
+            "إذا كان الإنترنت يعمل، اضغط على السورة مرة أخرى بعد ثوانٍ.";
+        return;
+    }
+
+    quranText.innerHTML = "";
+
+    result.data.ayahs.forEach(ayah=>{
+
+        const span =
+            document.createElement("span");
+
+        span.className = "ayah-clickable";
+        span.dataset.surah = String(number);
+        span.dataset.ayah = String(ayah.numberInSurah);
+        span.title = "اضغط لعرض تفسير الآية";
+        span.style.cursor = "pointer";
+
+        span.textContent = ayah.text + " ";
+
+        const numberSpan =
+            document.createElement("span");
+
+        numberSpan.className = "ayah-number";
+        numberSpan.textContent =
+            "﴿" +
+            toArabicNumber(ayah.numberInSurah) +
+            "﴾";
+
+        span.appendChild(numberSpan);
+
+        // الضغط على الآية ينقلك مباشرة إلى التفسير داخل المنصة.
+        span.onclick = function(){
+            openTafsirForAyah(
+                number,
+                ayah.numberInSurah
+            );
+        };
+
+        quranText.appendChild(span);
+
+    });
+
+    // بعد اختيار السورة: إغلاق قائمة السور والنزول تلقائيًا إلى النص.
+    const grid = document.getElementById("surahGrid");
+    const picker = document.getElementById("surahPicker");
+    if(grid) grid.classList.remove("open");
+    if(picker) picker.classList.remove("open");
+
+    setTimeout(()=>{
+        const quranTextBox = document.getElementById("quranText");
+        if(quranTextBox){
+            quranTextBox.scrollIntoView({behavior:"smooth", block:"start"});
+        }
+    }, 150);
+
+}
+
+const RECITERS_API =
+    "https://www.mp3quran.net/api/v3/reciters?language=ar";
+
+let availableReciters = [];
+
+function normalizeArabic(text){
+
+    return String(text || "")
+        .toLowerCase()
+        .replace(/[أإآ]/g,"ا")
+        .replace(/ى/g,"ي")
+        .replace(/ة/g,"ه")
+        .replace(/ؤ/g,"و")
+        .replace(/ئ/g,"ي")
+        .replace(/ـ/g,"")
+        .replace(/\s+/g," ")
+        .trim();
+
+}
+
+async function loadReciters(
+    showMessage=false
+){
+
+    if(loadRecitersButton){
+
+        loadRecitersButton.disabled =
+            true;
+
+    }
+
+    if(showMessage){
+
+        audioStatus.innerHTML =
+            "⏳ جاري تحميل قائمة القراء...";
+
+    }
+
+    try{
+
+        const response =
+            await fetch(
+                RECITERS_API,
+                {
+                    method:"GET",
+                    cache:"no-store"
+                }
+            );
+
+        if(!response.ok){
+
+            throw new Error(
+                "HTTP " +
+                response.status
+            );
+
+        }
+
+        const data =
+            await response.json();
+
+        if(
+            !data ||
+            !Array.isArray(
+                data.reciters
+            )
+        ){
+
+            throw new Error(
+                "بيانات القراء غير صحيحة"
+            );
+
+        }
+
+        availableReciters = [];
+
+        data.reciters.forEach(
+            reciter=>{
+
+                if(
+                    !reciter ||
+                    !Array.isArray(
+                        reciter.moshaf
+                    )
+                ){
+
+                    return;
+
+                }
+
+                reciter.moshaf.forEach(
+                    moshaf=>{
+
+                        if(
+                            !moshaf ||
+                            !moshaf.server
+                        ){
+
+                            return;
+
+                        }
+
+                        let surahList = [];
+
+                        if(
+                            Array.isArray(
+                                moshaf.surah_list
+                            )
+                        ){
+
+                            surahList =
+                                moshaf.surah_list
+                                .map(Number)
+                                .filter(
+                                    n =>
+                                    Number.isInteger(n) &&
+                                    n >= 1 &&
+                                    n <= 114
+                                );
+
+                        }else{
+
+                            surahList =
+                                String(
+                                    moshaf.surah_list ||
+                                    ""
+                                )
+                                .split(",")
+                                .map(Number)
+                                .filter(
+                                    n =>
+                                    Number.isInteger(n) &&
+                                    n >= 1 &&
+                                    n <= 114
+                                );
+
+                        }
+
+                        if(
+                            !surahList.length
+                        ){
+
+                            surahList =
+                                Array.from(
+                                    {
+                                        length:114
+                                    },
+                                    (_,i)=>i+1
+                                );
+
+                        }
+
+                        availableReciters.push({
+
+                            id:
+                                reciter.id,
+
+                            name:
+                                reciter.name ||
+                                "قارئ غير معروف",
+
+                            moshafId:
+                                moshaf.id || "",
+
+                            moshafName:
+                                moshaf.name ||
+                                "رواية",
+
+                            server:
+                                String(
+                                    moshaf.server
+                                ).trim(),
+
+                            surahList:
+                                surahList
+
+                        });
+
+                    }
+                );
+
+            }
+        );
+
+        const unique = [];
+
+        const seen =
+            new Set();
+
+        availableReciters.forEach(
+            reciter=>{
+
+                const key =
+                    String(reciter.id) +
+                    "|" +
+                    String(reciter.moshafId);
+
+                if(!seen.has(key)){
+
+                    seen.add(key);
+
+                    unique.push(
+                        reciter
+                    );
+
+                }
+
+            }
+        );
+
+        availableReciters =
+            unique;
+
+        if(
+            !availableReciters.length
+        ){
+
+            throw new Error(
+                "لم يتم العثور على أي قارئ"
+            );
+
+        }
+
+        showAllReciters();
+
+        audioStatus.innerHTML =
+            "✅ تم تحميل " +
+            toArabicNumber(
+                availableReciters.length
+            ) +
+            " قراءة صوتية.";
+
+        reciterInfo.innerHTML =
+            "👥 تم تحميل القراء بنجاح. يمكنك الآن البحث عن أي قارئ.";
+
+    }catch(error){
+
+        console.error(
+            "خطأ تحميل القراء:",
+            error
+        );
+
+        availableReciters = [];
+
+        reciterSelect.innerHTML =
+            "";
+
+        const option =
+            document.createElement(
+                "option"
+            );
+
+        option.value =
+            "";
+
+        option.textContent =
+            "❌ تعذر تحميل القراء";
+
+        reciterSelect.appendChild(
+            option
+        );
+
+        audioStatus.innerHTML =
+            "❌ تعذر تحميل قائمة القراء. " +
+            "تأكد من اتصال الإنترنت ثم اضغط تحديث القراء.";
+
+        reciterInfo.innerHTML =
+            "⚠️ لم يتم تحميل قائمة القراء.";
+
+    }
+
+    if(loadRecitersButton){
+
+        loadRecitersButton.disabled =
+            false;
+
+    }
+
+}
+
+function renderReciters(list){
+
+    reciterSelect.innerHTML =
+        "";
+
+    if(
+        !Array.isArray(list) ||
+        list.length === 0
+    ){
+
+        const option =
+            document.createElement(
+                "option"
+            );
+
+        option.value =
+            "";
+
+        option.textContent =
+            "لا توجد نتائج";
+
+        reciterSelect.appendChild(
+            option
+        );
+
+        reciterInfo.innerHTML =
+            "⚠️ لم يتم العثور على قارئ مطابق.";
+
+        return;
+
+    }
+
+    list.forEach(
+        reciter=>{
+
+            const index =
+                availableReciters.indexOf(
+                    reciter
+                );
+
+            if(index === -1){
+
+                return;
+
+            }
+
+            const option =
+                document.createElement(
+                    "option"
+                );
+
+            option.value =
+                String(index);
+
+            option.textContent =
+                reciter.name +
+                " — " +
+                reciter.moshafName;
+
+            reciterSelect.appendChild(
+                option
+            );
+
+        }
+    );
+
+    if(
+        reciterSelect.options.length > 0
+    ){
+
+        reciterSelect.selectedIndex =
+            0;
+
+        updateReciterInfo();
+
+    }
+
+}
+
+function searchReciters(){
+
+    if(
+        !availableReciters.length
+    ){
+
+        audioStatus.innerHTML =
+            "⏳ جاري تحميل القراء أولًا...";
+
+        loadReciters(true);
+
+        return;
+
+    }
+
+    const query =
+        normalizeArabic(
+            reciterSearch.value
+        );
+
+    if(!query){
+
+        showAllReciters();
+
+        return;
+
+    }
+
+    const results =
+        availableReciters.filter(
+            reciter=>{
+
+                const name =
+                    normalizeArabic(
+                        reciter.name
+                    );
+
+                const moshaf =
+                    normalizeArabic(
+                        reciter.moshafName
+                    );
+
+                return (
+                    name.includes(query) ||
+                    moshaf.includes(query)
+                );
+
+            }
+        );
+
+    renderReciters(
+        results
+    );
+
+    searchResultsCount.style.display =
+        "block";
+
+    searchResultsCount.innerHTML =
+        "🔎 نتائج البحث: <b>" +
+        toArabicNumber(
+            results.length
+        ) +
+        "</b>";
+
+    if(results.length > 0){
+
+        audioStatus.innerHTML =
+            "✅ تم العثور على " +
+            toArabicNumber(
+                results.length
+            ) +
+            " نتيجة.";
+
+    }else{
+
+        audioStatus.innerHTML =
+            "⚠️ لم يتم العثور على قارئ بهذا الاسم.";
+
+    }
+
+}
+
+function showAllReciters(){
+
+    reciterSearch.value =
+        "";
+
+    searchResultsCount.style.display =
+        "none";
+
+    if(
+        !availableReciters.length
+    ){
+
+        reciterSelect.innerHTML =
+            "";
+
+        const option =
+            document.createElement(
+                "option"
+            );
+
+        option.value =
+            "";
+
+        option.textContent =
+            "⏳ جاري تحميل القراء...";
+
+        reciterSelect.appendChild(
+            option
+        );
+
+        return;
+
+    }
+
+    renderReciters(
+        availableReciters
+    );
+
+}
+
+reciterSearch.addEventListener(
+    "keydown",
+    function(event){
+
+        if(event.key === "Enter"){
+
+            event.preventDefault();
+
+            searchReciters();
+
+        }
+
+    }
+);
+
+function updateReciterInfo(){
+
+    const index =
+        Number(
+            reciterSelect.value
+        );
+
+    const reciter =
+        availableReciters[index];
+
+    if(!reciter){
+
+        reciterInfo.innerHTML =
+            "اختر قارئًا من القائمة.";
+
+        return;
+
+    }
+
+    reciterInfo.innerHTML =
+        "👤 القارئ: <b>" +
+        reciter.name +
+        "</b><br>" +
+
+        "📖 القراءة: " +
+        reciter.moshafName +
+        "<br>" +
+
+        "🎧 السور المتاحة: " +
+        toArabicNumber(
+            reciter.surahList.length
+        );
+
+}
+
+reciterSelect.addEventListener(
+    "change",
+    updateReciterInfo
+);
+
+function buildMP3QuranUrl(
+    server,
+    surahNumber
+){
+
+    let cleanServer =
+        String(
+            server || ""
+        ).trim();
+
+    if(!cleanServer){
+
+        return "";
+
+    }
+
+    if(
+        !cleanServer.endsWith("/")
+    ){
+
+        cleanServer += "/";
+
+    }
+
+    const fileNumber =
+        String(
+            surahNumber
+        ).padStart(
+            3,
+            "0"
+        );
+
+    return (
+        cleanServer +
+        fileNumber +
+        ".mp3"
+    );
+
+}
+
+async function playRecitation(){
+
+    const index =
+        Number(
+            reciterSelect.value
+        );
+
+    const surahNumber =
+        Number(
+            recitationSelect.value
+        );
+
+    const reciter =
+        availableReciters[index];
+
+    if(!reciter){
+
+        audioStatus.innerHTML =
+            "⚠️ اختر القارئ أولًا.";
+
+        return;
+
+    }
+
+    if(!surahNumber){
+
+        audioStatus.innerHTML =
+            "⚠️ اختر السورة أولًا.";
+
+        return;
+
+    }
+
+    if(
+        !reciter.surahList.includes(
+            surahNumber
+        )
+    ){
+
+        audioStatus.innerHTML =
+            "⚠️ هذه السورة غير متاحة لهذا القارئ.";
+
+        return;
+
+    }
+
+    const url =
+        buildMP3QuranUrl(
+            reciter.server,
+            surahNumber
+        );
+
+    if(!url){
+
+        audioStatus.innerHTML =
+            "❌ رابط الصوت غير متاح.";
+
+        return;
+
+    }
+
+    playButton.disabled =
+        true;
+
+    audioStatus.innerHTML =
+        "⏳ جاري تحميل تلاوة سورة " +
+        surahs[surahNumber - 1] +
+        " بصوت " +
+        reciter.name +
+        "...";
+
+    audioPlayer.pause();
+
+    audioPlayer.removeAttribute(
+        "src"
+    );
+
+    audioPlayer.load();
+
+    audioPlayer.onerror =
+        function(){
+
+            playButton.disabled =
+                false;
+
+            audioStatus.innerHTML =
+                "❌ تعذر تشغيل ملف الصوت. جرّب سورة أخرى.";
+
+        };
+
+    audioPlayer.onloadeddata =
+        function(){
+
+            audioStatus.innerHTML =
+                "✅ تم تحميل التلاوة.";
+
+        };
+
+    audioPlayer.src =
+        url;
+
+    audioPlayer.load();
+
+    try{
+
+        await audioPlayer.play();
+
+        audioStatus.innerHTML =
+            "🎧 تعمل الآن تلاوة سورة " +
+            surahs[surahNumber - 1] +
+            " بصوت " +
+            reciter.name +
+            ".";
+
+    }catch(error){
+
+        console.log(error);
+
+        audioStatus.innerHTML =
+            "✅ التلاوة جاهزة. اضغط زر التشغيل في مشغل الصوت.";
+
+    }
+
+    playButton.disabled =
+        false;
+
+}
+
+async function openTafsir(){
+
+    const surah =
+        Number(
+            document.getElementById(
+                "tafsirSurah"
+            ).value
+        );
+
+    const ayah =
+        Number(
+            document.getElementById(
+                "tafsirAyah"
+            ).value
+        );
+
+    if(
+        !surah ||
+        surah < 1 ||
+        surah > 114
+    ){
+
+        document.getElementById(
+            "tafsirResult"
+        ).innerHTML =
+            "⚠️ اختر السورة أولًا.";
+
+        return;
+
+    }
+
+    if(
+        !ayah ||
+        ayah < 1
+    ){
+
+        document.getElementById(
+            "tafsirResult"
+        ).innerHTML =
+            "⚠️ اكتب رقم الآية.";
+
+        return;
+
+    }
+
+    await fetchTafsir(
+        surah,
+        ayah,
+        true
+    );
+
+}
+
+async function openTafsirForAyah(
+    surah,
+    ayah
+){
+
+    const tafsirSurahElement =
+        document.getElementById("tafsirSurah");
+
+    const tafsirAyahElement =
+        document.getElementById("tafsirAyah");
+
+    if(tafsirSurahElement){
+        tafsirSurahElement.value = String(surah);
+    }
+
+    if(tafsirAyahElement){
+        tafsirAyahElement.value = String(ayah);
+    }
+
+    // الانتقال مباشرة إلى قسم التفسير بدون فتح أي متصفح أو نافذة جديدة.
+    showPage("tafsir");
+
+    await fetchTafsir(
+        surah,
+        ayah,
+        false
+    );
+
+    const tafsirPage =
+        document.getElementById("tafsir");
+
+    if(tafsirPage){
+        setTimeout(
+            function(){
+                tafsirPage.scrollIntoView({
+                    behavior:"smooth",
+                    block:"start"
+                });
+            },
+            50
+        );
+    }
+
+}
+
+async function fetchTafsir(
+    surah,
+    ayah,
+    scrollToResult
+){
+
+    const resultElement =
+        document.getElementById("tafsirResult");
+
+    if(!resultElement){
+        return;
+    }
+
+    resultElement.innerHTML =
+        "⏳ جاري تحميل التفسير داخل المنصة...";
+
+    if(scrollToResult){
+        setTimeout(function(){
+            resultElement.scrollIntoView({
+                behavior:"smooth",
+                block:"center"
+            });
+        },50);
+    }
+
+    try{
+
+        // مصدر التفسير الأساسي: Al Quran Cloud
+        // ar.muyassar = التفسير الميسر بالعربية.
+        // الاستجابة تحتوي على نص الآية والتفسير في data[].text.
+        const url =
+            "https://api.alquran.cloud/v1/ayah/" +
+            surah + ":" + ayah +
+            "/editions/quran-uthmani,ar.muyassar";
+
+        const response = await fetch(url, {
+            method:"GET",
+            cache:"no-store",
+            headers:{
+                "Accept":"application/json"
+            }
+        });
+
+        if(!response.ok){
+            throw new Error("HTTP " + response.status);
+        }
+
+        const data = await response.json();
+
+        if(!data || data.status !== "OK" || !Array.isArray(data.data)){
+            throw new Error("استجابة التفسير غير صحيحة");
+        }
+
+        const tafsirItem = data.data.find(function(item){
+            return item && item.edition && item.edition.identifier === "ar.muyassar";
+        }) || data.data[1];
+
+        const ayahItem = data.data.find(function(item){
+            return item && item.edition && item.edition.identifier === "quran-uthmani";
+        }) || data.data[0];
+
+        const tafsirText = tafsirItem && tafsirItem.text ? String(tafsirItem.text) : "";
+
+        if(!tafsirText){
+            throw new Error("لم يتم العثور على نص التفسير الميسر");
+        }
+
+        const safeText =
+            tafsirText
+                .replace(/&/g,"&amp;")
+                .replace(/</g,"&lt;")
+                .replace(/>/g,"&gt;")
+                .replace(/"/g,"&quot;")
+                .replace(/'/g,"&#039;")
+                .replace(/\n/g,"<br>");
+
+        const safeAyah = ayahItem && ayahItem.text
+            ? String(ayahItem.text)
+                .replace(/&/g,"&amp;")
+                .replace(/</g,"&lt;")
+                .replace(/>/g,"&gt;")
+            : "";
+
+        resultElement.innerHTML =
+            "<b>📚 التفسير الميسر</b><br><br>" +
+            "<b>سورة " +
+            surahs[surah - 1] +
+            " — الآية " +
+            toArabicNumber(ayah) +
+            "</b>" +
+            (safeAyah ? "<div style=\"margin-top:14px;padding:12px;border-radius:10px;background:rgba(255,255,255,.08);line-height:2;font-size:20px;direction:rtl;\">" + safeAyah + "</div>" : "") +
+            "<div style=\"margin-top:14px;line-height:2;direction:rtl;\">" +
+            safeText +
+            "</div>" +
+            "<div style=\"margin-top:14px;font-size:13px;opacity:.75;\">المصدر: التفسير الميسر — عبر Al Quran Cloud</div>";
+
+        if(scrollToResult){
+            setTimeout(function(){
+                resultElement.scrollIntoView({
+                    behavior:"smooth",
+                    block:"center"
+                });
+            },100);
+        }
+
+    }catch(error){
+
+        console.error("خطأ تحميل التفسير:", error);
+
+        resultElement.innerHTML =
+            "❌ تعذر تحميل التفسير من المصدر الأساسي.<br><br>" +
+            "جرّب الضغط على «عرض التفسير» مرة أخرى. إذا استمرت المشكلة، تأكد أن الموقع مفتوح من اتصال إنترنت يسمح بالوصول إلى خدمات القرآن الخارجية.";
+
+    }
+
+}
+
+function searchRuling(){
+
+    const question =
+        document.getElementById(
+            "rulingQuestion"
+        ).value.trim();
+
+    if(!question){
+
+        document.getElementById(
+            "rulingResult"
+        ).innerHTML =
+            "⚠️ اكتب موضوع الحكم أولًا.";
+
+        return;
+
+    }
+
+    const url =
+        "https://www.dar-alifta.org/ar/FatwaQuery/?q=" +
+        encodeURIComponent(
+            question
+        );
+
+    document.getElementById(
+        "rulingResult"
+    ).innerHTML =
+
+        "<b>⚖️ البحث في فتاوى دار الإفتاء المصرية</b>" +
+        "<br><br>" +
+
+        "<button " +
+        "type='button' " +
+        "class='action' " +
+        "onclick=\"window.open('" +
+        url +
+        "','_blank')\">" +
+
+        "🏛️ فتح نتائج البحث" +
+
+        "</button>";
+
+}
+
+const adhkar = [
+
+    {
+        title:
+            "ذكر الصباح",
+
+        text:
+            "اللهم بك أصبحنا وبك أمسينا وبك نحيا وبك نموت وإليك النشور."
+    },
+
+    {
+        title:
+            "ذكر المساء",
+
+        text:
+            "اللهم بك أمسينا وبك أصبحنا وبك نحيا وبك نموت وإليك المصير."
+    },
+
+    {
+        title:
+            "عند دخول المنزل",
+
+        text:
+            "بسم الله ولجنا، وبسم الله خرجنا، وعلى ربنا توكلنا."
+    },
+
+    {
+        title:
+            "عند الخروج من المنزل",
+
+        text:
+            "بسم الله، توكلت على الله، ولا حول ولا قوة إلا بالله."
+    },
+
+    {
+        title:
+            "بعد الوضوء",
+
+        text:
+            "أشهد أن لا إله إلا الله وحده لا شريك له، وأشهد أن محمدًا عبده ورسوله."
+    },
+
+    {
+        title:
+            "ذكر عام",
+
+        text:
+            "سبحان الله والحمد لله والله أكبر."
+    },
+
+    {
+        title:
+            "الاستغفار",
+
+        text:
+            "أستغفر الله وأتوب إليه."
+    },
+
+    {
+        title:
+            "الصلاة على النبي ﷺ",
+
+        text:
+            "اللهم صل وسلم وبارك على نبينا محمد."
+    }
+
+];
+
+function displayDhikr(list){
+
+    const container =
+        document.getElementById(
+            "dhikrList"
+        );
+
+    container.innerHTML =
+        "";
+
+    list.forEach(
+        item=>{
+
+            const box =
+                document.createElement(
+                    "div"
+                );
+
+            box.className =
+                "result-box";
+
+            box.style.marginBottom =
+                "12px";
+
+            box.innerHTML =
+                "<h3>" +
+                item.title +
+                "</h3>" +
+
+                "<p>" +
+                item.text +
+                "</p>";
+
+            container.appendChild(
+                box
+            );
+
+        }
+    );
+
+}
+
+function searchDhikr(){
+
+    const value =
+        document.getElementById(
+            "dhikrSearch"
+        ).value
+        .trim()
+        .toLowerCase();
+
+    const filtered =
+        adhkar.filter(
+            item =>
+
+                item.title
+                    .toLowerCase()
+                    .includes(value)
+
+                ||
+
+                item.text
+                    .toLowerCase()
+                    .includes(value)
+
+        );
+
+    displayDhikr(
+        filtered
+    );
+
+}
+
+</script>
+
+<script>
+
+/* =====================================================
+   شريط الصلاة على النبي ﷺ
+===================================================== */
+
+function showSalawatMessage(){
+
+    const message =
+        document.getElementById(
+            "salawatMessage"
+        );
+
+    if(message){
+
+        message.style.display =
+            "block";
+
+    }
+
+}
+
+function playSalawat(){
+
+    const message =
+        document.getElementById(
+            "salawatMessage"
+        );
+
+    if(message){
+
+        message.style.display =
+            "none";
+
+    }
+
+    if(
+        !("speechSynthesis" in window) ||
+        !("SpeechSynthesisUtterance" in window)
+    ){
+
+        return;
+
+    }
+
+    window.speechSynthesis.cancel();
+
+    const speech =
+        new SpeechSynthesisUtterance(
+            "صلوا على النبي"
+        );
+
+    speech.lang =
+        "ar-SA";
+
+    speech.rate =
+        0.85;
+
+    speech.pitch =
+        1;
+
+    speech.volume =
+        1;
+
+    const voices =
+        window.speechSynthesis.getVoices();
+
+    const arabicVoice =
+        voices.find(
+            voice =>
+                voice.lang &&
+                voice.lang
+                    .toLowerCase()
+                    .startsWith("ar")
+        );
+
+    if(arabicVoice){
+
+        speech.voice =
+            arabicVoice;
+
+    }
+
+    window.speechSynthesis.speak(
+        speech
+    );
+
+}
+
+/* =====================================================
+   البداية
+===================================================== */
+
+displayDhikr(
+    adhkar
+);
+
+window.addEventListener(
+    "load",
+    function(){
+
+        loadSurah(1);
+
+        loadReciters(false);
+
+        showSalawatMessage();
+
+    }
+);
+
+</script>
+
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+import { getAuth, signInAnonymously, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+import { getFirestore, collection, addDoc, doc, updateDoc, setDoc, onSnapshot, query, orderBy, getDocs, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+import { getAI, getGenerativeModel, GoogleAIBackend } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-ai.js";
+
+const firebaseConfig={
+    apiKey:"AIzaSyBXvm1UflDiHGjkkVjw-HIJdQ6CtEDlE_8",
+    authDomain:"noor-al-huda-93992.firebaseapp.com",
+    projectId:"noor-al-huda-93992",
+    storageBucket:"noor-al-huda-93992.firebasestorage.app",
+    messagingSenderId:"329274355989",
+    appId:"1:329274355989:web:717e6d2febc6182f0a791c",
+    measurementId:"G-FM8QK2ZWHN"
+};
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app), db=getFirestore(app);
+let noorAI=null;
+let noorAIModel=null;
+let currentUser=null;
+let authReadyResolve;
+const authReady=new Promise(resolve=>{authReadyResolve=resolve;});
+let currentConversationId=localStorage.getItem("noorLiveConversationId")||null;
+let currentAdminConversationId=null;
+let unsubscribeMessages=null;
+let unsubscribeAdminMessages=null;
+const OWNER_UID="WCtZOcEYljPwxc3zGuq2sJFznyK2";
+const CONTROLLED_SECTIONS=[
+  ["quran","📖 القرآن الكريم"],["recitation","🎧 التلاوة"],["ai","🤖 الذكاء الاصطناعي"],["tafsir","📚 التفسير"],
+  ["contact","💬 تواصل معي"],["rulings","⚖️ الأحكام والفتاوى"],["adhkar","📿 الأذكار"],["guide","🧭 الدليل"]
+];
+window.platformSettings={enabled:true,disabledSections:[],blockedVisitorUids:[],welcomeMessage:"",aiEnabled:false,aiModel:"gemini-3.7-flash",aiSystemInstruction:"أنت مساعد منصة نور الهدى. أجب بالعربية الواضحة، وكن محترمًا ودقيقًا. في الفتاوى والمسائل الشرعية الخاصة أو المختلف فيها نبّه المستخدم إلى ضرورة الرجوع إلى عالم أو جهة إفتاء موثوقة. لا تدّع أنك مفتي، ولا تخترع نصوصًا أو أحاديث.",aiSaveHistory:false};
+
+function escapeHtml(v){return String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");}
+function chatTime(ts){try{const d=ts?.toDate?ts.toDate():new Date(ts);return Number.isNaN(d.getTime())?"":d.toLocaleString("ar-EG",{dateStyle:"short",timeStyle:"short"});}catch(e){return "";}}
+
+async function initLiveChat(){
+    await authReady;
+    const status=document.getElementById("chatStatus"), box=document.getElementById("chatBox");
+    if(!status||!box)return;
+    try{
+        // لا نحول حساب صاحب المنصة إلى حساب مجهول عند فتح قسم تواصل معي.
+        if(auth.currentUser?.uid===OWNER_UID){
+            currentUser=auth.currentUser;
+            window.currentUser=currentUser;
+            box.style.display="block";
+            status.innerHTML="🔐 أنت مسجل كصاحب المنصة. يمكنك استخدام لوحة التحكم من الأسفل.";
+            return;
+        }
+        if(!auth.currentUser){
+            const cred=await signInAnonymously(auth);
+            currentUser=cred.user;
+            window.currentUser=currentUser;
+        }else{
+            currentUser=auth.currentUser;
+            window.currentUser=currentUser;
+        }
+
+        if(isVisitorBlocked(currentUser.uid)){
+            applyPlatformSettings(window.platformSettings||{});
+            box.style.display="none";
+            status.innerHTML='<b style="color:#8f1d2c">🚫 تم حظرك من استخدام هذه المنصة.</b>';
+            return;
+        }
+
+        box.style.display="block";
+        await loadVisitorProfile();
+        status.innerHTML=currentConversationId?"💬 محادثتك محفوظة. يمكنك كتابة رسالة جديدة أو انتظار الرد.":"👋 اكتب سؤالك بالأسفل، وسيتم إنشاء محادثتك تلقائيًا.";
+        if(currentConversationId)subscribeToMessages(currentConversationId);
+    }catch(e){console.error(e);status.innerHTML="⚠️ تعذر الاتصال بخدمة المحادثة. تأكد من إعداد Firebase وAuthentication.";}
+}
+window.initLiveChat=initLiveChat;
+
+function fillVisitorProfile(profile){
+    const p=profile||{};
+    const map={visitorNameInput:p.name||"",visitorAgeInput:p.age||"",visitorResidenceInput:p.residence||""};
+    Object.entries(map).forEach(([id,val])=>{const el=document.getElementById(id);if(el&&!el.value)el.value=val;});
+}
+window.saveVisitorProfile=async()=>{
+    if(!currentUser||!currentUser.isAnonymous){await initLiveChat();if(!currentUser)return;}
+    const profile={
+        name:document.getElementById("visitorNameInput")?.value.trim()||"",
+        age:document.getElementById("visitorAgeInput")?.value.trim()||"",
+        residence:document.getElementById("visitorResidenceInput")?.value.trim()||""
+    };
+    try{
+        await setDoc(doc(db,"visitorProfiles",currentUser.uid),{...profile,updatedAt:serverTimestamp()},{merge:true});
+        if(profile.name)localStorage.setItem("noorUserName",profile.name);
+        const st=document.getElementById("profileSaveStatus");if(st)st.textContent="✅ تم حفظ البيانات";
+    }catch(e){console.error(e);const st=document.getElementById("profileSaveStatus");if(st)st.textContent="⚠️ تعذر الحفظ.";}
+};
+async function loadVisitorProfile(){
+    if(!currentUser)return;
+    fillVisitorProfile({name:localStorage.getItem("noorUserName")||""});
+    try{const snap=await getDoc(doc(db,"visitorProfiles",currentUser.uid));if(snap.exists())fillVisitorProfile(snap.data());}catch(e){console.warn(e);}
+}
+
+window.sendChatMessage=async()=>{
+    const input=document.getElementById("chatInput"),btn=document.getElementById("chatSendButton"),text=input?.value.trim();
+    if(!text)return;
+    if(!currentUser||!currentUser.isAnonymous){await initLiveChat();if(!currentUser)return;}
+    if(isVisitorBlocked(currentUser.uid)){
+        applyPlatformSettings(window.platformSettings||{});
+        return;
+    }
+    btn.disabled=true;
+    try{
+        if(!currentConversationId){
+            const c=await addDoc(collection(db,"conversations"),{
+                visitorUid:currentUser.uid,
+                visitorName:document.getElementById("visitorNameInput")?.value.trim()||localStorage.getItem("noorUserName")||"زائر",
+                visitorAge:document.getElementById("visitorAgeInput")?.value.trim()||"",
+                visitorResidence:document.getElementById("visitorResidenceInput")?.value.trim()||"",
+                question:text,createdAt:serverTimestamp(),updatedAt:serverTimestamp(),answered:false
+            });
+            currentConversationId=c.id;localStorage.setItem("noorLiveConversationId",c.id);subscribeToMessages(c.id);
+        }else{
+            await updateDoc(doc(db,"conversations",currentConversationId),{
+                updatedAt:serverTimestamp(),answered:false,
+                question:text,
+                visitorName:document.getElementById("visitorNameInput")?.value.trim()||localStorage.getItem("noorUserName")||"زائر"
+            });
+        }
+        await addDoc(collection(db,"conversations",currentConversationId,"messages"),{sender:"visitor",text,createdAt:serverTimestamp()});
+        input.value="";
+        document.getElementById("chatStatus").innerHTML="✅ تم إرسال سؤالك. ستظهر الإجابة هنا عندما يرد صاحب المنصة.";
+    }catch(e){console.error(e);document.getElementById("chatStatus").innerHTML="⚠️ لم يتم إرسال السؤال. تأكد من قواعد Firestore.";}
+    finally{btn.disabled=false;}
+};
+function subscribeToMessages(id){
+    if(unsubscribeMessages)unsubscribeMessages();
+    const q=query(collection(db,"conversations",id,"messages"),orderBy("createdAt","asc"));
+    unsubscribeMessages=onSnapshot(q,snap=>{
+        const c=document.getElementById("chatMessages");if(!c)return;c.innerHTML="";
+        snap.forEach(d=>{const x=d.data(),el=document.createElement("div");el.className="chat-message "+(x.sender==="owner"?"owner":"visitor");el.innerHTML=escapeHtml(x.text)+"<span class='chat-meta'>"+(x.sender==="owner"?"صاحب المنصة":"أنت")+" • "+escapeHtml(chatTime(x.createdAt))+"</span>";c.appendChild(el);});
+        c.scrollTop=c.scrollHeight;
+    },err=>console.error("chat listener",err));
+}
+
+window.toggleFullAdminDashboard=()=>{const d=document.getElementById("fullAdminDashboard");if(!d)return;d.classList.toggle("hidden");if(!d.classList.contains("hidden")){renderPlatformControls();renderDashboardStats();}};
+window.showAdminView=(name,btn)=>{document.querySelectorAll(".admin-view").forEach(v=>v.classList.remove("active"));document.getElementById("adminView-"+name)?.classList.add("active");document.querySelectorAll(".admin-tab").forEach(b=>b.classList.remove("active"));if(btn)btn.classList.add("active");if(name==="replies")window.loadAdminConversations();if(name==="overview")renderDashboardStats();};
+function renderPlatformControls(){
+    const ps=window.platformSettings||{};
+    const list=document.getElementById("sectionControlList");
+    if(list)list.innerHTML=CONTROLLED_SECTIONS.map(([id,label])=>`<label class="section-control-item"><input type="checkbox" data-section="${id}" ${!ps.disabledSections.includes(id)?"checked":""}> ${label}</label>`).join("");
+    const en=document.getElementById("platformEnabled");if(en)en.checked=ps.enabled!==false;
+    const w=document.getElementById("platformWelcome");if(w)w.value=ps.welcomeMessage||"";
+    const ae=document.getElementById("aiEnabled");if(ae)ae.checked=ps.aiEnabled===true;
+    const am=document.getElementById("aiModel");if(am)am.value=ps.aiModel||"gemini-3.7-flash";
+    const asi=document.getElementById("aiSystemInstruction");if(asi)asi.value=ps.aiSystemInstruction||"";
+    const ah=document.getElementById("aiSaveHistory");if(ah)ah.checked=ps.aiSaveHistory===true;
+    renderBlockedUsers();renderDashboardStats();
+}
+function collectPlatformSettings(){
+    const disabled=[];document.querySelectorAll("#sectionControlList input[data-section]").forEach(i=>{if(!i.checked)disabled.push(i.dataset.section);});
+    return {enabled:document.getElementById("platformEnabled")?.checked!==false,disabledSections:disabled,blockedVisitorUids:Array.isArray(window.platformSettings.blockedVisitorUids)?window.platformSettings.blockedVisitorUids:[],welcomeMessage:(document.getElementById("platformWelcome")?.value||"").trim(),aiEnabled:document.getElementById("aiEnabled")?.checked===true,aiModel:(document.getElementById("aiModel")?.value||"gemini-3.7-flash").trim(),aiSystemInstruction:(document.getElementById("aiSystemInstruction")?.value||"").trim(),aiSaveHistory:document.getElementById("aiSaveHistory")?.checked===true};
+}
+
+window.saveAISettings=async()=>{
+    currentUser=auth.currentUser||currentUser;
+    if(!currentUser||currentUser.uid!==OWNER_UID){alert("يجب تسجيل الدخول بحساب صاحب المنصة أولًا.");return;}
+    const data={aiEnabled:document.getElementById("aiEnabled")?.checked===true,aiModel:(document.getElementById("aiModel")?.value||"gemini-3.7-flash").trim(),aiSystemInstruction:(document.getElementById("aiSystemInstruction")?.value||"").trim(),aiSaveHistory:document.getElementById("aiSaveHistory")?.checked===true};
+    try{
+        await setDoc(doc(db,"platformSettings","main"),data,{merge:true});
+        window.platformSettings={...(window.platformSettings||{}),...data};
+        noorAI=null; noorAIModel=null;
+        const st=document.getElementById("aiAdminStatus");if(st)st.innerHTML="✅ تم حفظ إعدادات الذكاء الاصطناعي.";
+    }catch(e){console.error(e);alert("تعذر حفظ إعدادات الذكاء الاصطناعي. تأكد من صلاحيات Firestore.");}
+};
+
+async function initNoorAI(){
+    const status=document.getElementById("aiStatus");
+    if(!status)return;
+    const ps=window.platformSettings||{};
+    if((auth.currentUser?.uid!==OWNER_UID) && isVisitorBlocked(auth.currentUser?.uid)){status.innerHTML='<b style="color:#8f1d2c">🚫 تم حظرك من استخدام هذه المنصة.</b>';return false;}
+    if(ps.aiEnabled!==true){status.textContent="🔒 المساعد الذكي غير متاح حاليًا.";return false;}
+    try{
+        if(!noorAI){noorAI=getAI(app,{backend:new GoogleAIBackend()});}
+        const modelName=ps.aiModel||"gemini-3.7-flash";
+        noorAIModel=getGenerativeModel(noorAI,{model:modelName,systemInstruction:ps.aiSystemInstruction||"أنت مساعد منصة نور الهدى. أجب بالعربية الواضحة والدقيقة، ولا تدّع أنك مفتي."});
+        status.textContent="🟢 المساعد الذكي جاهز. اكتب سؤالك.";
+        return true;
+    }catch(e){
+        console.error("Noor AI INIT ERROR",e);
+        const code=e?.code||"غير معروف";
+        const message=e?.message||String(e)||"خطأ غير معروف";
+        status.innerHTML="⚠️ تعذر تجهيز المساعد.<br><b>رمز الخطأ:</b> "+escapeHtml(code)+"<br><b>التفاصيل:</b> "+escapeHtml(message);
+        return false;
+    }
+}
+
+function addNoorAIMessage(text,type){
+    const c=document.getElementById("aiMessages");if(!c)return;
+    const el=document.createElement("div");el.className="ai-message "+type;el.textContent=text;c.appendChild(el);c.scrollTop=c.scrollHeight;
+}
+window.clearNoorAIChat=()=>{const c=document.getElementById("aiMessages");if(c)c.innerHTML='<div class="ai-message assistant">تم مسح المحادثة. اكتب سؤالك من جديد.</div>';};
+window.askNoorAI=async()=>{
+    const input=document.getElementById("aiInput"),btn=document.getElementById("aiSendButton"),status=document.getElementById("aiStatus"),text=input?.value.trim()||"";
+    if(!text){alert("اكتب سؤالك أولًا.");return;}
+    if(!auth.currentUser){try{await signInAnonymously(auth);}catch(e){console.error(e);}}
+    if(isVisitorBlocked(auth.currentUser?.uid)){applyPlatformSettings(window.platformSettings||{});return;}
+    if(!(await initNoorAI()))return;
+    addNoorAIMessage(text,"user"); input.value=""; if(btn)btn.disabled=true; if(status)status.textContent="⏳ جاري تجهيز الإجابة...";
+    try{
+        const result=await noorAIModel.generateContent(text);
+        const answer=result.response.text()||"لم أتمكن من توليد إجابة الآن.";
+        addNoorAIMessage(answer,"assistant");
+        if((window.platformSettings||{}).aiSaveHistory===true && auth.currentUser){
+            await addDoc(collection(db,"aiQuestions"),{visitorUid:auth.currentUser.uid,visitorName:localStorage.getItem("noorUserName")||"زائر",question:text,answer,model:window.platformSettings.aiModel||"gemini-3.7-flash",createdAt:serverTimestamp()});
+        }
+        if(status)status.textContent="✅ تم إعداد الإجابة.";
+    }catch(e){
+        console.error("Noor AI FULL ERROR",e);
+        const code=e?.code||"غير معروف";
+        const message=e?.message||String(e)||"خطأ غير معروف";
+        let hint="";
+        if(/app.?check|appcheck/i.test(message)||/app.?check/i.test(code)){
+            hint="السبب المحتمل: App Check غير مفعّل أو غير مضبوط لهذا الموقع.";
+        }else if(/permission|unauth|unauthorized|403/i.test(message)||/permission|unauth/i.test(code)){
+            hint="السبب المحتمل: صلاحيات Firebase أو AI Logic تمنع الطلب.";
+        }else if(/not.?found|404|model/i.test(message)){
+            hint="السبب المحتمل: اسم النموذج أو توفره في مشروع Firebase.";
+        }else if(/400|invalid/i.test(message)||/invalid/i.test(code)){
+            hint="السبب المحتمل: إعداد غير صحيح في طلب الذكاء الاصطناعي.";
+        }else if(/429|quota|resource.?exhausted/i.test(message)||/quota|resource.?exhausted/i.test(code)){
+            hint="السبب المحتمل: تم تجاوز الحد المسموح أو معدل الطلبات.";
+        }
+        addNoorAIMessage("⚠️ تعذر الحصول على الإجابة.\n\nرمز الخطأ: "+code+"\nالتفاصيل: "+message+(hint?"\n\n"+hint:"")+"\n\nإذا أرسلت لي رمز الخطأ والتفاصيل الظاهرة هنا، أقدر أحدد لك الإعداد المطلوب.","system");
+        if(status)status.textContent="⚠️ ظهر خطأ مفصل أسفل الرسالة.";
+    }finally{if(btn)btn.disabled=false;}
+};
+window.testNoorAI=async()=>{
+    const st=document.getElementById("aiAdminStatus");if(st)st.textContent="⏳ جاري اختبار المساعد...";
+    const ok=await initNoorAI();
+    if(!ok){if(st)st.textContent="⚠️ فشل تهيئة المساعد. راجع إعدادات Firebase AI Logic.";return;}
+    try{
+        const r=await noorAIModel.generateContent("أجب بجملة قصيرة: ما اسم هذه المنصة؟");
+        if(st)st.innerHTML="✅ الاختبار نجح: "+escapeHtml(r.response.text()||"");
+    }catch(e){
+        console.error("Noor AI TEST ERROR",e);
+        const code=e?.code||"غير معروف";
+        const message=e?.message||String(e)||"خطأ غير معروف";
+        if(st)st.innerHTML="❌ الاختبار فشل.<br><b>رمز الخطأ:</b> "+escapeHtml(code)+"<br><b>التفاصيل:</b> "+escapeHtml(message)+"<br><br>هذا النص سيساعدنا على تحديد المشكلة بدقة.";
+    }
+};
+
+window.savePlatformSettings=async()=>{
+    currentUser=auth.currentUser||currentUser;
+    if(!currentUser||currentUser.uid!==OWNER_UID){alert("يجب تسجيل الدخول بحساب صاحب المنصة أولًا.");return;}
+    try{const data=collectPlatformSettings();await setDoc(doc(db,"platformSettings","main"),data,{merge:true});window.platformSettings={...window.platformSettings,...data};applyPlatformSettings(window.platformSettings);const st=document.getElementById("dashboardSaveStatus");if(st)st.textContent="✅ تم حفظ الإعدادات";renderPlatformControls();}catch(e){console.error(e);alert("تعذر حفظ إعدادات المنصة. تأكد من قواعد Firestore.");}
+};
+function renderBlockedUsers(){const c=document.getElementById("blockedUsersList");if(!c)return;const arr=window.platformSettings.blockedVisitorUids||[];c.innerHTML=arr.length?arr.map(uid=>`<div class="blocked-user-item"><code>${escapeHtml(uid)}</code><button type="button" class="danger-small" onclick="unblockVisitor('${escapeHtml(uid)}')">🔓 فك الحظر</button></div>`).join(""):"لا يوجد زوار محظورون.";}
+window.blockVisitor=async()=>{const input=document.getElementById("blockVisitorUid"),uid=(input?.value||"").trim();if(!uid)return alert("اكتب UID الزائر أولًا.");const arr=[...(window.platformSettings.blockedVisitorUids||[])];if(!arr.includes(uid))arr.push(uid);window.platformSettings.blockedVisitorUids=arr;await window.savePlatformSettings();if(input)input.value="";};
+window.unblockVisitor=async(uid)=>{window.platformSettings.blockedVisitorUids=(window.platformSettings.blockedVisitorUids||[]).filter(x=>x!==uid);await window.savePlatformSettings();};
+async function loadPlatformSettings(){try{onSnapshot(doc(db,"platformSettings","main"),snap=>{const data=snap.exists()?snap.data():{};window.platformSettings={enabled:data.enabled!==false,disabledSections:Array.isArray(data.disabledSections)?data.disabledSections:[],blockedVisitorUids:Array.isArray(data.blockedVisitorUids)?data.blockedVisitorUids:[],welcomeMessage:data.welcomeMessage||"",aiEnabled:data.aiEnabled===true,aiModel:data.aiModel||"gemini-3.7-flash",aiSystemInstruction:data.aiSystemInstruction||"أنت مساعد منصة نور الهدى. أجب بالعربية الواضحة والدقيقة. في الفتاوى والمسائل الشرعية الخاصة أو المختلف فيها نبّه المستخدم إلى ضرورة الرجوع إلى جهة إفتاء موثوقة. لا تدّع أنك مفتي ولا تخترع نصوصًا أو أحاديث.",aiSaveHistory:data.aiSaveHistory===true};applyPlatformSettings(window.platformSettings);if(currentUser?.uid===OWNER_UID)renderPlatformControls();});}catch(e){console.error(e);}}
+function isVisitorBlocked(uid){
+    if(!uid) return false;
+    const blocked=Array.isArray(window.platformSettings?.blockedVisitorUids)
+        ? window.platformSettings.blockedVisitorUids
+        : [];
+    return blocked.includes(uid);
+}
+
+function applyPlatformSettings(ps){
+    const user=auth.currentUser||window.currentUser||currentUser;
+    const isOwner=user?.uid===OWNER_UID;
+    const isBlocked=!isOwner && isVisitorBlocked(user?.uid);
+    const overlay=document.getElementById("maintenanceOverlay");
+    const message=document.getElementById("maintenanceMessage");
+    const unlockBtn=document.querySelector(".maintenance-unlock-btn");
+
+    if(overlay){
+        if(isBlocked){
+            overlay.style.display="flex";
+            if(message)message.textContent="تم حظرك من استخدام هذه المنصة.";
+            if(unlockBtn)unlockBtn.style.display="none";
+            document.querySelectorAll("body > *:not(#maintenanceOverlay)").forEach(el=>el.style.pointerEvents="none");
+        }else if(!isOwner && ps.enabled===false){
+            overlay.style.display="flex";
+            if(message)message.textContent=ps.welcomeMessage || "المنصة مغلقة حاليًا للصيانة أو التحديث. يرجى المحاولة لاحقًا.";
+            if(unlockBtn)unlockBtn.style.display="";
+            document.querySelectorAll("body > *:not(#maintenanceOverlay)").forEach(el=>el.style.pointerEvents="none");
+        }else{
+            overlay.style.display="none";
+            if(unlockBtn)unlockBtn.style.display="";
+            document.querySelectorAll("body > *:not(#maintenanceOverlay)").forEach(el=>el.style.pointerEvents="");
+        }
+    }
+
+    if(isBlocked){
+        const status=document.getElementById("chatStatus");
+        const box=document.getElementById("chatBox");
+        if(box)box.style.display="none";
+        if(status){
+            status.innerHTML='<b style="color:#8f1d2c">🚫 تم حظرك من استخدام هذه المنصة.</b>';
+            status.style.display="block";
+        }
+    }
+
+    CONTROLLED_SECTIONS.forEach(([id])=>{
+        const buttons=[...document.querySelectorAll("nav button, .home-buttons button")].filter(x=>x.getAttribute("onclick")?.includes(`showPage('${id}')`));
+        buttons.forEach(b=>b.style.display=isOwner||(!isBlocked&&!ps.disabledSections.includes(id))?"":"none");
+    });
+    const st=document.getElementById("platformOpenStatus");
+    if(st)st.innerHTML=ps.enabled!==false?"🟢 <b>المنصة مفتوحة</b> — الزوار يستطيعون الدخول.":"🔴 <b>المنصة مغلقة</b> — وضع الصيانة مفعل.";
+}
+window.unlockPlatform=async function(){
+    const status=document.getElementById("maintenanceLoginStatus");
+    const savedEmail=(localStorage.getItem("noorAdminEmail")||"").trim();
+    let email=savedEmail;
+    if(!email){
+        email=window.prompt("اكتب البريد الإلكتروني لصاحب المنصة:")?.trim()||"";
+        if(email)localStorage.setItem("noorAdminEmail",email);
+    }
+    if(!email){if(status)status.textContent="⚠️ لم يتم إدخال البريد الإلكتروني.";return;}
+    const password=window.prompt("اكتب كلمة مرور صاحب المنصة:");
+    if(password===null||password===""){if(status)status.textContent="⚠️ يجب إدخال كلمة المرور.";return;}
+    if(status)status.textContent="⏳ جاري التحقق من كلمة المرور...";
+    try{
+        if(auth.currentUser?.isAnonymous)await signOut(auth);
+        const cred=await signInWithEmailAndPassword(auth,email,password);
+        if(cred.user.uid!==OWNER_UID){
+            await signOut(auth);
+            if(status)status.textContent="⛔ هذا الحساب ليس حساب صاحب المنصة.";
+            return;
+        }
+        currentUser=cred.user;window.currentUser=cred.user;
+        localStorage.setItem("noorAdminEmail",email);
+        await setDoc(doc(db,"platformSettings","main"),{enabled:true},{merge:true});
+        window.platformSettings={...(window.platformSettings||{}),enabled:true};
+        applyPlatformSettings(window.platformSettings);
+        if(status)status.textContent="✅ تم التحقق وفتح المنصة.";
+        const panel=document.getElementById("adminPanel");
+        const loginStatus=document.getElementById("adminLoginStatus");
+        if(panel)panel.style.display="block";
+        if(loginStatus)loginStatus.textContent="✅ مسجل الدخول كصاحب المنصة.";
+        renderPlatformControls();
+    }catch(e){
+        console.error(e);
+        if(status)status.textContent="⚠️ كلمة المرور غير صحيحة أو تعذر تسجيل الدخول.";
+    }
+};
+
+window.setPlatformOpen=async function(isOpen){
+    if(!auth.currentUser || auth.currentUser.uid!==OWNER_UID){
+        alert("يجب تسجيل الدخول بحساب صاحب المنصة أولًا.");
+        return;
+    }
+    const current=window.platformSettings||{};
+    const data={enabled:!!isOpen,disabledSections:Array.isArray(current.disabledSections)?current.disabledSections:[],blockedVisitorUids:Array.isArray(current.blockedVisitorUids)?current.blockedVisitorUids:[],welcomeMessage:current.welcomeMessage||"",aiEnabled:current.aiEnabled===true,aiModel:current.aiModel||"gemini-3.7-flash",aiSystemInstruction:current.aiSystemInstruction||"",aiSaveHistory:current.aiSaveHistory===true};
+    try{
+        await setDoc(doc(db,"platformSettings","main"),data,{merge:true});
+        window.platformSettings={...current,...data};
+        applyPlatformSettings(window.platformSettings);
+        renderPlatformControls();
+    }catch(e){console.error(e);alert("تعذر تغيير حالة المنصة. تأكد من صلاحيات Firestore.");}
+};
+
+function renderDashboardStats(){
+    const all=document.querySelectorAll("#adminConversations .admin-conversation").length;
+    const pending=document.querySelectorAll("#adminConversations .unanswered").length;
+    const a=document.getElementById("statAll"),p=document.getElementById("statPending"),b=document.getElementById("statBlocked"),s=document.getElementById("statSections");
+    if(a)a.textContent=all;if(p)p.textContent=pending;if(b)b.textContent=(window.platformSettings.blockedVisitorUids||[]).length;if(s)s.textContent=CONTROLLED_SECTIONS.filter(([id])=>!window.platformSettings.disabledSections.includes(id)).length;
+    const st=document.getElementById("dashboardPlatformStatus");if(st)st.innerHTML=window.platformSettings.enabled!==false?"🟢 المنصة مفتوحة للزوار":"🔴 المنصة مغلقة للزوار";
+}
+window.openAdminPanel=async()=>{
+    const emailInput=document.getElementById("adminEmailInput"),passwordInput=document.getElementById("adminPasswordInput"),email=emailInput.value.trim(),password=passwordInput.value,status=document.getElementById("adminLoginStatus"),panel=document.getElementById("adminPanel");
+    if(!email||!password){status.textContent="⚠️ اكتب البريد الإلكتروني وكلمة المرور أولًا.";return;}
+    status.textContent="⏳ جاري تسجيل الدخول...";
+    try{
+        if(auth.currentUser?.isAnonymous)await signOut(auth);
+        const cred=await signInWithEmailAndPassword(auth,email,password);
+        if(cred.user.uid!==OWNER_UID){await signOut(auth);status.textContent="⛔ هذا الحساب ليس حساب صاحب المنصة.";return;}
+        currentUser=cred.user;window.currentUser=currentUser;
+        localStorage.setItem("noorAdminEmail",email);
+        panel.style.display="block";status.textContent="✅ تم تسجيل الدخول كصاحب المنصة.";renderPlatformControls();await window.loadAdminConversations();
+    }catch(e){console.error(e);status.textContent="⚠️ تعذر تسجيل الدخول. تأكد من البريد وكلمة المرور. ("+(e?.code||"unknown")+")";}
+};
+window.loadAdminConversations=async()=>{
+    currentUser=auth.currentUser||currentUser;
+    if(!currentUser||currentUser.uid!==OWNER_UID){alert("يجب تسجيل الدخول بحساب صاحب المنصة أولًا.");return;}
+    const c=document.getElementById("adminConversations");c.innerHTML="⏳ جاري تحميل أسئلة الزوار...";
+    try{
+        const snap=await getDocs(collection(db,"conversations"));
+        const rows=snap.docs.map(d=>({id:d.id,data:d.data()})).sort((a,b)=>(b.data.updatedAt?.toMillis?a.data.updatedAt.toMillis():0)-(a.data.updatedAt?.toMillis?b.data.updatedAt.toMillis():0));
+        if(!rows.length){c.innerHTML="لا توجد أسئلة حتى الآن.";renderDashboardStats();return;}
+        c.innerHTML="";
+        rows.forEach(r=>{const x=r.data,el=document.createElement("button");el.type="button";el.className="admin-conversation "+(x.answered?"answered":"unanswered");el.innerHTML="<strong>"+escapeHtml(x.visitorName||"زائر")+"</strong> — "+(x.answered?"✅ تم الرد":"🟡 بانتظار الرد")+"<div style='margin-top:7px;line-height:1.8;'>"+escapeHtml(x.question||"")+"</div><div class='admin-user-profile'><b>🆔 UID:</b> <code>"+escapeHtml(x.visitorUid||"غير متاح")+"</code></div><span class='chat-meta'>آخر تحديث: "+escapeHtml(chatTime(x.updatedAt))+"</span>";el.onclick=()=>selectAdminConversation(r.id,x);c.appendChild(el);});
+        renderDashboardStats();
+    }catch(e){console.error(e);c.innerHTML="⚠️ تعذر تحميل الأسئلة. تأكد من صلاحيات Firestore.";}
+};
+function subscribeToAdminMessages(conversationId,visitorName){
+    if(unsubscribeAdminMessages){
+        unsubscribeAdminMessages();
+        unsubscribeAdminMessages=null;
+    }
+    const container=document.getElementById("adminChatMessages");
+    if(!container)return;
+    container.innerHTML='<div class="admin-chat-empty">⏳ جاري تحميل المحادثة...</div>';
+    const q=query(collection(db,"conversations",conversationId,"messages"),orderBy("createdAt","asc"));
+    unsubscribeAdminMessages=onSnapshot(q,snap=>{
+        container.innerHTML="";
+        if(snap.empty){
+            container.innerHTML='<div class="admin-chat-empty">💬 لا توجد رسائل في هذه المحادثة بعد.</div>';
+            return;
+        }
+        snap.forEach(d=>{
+            const x=d.data();
+            const isOwner=x.sender==="owner";
+            const el=document.createElement("div");
+            el.className="admin-chat-message "+(isOwner?"owner":"visitor");
+            const senderName=isOwner?"أنت — صاحب المنصة":(visitorName||"الزائر");
+            el.innerHTML="<span class='admin-chat-text'>"+escapeHtml(x.text||"")+"</span><span class='admin-chat-meta'>"+escapeHtml(senderName)+" • "+escapeHtml(chatTime(x.createdAt))+"</span>";
+            container.appendChild(el);
+        });
+        container.scrollTop=container.scrollHeight;
+    },err=>{
+        console.error("admin chat listener",err);
+        container.innerHTML='<div class="admin-chat-empty">⚠️ تعذر تحميل رسائل المحادثة. تأكد من صلاحيات Firestore.</div>';
+    });
+}
+
+window.blockSelectedVisitor=async function(){
+    const uid=(window.selectedAdminVisitorUid||"").trim();
+    if(!uid || uid==="غير متاح"){
+        alert("لا يوجد UID صالح لهذا الزائر.");
+        return;
+    }
+    if(!auth.currentUser || auth.currentUser.uid!==OWNER_UID){
+        alert("يجب تسجيل الدخول بحساب صاحب المنصة أولًا.");
+        return;
+    }
+    if(isVisitorBlocked(uid)){
+        alert("هذا الزائر محظور بالفعل.");
+        return;
+    }
+    if(!confirm("هل تريد حظر هذا الزائر؟\\nلن يستطيع هذا الـUID استخدام المنصة بعد الحظر."))return;
+    const button=document.getElementById("blockSelectedVisitorButton");
+    if(button){button.disabled=true;button.textContent="⏳ جاري الحظر...";}
+    try{
+        const arr=[...(window.platformSettings.blockedVisitorUids||[])];
+        if(!arr.includes(uid))arr.push(uid);
+        await setDoc(doc(db,"platformSettings","main"),{blockedVisitorUids:arr},{merge:true});
+        window.platformSettings={...(window.platformSettings||{}),blockedVisitorUids:arr};
+        applyPlatformSettings(window.platformSettings);
+        renderBlockedUsers();
+        renderDashboardStats();
+        updateSelectedVisitorBlockButton(uid);
+        alert("🚫 تم حظر الزائر بنجاح.");
+    }catch(e){
+        console.error(e);
+        alert("تعذر حظر الزائر. تأكد من صلاحيات Firestore.");
+    }finally{
+        const b=document.getElementById("blockSelectedVisitorButton");
+        if(b)b.disabled=false;
+    }
+};
+
+function updateSelectedVisitorBlockButton(uid){
+    const b=document.getElementById("blockSelectedVisitorButton");
+    if(!b)return;
+    const blocked=isVisitorBlocked(uid);
+    b.textContent=blocked?"🔓 فك الحظر":"🚫 حظر";
+    b.classList.toggle("unblock",blocked);
+    b.onclick=blocked?()=>unblockSelectedVisitor():()=>blockSelectedVisitor();
+}
+
+window.unblockSelectedVisitor=async function(){
+    const uid=(window.selectedAdminVisitorUid||"").trim();
+    if(!uid)return;
+    if(!confirm("هل تريد فك الحظر عن هذا الزائر؟"))return;
+    const b=document.getElementById("blockSelectedVisitorButton");
+    if(b){b.disabled=true;b.textContent="⏳ جاري فك الحظر...";}
+    try{
+        const arr=(window.platformSettings.blockedVisitorUids||[]).filter(x=>x!==uid);
+        await setDoc(doc(db,"platformSettings","main"),{blockedVisitorUids:arr},{merge:true});
+        window.platformSettings={...(window.platformSettings||{}),blockedVisitorUids:arr};
+        applyPlatformSettings(window.platformSettings);
+        renderBlockedUsers();
+        renderDashboardStats();
+        updateSelectedVisitorBlockButton(uid);
+        alert("🔓 تم فك الحظر عن الزائر.");
+    }catch(e){
+        console.error(e);
+        alert("تعذر فك الحظر. تأكد من صلاحيات Firestore.");
+    }finally{
+        const btn=document.getElementById("blockSelectedVisitorButton");
+        if(btn)btn.disabled=false;
+    }
+};
+
+function selectAdminConversation(id,x){
+    currentAdminConversationId=id;
+    window.selectedAdminVisitorUid=(x.visitorUid||"").trim();
+    const replyBox=document.getElementById("adminReplyBox");
+    const title=document.getElementById("adminSelectedTitle");
+    const visitor=document.getElementById("adminSelectedVisitor");
+    const input=document.getElementById("adminReplyInput");
+    const uid=window.selectedAdminVisitorUid;
+    if(replyBox)replyBox.style.display="block";
+    if(title)title.textContent="💬 محادثة مع "+(x.visitorName||"الزائر");
+    if(visitor){
+        visitor.innerHTML='<div class="admin-selected-actions"><span class="admin-selected-uid">🆔 UID: <code>'+escapeHtml(uid||"غير متاح")+'</code></span>' +
+            (uid?'<button type="button" id="blockSelectedVisitorButton" class="admin-block-selected" onclick="blockSelectedVisitor()">🚫 حظر</button>':"") +
+            '</div>';
+    }
+    if(uid)updateSelectedVisitorBlockButton(uid);
+    if(input)input.value="";
+    subscribeToAdminMessages(id,x.visitorName||"الزائر");
+    if(replyBox)setTimeout(()=>replyBox.scrollIntoView({behavior:"smooth",block:"start"}),50);
+    setTimeout(()=>{if(input)input.focus();},150);
+}
+
+window.closeAdminConversation=()=>{
+    currentAdminConversationId=null;
+    window.selectedAdminVisitorUid="";
+    if(unsubscribeAdminMessages){
+        unsubscribeAdminMessages();
+        unsubscribeAdminMessages=null;
+    }
+    const replyBox=document.getElementById("adminReplyBox");
+    if(replyBox)replyBox.style.display="none";
+};
+
+window.sendAdminReply=async()=>{
+    currentUser=auth.currentUser||currentUser;
+    if(!currentUser||currentUser.uid!==OWNER_UID){alert("يجب تسجيل الدخول بحساب صاحب المنصة أولًا.");return;}
+    const input=document.getElementById("adminReplyInput");
+    const button=document.getElementById("adminSendReplyButton");
+    const text=input?.value.trim()||"";
+    if(!currentAdminConversationId){alert("اختر سؤالًا من قائمة الزوار أولًا.");return;}
+    if(!text){alert("اكتب الرد أولًا.");return;}
+    if(button)button.disabled=true;
+    try{
+        await addDoc(collection(db,"conversations",currentAdminConversationId,"messages"),{sender:"owner",text,createdAt:serverTimestamp()});
+        await updateDoc(doc(db,"conversations",currentAdminConversationId),{answered:true,answer:text,updatedAt:serverTimestamp()});
+        if(input)input.value="";
+        await window.loadAdminConversations();
+    }catch(e){
+        console.error(e);
+        alert("تعذر إرسال الرد. تأكد من قواعد Firestore.");
+    }finally{
+        if(button)button.disabled=false;
+    }
+};
+
+
+onAuthStateChanged(auth,(user)=>{
+    currentUser=user;
+    window.currentUser=user;
+    authReadyResolve();
+    const emailInput=document.getElementById("adminEmailInput");
+    if(emailInput && !emailInput.value){
+        emailInput.value=localStorage.getItem("noorAdminEmail")||((user?.uid===OWNER_UID)?(user.email||""):"");
+    }
+    applyPlatformSettings(window.platformSettings||{});
+    if(user?.uid===OWNER_UID){
+        const panel=document.getElementById("adminPanel");
+        const status=document.getElementById("adminLoginStatus");
+        if(panel)panel.style.display="block";
+        if(status)status.textContent="✅ مسجل الدخول كصاحب المنصة.";
+        renderPlatformControls();
+        applyPlatformSettings(window.platformSettings||{});
+    }
+});
+
+window.addEventListener("DOMContentLoaded",()=>{
+    const emailInput=document.getElementById("adminEmailInput");
+    if(emailInput){
+        const savedEmail=localStorage.getItem("noorAdminEmail");
+        if(savedEmail)emailInput.value=savedEmail;
+        emailInput.addEventListener("focus",()=>{
+            if(!emailInput.value){
+                emailInput.value=localStorage.getItem("noorAdminEmail")||"";
+            }
+        });
+    }
+});
+
+window.addEventListener("load",()=>{loadPlatformSettings();});
+</script>
+
+</body>
+</html>
