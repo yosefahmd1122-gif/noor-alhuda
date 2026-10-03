@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>لوحة تحكم منصة نور الهدى</title>
+<style>
+*{box-sizing:border-box}body{margin:0;font-family:Tajawal,Arial,sans-serif;background:#061b18;color:#fff}
+header{background:#0b6b5b;padding:16px 20px;display:flex;justify-content:space-between;align-items:center;gap:12px;position:sticky;top:0;z-index:20}
+h1,h2,h3{margin:0}button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:12px;padding:10px 14px}
+button:disabled{opacity:.55;cursor:not-allowed}.gold{background:#d4af37;color:#071814;font-weight:700}.danger{background:#8d2634;color:#fff}.ghost{background:#123b35;color:#fff;border:1px solid #286b60}
+.wrap{max-width:1250px;margin:auto;padding:22px}.card{background:#0b2823;border:1px solid #20564d;border-radius:18px;padding:18px;margin-bottom:16px;box-shadow:0 8px 30px #0003}
+.login{max-width:460px;margin:8vh auto}label{display:block;margin:11px 0 6px}
+input,select,textarea{width:100%;padding:11px;border-radius:10px;border:1px solid #376b63;background:#071e1a;color:#fff}textarea{min-height:100px;resize:vertical}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:13px}.row{display:flex;gap:9px;align-items:center;flex-wrap:wrap}
+.status{padding:10px;border-radius:10px;background:#123b35;margin-top:10px}.small{opacity:.75;font-size:.9rem}.error{color:#ffb6b6}.success{color:#bff5c8}
+#app{display:none}.layout{display:grid;grid-template-columns:230px 1fr;gap:16px}.sidebar{position:sticky;top:85px;align-self:start}
+.navbtn{width:100%;text-align:right;margin-bottom:8px;background:#123b35;color:#fff;border:1px solid #20564d}.navbtn.active{background:#d4af37;color:#071814;font-weight:700}
+.panel{display:none}.panel.active{display:block}.stat{padding:18px;border-radius:16px;background:#123b35;border:1px solid #286b60}.stat b{display:block;font-size:1.8rem;margin-top:7px}
+.section-row,.user-row,.conv-row{padding:14px 0;border-bottom:1px solid #20564d}.section-row{display:flex;justify-content:space-between;gap:12px;align-items:center}
+.badge{display:inline-block;padding:4px 8px;border-radius:20px;background:#20564d;font-size:.8rem}.badge.off{background:#6b2530}.msg{background:#061b18;border:1px solid #20564d;border-radius:12px;padding:12px;margin:8px 0}
+.reply{margin-top:10px;border-top:1px solid #20564d;padding-top:10px}.muted{opacity:.7}.linkbox{word-break:break-all}
+@media(max-width:800px){.layout{grid-template-columns:1fr}.sidebar{position:static;display:grid;grid-template-columns:repeat(2,1fr);gap:7px}.navbtn{margin:0}.wrap{padding:12px}header{padding:13px}.section-row{align-items:flex-start;flex-direction:column}}
+</style>
+</head>
+<body>
+<header>
+  <div><h1>لوحة تحكم منصة نور الهدى</h1><div class="small">وحدة تحكم مستقلة لصاحب المنصة</div></div>
+  <button id="logoutBtn" class="danger" hidden>تسجيل الخروج</button>
+</header>
+
+<main class="wrap">
+<section id="loginCard" class="card login">
+  <h2>دخول صاحب المنصة</h2>
+  <p class="small">لا تظهر لوحة التحكم إلا للحساب المصرح له، ويُتحقق من UID بعد تسجيل الدخول.</p>
+  <label>البريد الإلكتروني</label><input id="email" type="email" autocomplete="username">
+  <label>كلمة المرور</label><input id="password" type="password" autocomplete="current-password">
+  <div class="row" style="margin-top:15px"><button id="loginBtn" class="gold">دخول</button><a href="index.html"><button type="button" class="ghost">العودة للمنصة</button></a></div>
+  <div id="loginStatus" class="status"></div>
+</section>
+
+<section id="app">
+<div class="card"><div id="ownerInfo" class="status"></div></div>
+<div class="layout">
+<aside class="sidebar">
+  <button class="navbtn active" data-panel="dashboard">📊 الرئيسية والإحصائيات</button>
+  <button class="navbtn" data-panel="users">👥 المستخدمون والزوار</button>
+  <button class="navbtn" data-panel="chats">💬 محادثات الزوار</button>
+  <button class="navbtn" data-panel="sections">📚 أقسام المنصة</button>
+  <button class="navbtn" data-panel="content">📝 إدارة المحتوى</button>
+  <button class="navbtn" data-panel="settings">⚙️ إعدادات المنصة</button>
+  <button class="navbtn" data-panel="links">🔗 الروابط المباشرة</button>
+  <button class="navbtn" data-panel="security">🛡️ الحماية</button>
+</aside>
+
+<div>
+<section id="dashboard" class="panel active">
+<div class="card"><h2>الرئيسية والإحصائيات</h2><p class="small">ملخص مباشر للبيانات التي يمكن للوحة قراءتها من Firestore.</p>
+<div class="grid">
+<div class="stat">المستخدمون المسجلون<b id="statUsers">—</b></div>
+<div class="stat">المحادثات<b id="statChats">—</b></div>
+<div class="stat">الأقسام<b id="statSections">—</b></div>
+<div class="stat">حالة المنصة<b id="statPlatform">—</b></div>
+</div></div></section>
+
+<section id="users" class="panel">
+<div class="card"><h2>إدارة المستخدمين والزوار</h2><p class="small">يمكن تفعيل/إيقاف الحسابات الموجودة في مجموعة <b>users</b>. تعطيل Firebase Authentication نفسه يحتاج Admin SDK/Cloud Functions؛ هذا الزر يحفظ حالة الحساب في Firestore ويجب أن تحترمها واجهة المنصة وRules.</p>
+<div class="row" style="margin:12px 0"><input id="userSearch" placeholder="ابحث بالبريد أو UID" style="flex:1;min-width:220px"><button class="ghost" id="refreshUsers">تحديث</button></div>
+<div id="usersList"></div></div></section>
+
+<section id="chats" class="panel">
+<div class="card"><h2>إدارة محادثات الزوار</h2><p class="small">قراءة المحادثات والرد عليها من خلال حقل <b>adminReply</b> في وثيقة المحادثة.</p><div id="conversations"></div></div>
+</section>
+
+<section id="sections" class="panel">
+<div class="card"><h2>فتح وإغلاق أقسام المنصة</h2><p class="small">يُحفظ الإعداد في <b>platformSettings/sections</b>. اربط واجهة الزوار بهذه القيم.</p><div id="sectionsList"></div></div>
+</section>
+
+<section id="content" class="panel">
+<div class="card"><h2>إدارة المحتوى</h2><p class="small">إدارة محتوى عام في مجموعة <b>platformContent</b>. اكتب معرف الوثيقة لإضافتها أو تعديلها.</p>
+<label>معرف المحتوى</label><input id="contentId" placeholder="مثال: homeMessage">
+<label>العنوان</label><input id="contentTitle">
+<label>المحتوى</label><textarea id="contentBody"></textarea>
+<div class="row" style="margin-top:10px"><button class="gold" id="saveContent">حفظ المحتوى</button><button class="ghost" id="clearContent">تفريغ</button></div>
+<div id="contentList" class="status">جاري تحميل المحتوى...</div></div></section>
+
+<section id="settings" class="panel">
+<div class="card"><h2>إعدادات المنصة</h2><p class="small">يمكن فتح/إغلاق المنصة بالكامل وتغيير رسالة الإغلاق. تُحفظ في <b>platformSettings/general</b>.</p>
+<label><input id="platformOpen" type="checkbox" style="width:auto;margin-left:7px"> المنصة مفتوحة للزوار</label>
+<label>رسالة الإغلاق</label><textarea id="closedMessage" placeholder="المنصة مغلقة مؤقتًا..."></textarea>
+<button class="gold" id="saveSettings">حفظ إعدادات المنصة</button><div id="settingsStatus" class="status"></div></div></section>
+
+<section id="links" class="panel">
+<div class="card"><h2>الروابط المباشرة</h2><p class="small">ضع الروابط الفعلية للمنصة والدردشة الخارجية وسياسة الخصوصية.</p>
+<label>رابط المنصة</label><input id="platformLink" placeholder="https://...">
+<label>رابط الدردشة الخارجية</label><input id="chatLink" placeholder="https://...">
+<label>رابط سياسة الخصوصية</label><input id="privacyLink" placeholder="https://...">
+<button class="gold" id="saveLinks">حفظ الروابط</button><div id="linksStatus" class="status"></div>
+<div id="linksView" class="status linkbox"></div></div></section>
+
+<section id="security" class="panel">
+<div class="card"><h2>🛡️ حماية لوحة التحكم</h2>
+<p>الحساب المصرح به يجب أن يطابق UID المحدد للمالك:</p><div class="status"><b id="ownerUid"></b></div>
+<p class="small">التحقق الموجود في الواجهة ليس بديلًا عن Firebase Security Rules. يجب منع الكتابة والقراءة الإدارية في Rules بناءً على <code>request.auth.uid</code> (أو claim إداري موثوق)، وعدم الاعتماد على إخفاء الأزرار في المتصفح.</p>
+<div class="status">حالة الجلسة: <b id="authState">—</b></div></div></section>
+</div></div>
+</section>
+</main>
+
+<script type="module">
+import {initializeApp} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+import {getAuth,signInWithEmailAndPassword,signOut,onAuthStateChanged} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+import {getFirestore,collection,doc,setDoc,getDoc,deleteDoc,onSnapshot,query,orderBy,limit,serverTimestamp} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+const firebaseConfig={
+apiKey:"AIzaSyBXvm1UflDiHGjkkVjw-HIJdQ6CtEDlE_8",authDomain:"noor-al-huda-93992.firebaseapp.com",
+projectId:"noor-al-huda-93992",storageBucket:"noor-al-huda-93992.firebasestorage.app",
+messagingSenderId:"329274355989",appId:"1:329274355989:web:717e6d2febc6182f0a791c",measurementId:"G-FM8QK2ZWHN"};
+const OWNER_UID="WCtZOcEYljPwxc3zGuq2sJFznyK2";
+const app=initializeApp(firebaseConfig),auth=getAuth(app),db=getFirestore(app);
+const $=id=>document.getElementById(id), loginCard=$("loginCard"),appBox=$("app"),loginStatus=$("loginStatus");
+
+const sectionNames=[
+["quran","القرآن الكريم"],["tafsir","التفسير"],["recitation","الاستماع للقرآن"],["adhkar","الأذكار"],["rulings","الأحكام"],["guide","الدليل"],["ai","الروبوت"],["stories","قصص الأنبياء"],["contact","تواصل معي"]];
+
+function status(text,cls=""){loginStatus.className="status "+cls;loginStatus.textContent=text}
+function showPanel(id){document.querySelectorAll(".panel").forEach(x=>x.classList.toggle("active",x.id===id));document.querySelectorAll(".navbtn").forEach(x=>x.classList.toggle("active",x.dataset.panel===id))}
+document.querySelectorAll(".navbtn").forEach(b=>b.onclick=()=>showPanel(b.dataset.panel));
+$("ownerUid").textContent=OWNER_UID;
+
+$("loginBtn").onclick=async()=>{
+const email=$("email").value.trim(),password=$("password").value;
+if(!email||!password)return status("اكتب البريد الإلكتروني وكلمة المرور.","error");
+try{status("جارٍ تسجيل الدخول...");await signInWithEmailAndPassword(auth,email,password)}
+catch(e){console.error(e);status("تعذر تسجيل الدخول. تأكد من البيانات ومن تفعيل Firebase Authentication.","error")}
+};
+$("logoutBtn").onclick=()=>signOut(auth);
+
+onAuthStateChanged(auth,user=>{
+if(!user){loginCard.style.display="block";appBox.style.display="none";$("logoutBtn").hidden=true;$("authState").textContent="غير مسجل";return}
+if(user.uid!==OWNER_UID){signOut(auth);status("هذا الحساب غير مصرح له بالدخول إلى لوحة التحكم.","error");return}
+loginCard.style.display="none";appBox.style.display="block";$("logoutBtn").hidden=false;
+$("ownerInfo").textContent="الحساب المصرح: "+(user.email||"صاحب المنصة")+" — UID: "+user.uid;$("authState").textContent="مصادق عليه ومطابق للـ UID";
+startWatches();
+});
+
+let unsub=[];
+function startWatches(){
+unsub.forEach(fn=>fn&&fn());unsub=[];
+unsub.push(onSnapshot(doc(db,"platformSettings","sections"),snap=>renderSections(snap.exists()?snap.data():{}),err=>console.error(err)));
+unsub.push(onSnapshot(collection(db,"users"),snap=>renderUsers(snap),err=>{$("usersList").innerHTML='<div class="status error">تعذر قراءة المستخدمين. راجع Firebase Rules.</div>';console.error(err)}));
+unsub.push(onSnapshot(query(collection(db,"conversations"),orderBy("updatedAt","desc"),limit(100)),snap=>renderConversations(snap),err=>{$("conversations").innerHTML='<div class="status error">تعذر قراءة المحادثات. راجع Firebase Rules أو فهرس Firestore.</div>';console.error(err)}));
+unsub.push(onSnapshot(collection(db,"platformContent"),snap=>renderContent(snap),err=>{$("contentList").textContent="تعذر قراءة المحتوى.";console.error(err)}));
+unsub.push(onSnapshot(doc(db,"platformSettings","general"),snap=>loadGeneral(snap.exists()?snap.data():{}),err=>console.error(err)));
+unsub.push(onSnapshot(doc(db,"platformSettings","links"),snap=>loadLinks(snap.exists()?snap.data():{}),err=>console.error(err)));
+$("statSections").textContent=sectionNames.length;
+}
+
+function renderSections(data){
+const box=$("sectionsList");box.innerHTML="";
+sectionNames.forEach(([id,name])=>{
+const open=data[id]!==false,row=document.createElement("div");row.className="section-row";
+row.innerHTML="<div><b>"+name+"</b><div class='small'>"+(open?"مفتوح للزوار":"مغلق عن الزوار")+"</div></div>";
+const b=document.createElement("button");b.className=open?"danger":"gold";b.textContent=open?"إيقاف القسم":"فتح القسم";
+b.onclick=async()=>{b.disabled=true;try{await setDoc(doc(db,"platformSettings","sections"),{[id]:!open},{merge:true})}catch(e){alert("تعذر الحفظ. راجع Firebase Rules.");}finally{b.disabled=false}};
+row.appendChild(b);box.appendChild(row);
+});
+}
+
+function renderUsers(snap){
+$("statUsers").textContent=snap.size;
+const box=$("usersList"),term=($("userSearch").value||"").toLowerCase();box.innerHTML="";
+snap.forEach(d=>{const x=d.data(),uid=d.id,email=String(x.email||"").toLowerCase();
+if(term&&!uid.toLowerCase().includes(term)&&!email.includes(term))return;
+const active=x.active!==false,row=document.createElement("div");row.className="user-row";
+row.innerHTML="<b>"+(x.email||"مستخدم")+"</b><div class='small'>UID: "+uid+" — "+(active?"مفعّل":"موقوف")+"</div>";
+const b=document.createElement("button");b.className=active?"danger":"gold";b.textContent=active?"إيقاف المستخدم":"تفعيل المستخدم";
+b.onclick=async()=>{b.disabled=true;try{await setDoc(doc(db,"users",uid),{active:!active,updatedAt:serverTimestamp()},{merge:true})}catch(e){alert("تعذر الحفظ. راجع Firebase Rules.");}finally{b.disabled=false}};
+row.appendChild(b);box.appendChild(row)});
+if(!box.children.length)box.innerHTML='<div class="status">لا توجد نتائج.</div>';
+}
+$("userSearch").oninput=()=>{ /* onSnapshot سيعيد الرسم عند أي تغيير؛ التحديث اليدوي مفيد كذلك */ };
+$("refreshUsers").onclick=()=>location.reload();
+
+function renderConversations(snap){
+$("statChats").textContent=snap.size;const box=$("conversations");box.innerHTML="";
+if(snap.empty){box.innerHTML='<div class="status">لا توجد محادثات.</div>';return}
+snap.forEach(d=>{const x=d.data(),el=document.createElement("div");el.className="conv-row";
+const question=x.question||x.message||"بدون رسالة",reply=x.adminReply||"";
+el.innerHTML="<b>محادثة زائر</b><div class='msg'>"+escapeHtml(question)+"</div><div class='small'>المعرف: "+escapeHtml(d.id)+"</div>";
+const area=document.createElement("textarea");area.placeholder="اكتب ردك للزائر...";area.value=reply;
+const b=document.createElement("button");b.className="gold";b.textContent="إرسال الرد";
+b.onclick=async()=>{b.disabled=true;try{await setDoc(doc(db,"conversations",d.id),{adminReply:area.value.trim(),adminReplyAt:serverTimestamp(),adminReplyBy:OWNER_UID,updatedAt:serverTimestamp()},{merge:true})}catch(e){alert("تعذر إرسال الرد. راجع Firebase Rules.");}finally{b.disabled=false}};
+el.appendChild(area);el.appendChild(b);box.appendChild(el)});
+}
+function escapeHtml(v){return String(v).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#039;"}[c]))}
+
+function renderContent(snap){
+const box=$("contentList");box.innerHTML="";
+if(snap.empty){box.textContent="لا يوجد محتوى محفوظ.";return}
+snap.forEach(d=>{const x=d.data(),row=document.createElement("div");row.className="msg";
+row.innerHTML="<b>"+escapeHtml(x.title||d.id)+"</b><div class='small'>"+escapeHtml(x.body||"")+"</div>";
+const edit=document.createElement("button");edit.className="ghost";edit.textContent="تعديل";edit.onclick=()=>{$("contentId").value=d.id;$("contentTitle").value=x.title||"";$("contentBody").value=x.body||""};
+row.appendChild(edit);box.appendChild(row)});
+}
+$("saveContent").onclick=async()=>{const id=$("contentId").value.trim();if(!id)return alert("اكتب معرف المحتوى.");try{await setDoc(doc(db,"platformContent",id),{title:$("contentTitle").value.trim(),body:$("contentBody").value,updatedAt:serverTimestamp(),updatedBy:OWNER_UID},{merge:true});$("settingsStatus").textContent="تم حفظ المحتوى."}catch(e){alert("تعذر حفظ المحتوى. راجع Firebase Rules.")}};
+$("clearContent").onclick=()=>{$("contentId").value=$("contentTitle").value=$("contentBody").value=""};
+
+function loadGeneral(x){$("platformOpen").checked=x.open!==false;$("closedMessage").value=x.closedMessage||"المنصة مغلقة مؤقتًا."; $("statPlatform").textContent=x.open===false?"مغلقة":"مفتوحة"}
+$("saveSettings").onclick=async()=>{try{await setDoc(doc(db,"platformSettings","general"),{open:$("platformOpen").checked,closedMessage:$("closedMessage").value.trim(),updatedAt:serverTimestamp(),updatedBy:OWNER_UID},{merge:true});$("settingsStatus").className="status success";$("settingsStatus").textContent="تم حفظ إعدادات المنصة."}catch(e){$("settingsStatus").className="status error";$("settingsStatus").textContent="تعذر الحفظ. راجع Firebase Rules."}};
+
+function loadLinks(x){$("platformLink").value=x.platform||"";$("chatLink").value=x.chat||"";$("privacyLink").value=x.privacy||"";$("linksView").innerHTML="<b>الروابط المحفوظة</b><br>المنصة: "+escapeHtml(x.platform||"—")+"<br>الدردشة: "+escapeHtml(x.chat||"—")+"<br>الخصوصية: "+escapeHtml(x.privacy||"—")}
+$("saveLinks").onclick=async()=>{try{await setDoc(doc(db,"platformSettings","links"),{platform:$("platformLink").value.trim(),chat:$("chatLink").value.trim(),privacy:$("privacyLink").value.trim(),updatedAt:serverTimestamp(),updatedBy:OWNER_UID},{merge:true});$("linksStatus").className="status success";$("linksStatus").textContent="تم حفظ الروابط."}catch(e){$("linksStatus").className="status error";$("linksStatus").textContent="تعذر الحفظ. راجع Firebase Rules."}};
+</script>
+</body>
+</html>
