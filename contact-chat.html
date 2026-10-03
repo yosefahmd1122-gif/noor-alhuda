@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>مراسلة صاحب المنصة - منصة نور الهدى</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;font-family:Tahoma,Arial,sans-serif;background:#063f36;color:#26352f;min-height:100vh}
+header{background:linear-gradient(rgba(3,52,44,.96),rgba(7,95,80,.98));color:#fff;text-align:center;padding:25px 16px;border-bottom:4px solid #c9a227}
+header h1{margin:0;font-size:30px}
+header p{margin:7px 0;color:#f3df8a;font-weight:bold}
+main{max-width:850px;margin:20px auto;padding:0 14px}
+.card{background:#fffaf0;border:2px solid rgba(201,162,39,.55);border-radius:18px;padding:18px;box-shadow:0 8px 25px rgba(0,0,0,.18)}
+.profile{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin-bottom:12px}
+input,textarea{width:100%;padding:11px;border:1px solid #b7c8c2;border-radius:10px;font-size:15px}
+.chat{height:55vh;min-height:360px;max-height:620px;overflow-y:auto;padding:15px;background:#f4faf7;border:1px solid #d8e7e1;border-radius:14px;display:flex;flex-direction:column;gap:10px}
+.msg{max-width:82%;padding:11px 13px;border-radius:15px;line-height:1.75;word-break:break-word}
+.msg.visitor{align-self:flex-start;background:#dbeafe;border:1px solid #60a5fa;color:#000}
+.msg.owner{align-self:flex-end;background:#dbeafe;border:1px solid #60a5fa;color:#000}
+.meta{display:block;font-size:11px;color:#52635e;margin-top:5px}
+.msg img{max-width:270px;width:100%;border-radius:12px;display:block}
+.msg audio{max-width:290px;width:100%;display:block}
+.compose{margin-top:12px;background:#fff;padding:12px;border-radius:14px;border:1px solid #d8e7e1}
+.toolbar{display:flex;gap:8px;flex-wrap:wrap;margin-top:9px}
+button{border:1px solid #c9a227;background:#075e54;color:#fff;padding:10px 14px;border-radius:10px;cursor:pointer;font-weight:bold}
+button.gold{background:#c9a227;color:#26352f}
+button.secondary{background:#edf7f2;color:#075e54}
+button.danger{background:#8f1d2c}
+button:disabled{opacity:.6;cursor:not-allowed}
+.status{margin:10px 0;padding:10px;border-radius:10px;background:#edf7f2;color:#075e54;line-height:1.7}
+.recording{background:#fff0c7!important;color:#765600!important}
+.links{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.links a{color:#075e54;font-weight:bold;text-decoration:none;background:#edf7f2;padding:9px 12px;border-radius:9px}
+.file-name{font-size:12px;margin-top:6px;color:#52635e}
+@media(max-width:650px){.profile{grid-template-columns:1fr}.msg{max-width:94%}}
+</style>
+</head>
+<body>
+<header>
+<h1>💬 مراسلة صاحب المنصة</h1>
+<p>منصة نور الهدى — يوسف أحمد شعلان</p>
+</header>
+<main>
+<div class="card">
+<div class="status" id="status">⏳ جاري تجهيز المحادثة...</div>
+<div class="profile">
+<input id="name" type="text" placeholder="اسمك (اختياري)">
+<input id="age" type="number" min="1" max="120" placeholder="عمرك (اختياري)">
+<input id="residence" type="text" placeholder="المدينة / المنطقة (اختياري)">
+</div>
+<div id="messages" class="chat">
+<div style="text-align:center;color:#60736e;padding:25px">💬 لا توجد رسائل بعد.</div>
+</div>
+<div class="compose">
+<textarea id="text" rows="3" placeholder="اكتب رسالتك هنا..." autocomplete="off"></textarea>
+<div class="toolbar">
+<button id="sendText" class="gold">📤 إرسال نص</button>
+<button id="recordBtn" class="secondary">🎙️ تسجيل صوتي</button>
+<label>
+<input id="imageInput" type="file" accept="image/*" hidden>
+<button type="button" class="secondary" onclick="document.getElementById('imageInput').click()">🖼️ صورة</button>
+</label>
+<label>
+<input id="fileInput" type="file" hidden>
+<button type="button" class="secondary" onclick="document.getElementById('fileInput').click()">📎 ملف</button>
+</label>
+</div>
+<div id="selectedFile" class="file-name"></div>
+</div>
+<div class="links">
+<a href="privacy.html">🔐 سياسة الخصوصية</a>
+<a href="index.html">↩ العودة إلى المنصة</a>
+</div>
+</div>
+</main>
+
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
+import { getAuth, signInAnonymously, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+import { getFirestore, collection, addDoc, doc, updateDoc, onSnapshot, query, orderBy, serverTimestamp, getDoc } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+import { getStorage, ref, uploadBytes, getDownloadURL } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-storage.js";
+
+const firebaseConfig={
+    apiKey:"AIzaSyBXvm1UflDiHGjkkVjw-HIJdQ6CtEDlE_8",
+    authDomain:"noor-al-huda-93992.firebaseapp.com",
+    projectId:"noor-al-huda-93992",
+    storageBucket:"noor-al-huda-93992.firebasestorage.app",
+    messagingSenderId:"329274355989",
+    appId:"1:329274355989:web:717e6d2febc6182f0a791c",
+    measurementId:"G-FM8QK2ZWHN"
+};
+const app=initializeApp(firebaseConfig);
+const auth=getAuth(app),db=getFirestore(app),storage=getStorage(app);
+const OWNER_UID="WCtZOcEYljPwxc3zGuq2sJFznyK2";
+let user=null,conversationId=localStorage.getItem("noorLiveConversationId")||null;
+let unsubscribe=null,mediaRecorder=null,audioChunks=[],recording=false;
+
+const $=id=>document.getElementById(id);
+const esc=v=>String(v??"").replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;").replace(/'/g,"&#039;");
+function time(ts){try{const d=ts?.toDate?ts.toDate():new Date(ts);return Number.isNaN(d.getTime())?"":d.toLocaleString("ar-EG",{dateStyle:"short",timeStyle:"short"});}catch(e){return "";}}
+function setStatus(t,err=false){$("status").textContent=t;$("status").style.color=err?"#8f1d2c":"#075e54";}
+function profile(){
+  return {
+    name:$("name").value.trim()||localStorage.getItem("noorUserName")||"زائر",
+    age:$("age").value.trim()||localStorage.getItem("noorUserAge")||"",
+    residence:$("residence").value.trim()||localStorage.getItem("noorUserResidence")||""
+  };
+}
+function fillProfile(){
+  $("name").value=localStorage.getItem("noorUserName")||"";
+  $("age").value=localStorage.getItem("noorUserAge")||"";
+  $("residence").value=localStorage.getItem("noorUserResidence")||"";
+}
+function saveProfile(){
+  const p=profile();
+  localStorage.setItem("noorUserName",p.name==="زائر"?"":p.name);
+  localStorage.setItem("noorUserAge",p.age);
+  localStorage.setItem("noorUserResidence",p.residence);
+}
+async function blocked(){
+  if(!user || user.uid===OWNER_UID) return false;
+  try{
+    const s=await getDoc(doc(db,"platformSettings","main"));
+    return s.exists() && Array.isArray(s.data().blockedVisitorUids) && s.data().blockedVisitorUids.includes(user.uid);
+  }catch(e){return false;}
+}
+async function ensureConversation(){
+  if(!user) throw new Error("NO_USER");
+  if(await blocked()) throw new Error("BLOCKED");
+  const p=profile(); saveProfile();
+  if(!conversationId){
+    const c=await addDoc(collection(db,"conversations"),{
+      visitorUid:user.uid,visitorName:p.name,visitorAge:p.age,visitorResidence:p.residence,
+      question:"",createdAt:serverTimestamp(),updatedAt:serverTimestamp(),answered:false
+    });
+    conversationId=c.id;
+    localStorage.setItem("noorLiveConversationId",conversationId);
+  }else{
+    await updateDoc(doc(db,"conversations",conversationId),{
+      visitorName:p.name,visitorAge:p.age,visitorResidence:p.residence,updatedAt:serverTimestamp()
+    });
+  }
+  subscribe(conversationId);
+  return conversationId;
+}
+function renderMessage(x){
+  const owner=x.sender==="owner";
+  let body="";
+  if(x.type==="image"&&x.fileUrl){
+    body="<img src='"+esc(x.fileUrl)+"' alt='صورة مرفقة'>";
+    if(x.fileName)body+="<div class='file-name'>🖼️ "+esc(x.fileName)+"</div>";
+  }else if(x.type==="audio"&&x.fileUrl){
+    body="<audio controls preload='metadata' src='"+esc(x.fileUrl)+"'></audio>";
+  }else if(x.type==="file"&&x.fileUrl){
+    body="<a href='"+esc(x.fileUrl)+"' target='_blank' rel='noopener' style='color:#075e54;font-weight:bold'>📎 "+esc(x.fileName||"فتح الملف")+"</a>";
+  }else{
+    body=esc(x.text||"");
+  }
+  return "<div class='msg "+(owner?"owner":"visitor")+"'>"+body+"<span class='meta'>"+(owner?"صاحب المنصة":"أنت")+" • "+esc(time(x.createdAt))+"</span></div>";
+}
+function subscribe(id){
+  if(unsubscribe)unsubscribe();
+  const q=query(collection(db,"conversations",id,"messages"),orderBy("createdAt","asc"));
+  unsubscribe=onSnapshot(q,snap=>{
+    const c=$("messages");c.innerHTML="";
+    if(snap.empty){c.innerHTML="<div style='text-align:center;color:#60736e;padding:25px'>💬 ابدأ المحادثة بإرسال رسالة.</div>";return;}
+    snap.forEach(d=>c.insertAdjacentHTML("beforeend",renderMessage(d.data())));
+    c.scrollTop=c.scrollHeight;
+  },e=>setStatus("⚠️ تعذر تحميل المحادثة. تأكد من صلاحيات Firestore.",true));
+}
+async function sendMessage(data){
+  try{
+    const id=await ensureConversation();
+    await addDoc(collection(db,"conversations",id,"messages"),{sender:"visitor",createdAt:serverTimestamp(),...data});
+    await updateDoc(doc(db,"conversations",id),{updatedAt:serverTimestamp(),answered:false,question:data.text||data.fileName||"مرفق جديد"});
+    setStatus("✅ تم إرسال رسالتك إلى صاحب المنصة.");
+  }catch(e){
+    console.error(e);
+    setStatus(e.message==="BLOCKED"?"🚫 تم حظرك من استخدام خدمة التواصل.":"⚠️ تعذر إرسال الرسالة. تأكد من إعدادات Firebase.",true);
+  }
+}
+$("sendText").onclick=async()=>{
+  const text=$("text").value.trim();if(!text)return;
+  $("sendText").disabled=true;
+  try{await sendMessage({type:"text",text});$("text").value="";}finally{$("sendText").disabled=false;}
+};
+async function uploadAndSend(file,type){
+  if(!file)return;
+  if(file.size>25*1024*1024){setStatus("⚠️ الحد الأقصى للمرفق 25 ميجابايت.",true);return;}
+  const button=type==="image"?$("imageInput"): $("fileInput");
+  try{
+    const id=await ensureConversation();
+    setStatus("⏳ جاري رفع المرفق...");
+    const safe=file.name.replace(/[^\w؀-ۿ.\- ]/g,"_").slice(0,100);
+    const path="chatAttachments/"+user.uid+"/"+id+"/"+Date.now()+"_"+safe;
+    const storageRef=ref(storage,path);
+    await uploadBytes(storageRef,file,{contentType:file.type||"application/octet-stream"});
+    const url=await getDownloadURL(storageRef);
+    await addDoc(collection(db,"conversations",id,"messages"),{
+      sender:"visitor",type,fileUrl:url,fileName:file.name,mimeType:file.type||"",size:file.size,
+      createdAt:serverTimestamp()
+    });
+    await updateDoc(doc(db,"conversations",id),{updatedAt:serverTimestamp(),answered:false,question:"مرفق: "+file.name});
+    setStatus("✅ تم إرسال المرفق.");
+    $("selectedFile").textContent="";
+  }catch(e){
+    console.error(e);
+    setStatus("⚠️ تعذر رفع المرفق. تأكد من تفعيل Firebase Storage وقواعده.",true);
+  }finally{if(button)button.value="";}
+}
+$("imageInput").onchange=e=>uploadAndSend(e.target.files[0],"image");
+$("fileInput").onchange=e=>uploadAndSend(e.target.files[0],"file");
+
+$("recordBtn").onclick=async()=>{
+  if(recording){
+    mediaRecorder?.stop();
+    return;
+  }
+  if(!navigator.mediaDevices?.getUserMedia||!window.MediaRecorder){
+    setStatus("⚠️ المتصفح لا يدعم تسجيل الصوت.",true);return;
+  }
+  try{
+    const stream=await navigator.mediaDevices.getUserMedia({audio:true});
+    audioChunks=[];
+    mediaRecorder=new MediaRecorder(stream);
+    recording=true;$("recordBtn").textContent="⏹️ إيقاف التسجيل";$("recordBtn").classList.add("recording");
+    mediaRecorder.ondataavailable=e=>{if(e.data.size)audioChunks.push(e.data);};
+    mediaRecorder.onstop=async()=>{
+      stream.getTracks().forEach(t=>t.stop());
+      recording=false;$("recordBtn").textContent="🎙️ تسجيل صوتي";$("recordBtn").classList.remove("recording");
+      const blob=new Blob(audioChunks,{type:mediaRecorder.mimeType||"audio/webm"});
+      const ext=(blob.type.split("/")[1]||"webm").split(";")[0];
+      const file=new File([blob],"رسالة_صوتية_"+Date.now()+"."+ext,{type:blob.type});
+      await uploadAndSend(file,"audio");
+    };
+    mediaRecorder.start();
+    setStatus("🎙️ يتم التسجيل الآن... اضغط الزر مرة أخرى للإيقاف.");
+  }catch(e){console.error(e);setStatus("⚠️ لم يتم السماح باستخدام الميكروفون.",true);}
+};
+
+$("name").onchange=$("age").onchange=$("residence").onchange=saveProfile;
+
+fillProfile();
+onAuthStateChanged(auth,async u=>{
+  try{
+    if(u?.uid===OWNER_UID){user=u;setStatus("🔐 أنت مسجل كصاحب المنصة. افتح لوحة التحكم من المنصة الرئيسية.");return;}
+    if(!u){const c=await signInAnonymously(auth);user=c.user;}else user=u;
+    if(await blocked()){setStatus("🚫 تم حظرك من استخدام خدمة التواصل.",true);return;}
+    setStatus(conversationId?"💬 جاري تحميل محادثتك...":"👋 اكتب رسالتك أو أرسل صورة أو ملفًا أو رسالة صوتية.");
+    if(conversationId)subscribe(conversationId);
+  }catch(e){console.error(e);setStatus("⚠️ تعذر الاتصال بخدمة المحادثة. تأكد من Firebase Authentication.",true);}
+});
+</script>
+</body>
+</html>
