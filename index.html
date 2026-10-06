@@ -768,7 +768,7 @@ footer{
     <button onclick="showPage('adhkar')">🤲 الأدعية والأذكار</button>
     <button onclick="showPage('guide')">📘 دليل المنصة</button>
     <button onclick="showPage('ai')">🤖 اسأل نور الهدى</button>
-    <button type="button" onclick="openExternalChat()">💬 تواصل معي</button>
+    <button onclick="showPage('contact'); initLiveChat();">💬 تواصل معي</button>
 </nav>
 
 <section id="home" class="page active">
@@ -789,7 +789,7 @@ footer{
             <button onclick="showPage('adhkar')">🤲 الأدعية والأذكار</button>
             <button onclick="showPage('guide')">📘 دليل المنصة</button>
     <button onclick="showPage('ai')">🤖 اسأل نور الهدى</button>
-            <button type="button" onclick="openExternalChat()">💬 تواصل معي</button>
+            <button onclick="showPage('contact'); initLiveChat();">💬 تواصل معي</button>
         </div>
     </div>
 </section>
@@ -1216,10 +1216,6 @@ footer{
 <footer>
     <div>منصة نور الهدى</div>
     <div class="footer-name">يوسف أحمد شعلان</div>
-    <div style="margin-top:15px;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;">
-        <button type="button" class="gold-button" onclick="openPrivacyPolicy()">🔐 سياسة الخصوصية</button>
-        <button type="button" class="gold-button" onclick="openExternalChat()">💬 مراسلة صاحب المنصة</button>
-    </div>
 </footer>
 
 <script>
@@ -1329,18 +1325,6 @@ window.addEventListener(
 
     }
 );
-
-
-function openExternalChat(){
-    const url="contact-chat.html";
-    const w=window.open(url,"_blank","noopener");
-    if(!w) window.location.href=url;
-}
-function openPrivacyPolicy(){
-    const url="privacy.html";
-    const w=window.open(url,"_blank","noopener");
-    if(!w) window.location.href=url;
-}
 
 function showPage(id){
 
@@ -3178,7 +3162,6 @@ window.addEventListener(
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
 import { getAuth, signInAnonymously, signInWithEmailAndPassword, signOut, onAuthStateChanged } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 import { getFirestore, collection, addDoc, doc, updateDoc, setDoc, deleteDoc, onSnapshot, query, orderBy, getDocs, getDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
-import { getStorage } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-storage.js";
 import { getAI, getGenerativeModel, GoogleAIBackend } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-ai.js";
 
 const firebaseConfig={
@@ -3191,7 +3174,7 @@ const firebaseConfig={
     measurementId:"G-FM8QK2ZWHN"
 };
 const app=initializeApp(firebaseConfig);
-const auth=getAuth(app), db=getFirestore(app), storage=getStorage(app);
+const auth=getAuth(app), db=getFirestore(app);
 let noorAI=null;
 let noorAIModel=null;
 let currentUser=null;
@@ -3685,18 +3668,7 @@ function subscribeToAdminMessages(conversationId,visitorName){
             const el=document.createElement("div");
             el.className="admin-chat-message "+(isOwner?"owner":"visitor");
             const senderName=isOwner?"أنت — صاحب المنصة":(visitorName||"الزائر");
-            let content="";
-            if(x.type==="image" && x.fileUrl){
-                content="<img src='"+escapeHtml(x.fileUrl)+"' alt='صورة من الزائر' style='max-width:260px;width:100%;border-radius:12px;display:block;margin-bottom:7px;'>";
-                if(x.fileName) content+="<a href='"+escapeHtml(x.fileUrl)+"' target='_blank' rel='noopener' style='font-weight:700;color:#075e54;'>🖼️ "+escapeHtml(x.fileName)+"</a>";
-            }else if(x.type==="audio" && x.fileUrl){
-                content="<audio controls preload='metadata' src='"+escapeHtml(x.fileUrl)+"' style='width:min(320px,100%);display:block;margin-bottom:7px;'></audio>";
-            }else if(x.type==="file" && x.fileUrl){
-                content="<a href='"+escapeHtml(x.fileUrl)+"' target='_blank' rel='noopener' style='font-weight:700;color:#075e54;'>📎 "+escapeHtml(x.fileName||"ملف مرفق")+"</a>";
-            }else{
-                content="<span class='admin-chat-text'>"+escapeHtml(x.text||"")+"</span>";
-            }
-            el.innerHTML=content+"<span class='admin-chat-meta'>"+escapeHtml(senderName)+" • "+escapeHtml(chatTime(x.createdAt))+"</span>";
+            el.innerHTML="<span class='admin-chat-text'>"+escapeHtml(x.text||"")+"</span><span class='admin-chat-meta'>"+escapeHtml(senderName)+" • "+escapeHtml(chatTime(x.createdAt))+"</span>";
             container.appendChild(el);
         });
         container.scrollTop=container.scrollHeight;
