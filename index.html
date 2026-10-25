@@ -701,6 +701,28 @@ footer{
     }
 }
 
+
+/* إضافات قسم الصلاة والقبلة فقط؛ لا تغيّر تصميم الأقسام الحالية */
+.prayer-location-row{display:grid;grid-template-columns:1fr 2fr auto auto;gap:9px;align-items:center;margin:14px 0}
+.prayer-location-row label{font-weight:bold;color:#075e54}
+.prayer-location-row input{margin:0;min-width:0}
+.prayer-times-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(135px,1fr));gap:10px;margin-top:16px}
+.prayer-time-item{background:#f8fffd;border:1px solid #c9a227;border-radius:13px;padding:15px 10px;text-align:center}
+.prayer-time-item span{display:block;color:#52665e;font-size:14px;margin-bottom:7px}
+.prayer-time-item strong{display:block;color:#075e54;font-size:21px}
+.qibla-compass-wrap{display:flex;align-items:center;justify-content:center;gap:35px;flex-wrap:wrap;padding:12px 0}
+.qibla-compass{width:230px;height:230px;position:relative;border-radius:50%;border:7px solid #c9a227;background:radial-gradient(circle,#fffdf5 0 57%,#e5f1eb 58% 100%);box-shadow:inset 0 0 0 2px #075e54,0 8px 22px #00000018}
+.qibla-compass:before{content:"";position:absolute;inset:14px;border:1px dashed #9ab8ac;border-radius:50%}
+.qibla-compass span{position:absolute;font-weight:bold;color:#075e54;font-size:17px}
+.compass-n{top:7px;left:calc(50% - 8px)}.compass-s{bottom:7px;left:calc(50% - 8px)}
+.compass-e{right:9px;top:calc(50% - 11px)}.compass-w{left:9px;top:calc(50% - 11px)}
+.compass-center{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);font-size:30px;z-index:2}
+.qibla-needle{position:absolute;left:50%;top:50%;width:6px;height:84px;transform:translate(-50%,-100%) rotate(0deg);transform-origin:50% 100%;background:#b51f2e;border-radius:8px;z-index:3;transition:transform .25s ease}
+.qibla-needle span{position:absolute;top:-10px;left:50%;transform:translateX(-50%);color:#b51f2e;font-size:24px}
+.qibla-info{text-align:center;min-width:220px;line-height:2}
+.qibla-info strong{display:block;color:#075e54;font-size:34px}
+@media(max-width:650px){.prayer-location-row{grid-template-columns:1fr}.prayer-location-row button{width:100%}.qibla-compass{width:210px;height:210px}.qibla-compass-wrap{gap:18px}}
+
 </style>
 
 <link rel="manifest" href="manifest.json">
@@ -775,6 +797,7 @@ footer{
     <button onclick="showPage('tafsir')">📚 التفسير</button>
     <button onclick="showPage('rulings')">⚖️ الأحكام</button>
     <button onclick="showPage('adhkar')">🤲 الأدعية والأذكار</button>
+    <button onclick="showPage('prayer'); loadPrayerTools()">🕌 مواقيت الصلاة والقبلة</button>
     <button onclick="showPage('guide')">📘 دليل المنصة</button>
     <button onclick="showPage('ai')">🤖 اسأل نور الهدى</button>
     <button onclick="showPage('contact'); initLiveChat();">💬 تواصل معي</button>
@@ -796,6 +819,7 @@ footer{
             <button onclick="showPage('tafsir')">📚 تفسير القرآن</button>
             <button onclick="showPage('rulings')">⚖️ الأحكام الشرعية</button>
             <button onclick="showPage('adhkar')">🤲 الأدعية والأذكار</button>
+            <button onclick="showPage('prayer'); loadPrayerTools()">🕌 مواقيت الصلاة والقبلة</button>
             <button onclick="showPage('guide')">📘 دليل المنصة</button>
     <button onclick="showPage('ai')">🤖 اسأل نور الهدى</button>
             <button onclick="showPage('contact'); initLiveChat();">💬 تواصل معي</button>
@@ -967,6 +991,47 @@ footer{
 </section>
 
 
+
+<section id="prayer" class="page">
+    <div class="card prayer-card">
+        <h2>🕌 مواقيت الصلاة واتجاه القبلة</h2>
+        <p>اعرض مواقيت الصلاة اليومية، وحدد اتجاه القبلة من موقعك. يلزم اتصال بالإنترنت لجلب المواقيت، وقد يطلب المتصفح إذن الموقع.</p>
+
+        <div class="prayer-location-row">
+            <label for="prayerCity">المدينة</label>
+            <input id="prayerCity" type="text" value="الزقازيق" placeholder="مثال: الزقازيق">
+            <button type="button" class="action" onclick="loadPrayerByCity()">🔎 مواقيت المدينة</button>
+            <button type="button" class="action" onclick="usePrayerLocation()">📍 استخدام موقعي</button>
+        </div>
+        <div id="prayerStatus" class="result-box" role="status" aria-live="polite">اضغط «مواقيت المدينة» لعرض مواقيت الزقازيق، أو استخدم موقعك للحصول على نتيجة أدق.</div>
+        <div id="prayerDate" class="small-note"></div>
+        <div id="prayerTimesGrid" class="prayer-times-grid"></div>
+    </div>
+
+    <div class="card prayer-card">
+        <h2>🧭 بوصلة اتجاه القبلة</h2>
+        <p>السهم يوضح اتجاه مكة بالنسبة إلى الشمال. للحصول على بوصلة حية، افتح المنصة على هاتف يدعم مستشعر الاتجاه واسمح بإذن الحركة عند الطلب.</p>
+        <div class="qibla-compass-wrap">
+            <div id="qiblaCompass" class="qibla-compass" aria-label="بوصلة اتجاه القبلة">
+                <span class="compass-n">ش</span>
+                <span class="compass-e">ق</span>
+                <span class="compass-s">ج</span>
+                <span class="compass-w">غ</span>
+                <div class="compass-center">🕋</div>
+                <div id="qiblaNeedle" class="qibla-needle"><span>▲</span></div>
+            </div>
+            <div class="qibla-info">
+                <div>زاوية القبلة من الشمال</div>
+                <strong id="qiblaBearing">—°</strong>
+                <div id="qiblaDirectionText">حدد موقعك لاحتساب اتجاه القبلة.</div>
+                <button type="button" class="gold-button" onclick="enableQiblaCompass()">🧭 تشغيل البوصلة الحية</button>
+                <button type="button" class="action" onclick="loadPrayerTools()">🔄 تحديث الموقع والقبلة</button>
+            </div>
+        </div>
+        <p class="small-note">ملاحظة: البوصلة الإلكترونية قد تتأثر بالمجال المغناطيسي أو غطاء الهاتف. حرّك الهاتف على شكل رقم ٨ إذا كان الاتجاه غير ثابت، واعتمد على زاوية القبلة المعروضة عند تعذر مستشعر الاتجاه.</p>
+    </div>
+</section>
+
 <section id="ai" class="page">
     <div class="card">
         <h2>🤖 اسأل نور الهدى</h2>
@@ -1108,6 +1173,7 @@ footer{
                             <div class="admin-control-card">
                                 <h4>🧠 النموذج</h4>
                                 <select id="aiModel">
+                                    <option value="gemini-3.5-flash">gemini-3.5-flash (بديل مستقر)</option>
                                     <option value="gemini-3.7-flash">gemini-3.7-flash</option>
                                     <option value="gemini-3.8-flash">gemini-3.8-flash</option>
                                     <option value="gemini-3.5-flash-lite">gemini-3.5-flash-lite</option>
@@ -1212,6 +1278,9 @@ footer{
 
         <h3>⚖️ الأحكام</h3>
         <p>ابحث عن الحكم الشرعي.</p>
+
+        <h3>🕌 مواقيت الصلاة والقبلة</h3>
+        <p>اختر المدينة أو اسمح باستخدام موقعك لعرض مواقيت الصلاة. يمكن تشغيل البوصلة الحية على الأجهزة المدعومة، وقد يحتاج المتصفح إلى إذن الموقع والحركة.</p>
 
         <h3>🤲 الأدعية والأذكار</h3>
         <p>يمكنك البحث داخل الأذكار.</p>
@@ -3196,7 +3265,7 @@ let unsubscribeAdminMessages=null;
 const OWNER_UID="WCtZOcEYljPwxc3zGuq2sJFznyK2";
 const CONTROLLED_SECTIONS=[
   ["quran","📖 القرآن الكريم"],["recitation","🎧 التلاوة"],["ai","🤖 الذكاء الاصطناعي"],["tafsir","📚 التفسير"],
-  ["contact","💬 تواصل معي"],["rulings","⚖️ الأحكام والفتاوى"],["adhkar","📿 الأذكار"],["guide","🧭 الدليل"]
+  ["contact","💬 تواصل معي"],["rulings","⚖️ الأحكام والفتاوى"],["adhkar","📿 الأذكار"],["prayer","🕌 مواقيت الصلاة والقبلة"],["guide","🧭 الدليل"]
 ];
 window.platformSettings={enabled:true,disabledSections:[],blockedVisitorUids:[],welcomeMessage:"",aiEnabled:false,aiModel:"gemini-3.7-flash",aiSystemInstruction:"أنت مساعد منصة نور الهدى. أجب بالعربية الواضحة، وكن محترمًا ودقيقًا. في الفتاوى والمسائل الشرعية الخاصة أو المختلف فيها نبّه المستخدم إلى ضرورة الرجوع إلى عالم أو جهة إفتاء موثوقة. لا تدّع أنك مفتي، ولا تخترع نصوصًا أو أحاديث.",aiSaveHistory:false};
 
@@ -3486,11 +3555,11 @@ window.askNoorAI=async()=>{
         }else if(/permission|unauth|unauthorized|403/i.test(message)||/permission|unauth/i.test(code)){
             hint="السبب المحتمل: صلاحيات Firebase أو AI Logic تمنع الطلب.";
         }else if(/not.?found|404|model/i.test(message)){
-            hint="السبب المحتمل: اسم النموذج أو توفره في مشروع Firebase.";
+            hint="السبب المحتمل: اسم النموذج غير متاح أو غير مدعوم في إعداد Firebase AI Logic الحالي. جرّب نموذجًا متاحًا في مشروعك من إعدادات المساعد، ثم اضغط اختبار المساعد.";
         }else if(/400|invalid/i.test(message)||/invalid/i.test(code)){
             hint="السبب المحتمل: إعداد غير صحيح في طلب الذكاء الاصطناعي.";
         }else if(/429|quota|resource.?exhausted/i.test(message)||/quota|resource.?exhausted/i.test(code)){
-            hint="السبب المحتمل: تم تجاوز الحد المسموح أو معدل الطلبات.";
+            hint="السبب المحتمل: تم تجاوز حصة الاستخدام أو معدل الطلبات. انتظر حتى تتجدد الحصة، وتحقق من خطة Firebase AI Logic وحدود النموذج. تبديل اسم النموذج وحده لا يحل خطأ الحصة.";
         }
         addNoorAIMessage("⚠️ تعذر الحصول على الإجابة.\n\nرمز الخطأ: "+code+"\nالتفاصيل: "+message+(hint?"\n\n"+hint:"")+"\n\nإذا أرسلت لي رمز الخطأ والتفاصيل الظاهرة هنا، أقدر أحدد لك الإعداد المطلوب.","system");
         if(status)status.textContent="⚠️ ظهر خطأ مفصل أسفل الرسالة.";
@@ -4058,6 +4127,145 @@ window.addEventListener("load",()=>{loadPlatformSettings();});
 
 </script>
 
+
+
+<script>
+/* مواقيت الصلاة والقبلة: إضافة مستقلة لا تعتمد على الذكاء الاصطناعي */
+(function(){
+  const $ = id => document.getElementById(id);
+  let prayerCoords = null;
+  let qiblaBearingValue = null;
+  let orientationListenerActive = false;
+
+  function setPrayerStatus(message, isError){
+    const el=$("prayerStatus");
+    if(el){el.textContent=message;el.style.borderRightColor=isError?"#b51f2e":"#c9a227";}
+  }
+  function formatPrayerTime(value){
+    if(!value)return "—";
+    const raw=String(value).split(" ")[0];
+    const parts=raw.split(":");
+    if(parts.length<2)return raw;
+    let h=Number(parts[0]),m=parts[1];
+    const suffix=h>=12?"م":"ص";
+    h=h%12||12;
+    return String(h).padStart(2,"0")+":"+m+" "+suffix;
+  }
+  function renderPrayerTimes(data){
+    const timings=data?.timings;
+    if(!timings)throw new Error("لم تصل مواقيت الصلاة من الخدمة.");
+    const items=[
+      ["الفجر",timings.Fajr],["الشروق",timings.Sunrise],["الظهر",timings.Dhuhr],
+      ["العصر",timings.Asr],["المغرب",timings.Maghrib],["العشاء",timings.Isha]
+    ];
+    $("prayerTimesGrid").innerHTML=items.map(([name,time])=>
+      '<div class="prayer-time-item"><span>'+name+'</span><strong>'+formatPrayerTime(time)+'</strong></div>'
+    ).join("");
+    $("prayerDate").textContent="التاريخ الهجري: "+(data.date?.hijri?.date||"غير متاح")+" • التاريخ الميلادي: "+(data.date?.readable||"");
+    setPrayerStatus("✅ تم تحميل مواقيت الصلاة. قد تختلف دقائق قليلة حسب طريقة الحساب المعتمدة محليًا.",false);
+  }
+  function bearingToMecca(lat,lon){
+    const toRad=d=>d*Math.PI/180, toDeg=r=>r*180/Math.PI;
+    const kaabaLat=21.422487, kaabaLon=39.826206;
+    const p1=toRad(lat),p2=toRad(kaabaLat),dl=toRad(kaabaLon-lon);
+    const y=Math.sin(dl);
+    const x=Math.cos(p1)*Math.tan(p2)-Math.sin(p1)*Math.cos(dl);
+    return (toDeg(Math.atan2(y,x))+360)%360;
+  }
+  function updateQibla(lat,lon){
+    prayerCoords={lat,lon};
+    qiblaBearingValue=bearingToMecca(lat,lon);
+    $("qiblaBearing").textContent=Math.round(qiblaBearingValue)+"°";
+    $("qiblaDirectionText").textContent="اتجاه القبلة محسوب من موقعك الحالي.";
+    const needle=$("qiblaNeedle");
+    if(needle)needle.style.transform="translate(-50%,-100%) rotate("+qiblaBearingValue+"deg)";
+  }
+  async function fetchPrayerByCoords(lat,lon){
+    setPrayerStatus("⏳ جاري حساب مواقيت الصلاة لموقعك...",false);
+    updateQibla(lat,lon);
+    try{
+      const url="https://api.aladhan.com/v1/timings?latitude="+encodeURIComponent(lat)+"&longitude="+encodeURIComponent(lon)+"&method=5";
+      const response=await fetch(url);
+      if(!response.ok)throw new Error("خدمة المواقيت غير متاحة الآن (HTTP "+response.status+").");
+      const json=await response.json();
+      if(json.code!==200||!json.data)throw new Error("لم تتمكن الخدمة من حساب المواقيت.");
+      renderPrayerTimes(json.data);
+    }catch(e){
+      console.error("Prayer times error:",e);
+      setPrayerStatus("تعذر تحميل المواقيت من الإنترنت. تحقق من الاتصال ثم حاول مرة أخرى. "+(e.message||""),true);
+    }
+  }
+  window.loadPrayerByCity=async function(){
+    const city=($("prayerCity")?.value||"").trim();
+    if(!city){setPrayerStatus("اكتب اسم المدينة أولًا.",true);return;}
+    setPrayerStatus("⏳ جاري البحث عن "+city+"...",false);
+    try{
+      const url="https://api.aladhan.com/v1/timingsByCity?city="+encodeURIComponent(city)+"&country=Egypt&method=5";
+      const response=await fetch(url);
+      if(!response.ok)throw new Error("تعذر الاتصال بخدمة المواقيت.");
+      const json=await response.json();
+      if(json.code!==200||!json.data)throw new Error("لم يتم العثور على مواقيت لهذه المدينة.");
+      renderPrayerTimes(json.data);
+      const coords=json.data.meta?.latitude!=null?{lat:Number(json.data.meta.latitude),lon:Number(json.data.meta.longitude)}:null;
+      if(coords)updateQibla(coords.lat,coords.lon);
+    }catch(e){
+      console.error("Prayer city error:",e);
+      setPrayerStatus("تعذر تحميل مواقيت المدينة. تأكد من كتابة اسم مدينة مصرية والاتصال بالإنترنت. "+(e.message||""),true);
+    }
+  };
+  window.usePrayerLocation=function(){
+    if(!navigator.geolocation){setPrayerStatus("هذا المتصفح لا يدعم تحديد الموقع. استخدم البحث باسم المدينة.",true);return;}
+    setPrayerStatus("⏳ في انتظار إذن الموقع...",false);
+    navigator.geolocation.getCurrentPosition(
+      pos=>fetchPrayerByCoords(pos.coords.latitude,pos.coords.longitude),
+      err=>{
+        let msg="تعذر تحديد الموقع.";
+        if(err.code===1)msg="لم تسمح للمتصفح باستخدام موقعك. يمكنك استخدام البحث باسم المدينة أو تفعيل إذن الموقع.";
+        else if(err.code===2)msg="الموقع غير متاح حاليًا. جرّب البحث باسم المدينة.";
+        else if(err.code===3)msg="انتهت مهلة تحديد الموقع. حاول مرة أخرى.";
+        setPrayerStatus(msg,true);
+      },
+      {enableHighAccuracy:true,timeout:12000,maximumAge:300000}
+    );
+  };
+  window.enableQiblaCompass=async function(){
+    if(!qiblaBearingValue){setPrayerStatus("حدد المدينة أو موقعك أولًا حتى نحسب اتجاه القبلة.",true);return;}
+    if(orientationListenerActive){setPrayerStatus("🧭 البوصلة الحية مفعّلة إذا كان جهازك يدعم مستشعر الاتجاه.",false);return;}
+    try{
+      if(typeof DeviceOrientationEvent!=="undefined" && typeof DeviceOrientationEvent.requestPermission==="function"){
+        const permission=await DeviceOrientationEvent.requestPermission();
+        if(permission!=="granted"){setPrayerStatus("لم يتم السماح بمستشعر الاتجاه. يمكنك استخدام زاوية القبلة المعروضة.",true);return;}
+      }
+      if(!("DeviceOrientationEvent" in window)){setPrayerStatus("هذا الجهاز أو المتصفح لا يدعم البوصلة الحية. استخدم زاوية القبلة المعروضة.",true);return;}
+      window.addEventListener("deviceorientationabsolute",onOrientation,true);
+      window.addEventListener("deviceorientation",onOrientation,true);
+      orientationListenerActive=true;
+      setPrayerStatus("🧭 تم تفعيل مستشعر الاتجاه إن كان مدعومًا. حرّك الهاتف ببطء للحصول على قراءة مستقرة.",false);
+    }catch(e){
+      setPrayerStatus("تعذر تشغيل البوصلة الحية. افتح الموقع عبر HTTPS واسمح بإذن الحركة، أو استخدم زاوية القبلة المعروضة.",true);
+    }
+  };
+  function onOrientation(event){
+    if(qiblaBearingValue==null)return;
+    let heading=null;
+    if(typeof event.webkitCompassHeading==="number")heading=event.webkitCompassHeading;
+    else if(typeof event.alpha==="number")heading=(360-event.alpha)%360;
+    if(heading==null)return;
+    const relative=(qiblaBearingValue-heading+360)%360;
+    const needle=$("qiblaNeedle");
+    if(needle)needle.style.transform="translate(-50%,-100%) rotate("+relative+"deg)";
+    $("qiblaDirectionText").textContent="زاوية القبلة "+Math.round(qiblaBearingValue)+"° • اتجاه الهاتف "+Math.round(heading)+"°";
+  }
+  window.loadPrayerTools=function(){
+    if(qiblaBearingValue!==null && $("prayerTimesGrid")?.children.length)return;
+    window.loadPrayerByCity();
+  };
+  // اجعل الأداة تعمل تلقائيًا عند فتح القسم لأول مرة دون طلب موقع المستخدم.
+  document.addEventListener("DOMContentLoaded",function(){
+    if($("prayerCity"))window.loadPrayerByCity();
+  });
+})();
+</script>
 
 <script>
 if ('serviceWorker' in navigator) {
